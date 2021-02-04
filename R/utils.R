@@ -19,6 +19,19 @@ sas7bdat_to_rds <- function(path) {
   }
 }
 
+#' @title Read the data from the path in PARAM_GLOBAL
+#' @description Read the data from the path in PARAM_GLOBAL
+#'
+#' @param path
+#' @return path_data
+#' @author [Christoph Sax](mailto:christoph@cynkra.com)
+#' @export
+#'
+path_data <- function(path){
+  #read from PARAM_GLOBAL
+  tl_PARAM_GLOBAL <- param_tidylist_read(path)
+  path_data <- tl_PARAM_GLOBAL$PARAM_GLOBAL[['path_data']]
+}
 
 #' Converting Data Frames to Matrices and Back
 #'

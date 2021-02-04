@@ -12,8 +12,8 @@
 # - Last change: 2021-02-04 / Llc
 
 mod_inp_kmeans <- function(path, list = NULL, method_name = "kmeans"){
-
-  path_param <- path_param(path)
+browser()
+  path_param <- path
   path_data <- path_data(path)
 
   tl_PARAM_GLOBAL <- param_tidylist_read(path_param)

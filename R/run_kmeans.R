@@ -26,7 +26,7 @@ run_kmeans <- function(path, path_out = file.path(tempdir(), "out"),
   }
 
   # input
-  tl_inp_kmeans <- mod_inp(path = path, method_name = "kmeans") %>%
+  tl_inp_kmeans <- mod_inp_kmeans(path = path, method_name = "kmeans") %>%
     param_replace(param_replace = param_replace)
 
   # computations

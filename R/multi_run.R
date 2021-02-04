@@ -7,7 +7,7 @@
 #' @param path paths of the set of parameters set to a particular output. More
 #' than 1 path can be set.
 #' @param fun function to apply to those sets of parameters.
-#'
+#' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 
 # - Last change: 2021-02-04 / Llc

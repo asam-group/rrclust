@@ -1,0 +1,20 @@
+# directories
+**/work/
+man/
+doc/
+docs/
+# Files
+*.Rproj
+*.html
+*.htm
+*.png
+*.PNG
+*.pdf
+*.zip
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+NAMESPACE
+Thumbs.db
+.Rbuildignore

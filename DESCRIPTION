@@ -1,0 +1,17 @@
+Package: rrclust
+Type: Package
+Title: Clustering observations from the Register of Rents (RR)
+Version: 0.1.0
+Date: 2020-02-20
+Author@R: person("Layal Christine", "Lettry", email = "layalchristine.lettry@unifr.ch")
+Maintainer: Layal Christine Lettry <layalchristine.lettry@unifr.ch>
+Description: This package allows to cluster the Swiss register of rents by using 
+             different clustering methods.
+Depends: dplyr, tidyr, tibble, yaml, roxygen2, MASS, knitr
+Imports: ggplot2, xtable, data.table, kableExtra, Hmisc
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+NeedsCompilation: no
+Author: Layal Lettry [aut, cre]

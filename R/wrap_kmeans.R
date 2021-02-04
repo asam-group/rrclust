@@ -15,6 +15,6 @@ wrap_kmeans_ <- function(tl_inp_kmeans){
 }
 
 
-#' title wrap_ahv (memoised)
+#' @title wrap_kmeans (memoised)
 #' @export
 wrap_kmeans <- memoise::memoise(wrap_kmeans_)

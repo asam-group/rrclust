@@ -11,7 +11,7 @@ library(rrclust)
 
 # For local test or development purposes load sources virtually:
 # devtools::load_all(".")
-# verhindert, dass Zeilenumbruch browser() verlaesst
+# impedes that line break makes the browser() leave.
 options(browserNLdisabled = TRUE)
 
 path_init <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/containers_dummy"

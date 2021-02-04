@@ -1,7 +1,8 @@
 #' Convert SAS files to R files
 #'
-#' @param path
+#' @param path directory path
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
+#' @param path directory path
 #' @export
 sas7bdat_to_rds <- function(path) {
   library(sas7bdat)
@@ -22,7 +23,7 @@ sas7bdat_to_rds <- function(path) {
 #' @title Read the data from the path in PARAM_GLOBAL
 #' @description Read the data from the path in PARAM_GLOBAL
 #'
-#' @param path
+#' @param path directory path
 #' @return path_data
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
@@ -86,8 +87,8 @@ tibble_to_matrix <- function(x) {
 }
 
 #' matrix to tibble
-#' @param X
-#' @param template
+#' @param X a matrix
+#' @param template a template
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 #'
@@ -131,7 +132,7 @@ matrix_to_tibble <- function(X, template) {
 
 #' Collect objects
 #'
-#' @param pattern
+#' @param pattern set of characters or numbers creating a pattern
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 collect_objects <- function(pattern = "^OPT_DELTA") {
@@ -154,7 +155,7 @@ collect_objects <- function(pattern = "^OPT_DELTA") {
 
 #' Generate codes to assign tidylist explicitly
 #'
-#' @param tl
+#' @param tl tidylist
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 code_tidylist_assign <- function(tl) {
@@ -168,7 +169,8 @@ code_tidylist_assign <- function(tl) {
 
 
 #' @title Write parameters
-#' @param x, file
+#' @param x parameters tibble to write
+#' @param file file to write to
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 write_param <- function(x, file) {
@@ -179,7 +181,7 @@ write_param <- function(x, file) {
 
 
 #' @title Read a single parameters csv file
-#' @param file
+#' @param file file
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 #' @import data.table
@@ -187,18 +189,16 @@ read_param <- function(file) {
   z0 <- data.table::fread(file = file, sep = ";") %>%
     as_tibble()
 
-
-
   z1 <- spread(z0, key, value, convert = TRUE)
 
   if (identical(dim(z1), c(0L, 0L))) return(z1)
 
-  select(z1, one_of(z0[["key"]]))
+  dplyr::select(z1, one_of(z0[["key"]]))
 }
 
 
 #' @title Read all files from a folder and return a tidylist
-#' @param path
+#' @param path path
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @return tidylist ll
 #' @export
@@ -264,6 +264,8 @@ rente_ram <- function(ram,
 ## ==\\=================================================================#
 #' round2
 #' @description #Fonction pour arrondir aux 0.5 plus haut
+#' @param x x to round
+#' @param n how many numbers after the comma
 #' @export
 round2 <- function(x, n) {
   posneg <- sign(x)
@@ -279,6 +281,8 @@ round2 <- function(x, n) {
 ## ==\\=================================================================#
 #' mround
 #' @description #Fonction pour arrondir
+#' @param x x to round
+#' @param base how many numbers after the comma
 #' @export
 mround <- function(x, base) {
   base * round(x / base)
@@ -289,9 +293,30 @@ mround <- function(x, base) {
 ## ==\\=================================================================#
 #' truncate_at_n_decimals
 #' @description F#truncate number after n decimals without rounding them
+#' @param x x to round
+#' @param n how many numbers after the comma
 #' @export
 truncate_at_n_decimals <- function(x, n) {
   x1 <- trunc(x * 10^n + 1E-9) / 10^n
 
   return(x1)
+}
+
+#'@title Function to create a single identifier number
+#'@param method_name name of the clustering method
+#'@param path directory path
+#'@export
+clustmeth_identifier_number <- function (method_name, path){
+
+  params_folder_suffix <- gsub("^.+?_", "", basename(path))
+
+  identifier_number <- paste0(
+    "clusters",
+    format(Sys.time(), format = "%Y%m%d%H%M%S"),
+    "_",
+    tolower(Sys.getenv("USER")),
+    "_",
+    params_folder_suffix
+
+  )
 }

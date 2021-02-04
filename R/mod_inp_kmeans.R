@@ -11,12 +11,19 @@
 
 # - Last change: 2021-02-04 / Llc
 
-mod_inp_kmeans <- function(path, list = NULL, method_name = "kmeans"){
-browser()
+mod_inp_kmeans <- function(path, list = NULL, method_name = "kmeans") {
   path_param <- path
   path_data <- path_data(path)
 
   tl_PARAM_GLOBAL <- param_tidylist_read(path_param)
-  tl_PARAM_GLOBAL$PARAM_GLOBAL$identifier_number <- ffh_identifier_number(vz = method_name,
-                                                                          path = path)
+  tl_PARAM_GLOBAL$PARAM_GLOBAL$identifier_number <- clustmeth_identifier_number(
+    method_name = method_name,
+    path = path
+  )
+
+  tl_inp <- c(
+    tl_PARAM_GLOBAL,
+    tidylist_read(path_data),
+    tidylist_read(path_param)
+  )
 }

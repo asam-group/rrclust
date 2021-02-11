@@ -19,14 +19,14 @@ path_init <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/container
 
 path <- file.path(
   path_init,
-  "params_kmeans" # kmeans clustering method
+  "params_kamila" # kamila clustering method
 )
 
 
 # Container to be archived
 path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
 # path_out <- "/Users/DonzeL/Développement/OFAS/_temp"
-rrclust::run_kmeans(path = path, path_out = path_out)
+rrclust::run_kamila(path = path, path_out = path_out)
 # rrclust::run_ward(path = path, path_out = path_out)
 
 browseURL(path_out)

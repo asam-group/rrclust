@@ -9,9 +9,10 @@
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 
-# - Last change: 2021-02-04 / Llc
+# Last change: 2021-02-11 / Llc
 
-mod_inp_kmeans <- function(path, list = NULL, method_name = "kmeans") {
+mod_inp_kamila <- function(path, list = NULL, method_name = "kamila") {
+
   path_param <- path
   path_data <- path_data(path)
 
@@ -22,8 +23,7 @@ mod_inp_kmeans <- function(path, list = NULL, method_name = "kmeans") {
   )
 
   tl_inp <- c(
-    tl_PARAM_GLOBAL,
     tidylist_read(path_data),
-    tidylist_read(path_param)
+    tl_PARAM_GLOBAL
   )
 }

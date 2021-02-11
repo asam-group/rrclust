@@ -14,34 +14,34 @@
 
 # - Last change: 2021-02-04 / Llc
 
-run_kmeans <- function(path, path_out = file.path(tempdir(), "out"),
+run_kamila <- function(path, path_out = file.path(tempdir(), "out"),
                        param_replace = NULL) {
 
   # batch run
   if (length(path) > 1) {
     return(multi_run(
       path = path,
-      fun = run_kmeans
+      fun = run_kamila
     ))
   }
 
   # input
-  tl_inp_kmeans <- mod_inp_kmeans(path = path, method_name = "kmeans") %>%
+  tl_inp_kamila <- mod_inp_kamila(path = path, method_name = "kamila") %>%
     param_replace(param_replace = param_replace)
 
   # computations
-  tl_out_kmeans <- wrap_kmeans(tl_inp_kmeans = tl_inp_kmeans)
+  tl_out_kamila <- wrap_kamila(tl_inp_kamila = tl_inp_kamila)
 
   # output
-  path_out_identifier <- mod_out_kmeans(
+  path_out_identifier <- mod_out_kamila(
     path = path,
     path_out = path_out,
-    tl_inp_kmeans = tl_inp_kmeans,
-    tl_out_kmeans = tl_out_kmeans
+    tl_inp_kamila = tl_inp_kamila,
+    tl_out_kamila = tl_out_kamila
   )
 
   # CSV
-  tidylist_write(c(tl_out_kmeans, mod_log()), path_out_identifier)
+  tidylist_write(c(tl_out_kamila, mod_log()), path_out_identifier)
 
   # Excel
   # ...

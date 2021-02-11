@@ -11,50 +11,24 @@
 # Last change: 2021-02-11 / Llc
 
 mod_calc_kamila <- function(PARAM_GLOBAL,
-                            RR_OASI,
+                            CATEG_DF,
+                            CONT_DF,
                             list = NULL) {
   mod_init()
 browser()
 
 
-  kamRes <- kamila(conDf, catDf, numClust = 2, numInit = 10)
-  table(kamRes$finalMemb, dat$trueID)
-  # Try Kamila method
+  kamRes <- kamila(conVar = CONT_DF,
+                   catFactor = CATEG_DF,
+                   numClust = 6,
+                   numInit = 10)
 
-  # # Filter
-  # # Only the old age insurance beneficiaries
-  # if (PARAM_GLOBAL$filter_posit_ageret) {
-  #   X <- X %>%
-  #     filter(age_retire >= 0) %>%
-  #     dplyr::select(
-  #       -benef_type1,
-  #       -benef_type2,
-  #       -benef_type3,
-  #       -benef_type4,
-  #       -benef_type5,
-  #       -benef_type6,
-  #       -benef_type7,
-  #       -benef_type8
-  #     )
-  # }
-  #
-  # #Newly retired only
-  # if (PARAM_GLOBAL$filter_newly_retired) {
-  #   X <- X %>%
-  #     filter(age_retire == age)
-  # }
-  #
-  #
-  # # Scaling
-  # X.scale <- scale(X)
-  #
-  # # Remove large dataframes
-  # rm(RR_OASI, X)
-  #
-  # # Dissimilarity matrix
-  # dist.BH <- dist(X.scale, method = "euclidean")
-  #
-
+ #  psPlot <- with(kamRes$nClust, qplot(numberOfClusters, psValues) +
+ #                   + geom_errorbar(aes(x = numberOfClusters, ymin = psValues - stdErrPredStr,
+ #                                       + ymax = psValues + stdErrPredStr), width = 0.25))
+ # psPlot <- psPlot + geom_hline(yintercept = 0.8, lty = 2)
+ # psPlot + scale_x_continuous(breaks = numberOfClusters) + ylim(0, 1.1)
+ # table(kamila3 = kmRes$finalMemb, kamila2 = kamRes$finalMemb)
 
 
   mod_return()

@@ -28,10 +28,10 @@ sas7bdat_to_rds <- function(path) {
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 #'
-path_data <- function(path){
-  #read from PARAM_GLOBAL
+path_data <- function(path) {
+  # read from PARAM_GLOBAL
   tl_PARAM_GLOBAL <- param_tidylist_read(path)
-  path_data <- tl_PARAM_GLOBAL$PARAM_GLOBAL[['path_data']]
+  path_data <- tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]]
 }
 
 #' Converting Data Frames to Matrices and Back
@@ -191,7 +191,9 @@ read_param <- function(file) {
 
   z1 <- spread(z0, key, value, convert = TRUE)
 
-  if (identical(dim(z1), c(0L, 0L))) return(z1)
+  if (identical(dim(z1), c(0L, 0L))) {
+    return(z1)
+  }
 
   dplyr::select(z1, one_of(z0[["key"]]))
 }
@@ -231,7 +233,7 @@ param_tidylist_read <- function(path) {
 rente_ram <- function(ram,
                       mr,
                       fest1 = 74 / 100,
-                      variabel1 =  13 / 600,
+                      variabel1 = 13 / 600,
                       fest2 = 104 / 100,
                       variabel2 = 8 / 600,
                       stufe = 36) {
@@ -302,12 +304,11 @@ truncate_at_n_decimals <- function(x, n) {
   return(x1)
 }
 
-#'@title Function to create a single identifier number
-#'@param method_name name of the clustering method
-#'@param path directory path
-#'@export
-clustmeth_identifier_number <- function (method_name, path){
-
+#' @title Function to create a single identifier number
+#' @param method_name name of the clustering method
+#' @param path directory path
+#' @export
+clustmeth_identifier_number <- function(method_name, path) {
   params_folder_suffix <- gsub("^.+?_", "", basename(path))
 
   identifier_number <- paste0(
@@ -317,6 +318,5 @@ clustmeth_identifier_number <- function (method_name, path){
     tolower(Sys.getenv("USER")),
     "_",
     params_folder_suffix
-
   )
 }

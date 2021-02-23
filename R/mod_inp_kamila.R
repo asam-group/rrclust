@@ -12,7 +12,6 @@
 # Last change: 2021-02-11 / Llc
 
 mod_inp_kamila <- function(path, list = NULL, method_name = "kamila") {
-
   path_param <- path
   path_data <- path_data(path)
 

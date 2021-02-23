@@ -11,7 +11,9 @@ param_replace <- function(tl, ..., param_replace = NULL, update_param_all = TRUE
     spl <- strsplit(name, split = ".", fixed = TRUE)[[1]]
     tbl.name <- spl[1]
     # do nothing if not there
-    if (!(tbl.name %in% names(tl))) return(tl)
+    if (!(tbl.name %in% names(tl))) {
+      return(tl)
+    }
     var.name <- spl[2]
     tl[[tbl.name]][[var.name]] <- value
     tl
@@ -27,7 +29,6 @@ param_replace <- function(tl, ..., param_replace = NULL, update_param_all = TRUE
   if (update_param_all) ans <- param_all_update(ans)
 
   ans
-
 }
 
 #' @export
@@ -42,5 +43,3 @@ param_all_update <- function(tl) {
   tl$PARAM_ALL <- as_tibble(param_list)
   tl
 }
-
-

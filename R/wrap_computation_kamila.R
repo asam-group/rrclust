@@ -17,13 +17,14 @@
 wrap_computation_kamila_ <- function(tl_inp,
                                      tl_prepadata) {
 
-# Computation
-tl_mod_calc_kamila <- mod_calc_kamila(PARAM_GLOBAL = tl_inp$PARAM_GLOBAL,
-                                      RR_OASI = tl_prepadata$RR_OASI)
+  # Computation
+  tl_mod_calc_kamila <- mod_calc_kamila(
+    PARAM_GLOBAL = tl_inp$PARAM_GLOBAL,
+    RR_OASI = tl_prepadata$RR_OASI
+  )
 
-# Output
-c(tl_mod_calc_kamila)
-
+  # Output
+  c(tl_mod_calc_kamila)
 }
 
 

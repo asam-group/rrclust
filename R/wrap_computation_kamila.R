@@ -1,18 +1,19 @@
-#' @title Wrapper for the preparation of the data
+#' @title Wrapper for the clusters construction
 #'
 #' @description This wrapper contains all the necessary modules which allow to
-#' prepare the data.
+#' construct the clusters
 #'
 #' @param tl_inp List of input data frames.
+#' @param tl_prepadata List of data frames prepared in a first step.
 #'
 #' @return a `tidylist` containing the following tidylists:
-#' - `tl_prepa_rr`
+#' - `tl_mod_calc_kamila`
 #'
 #' @author [Layal Christine Lettry](mailto:layalchristine.pipoz@bsv.admin.ch)
 #'
 #' @export
 
-# Last change: 2021-02-11 / Llc
+# Last change: 2021-02-23 / Llc
 
 wrap_computation_kamila_ <- function(tl_inp,
                                      tl_prepadata) {

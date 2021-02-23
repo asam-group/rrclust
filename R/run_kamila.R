@@ -1,8 +1,8 @@
-#' @title Function to read the data, to execute the computations of the K-means
+#' @title Function to read the data, to execute the computations of the Kamila
 #' clustering method and write the data and the parameters (of the inputs and
 #' the outputs).
 #'
-#' @description This function executes the computations of the K-means clustering
+#' @description This function executes the computations of the Kamila clustering
 #'  method according to the parameters which are read in a first step. In a
 #'  third step, the outputs are delivered.
 #'
@@ -12,7 +12,7 @@
 #'
 #' @export
 
-# - Last change: 2021-02-04 / Llc
+# - Last change: 2021-02-23 / Llc
 
 run_kamila <- function(path, path_out = file.path(tempdir(), "out"),
                        param_replace = NULL) {

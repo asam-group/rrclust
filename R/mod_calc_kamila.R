@@ -1,9 +1,14 @@
-#' @title Estimation of the clusters according to the K-means method.
+#' @title Estimation of the clusters according to the Kamila method.
 #'
-#' @description Estimation of the clusters according to the K-means method.
+#' @description Estimation of the clusters according to the Kamila method.
 #'
-#' @param tl_inp_kamila set of the needed output.
-#' @return
+#' @param PARAM_GLOBAL dataframe with all needed parameters.
+#' @param CATEG_DF subset of the register of rents containing all categorical
+#' variables as factors.
+#' @param CONT_DF subset of the register of rents containing all the continuous
+#' variables
+#' @return PLOTDATKAM database containing the clusters factor and the other
+#' variables.
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 #' @import kamila
@@ -51,5 +56,5 @@ mod_calc_kamila <- function(PARAM_GLOBAL,
   #   calcNumClust = "ps"
   # )
 
-  mod_return(plotDatKam)
+  mod_return(PLOTDATKAM)
 }

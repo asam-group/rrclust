@@ -91,10 +91,10 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
     dplyr::select(
       -zv,
       -gpr,
-      -marital_stat,
-      -benef_type,
+      # -marital_stat,
+      # -benef_type,
       -age_ret,
-      -eprc,
+      # -eprc,
       -napref
     )
 
@@ -103,8 +103,24 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
   CATEG_DF <- RR_OASI %>%
     dplyr::select(
       -aadr,
+      -age,
+      -age_retire,
+      -scale,
+      -eprc,
       -monthly_rent,
-      -year
+      -year,
+      -marital_stat1,
+      -marital_stat2,
+      -marital_stat3,
+      -marital_stat4,
+      -benef_type1,
+      -benef_type2,
+      -benef_type3,
+      -benef_type4,
+      -benef_type5,
+      -benef_type6,
+      -benef_type7,
+      -benef_type8
     ) %>%
     # Transform double variables to factors
     mutate_if(is.double, as.factor) %>%
@@ -114,7 +130,10 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
   CONT_DF <- RR_OASI %>%
     dplyr::select(
       aadr,
-      monthly_rent
+      monthly_rent,
+      eprc,
+      age,
+      age_retire
     )
 
   mod_return(

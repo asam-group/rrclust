@@ -21,40 +21,68 @@ mod_calc_kamila <- function(PARAM_GLOBAL,
                             list = NULL) {
   mod_init()
 
+  #--- Old-age insurance -------------------------------------------------------
   # Standardize the continuous variables
   CONTVARS <- as.data.frame(lapply(CONT_DF, rangeStandardize))
+  names(CONTVARS) <- paste0(names(CONTVARS), "_std")
+  CATFACTOR <- as.data.frame(CATEG_DF)
   # summary(CONTVARS)
 
-  browser()
 
-  # Construction of the clusters with the Kamila method
-  set.seed(5)
-  kmres <- kamila(
-    conVar = CONTVARS,
-    catFactor = CATEG_DF,
-    numClust = 5,
-    numInit = 10,
-    maxIter = 50
-  )
 
-  # Transform the number of clusters into factors
-  fcluster <- factor(kmres$finalMemb)
-
-  # Construction of a Dataframe for plotting the estimation results
-  PLOTDATKAM <- cbind(CONTVARS, CATEG_DF, fcluster)
-
-  browser()
-
-  # set.seed(6)
-  # numberOfClusters <- 2:10
-  # kmresPs <- kamila(
+  # ## Construction of the clusters with the Kamila method
+  # set.seed(5)
+  #
+  # numberofclusters <- 4
+  #
+  # kmres <- kamila(
   #   conVar = CONTVARS,
-  #   catFactor = CATEG_DF,
-  #   numClust = numberOfClusters,
+  #   catFactor = CATFACTOR,
+  #   numClust = numberofclusters,
   #   numInit = 10,
-  #   maxIter = 50,
-  #   calcNumClust = "ps"
+  #   maxIter = 50
   # )
+  #
+  # # Transform the number of clusters into factors
+  # fcluster <- factor(kmres$finalMemb)
+  #
+  # # Construction of a Dataframe for plotting the estimation results
+  # PLOTDATKAM <- cbind(CONTVARS,
+  #                     CONT_DF,
+  #                     CATFACTOR,
+  #                     fcluster)
+  # path_rdata <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/rdata"
+  #
+  # save(PLOTDATKAM,
+  #      file = file.path(path_rdata, paste0("PLOTDATKAM_",
+  #                                     numberofclusters,
+  #                                     "CLUSTERS")))
+
+  set.seed(6)
+  numberofclusters <- 2:3
+  kmresps <- kamila(
+    conVar = CONTVARS,
+    catFactor = CATFACTOR,
+    numClust = numberofclusters,
+    numInit = 10,
+    maxIter = 5,
+    calcNumClust = "ps"
+  )
+  browser()
+  # Transform the number of clusters into factors
+  fcluster <- factor(kmresps$finalMemb)
+
+  PLOTDATKAMPS <- cbind(CONTVARS,
+                            CONT_DF,
+                            CATFACTOR,
+                            fcluster)
+  path_rdata <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/rdata"
+
+  save(PLOTDATKAMPS,
+       file = file.path(path_rdata, paste0("PLOTDATKAM_",
+                                           numberofclusters,
+                                           "CLUSTERS")))
+
 
   mod_return(PLOTDATKAM)
 }

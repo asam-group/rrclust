@@ -21,7 +21,6 @@ mod_calc_kamila <- function(PARAM_GLOBAL,
                             list = NULL) {
   mod_init()
 
-  #--- Old-age insurance -------------------------------------------------------
   # Standardize the continuous variables
   CONTVARS <- as.data.frame(lapply(CONT_DF, rangeStandardize))
   names(CONTVARS) <- paste0(names(CONTVARS), "_std")

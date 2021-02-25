@@ -17,8 +17,8 @@ wrap_kamila_ <- function(tl_inp_kamila) {
     tl_inp = tl_inp_kamila,
     tl_prepadata = tl_prepadata
   )
-
-  tidylist(NULL)
+browser()
+  # tidylist(tl_computation_kamila)
 }
 
 

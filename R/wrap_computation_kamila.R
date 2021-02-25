@@ -21,8 +21,12 @@ wrap_computation_kamila_ <- function(tl_inp,
   # Computation
   tl_mod_calc_kamila <- mod_calc_kamila(
     PARAM_GLOBAL = tl_inp$PARAM_GLOBAL,
-    CATEG_DF = tl_prepadata$CATEG_DF,
-    CONT_DF = tl_prepadata$CONT_DF
+    CATEG_DF_TS = tl_prepadata$CATEG_DF_TS,
+    CONT_DF_TS = tl_prepadata$CONT_DF_TS # ,
+    # CATEG_DF_VS = tl_prepadata$CATEG_DF_VS,
+    # CONT_DF_VS = tl_prepadata$CONT_DF_VS,
+    # CONT_DF = tl_prepadata$CONT_DF,
+    # CATEG_DF = tl_prepadata$CATEG_DF
   )
 
   # Output

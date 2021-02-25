@@ -8,7 +8,7 @@ Maintainer: Layal Christine Lettry <layalchristine.lettry@unifr.ch>
 Description: This package allows to cluster the Swiss register of rents by using 
              different clustering methods.
 Depends: dplyr, tidyr, tibble, yaml, roxygen2, MASS, knitr
-Imports: ggplot2, xtable, data.table, kableExtra, Hmisc, kamila
+Imports: ggplot2, xtable, data.table, kableExtra, Hmisc, kamila, caTools
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

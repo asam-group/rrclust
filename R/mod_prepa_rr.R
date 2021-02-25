@@ -8,14 +8,12 @@
 #'
 #' @return a `tidylist` containing the following tidy data frames:
 #'   - `RR_OASI` : contains all the beneficiaries of the OASI
-#'   - `CATEG_DF`: contains only categorical variables (factors)
-#'   - `CONT_DF` : contains only continuous variables (numeric)
 #'
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #'
 #' @export
 
-# - `Last change`: 2021-02-11 / Llc
+# - `Last change`: 2021-02-25 / Llc
 
 mod_prepa_rr <- function(IND_YEARLY_RR,
                          list = NULL) {
@@ -91,54 +89,11 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
     dplyr::select(
       -zv,
       -gpr,
-      # -marital_stat,
-      # -benef_type,
-      -age_ret,
-      # -eprc,
       -napref
     )
 
 
-  # Dataframe of categorical variables
-  CATEG_DF <- RR_OASI %>%
-    dplyr::select(
-      -aadr,
-      -age,
-      -age_retire,
-      -scale,
-      -eprc,
-      -monthly_rent,
-      -year,
-      -marital_stat1,
-      -marital_stat2,
-      -marital_stat3,
-      -marital_stat4,
-      -benef_type1,
-      -benef_type2,
-      -benef_type3,
-      -benef_type4,
-      -benef_type5,
-      -benef_type6,
-      -benef_type7,
-      -benef_type8
-    ) %>%
-    # Transform double variables to factors
-    mutate_if(is.double, as.factor) %>%
-    mutate_if(is.integer, as.factor)
-
-  # Dataframe of continuous variables
-  CONT_DF <- RR_OASI %>%
-    dplyr::select(
-      aadr,
-      monthly_rent,
-      eprc,
-      age,
-      age_retire
-    )
-
   mod_return(
-    RR_OASI,
-    CATEG_DF,
-    CONT_DF
+    RR_OASI
   )
 }

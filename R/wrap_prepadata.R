@@ -12,7 +12,7 @@
 #'
 #' @export
 
-# Last change: 2021-02-11 / Llc
+# Last change: 2021-02-25 / Llc
 
 
 wrap_prepadata_ <- function(tl_inp) {
@@ -21,6 +21,22 @@ wrap_prepadata_ <- function(tl_inp) {
 
   tl_prepa_rr <- mod_prepa_rr(
     IND_YEARLY_RR = tl_inp$IND_YEARLY_RR
+  )
+
+  # Training and validation sets
+
+  tl_mod_tsvs <- mod_tsvs(
+    RR_OASI = tl_prepa_rr$RR_OASI,
+    PARAM_GLOBAL = tl_inp$PARAM_GLOBAL
+  )
+
+  # Full datasets, training and validation sets of categorical and continuous
+  # variables
+
+  tl_prepa_rr <- mod_catcontvar(
+    RR_OASI = tl_prepa_rr$RR_OASI,
+    RR_OASI_TS = tl_mod_tsvs$RR_OASI_TS,
+    RR_OASI_VS = tl_mod_tsvs$RR_OASI_VS
   )
 
   # Output

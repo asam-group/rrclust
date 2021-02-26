@@ -25,8 +25,8 @@ wrap_computation_kamila_ <- function(tl_inp,
     CONT_DF_TS = tl_prepadata$CONT_DF_TS # ,
     # CATEG_DF_VS = tl_prepadata$CATEG_DF_VS,
     # CONT_DF_VS = tl_prepadata$CONT_DF_VS,
-    # CONT_DF = tl_prepadata$CONT_DF,
-    # CATEG_DF = tl_prepadata$CATEG_DF
+    CONT_DF = tl_prepadata$CONT_DF,
+    CATEG_DF = tl_prepadata$CATEG_DF
   )
 
   # Output

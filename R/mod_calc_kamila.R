@@ -83,7 +83,7 @@ mod_calc_kamila <- function(PARAM_GLOBAL,
   #--- 2.2 Construction of the g* (from 1.2) clusters with the Kamila method on
   # the whole dataset ----------------------------------------------------------
 
-  browser()
+
   load(file = file.path(path_rdata, "kmresps.RData"))
 
   # Setting seed to generate a reproducible random sampling

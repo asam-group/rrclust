@@ -9,10 +9,10 @@
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 
-# Last change: 2021-02-11 / Llc
+# Last change: 2021-03-01 / Llc
 
 mod_inp_kamila <- function(path, list = NULL, method_name = "kamila") {
-  path_param <- path
+  path_param <- path_param(path)
   path_data <- path_data(path)
 
   tl_PARAM_GLOBAL <- param_tidylist_read(path_param)

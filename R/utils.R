@@ -320,3 +320,48 @@ clustmeth_identifier_number <- function(method_name, path) {
     params_folder_suffix
   )
 }
+
+#' @title Function to create a the path of the parameters
+#' @param path directory path
+#' @export
+path_param <- function(path) {
+  # legacy mode
+  if (check_container_dir(path)) {
+    file.path(path, "param")
+  } else {
+    path
+  }
+}
+
+#' @ title Check if a directory looks like a container
+#' @param from directory to container
+#' @export
+#' @examples
+#' from <- system.file("input_container", package = "delfingui")
+#' check_container_dir(from)
+check_container_dir <- function(from) {
+  from <- normalizePath(from, mustWork = TRUE)
+
+  root <- list.files(from)
+
+  # output containers contain an input container
+  if ("inp_container" %in% root) root <- list.files(file.path(from, "inp_container"))
+
+  expected <- c("inp", "rrclust", "param", "description")
+  required <- c("param", "inp")
+
+  missing <- setdiff(required, root)
+  unexpected <- setdiff(root, expected)
+
+  if (length(missing) > 0) {
+    # message("missing in ", from, ": ", paste(missing, collapse = ", "))
+    return(FALSE)
+  }
+  #
+  #   if (length(unexpected) > 0) {
+  #     # message("unexpected in ", from, ": ", paste(unexpected, collapse = ", "))
+  #     return(FALSE)
+  #   }
+
+  TRUE
+}

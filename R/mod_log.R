@@ -6,7 +6,7 @@
 #' @return LOG tibble with information about time and packages version.
 #' @export
 
-# Last change: 2021-02-23 / Llc
+# Last change: 2021-03-01 / Llc
 
 mod_log <- function(list = NULL) {
   LOG <- tibble(

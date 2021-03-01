@@ -1,3 +1,6 @@
+# rrclust 0.1.2
+
+Kamila with 3 clusters with gstar = 3 
 
 # rrclust 0.1.1
 

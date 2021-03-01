@@ -7,6 +7,10 @@
 #' variables as factors.
 #' @param CONT_DF subset of the register of rents containing all the continuous
 #' variables
+#' @param CATEG_DF_TS Training set of the register of rents containing all categorical
+#' variables as factors.
+#' @param CONT_DF_TS Training set of the register of rents containing all the continuous
+#' variables
 #' @return PLOTDATKAM database containing the clusters factor and the other
 #' variables.
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
@@ -115,7 +119,7 @@ mod_calc_kamila <- function(PARAM_GLOBAL,
     file = file.path(path_rdata, paste0(
       "PLOTDATKAM_",
       gstar,
-      "CLUSTERS"
+      "CLUSTERS.RData"
     ))
   )
 

@@ -12,7 +12,7 @@
 #'
 #' @export
 
-# - Last change: 2021-02-23 / Llc
+# - Last change: 2021-02-28 / Llc
 
 run_kamila <- function(path, path_out = file.path(tempdir(), "out"),
                        param_replace = NULL) {
@@ -33,15 +33,18 @@ run_kamila <- function(path, path_out = file.path(tempdir(), "out"),
   tl_out_kamila <- wrap_kamila(tl_inp_kamila = tl_inp_kamila)
 
   # output
-  path_out_identifier <- mod_out_kamila(
-    path = path,
-    path_out = path_out,
-    tl_inp_kamila = tl_inp_kamila,
-    tl_out_kamila = tl_out_kamila
-  )
+  # path_out_identifier <- mod_out_kamila(
+  #   path = path,
+  #   path_out = path_out,
+  #   tl_inp_kamila = tl_inp_kamila,
+  #   tl_out_kamila = tl_out_kamila
+  # )
 
   # CSV
-  tidylist_write(c(tl_out_kamila, mod_log()), path_out_identifier)
+  tidylist_write(
+    c(tl_out_kamila, mod_log()),
+    path_out_identifier
+  )
 
   # Excel
   # ...

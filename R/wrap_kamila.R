@@ -5,7 +5,7 @@
 #' @return tidylists
 #' @export
 #'
-# Last change: 2021-02-11 / Llc
+# Last change: 2021-02-28 / Llc
 
 wrap_kamila_ <- function(tl_inp_kamila) {
 
@@ -17,8 +17,9 @@ wrap_kamila_ <- function(tl_inp_kamila) {
     tl_inp = tl_inp_kamila,
     tl_prepadata = tl_prepadata
   )
-browser()
-  # tidylist(tl_computation_kamila)
+
+  # Output
+  tl_computation_kamila
 }
 
 

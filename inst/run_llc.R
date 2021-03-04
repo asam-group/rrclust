@@ -27,6 +27,7 @@ path <- file.path(
 path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
 # path_out <- "/Users/DonzeL/Développement/OFAS/_temp"
 rrclust::run_kamila(path = path, path_out = path_out)
-# rrclust::run_ward(path = path, path_out = path_out)
+# rrclust::run_gmsclust(path = path, path_out = path_out)
+# rrclust::run_wkmeans(path = path, path_out = path_out)
 
 browseURL(path_out)

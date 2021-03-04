@@ -51,26 +51,25 @@ mod_calc_kamila <- function(PARAM_KAMILA,
   )
 
   # Transform the number of clusters into factors
-  fcluster <- factor(kmres$finalMemb)
+  cluster_id <- factor(kmres$finalMemb)
 
   # Retrieve all clustering estimation resulting parameters
   KM_RES_FINAL <- tibble(
     final_loglik = kmres$finalLogLik,
+    final_obj = kmres$finalObj,
     num_clust = kmres$input$numClust,
-    continuous_weights = kmres$input$conWeights,
-    categorical_weightskmres$input$catWeights,
     max_iterations = kmres$input$maxIter,
     categorical_bw = kmres$input$catBw
   )
+
   # Construction of a Dataframe for plotting the estimation results
   PLOTDATKAM <- cbind(
+    cluster_id,
     CONTVARS,
     CONT_DF,
-    CATFACTOR,
-    fcluster
+    CATFACTOR
   ) %>%
     as_tibble()
-  # table(PLOTDATKAM$fcluster, PLOTDATKAM$benef_type)
 
   mod_return(
     PLOTDATKAM,

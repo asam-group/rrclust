@@ -20,14 +20,16 @@
 
 
 mod_out_kamila <- function(path,
-                        path_out,
-                        tl_inp_kamila,
-                        tl_out_kamila){
+                           path_out,
+                           tl_inp_kamila,
+                           tl_out_kamila) {
 
   # construct output path
   path_out_identifier <-
-    path_out_resolve(path_out,
-                    tl_inp_kamila$PARAM_GLOBAL$identifier_number)
+    path_out_resolve(
+      path_out,
+      tl_inp_kamila$PARAM_GLOBAL$identifier_number
+    )
 
   # write csv
   tidylist_write(c(tl_out_kamila, mod_log()), path_out_identifier)

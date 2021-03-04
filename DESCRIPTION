@@ -1,8 +1,8 @@
 Package: rrclust
 Type: Package
 Title: Clustering observations from the Register of Rents (RR)
-Version: 0.1.2
-Date: 2021-02-28
+Version: 0.1.3
+Date: 2021-03-04
 Author@R: person("Layal Christine", "Lettry", email = "layalchristine.lettry@unifr.ch")
 Maintainer: Layal Christine Lettry <layalchristine.lettry@unifr.ch>
 Description: This package allows to cluster the Swiss register of rents by using 

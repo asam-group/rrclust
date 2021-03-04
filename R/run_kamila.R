@@ -14,7 +14,8 @@
 
 # - Last change: 2021-02-28 / Llc
 
-run_kamila <- function(path, path_out = file.path(tempdir(), "out"),
+run_kamila <- function(path,
+                       path_out = file.path(tempdir(), "out"),
                        param_replace = NULL) {
 
   # batch run

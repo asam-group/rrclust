@@ -308,11 +308,14 @@ truncate_at_n_decimals <- function(x, n) {
 #' @param method_name name of the clustering method
 #' @param path directory path
 #' @export
-clustmeth_identifier_number <- function(method_name, path) {
+clustmeth_identifier_number <- function(method_name,
+                                        path) {
   params_folder_suffix <- gsub("^.+?_", "", basename(path))
 
   identifier_number <- paste0(
-    "clusters",
+    "cl_",
+    method_name,
+    "_",
     format(Sys.time(), format = "%Y%m%d%H%M%S"),
     "_",
     tolower(Sys.getenv("USER")),

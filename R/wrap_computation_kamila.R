@@ -3,7 +3,9 @@
 #' @description This wrapper contains all the necessary modules which allow to
 #' construct the clusters
 #'
-#' @param tl_inp List of input data frames.
+#' @param tl_inp List of input data frames of which we use:
+#' - `PARAM_KAMILA$calc_gstar`: If TRUE, estimates the clusters. Else, takes the
+#' parameter PARAM_KAMILA$param_gstar.
 #' @param tl_prepadata List of data frames prepared in a first step.
 #'
 #' @return a `tidylist` containing the following tidylists:
@@ -13,24 +15,37 @@
 #'
 #' @export
 
-# Last change: 2021-02-23 / Llc
+# Last change: 2021-03-04 / Llc
 
 wrap_computation_kamila_ <- function(tl_inp,
                                      tl_prepadata) {
 
-  # Computation
+  # Run the algorithm on the TS to find the optimal number of clusters gstar
+  # Writes gstar as the parameter PARAM_KAMILA$param_gstar
+  if (tl_inp$PARAM_KAMILA$calc_gstar) {
+    tl_mod_gstar <- mod_gstar(
+      PARAM_KAMILA = tl_inp$PARAM_KAMILA,
+      CATEG_DF_TS = tl_prepadata$CATEG_DF_TS,
+      CONT_DF_TS = tl_prepadata$CONT_DF_TS
+    )
+  }
+
+  # Apply gstar to the whole dataset
   tl_mod_calc_kamila <- mod_calc_kamila(
-    PARAM_GLOBAL = tl_inp$PARAM_GLOBAL,
-    CATEG_DF_TS = tl_prepadata$CATEG_DF_TS,
-    CONT_DF_TS = tl_prepadata$CONT_DF_TS,
-    # CATEG_DF_VS = tl_prepadata$CATEG_DF_VS,
-    # CONT_DF_VS = tl_prepadata$CONT_DF_VS,
+    PARAM_KAMILA = tl_inp$PARAM_KAMILA,
     CONT_DF = tl_prepadata$CONT_DF,
     CATEG_DF = tl_prepadata$CATEG_DF
   )
 
   # Output
-  c(tl_mod_calc_kamila)
+  if (tl_inp$PARAM_KAMILA$calc_gstar) {
+    c(
+      tl_mod_calc_kamila,
+      tl_mod_gstar
+    )
+  } else {
+    c(tl_mod_calc_kamila)
+  }
 }
 
 

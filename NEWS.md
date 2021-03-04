@@ -1,4 +1,4 @@
-# rrclust 0.1.2
+# rrclust 0.1.3
 
 mod_gstar
 

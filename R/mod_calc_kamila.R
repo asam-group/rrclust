@@ -12,6 +12,8 @@
 #' variables
 #' @return PLOTDATKAM database containing the clusters factor and the other
 #' variables.
+#' @return KM_RES_FINAL database containing the resulting parameters of the
+#' clustering.
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 #' @import kamila

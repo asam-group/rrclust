@@ -19,6 +19,7 @@
 #' @param CONT_DF_TS Training set of the register of rents containing all the continuous
 #' variables
 #' @return KM_RES database containing the results of the clustering.
+#' @return PARAM_KAMILA dataframe with the updated gstar parameter.
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 #' @import kamila
@@ -69,6 +70,7 @@ mod_gstar <- function(PARAM_KAMILA,
     mutate(gstar = kmresps$nClust$bestNClust)
 
   # Other information of the run
+  # Note: PS = 1 - Variance
   NCLUST <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) %>%
     mutate(
       ps_values = kmresps$nClust$psValues, # Prediction Strength value
@@ -101,5 +103,6 @@ mod_gstar <- function(PARAM_KAMILA,
   PARAM_KAMILA$param_gstar <- kmresps$nClust$bestNClust
 
 
-  mod_return(KM_RES)
+  mod_return(KM_RES,
+             PARAM_KAMILA)
 }

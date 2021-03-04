@@ -30,9 +30,16 @@ wrap_computation_kamila_ <- function(tl_inp,
     )
   }
 
+  # PARAM_KAMILA with the updated gstar parameter
+  PARAM_KAMILA <- if (tl_inp$PARAM_KAMILA$calc_gstar) {
+    tl_mod_gstar$PARAM_KAMILA
+  } else {
+    tl_inp$PARAM_KAMILA
+  }
+
   # Apply gstar to the whole dataset
   tl_mod_calc_kamila <- mod_calc_kamila(
-    PARAM_KAMILA = tl_inp$PARAM_KAMILA,
+    PARAM_KAMILA = PARAM_KAMILA,
     CONT_DF = tl_prepadata$CONT_DF,
     CATEG_DF = tl_prepadata$CATEG_DF
   )

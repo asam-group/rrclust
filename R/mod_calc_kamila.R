@@ -23,6 +23,7 @@
 mod_calc_kamila <- function(PARAM_KAMILA,
                             CONT_DF,
                             CATEG_DF,
+                            FULL_CONT_DF,
                             list = NULL) {
   mod_init()
 
@@ -66,7 +67,7 @@ mod_calc_kamila <- function(PARAM_KAMILA,
   PLOTDATKAM <- cbind(
     cluster_id,
     CONTVARS,
-    CONT_DF,
+    FULL_CONT_DF,
     CATFACTOR
   ) %>%
     as_tibble()

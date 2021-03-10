@@ -69,7 +69,8 @@ mod_calc_kamila <- function(PARAM_KAMILA,
     cluster_id,
     CONTVARS,
     FULL_CONT_DF,
-    CATFACTOR
+    # CATFACTOR,
+    FULL_CATEG_DF
   ) %>%
     as_tibble()
 

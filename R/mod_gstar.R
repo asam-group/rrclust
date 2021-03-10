@@ -103,6 +103,8 @@ mod_gstar <- function(PARAM_KAMILA,
   PARAM_KAMILA$param_gstar <- kmresps$nClust$bestNClust
 
 
-  mod_return(KM_RES,
-             PARAM_KAMILA)
+  mod_return(
+    KM_RES,
+    PARAM_KAMILA
+  )
 }

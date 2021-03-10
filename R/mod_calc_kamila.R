@@ -24,6 +24,7 @@ mod_calc_kamila <- function(PARAM_KAMILA,
                             CONT_DF,
                             CATEG_DF,
                             FULL_CONT_DF,
+                            FULL_CATEG_DF,
                             list = NULL) {
   mod_init()
 

@@ -15,37 +15,50 @@
 #'
 #' @export
 
-# Last change: 2021-03-04 / Llc
+# Last change: 2021-03-10 / Llc
 
 wrap_computation_kamila_ <- function(tl_inp,
                                      tl_prepadata) {
 
 
-  #Exclude the response variable aadr from the TS, VS and the full dataset
-  if (tl_inp$PARAM_KAMILA$exclude_aadr){
-    CONT_DF_TS <- tl_prepadata$CONT_DF_TS %>%
-      dplyr::select(-aadr)
+  # Exclude the response variable aadr from the TS, VS and the full dataset
+  CONT_DF_TS <- tl_prepadata$CONT_DF_TS %>%
+    dplyr::select(-aadr)
 
-    CONT_DF_VS <- tl_prepadata$CONT_DF_VS %>%
-      dplyr::select(-aadr)
+  CONT_DF_VS <- tl_prepadata$CONT_DF_VS %>%
+    dplyr::select(-aadr)
 
-    CONT_DF <- tl_prepadata$CONT_DF %>%
-      dplyr::select(-aadr)
+  CONT_DF <- tl_prepadata$CONT_DF %>%
+    dplyr::select(-aadr)
 
-  } else {
-    CONT_DF_TS <- tl_prepadata$CONT_DF_TS
 
-    CONT_DF_VS <- tl_prepadata$CONT_DF_VS
+  # Exclude the response variable marital_stat and benef_type from the TS, VS
+  # and the full dataset
+  CATEG_DF_TS <- tl_prepadata$CATEG_DF_TS %>%
+    dplyr::select(-c(
+      marital_stat,
+      benef_type
+    ))
 
-    CONT_DF <- tl_prepadata$CONT_DF
-  }
+  CATEG_DF_VS <- tl_prepadata$CATEG_DF_VS %>%
+    dplyr::select(-c(
+      marital_stat,
+      benef_type
+    ))
+
+  CATEG_DF <- tl_prepadata$CATEG_DF %>%
+    dplyr::select(-c(
+      marital_stat,
+      benef_type
+    ))
+
 
   # Run the algorithm on the TS to find the optimal number of clusters gstar
   # Writes gstar as the parameter PARAM_KAMILA$param_gstar
   if (tl_inp$PARAM_KAMILA$calc_gstar) {
     tl_mod_gstar <- mod_gstar(
       PARAM_KAMILA = tl_inp$PARAM_KAMILA,
-      CATEG_DF_TS = tl_prepadata$CATEG_DF_TS,
+      CATEG_DF_TS = CATEG_DF_TS,
       CONT_DF_TS = CONT_DF_TS
     )
   }
@@ -62,7 +75,8 @@ wrap_computation_kamila_ <- function(tl_inp,
     PARAM_KAMILA = PARAM_KAMILA,
     CONT_DF = CONT_DF,
     FULL_CONT_DF = tl_prepadata$CONT_DF,
-    CATEG_DF = tl_prepadata$CATEG_DF
+    CATEG_DF = CATEG_DF,
+    FULL_CATEG_DF = tl_prepadata$CATEG_DF
   )
 
   # Output

@@ -33,9 +33,24 @@ mod_catcontvar <- function(RR_OASI,
     "sex",
     "nat",
     "resid",
+
+    # Split the benefit type in 2 groups: old-age (benef_type1 = 1) and survivors
+    # (benef_type1 = 0)
+    "benef_type1", # Old-age
+    # "benef_type2", # Widow
+    # "benef_type3", # Father's orphan
+    # "benef_type4", # Mother's orphan
+    # "benef_type5", # Twice orphan
+    # "benef_type6", # Spouse's compl.
+    # "benef_type7", # Father's child rent
+    # "benef_type8", # Mother's child rent
     "benef_type",
-    "marital_stat",
-    "scale"
+
+    "marital_stat1", # Divorced
+    # "marital_stat2", # Single as reference category
+    "marital_stat3", # Married
+    "marital_stat4", # Widowed
+    "marital_stat"
   )
 
   # Desired continuous variables
@@ -43,7 +58,8 @@ mod_catcontvar <- function(RR_OASI,
     "aadr",
     "monthly_rent",
     "age",
-    "age_retire"
+    "age_retire",
+    "scale"
   )
 
   #--- Full dataset ------------------------------------------------------------

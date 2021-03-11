@@ -44,12 +44,16 @@ mod_catcontvar <- function(RR_OASI,
     # "benef_type6", # Spouse's compl.
     # "benef_type7", # Father's child rent
     # "benef_type8", # Mother's child rent
+
+    # Keep the original categorical variable for information in the analysis
     "benef_type",
 
     "marital_stat1", # Divorced
     # "marital_stat2", # Single as reference category
     "marital_stat3", # Married
     "marital_stat4", # Widowed
+
+    # Keep the original categorical variable for information in the analysis
     "marital_stat"
   )
 

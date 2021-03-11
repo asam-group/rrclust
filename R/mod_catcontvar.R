@@ -19,7 +19,7 @@
 #' @import caTools
 #' @export
 
-# - `Last change`: 2021-02-25 / Llc
+# - `Last change`: 2021-03-11 / Llc
 
 mod_catcontvar <- function(RR_OASI,
                            RR_OASI_TS,

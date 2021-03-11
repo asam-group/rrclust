@@ -15,7 +15,7 @@
 #'
 #' @export
 
-# Last change: 2021-03-10 / Llc
+# Last change: 2021-03-11 / Llc
 
 wrap_computation_kamila_ <- function(tl_inp,
                                      tl_prepadata) {
@@ -23,13 +23,22 @@ wrap_computation_kamila_ <- function(tl_inp,
 
   # Exclude the response variable aadr from the TS, VS and the full dataset
   CONT_DF_TS <- tl_prepadata$CONT_DF_TS %>%
-    dplyr::select(-aadr)
+    dplyr::select(
+      -aadr,
+      -monthly_rent
+    )
 
   CONT_DF_VS <- tl_prepadata$CONT_DF_VS %>%
-    dplyr::select(-aadr)
+    dplyr::select(
+      -aadr,
+      -monthly_rent
+    )
 
   CONT_DF <- tl_prepadata$CONT_DF %>%
-    dplyr::select(-aadr)
+    dplyr::select(
+      -aadr,
+      -monthly_rent
+    )
 
 
   # Exclude the response variable marital_stat and benef_type from the TS, VS

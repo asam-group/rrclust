@@ -21,7 +21,8 @@ wrap_computation_kamila_ <- function(tl_inp,
                                      tl_prepadata) {
 
 
-  # Exclude the response variable aadr from the TS, VS and the full dataset
+  # Exclude the response variables aadr and monthly_rent from the TS, VS and the
+  # full dataset
   CONT_DF_TS <- tl_prepadata$CONT_DF_TS %>%
     dplyr::select(
       -aadr,
@@ -41,25 +42,25 @@ wrap_computation_kamila_ <- function(tl_inp,
     )
 
 
-  # Exclude the response variable marital_stat and benef_type from the TS, VS
+  # Exclude the categorical variables marital_stat and benef_type from the TS, VS
   # and the full dataset
   CATEG_DF_TS <- tl_prepadata$CATEG_DF_TS %>%
-    dplyr::select(-c(
-      marital_stat,
-      benef_type
-    ))
+    dplyr::select(
+      -marital_stat,
+      -benef_type
+    )
 
   CATEG_DF_VS <- tl_prepadata$CATEG_DF_VS %>%
-    dplyr::select(-c(
-      marital_stat,
-      benef_type
-    ))
+    dplyr::select(
+      -marital_stat,
+      -benef_type
+    )
 
   CATEG_DF <- tl_prepadata$CATEG_DF %>%
-    dplyr::select(-c(
-      marital_stat,
-      benef_type
-    ))
+    dplyr::select(
+      -marital_stat,
+      -benef_type
+    )
 
 
   # Run the algorithm on the TS to find the optimal number of clusters gstar

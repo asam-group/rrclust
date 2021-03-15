@@ -386,3 +386,155 @@ g10 <- fun_ggplot_hist(
   DATA_GGPLOT = GATHERED_TIB1_10,
   path_graphs = path_graphs
 )
+
+
+#---  CROSS_TIB ----------------------------------------------------------------
+unique_sex <- unique(all_csv$PLOTDATKAM$sex)
+unique_marital_stat <- unique(all_csv$PLOTDATKAM$marital_stat)
+unique_benef_type1 <- unique(all_csv$PLOTDATKAM$benef_type1)
+
+CROSS_TIB <- tibble(unique_sex = unique_sex) %>%
+  crossing(
+    unique_marital_stat = unique_marital_stat,
+    unique_benef_type1 = unique_benef_type1
+  ) %>%
+  rowwise() %>%
+  mutate(dta = list(all_csv$PLOTDATKAM %>%
+    filter(
+      sex == unique_sex,
+      marital_stat == unique_marital_stat,
+      benef_type1 == unique_benef_type1
+    ))) %>%
+  rowwise() %>%
+  mutate(ggpl = list(map(dta, fun_ggplot_hist2)))
+
+
+fun_ggplot_hist2 <- function(DATA_GGPLOT) {
+
+  ggplot_number <- DATA_GGPLOT %>%
+    mutate(
+      ln_aadr = log(aadr),
+      ln_monthly_rent = log(monthly_rent),
+      benef_type = as.factor(benef_type),
+      marital_stat = as.factor(marital_stat),
+      nat = as.factor(nat),
+      resid = as.factor(resid),
+      sex = as.factor(sex),
+      cluster_id = as.factor(cluster_id)
+    ) %>%
+    dplyr::select(
+      c(
+        cluster_id,
+        ln_aadr,
+        # age,
+        # age_retire,
+        benef_type1,
+        marital_stat,
+        # monthly_rent,
+        nat,
+        resid,
+        # scale,
+        sex
+      )
+    ) %>%
+    gather(
+      key = variable, value = value,
+      -cluster_id,
+      -benef_type1,
+      -sex,
+      -marital_stat,
+      -nat,
+      -resid
+    ) %>%
+    mutate(
+      variable = dplyr::recode(variable,
+        "age" = "Age",
+        "ln_aadr" = "ln(AADR)"
+      ),
+      benef_type1 = dplyr::recode(benef_type1,
+        "1" = "Old-age insurance beneficiaries",
+        "0" = "Survivor insurance beneficiaries"
+      ),
+      sex = dplyr::recode(sex,
+        "1" = "Female", # "Woman"
+        "0" = "Male" # "Man"
+      ),
+      marital_stat = dplyr::recode(marital_stat,
+        "1" = "Divorced",
+        "2" = "Single",
+        "3" = "Married",
+        "4" = "Widowed"
+      ),
+      nat = dplyr::recode(nat,
+        "1" = "Foreign Nationality",
+        "0" = "Swiss Nationality"
+      ),
+      resid = dplyr::recode(resid,
+        "1" = "Living Abroad",
+        "0" = "Living in CH"
+      )
+    ) %>%
+    ggplot(aes(value, fill = as.factor(cluster_id))) +
+    facet_wrap(benef_type1 + sex + nat + resid ~ marital_stat + variable,
+      scales = "free_x",
+      ncol = 2
+    ) +
+    geom_histogram(binwidth = function(x) 2 * IQR(x) / (length(x)^(1 / 3))) +
+    theme_light() +
+    theme(
+      legend.position = "bottom",
+      axis.text = element_text(size = 12),
+      axis.title = element_text(size = 12),
+      strip.text.x = element_text(
+        size = 11, color = "black", face = "bold"
+      ),
+      strip.text.y = element_text(
+        size = 11, color = "black", face = "bold"
+      )
+    ) +
+    labs(
+      title = "Histograms for continuous variables in clusters",
+      subtitle = paste0(numb_clust, " clusters"),
+      x = "Value",
+      y = "Frequency",
+      caption = paste(
+        Sys.Date(),
+        "Llc",
+        sep = ", "
+      )
+    ) +
+    scale_fill_manual("Cluster",
+      breaks = c("1", "2", "3", "4"),
+      values = c("red", "blue", "green", "orange")
+    ) +
+    ggsave(file.path(
+      path_graphs, subfolder,
+      paste(
+        "hist",
+        "sex", unique(DATA_GGPLOT$sex),
+        "typerent", unique(DATA_GGPLOT$benef_type1),
+        "mstat", unique(DATA_GGPLOT$marital_stat),
+        numb_clust,
+        "clusters.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
+    )
+
+  # Return
+  print(file.path(
+    path_graphs, subfolder,
+    paste(
+      "hist",
+      "sex", unique(DATA_GGPLOT$sex),
+      "typerent", unique(DATA_GGPLOT$benef_type1),
+      "mstat", unique(DATA_GGPLOT$marital_stat),
+      numb_clust,
+      "clusters.png",
+      sep = "_"
+    )
+  ))
+
+}

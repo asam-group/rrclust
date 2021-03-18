@@ -11,6 +11,7 @@ subfolder <- "without_mr"
 library(ggplot2)
 library(rrclust)
 library(xtable)
+library(purrr)
 
 all_csv <- rrclust::tidylist_read(path_output)
 all_csv$PLOTDATKAM
@@ -388,14 +389,13 @@ g10 <- fun_ggplot_hist(
 
 
 #---  CROSS_TIB ----------------------------------------------------------------
-library(purrr)
+
 unique_sex <- unique(all_csv$PLOTDATKAM$sex)
 unique_marital_stat <- unique(all_csv$PLOTDATKAM$marital_stat)
 unique_benef_type1 <- unique(all_csv$PLOTDATKAM$benef_type1)
 
 
 fun_ggplot_hist2 <- function(dta) {
-  browser()
   GGDATA <- dta %>%
     mutate(
       ln_aadr = log(aadr),
@@ -460,6 +460,10 @@ fun_ggplot_hist2 <- function(dta) {
       )
     )
 
+  n_ind <- unique(GGDATA %>%
+    mutate(n_ind = n()) %>%
+    dplyr::select(n_ind))$n_ind
+
 
   ggplot(
     GGDATA,
@@ -484,7 +488,10 @@ fun_ggplot_hist2 <- function(dta) {
     ) +
     labs(
       title = "Histograms for continuous variables in clusters",
-      subtitle = paste0(numb_clust, " clusters"),
+      subtitle = paste0(
+        numb_clust, " clusters, ",
+        n_ind, " individuals"
+      ),
       x = "Value",
       y = "Frequency",
       caption = paste(
@@ -534,5 +541,3 @@ PLOTS_TIB <- CROSS_TIB %>%
   dplyr::select(-dta) %>%
   mutate(plots = map(list(data), fun_ggplot_hist2)) %>%
   dplyr::select(-data)
-
-

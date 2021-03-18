@@ -28,15 +28,24 @@ fs::dir_create(path_graphs)
 descrstat_dpath <- file.path(path_graphs, "descrstat")
 fs::dir_create(descrstat_dpath)
 
-#Output copy directory
+# Output copy directory
 output_dir <- file.path(path_graphs, "r_output")
 fs::dir_create(output_dir)
-file.copy(path_output, output_dir, recursive=TRUE)
+file.copy(path_output, output_dir, recursive = TRUE)
 
 #--- Table cluster id, benef_type ---------------------------------------------
 tab_benef_clust <- table(all_csv$PLOTDATKAM$cluster_id, all_csv$PLOTDATKAM$benef_type)
 print(
-  xtable(format(tab_benef_clust)),
+  xtable(format(tab_benef_clust),
+    label = "Type of Benefit and Clusters Contingency Table",
+    caption = "Type of Benefit and ClustersContingency Table"
+  ),
+  table.placement = "H",
+  caption.placement = "top",
+  include.rownames = TRUE,
+  include.colnames = TRUE,
+  size = "normalsize",
+  hline.after = c(-1, 0, nrow(tab_benef_clust)),
   file = file.path(path_graphs, "tab_benef_clust.tex")
 )
 
@@ -151,9 +160,16 @@ write.ftable(ftab_categ, file = file.path(
   "ftab_categ.csv"
 ))
 
-
 print(
-  xtable(format(ftab_categ)),
+  xtable(format(ftab_categ),
+    label = "Clusters Contingency Table",
+    caption = "Clusters Contingency Table"
+  ),
+  tabular.environment = "longtable",
+  caption.placement = "top",
+  table.placement = "",
+  floating = FALSE,
+  size = "\\fontsize{8pt}{9pt}\\selectfont",
   file = file.path(path_graphs, "ftab_categ.tex")
 )
 
@@ -317,13 +333,16 @@ PLOTS_TIB <- CROSS_TIB %>%
 #---- Characteristics of each cluster ------------------------------------------
 RR_DESCR <- all_csv$PLOTDATKAM %>%
   dplyr::select(
- - c(marital_stat1,
-     marital_stat3,
-     marital_stat4,
-     benef_type1,
-     age_std,
-     age_retire_std,
-     scale_std ) ) %>%
+    -c(
+      marital_stat1,
+      marital_stat3,
+      marital_stat4,
+      benef_type1,
+      age_std,
+      age_retire_std,
+      scale_std
+    )
+  ) %>%
   gather(key = variable, value = values, -cluster_id) %>%
   mutate(variable = as.factor(variable)) %>%
   group_by(cluster_id, variable) %>%
@@ -334,8 +353,9 @@ list_cluster <- as.factor(RR_DESCR$cluster_id)
 list_var <- as.factor(RR_DESCR$variable)
 lvalues <- list(values = RR_DESCR$ll)
 names(lvalues$values) <- paste(as.character(list_cluster),
-                                as.character(list_var),
-                                sep = "_")
+  as.character(list_var),
+  sep = "_"
+)
 
 # Function to produce descriptive statistics
 descr_stat_fun(

@@ -141,260 +141,13 @@ print(
   file = file.path(path_graphs, subfolder, "ftab_categ.tex")
 )
 
-#--- Tibble 1.1 ----------------------------------------------------
-GATHERED_TIB1_1 <- all_csv$PLOTDATKAM %>%
-  filter(
-    sex == 1,
-    marital_stat == 3,
-    benef_type1 == 1
-  )
-#--- Tibble 1.2 ----------------------------------------------------
-GATHERED_TIB1_2 <- all_csv$PLOTDATKAM %>%
-  filter(
-    sex == 0,
-    marital_stat == 3,
-    benef_type1 == 1
-  )
-#--- Tibble 1.3 ----------------------------------------------------
-GATHERED_TIB1_3 <- all_csv$PLOTDATKAM %>%
-  filter(
-    sex == 1,
-    marital_stat == 3,
-    benef_type1 == 0
-  )
-#--- Tibble 1.4 ----------------------------------------------------
-GATHERED_TIB1_4 <- all_csv$PLOTDATKAM %>%
-  filter(
-    sex == 1,
-    marital_stat == 3,
-    benef_type1 == 1
-  )
-#--- Tibble 1.5 ----------------------------------------------------
-GATHERED_TIB1_5 <- all_csv$PLOTDATKAM %>%
-  filter(
-    sex == 1,
-    marital_stat == 1,
-    benef_type1 == 1
-  )
-#--- Tibble 1.6 ----------------------------------------------------
-GATHERED_TIB1_6 <- all_csv$PLOTDATKAM %>%
-  filter(
-    sex == 0,
-    marital_stat == 1,
-    benef_type1 == 1
-  )
-#--- Tibble 1.7 ----------------------------------------------------
-GATHERED_TIB1_7 <- all_csv$PLOTDATKAM %>%
-  filter(
-    sex == 1,
-    marital_stat == 2,
-    benef_type1 == 1
-  )
-#--- Tibble 1.8 ----------------------------------------------------
-GATHERED_TIB1_8 <- all_csv$PLOTDATKAM %>%
-  filter(
-    sex == 0,
-    marital_stat == 2,
-    benef_type1 == 1
-  )
-#--- Tibble 1.9 ----------------------------------------------------
-GATHERED_TIB1_9 <- all_csv$PLOTDATKAM %>%
-  filter(
-    sex == 1,
-    marital_stat == 4,
-    benef_type1 == 1
-  )
-
-#--- Tibble 1.10 ----------------------------------------------------
-GATHERED_TIB1_10 <- all_csv$PLOTDATKAM %>%
-  filter(
-    sex == 0,
-    marital_stat == 4,
-    benef_type1 == 1
-  )
-# --- FUNCTION ggplot hitogram -------------------------------------------------
-fun_ggplot_hist <- function(DATA_GGPLOT, path_graphs) {
-  DATA_GGPLOT %>%
-    mutate(
-      ln_aadr = log(aadr),
-      ln_monthly_rent = log(monthly_rent),
-      benef_type = as.factor(benef_type),
-      marital_stat = as.factor(marital_stat),
-      nat = as.factor(nat),
-      resid = as.factor(resid),
-      sex = as.factor(sex),
-      cluster_id = as.factor(cluster_id)
-    ) %>%
-    dplyr::select(
-      c(
-        cluster_id,
-        ln_aadr,
-        # age,
-        # age_retire,
-        benef_type1,
-        marital_stat,
-        # monthly_rent,
-        nat,
-        resid,
-        # scale,
-        sex
-      )
-    ) %>%
-    gather(
-      key = variable, value = value,
-      -cluster_id,
-      -benef_type1,
-      -sex,
-      -marital_stat,
-      -nat,
-      -resid
-    ) %>%
-    mutate(
-      variable = dplyr::recode(variable,
-        "age" = "Age",
-        "ln_aadr" = "ln(AADR)"
-      ),
-      benef_type1 = dplyr::recode(benef_type1,
-        "1" = "Old-age insurance beneficiaries",
-        "0" = "Survivor insurance beneficiaries"
-      ),
-      sex = dplyr::recode(sex,
-        "1" = "Female", # "Woman"
-        "0" = "Male" # "Man"
-      ),
-      marital_stat = dplyr::recode(marital_stat,
-        "1" = "Divorced",
-        "2" = "Single",
-        "3" = "Married",
-        "4" = "Widowed"
-      ),
-      nat = dplyr::recode(nat,
-        "1" = "Foreign Nationality",
-        "0" = "Swiss Nationality"
-      ),
-      resid = dplyr::recode(resid,
-        "1" = "Living Abroad",
-        "0" = "Living in CH"
-      )
-    ) %>%
-    ggplot(aes(value, fill = as.factor(cluster_id))) +
-    facet_wrap(benef_type1 + sex + nat + resid ~ marital_stat + variable,
-      scales = "free_x",
-      ncol = 2
-    ) +
-    geom_histogram(binwidth = function(x) 2 * IQR(x) / (length(x)^(1 / 3))) +
-    theme_light() +
-    theme(
-      legend.position = "bottom",
-      axis.text = element_text(size = 12),
-      axis.title = element_text(size = 12),
-      strip.text.x = element_text(
-        size = 11, color = "black", face = "bold"
-      ),
-      strip.text.y = element_text(
-        size = 11, color = "black", face = "bold"
-      )
-    ) +
-    labs(
-      title = "Histograms for continuous variables in clusters",
-      subtitle = paste0(numb_clust, " clusters"),
-      x = "Value",
-      y = "Frequency",
-      caption = paste(
-        Sys.Date(),
-        "Llc",
-        sep = ", "
-      )
-    ) +
-    scale_fill_manual("Cluster",
-      breaks = c("1", "2", "3", "4"),
-      values = c("red", "blue", "green", "orange")
-    ) +
-    ggsave(file.path(
-      path_graphs, subfolder,
-      paste(
-        "hist",
-        "sex", unique(DATA_GGPLOT$sex),
-        "typerent", unique(DATA_GGPLOT$benef_type1),
-        "mstat", unique(DATA_GGPLOT$marital_stat),
-        numb_clust,
-        "clusters.png",
-        sep = "_"
-      )
-    ),
-    height = 8.27,
-    width = 11.69
-    )
-
-  # Return
-  print(file.path(
-    path_graphs, subfolder,
-    paste(
-      "hist",
-      "sex", unique(DATA_GGPLOT$sex),
-      "typerent", unique(DATA_GGPLOT$benef_type1),
-      "mstat", unique(DATA_GGPLOT$marital_stat),
-      numb_clust,
-      "clusters.png",
-      sep = "_"
-    )
-  ))
-}
-
-g01 <- fun_ggplot_hist(
-  DATA_GGPLOT = GATHERED_TIB1_1,
-  path_graphs = path_graphs
-)
-g02 <- fun_ggplot_hist(
-  DATA_GGPLOT = GATHERED_TIB1_2,
-  path_graphs = path_graphs
-)
-
-g03 <- fun_ggplot_hist(
-  DATA_GGPLOT = GATHERED_TIB1_3,
-  path_graphs = path_graphs
-)
-g04 <- fun_ggplot_hist(
-  DATA_GGPLOT = GATHERED_TIB1_4,
-  path_graphs = path_graphs
-)
-
-
-g05 <- fun_ggplot_hist(
-  DATA_GGPLOT = GATHERED_TIB1_5,
-  path_graphs = path_graphs
-)
-g06 <- fun_ggplot_hist(
-  DATA_GGPLOT = GATHERED_TIB1_6,
-  path_graphs = path_graphs
-)
-
-g07 <- fun_ggplot_hist(
-  DATA_GGPLOT = GATHERED_TIB1_7,
-  path_graphs = path_graphs
-)
-g08 <- fun_ggplot_hist(
-  DATA_GGPLOT = GATHERED_TIB1_8,
-  path_graphs = path_graphs
-)
-
-g09 <- fun_ggplot_hist(
-  DATA_GGPLOT = GATHERED_TIB1_9,
-  path_graphs = path_graphs
-)
-g10 <- fun_ggplot_hist(
-  DATA_GGPLOT = GATHERED_TIB1_10,
-  path_graphs = path_graphs
-)
-
-
-#---  CROSS_TIB ----------------------------------------------------------------
+#--- ggplots per sex, marital_stat and benef_type ------------------------------
 
 unique_sex <- unique(all_csv$PLOTDATKAM$sex)
 unique_marital_stat <- unique(all_csv$PLOTDATKAM$marital_stat)
 unique_benef_type1 <- unique(all_csv$PLOTDATKAM$benef_type1)
 
-
+# Function to make ggplots for all combinations
 fun_ggplot_hist2 <- function(dta) {
   GGDATA <- dta %>%
     mutate(
@@ -521,6 +274,7 @@ fun_ggplot_hist2 <- function(dta) {
     )
 }
 
+# All combinations
 CROSS_TIB <- tibble(unique_sex = unique_sex) %>%
   crossing(
     unique_marital_stat = unique_marital_stat,
@@ -536,6 +290,7 @@ CROSS_TIB <- tibble(unique_sex = unique_sex) %>%
       ))
   )
 
+# Plots
 PLOTS_TIB <- CROSS_TIB %>%
   mutate(data = list(dta)) %>%
   dplyr::select(-dta) %>%

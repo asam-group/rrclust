@@ -1,27 +1,43 @@
-path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
 
+# Libraries
+library(ggplot2)
+library(rrclust)
+library(xtable)
+library(purrr)
+library(delfin)
+
+# Output directory
+path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
 output_name <- "cl_kamila_20210318093616_layal_kamila"
 path_output <- file.path(
   path_out,
   output_name
 )
-path_graphs <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/graphs"
-subfolder <- "without_mr"
 
-library(ggplot2)
-library(rrclust)
-library(xtable)
-library(purrr)
-
+# Retrieve outputs
 all_csv <- rrclust::tidylist_read(path_output)
-all_csv$PLOTDATKAM
+# all_csv$PLOTDATKAM
 numb_clust <- max(as.double(all_csv$PLOTDATKAM$cluster_id))
+
+# Graphs directory
+path_allgraph <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/graphs"
+path_graphs <- file.path(path_allgraph, paste(numb_clust, "clusters", sep = "_"))
+fs::dir_create(path_graphs)
+
+# Descriptive Stats directory
+descrstat_dpath <- file.path(path_graphs, "descrstat")
+fs::dir_create(descrstat_dpath)
+
+#Output copy directory
+output_dir <- file.path(path_graphs, "r_output")
+fs::dir_create(output_dir)
+file.copy(path_output, output_dir, recursive=TRUE)
 
 #--- Table cluster id, benef_type ---------------------------------------------
 tab_benef_clust <- table(all_csv$PLOTDATKAM$cluster_id, all_csv$PLOTDATKAM$benef_type)
 print(
   xtable(format(tab_benef_clust)),
-  file = file.path(path_graphs, subfolder, "tab_benef_clust.tex")
+  file = file.path(path_graphs, "tab_benef_clust.tex")
 )
 
 #--- PSPLOT --------------------------------------------------------------------
@@ -51,7 +67,7 @@ psplot <- with(
   geom_hline(yintercept = 0.8, lty = 2) +
   scale_x_continuous(breaks = sort(unique(all_csv$KM_RES$cluster_id))) +
   ylim(0, 1.1) +
-  ggsave(file.path(path_graphs, subfolder, "psplot.png"),
+  ggsave(file.path(path_graphs, "psplot.png"),
     height = 8.27,
     width = 11.69
   )
@@ -131,14 +147,14 @@ categ_var <- c(
 ftab_categ <- ftable(DATA_FTABLE %>%
   dplyr::select(any_of(categ_var)))
 write.ftable(ftab_categ, file = file.path(
-  path_graphs, subfolder,
+  path_graphs,
   "ftab_categ.csv"
 ))
 
 
 print(
   xtable(format(ftab_categ)),
-  file = file.path(path_graphs, subfolder, "ftab_categ.tex")
+  file = file.path(path_graphs, "ftab_categ.tex")
 )
 
 #--- ggplots per sex, marital_stat and benef_type ------------------------------
@@ -258,7 +274,7 @@ fun_ggplot_hist2 <- function(dta) {
       values = c("red", "blue", "green", "orange")
     ) +
     ggsave(file.path(
-      path_graphs, subfolder,
+      path_graphs,
       paste(
         "hist",
         "sex", unique(GGDATA$sex),
@@ -296,3 +312,33 @@ PLOTS_TIB <- CROSS_TIB %>%
   dplyr::select(-dta) %>%
   mutate(plots = map(list(data), fun_ggplot_hist2)) %>%
   dplyr::select(-data)
+
+
+#---- Characteristics of each cluster ------------------------------------------
+RR_DESCR <- all_csv$PLOTDATKAM %>%
+  dplyr::select(
+ - c(marital_stat1,
+     marital_stat3,
+     marital_stat4,
+     benef_type1,
+     age_std,
+     age_retire_std,
+     scale_std ) ) %>%
+  gather(key = variable, value = values, -cluster_id) %>%
+  mutate(variable = as.factor(variable)) %>%
+  group_by(cluster_id, variable) %>%
+  summarise(ll = list(values), .groups = "keep")
+
+# --- Descriptive Statistics Generation with a list---------------------
+list_cluster <- as.factor(RR_DESCR$cluster_id)
+list_var <- as.factor(RR_DESCR$variable)
+lvalues <- list(values = RR_DESCR$ll)
+names(lvalues$values) <- paste(as.character(list_cluster),
+                                as.character(list_var),
+                                sep = "_")
+
+# Function to produce descriptive statistics
+descr_stat_fun(
+  PARAM_GLOBAL = PARAM_GLOBAL,
+  lvalues = lvalues
+)

@@ -14,9 +14,9 @@
 #'
 #' @export
 
-# - `Last change`: 2019-08-09 / Llc
+# - `Last change`: 2021-03-18 / Llc
 # - `Code review`:
-# - `Last test`: 2019-08-09 / Llc
+# - `Last test`: 2021-03-18 / Llc
 
 descr_stat_fun <- function(descrstat_dpath, lvalues) {
 

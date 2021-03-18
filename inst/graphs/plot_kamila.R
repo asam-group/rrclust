@@ -339,6 +339,6 @@ names(lvalues$values) <- paste(as.character(list_cluster),
 
 # Function to produce descriptive statistics
 descr_stat_fun(
-  PARAM_GLOBAL = PARAM_GLOBAL,
+  descrstat_dpath = descrstat_dpath,
   lvalues = lvalues
 )

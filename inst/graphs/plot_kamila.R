@@ -1,6 +1,6 @@
 path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
 
-output_name <- "cl_kamila_20210311161651_layal_kamila"
+output_name <- "cl_kamila_20210318093616_layal_kamila"
 path_output <- file.path(
   path_out,
   output_name
@@ -388,29 +388,15 @@ g10 <- fun_ggplot_hist(
 
 
 #---  CROSS_TIB ----------------------------------------------------------------
+library(purrr)
 unique_sex <- unique(all_csv$PLOTDATKAM$sex)
 unique_marital_stat <- unique(all_csv$PLOTDATKAM$marital_stat)
 unique_benef_type1 <- unique(all_csv$PLOTDATKAM$benef_type1)
 
-CROSS_TIB <- tibble(unique_sex = unique_sex) %>%
-  crossing(
-    unique_marital_stat = unique_marital_stat,
-    unique_benef_type1 = unique_benef_type1
-  ) %>%
-  rowwise() %>%
-  mutate(dta = list(all_csv$PLOTDATKAM %>%
-    filter(
-      sex == unique_sex,
-      marital_stat == unique_marital_stat,
-      benef_type1 == unique_benef_type1
-    ))) %>%
-  rowwise() %>%
-  mutate(ggpl = list(map(dta, fun_ggplot_hist2)))
 
-
-fun_ggplot_hist2 <- function(DATA_GGPLOT) {
-
-  ggplot_number <- DATA_GGPLOT %>%
+fun_ggplot_hist2 <- function(dta) {
+  browser()
+  GGDATA <- dta %>%
     mutate(
       ln_aadr = log(aadr),
       ln_monthly_rent = log(monthly_rent),
@@ -472,8 +458,13 @@ fun_ggplot_hist2 <- function(DATA_GGPLOT) {
         "1" = "Living Abroad",
         "0" = "Living in CH"
       )
-    ) %>%
-    ggplot(aes(value, fill = as.factor(cluster_id))) +
+    )
+
+
+  ggplot(
+    GGDATA,
+    aes(value, fill = as.factor(cluster_id))
+  ) +
     facet_wrap(benef_type1 + sex + nat + resid ~ marital_stat + variable,
       scales = "free_x",
       ncol = 2
@@ -510,9 +501,9 @@ fun_ggplot_hist2 <- function(DATA_GGPLOT) {
       path_graphs, subfolder,
       paste(
         "hist",
-        "sex", unique(DATA_GGPLOT$sex),
-        "typerent", unique(DATA_GGPLOT$benef_type1),
-        "mstat", unique(DATA_GGPLOT$marital_stat),
+        "sex", unique(GGDATA$sex),
+        "typerent", unique(GGDATA$benef_type1),
+        "mstat", unique(GGDATA$marital_stat),
         numb_clust,
         "clusters.png",
         sep = "_"
@@ -521,19 +512,27 @@ fun_ggplot_hist2 <- function(DATA_GGPLOT) {
     height = 8.27,
     width = 11.69
     )
-
-  # Return
-  print(file.path(
-    path_graphs, subfolder,
-    paste(
-      "hist",
-      "sex", unique(DATA_GGPLOT$sex),
-      "typerent", unique(DATA_GGPLOT$benef_type1),
-      "mstat", unique(DATA_GGPLOT$marital_stat),
-      numb_clust,
-      "clusters.png",
-      sep = "_"
-    )
-  ))
-
 }
+
+CROSS_TIB <- tibble(unique_sex = unique_sex) %>%
+  crossing(
+    unique_marital_stat = unique_marital_stat,
+    unique_benef_type1 = unique_benef_type1
+  ) %>%
+  rowwise() %>%
+  mutate(
+    dta = list(all_csv$PLOTDATKAM %>%
+      filter(
+        sex == unique_sex,
+        marital_stat == unique_marital_stat,
+        benef_type1 == unique_benef_type1
+      ))
+  )
+
+PLOTS_TIB <- CROSS_TIB %>%
+  mutate(data = list(dta)) %>%
+  dplyr::select(-dta) %>%
+  mutate(plots = map(list(data), fun_ggplot_hist2)) %>%
+  dplyr::select(-data)
+
+

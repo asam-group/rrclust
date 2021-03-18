@@ -5,7 +5,7 @@
 #'
 #' @param PARAM_KAMILA dataframe with all needed parameters for the Kamila method,
 #' from which the following parameters are used:
-#' - `calc_gstar`: If TRUE, estimates the clusters.
+#' - `calc_kstar`: If TRUE, estimates the clusters.
 #' - `numberofclusters`: The number of clusters returned by the algorithm, i.e.
 #' sequence indicating the number of clusters which should be investigated to
 #' extract the optimal number of clusters.
@@ -19,14 +19,14 @@
 #' @param CONT_DF_TS Training set of the register of rents containing all the continuous
 #' variables
 #' @return KM_RES database containing the results of the clustering.
-#' @return PARAM_KAMILA dataframe with the updated gstar parameter.
+#' @return PARAM_KAMILA dataframe with the updated kstar parameter.
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 #' @import kamila
 
 # Last change: 2021-03-04 / Llc
 
-mod_gstar <- function(PARAM_KAMILA,
+mod_kstar <- function(PARAM_KAMILA,
                       CATEG_DF_TS,
                       CONT_DF_TS,
                       list = NULL) {
@@ -66,8 +66,8 @@ mod_gstar <- function(PARAM_KAMILA,
 
 
   # Optimal number of clusters
-  GSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) %>%
-    mutate(gstar = kmresps$nClust$bestNClust)
+  KSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) %>%
+    mutate(kstar = kmresps$nClust$bestNClust)
 
   # Other information of the run
   # Note: PS = 1 - Variance
@@ -91,7 +91,7 @@ mod_gstar <- function(PARAM_KAMILA,
   )
 
   # Join all datasets of results
-  KM_RES <- GSTAR %>%
+  KM_RES <- KSTAR %>%
     left_join(NCLUST,
       by = "cluster_id"
     ) %>%
@@ -100,7 +100,7 @@ mod_gstar <- function(PARAM_KAMILA,
     )
 
   # Save the optimal number of clusters in a parameter
-  PARAM_KAMILA$param_gstar <- kmresps$nClust$bestNClust
+  PARAM_KAMILA$param_kstar <- kmresps$nClust$bestNClust
 
 
   mod_return(

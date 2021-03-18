@@ -1,7 +1,7 @@
 #' @title Preparation of the kamila results of the training set.
 #'
 #' @description Prepares the kamila results of the training set and saves the
-#' optimal number of clusters gstar.
+#' optimal number of clusters kstar.
 #'
 #' @param PARAM_INPUTS a data frame containing the data paths.
 #'
@@ -26,8 +26,8 @@ mod_input_kmres <- function(PARAM_INPUTS,
   ))
 
   # Optimal number of clusters
-  GSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) %>%
-    mutate(gstar = kmresps$nClust$bestNClust)
+  KSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) %>%
+    mutate(kstar = kmresps$nClust$bestNClust)
 
   # Other information of the run
   NCLUST <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) %>%
@@ -46,7 +46,7 @@ mod_input_kmres <- function(PARAM_INPUTS,
     mutate_all(as.numeric)
 
 
-  KM_RES <- GSTAR %>%
+  KM_RES <- KSTAR %>%
     left_join(NCLUST,
       by = "cluster_id"
     ) %>%

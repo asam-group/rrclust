@@ -1,6 +1,5 @@
 path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
 
-# output_name <- "cl_kamila_20210311081713_layal_kamila"#WITH MR
 output_name <- "cl_kamila_20210311161651_layal_kamila"
 path_output <- file.path(
   path_out,

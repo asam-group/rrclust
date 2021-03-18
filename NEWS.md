@@ -1,3 +1,7 @@
+# rrclust 0.1.4
+
+changement de nom de gstar en kstar
+
 # rrclust 0.1.3
 
 mod_gstar

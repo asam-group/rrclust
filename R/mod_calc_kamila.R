@@ -42,12 +42,12 @@ mod_calc_kamila <- function(PARAM_KAMILA,
   # Setting seed to generate a reproducible random sampling
   set.seed(5)
 
-  gstar <- PARAM_KAMILA$param_gstar
+  kstar <- PARAM_KAMILA$param_kstar
 
   kmres <- kamila(
     conVar = CONTVARS,
     catFactor = CATFACTOR,
-    numClust = gstar,
+    numClust = kstar,
     numInit = PARAM_KAMILA$numinit,
     maxIter = PARAM_KAMILA$maxiter
   )

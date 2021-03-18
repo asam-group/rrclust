@@ -4,8 +4,8 @@
 #' construct the clusters
 #'
 #' @param tl_inp List of input data frames of which we use:
-#' - `PARAM_KAMILA$calc_gstar`: If TRUE, estimates the clusters. Else, takes the
-#' parameter PARAM_KAMILA$param_gstar.
+#' - `PARAM_KAMILA$calc_kstar`: If TRUE, estimates the clusters. Else, takes the
+#' parameter PARAM_KAMILA$param_kstar.
 #' @param tl_prepadata List of data frames prepared in a first step.
 #'
 #' @return a `tidylist` containing the following tidylists:
@@ -63,24 +63,24 @@ wrap_computation_kamila_ <- function(tl_inp,
     )
 
 
-  # Run the algorithm on the TS to find the optimal number of clusters gstar
-  # Writes gstar as the parameter PARAM_KAMILA$param_gstar
-  if (tl_inp$PARAM_KAMILA$calc_gstar) {
-    tl_mod_gstar <- mod_gstar(
+  # Run the algorithm on the TS to find the optimal number of clusters kstar
+  # Writes kstar as the parameter PARAM_KAMILA$param_kstar
+  if (tl_inp$PARAM_KAMILA$calc_kstar) {
+    tl_mod_kstar <- mod_kstar(
       PARAM_KAMILA = tl_inp$PARAM_KAMILA,
       CATEG_DF_TS = CATEG_DF_TS,
       CONT_DF_TS = CONT_DF_TS
     )
   }
 
-  # PARAM_KAMILA with the updated gstar parameter
-  PARAM_KAMILA <- if (tl_inp$PARAM_KAMILA$calc_gstar) {
-    tl_mod_gstar$PARAM_KAMILA
+  # PARAM_KAMILA with the updated kstar parameter
+  PARAM_KAMILA <- if (tl_inp$PARAM_KAMILA$calc_kstar) {
+    tl_mod_kstar$PARAM_KAMILA
   } else {
     tl_inp$PARAM_KAMILA
   }
 
-  # Apply gstar to the whole dataset
+  # Apply kstar to the whole dataset
   tl_mod_calc_kamila <- mod_calc_kamila(
     PARAM_KAMILA = PARAM_KAMILA,
     CONT_DF = CONT_DF,
@@ -90,10 +90,10 @@ wrap_computation_kamila_ <- function(tl_inp,
   )
 
   # Output
-  if (tl_inp$PARAM_KAMILA$calc_gstar) {
+  if (tl_inp$PARAM_KAMILA$calc_kstar) {
     c(
       tl_mod_calc_kamila,
-      tl_mod_gstar
+      tl_mod_kstar
     )
   } else {
     c(tl_mod_calc_kamila)

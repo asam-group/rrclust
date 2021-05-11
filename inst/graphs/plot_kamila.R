@@ -5,6 +5,7 @@ library(rrclust)
 library(xtable)
 library(purrr)
 library(delfin)
+library(vtable)
 
 # Output directory
 path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
@@ -14,40 +15,55 @@ path_output <- file.path(
   output_name
 )
 
-# Retrieve outputs
+path_input <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/inputs/inp_kamila/all"
+
+# Retrieve outputs and inputs
 all_csv <- rrclust::tidylist_read(path_output)
+all_csv_inputs <- rrclust::tidylist_read(path_input)
+
 # all_csv$PLOTDATKAM
 numb_clust <- max(as.double(all_csv$PLOTDATKAM$cluster_id))
 
 # Graphs directory
 path_allgraph <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/graphs"
 path_graphs <- file.path(path_allgraph, paste(numb_clust, "clusters", sep = "_"))
-fs::dir_create(path_graphs)
-
+if (file.exists(path_graphs)) stop(path_graphs, " already exists")
+if (!file.exists(path_graphs)) {
+  fs::dir_create(path_graphs, recursive = TRUE)
+}
 # Descriptive Stats directory
 descrstat_dpath <- file.path(path_graphs, "descrstat")
-fs::dir_create(descrstat_dpath)
-
+if (file.exists(descrstat_dpath)) stop(descrstat_dpath, " already exists")
+if (!file.exists(descrstat_dpath)) {
+  fs::dir_create(descrstat_dpath, recursive = TRUE)
+}
 # Output copy directory
 output_dir <- file.path(path_graphs, "r_output")
-fs::dir_create(output_dir)
-file.copy(path_output, output_dir, recursive = TRUE)
+if (file.exists(output_dir)) stop(output_dir, " already exists")
+if (!file.exists(output_dir)) {
+  fs::dir_create(output_dir, recursive = TRUE)
+  file.copy(path_output, output_dir, recursive = TRUE)
+}
+#--- Table Variable characteristics tibble ---------------------------------------------
+RR_OASI <- mod_prepa_rr(all_csv_inputs$IND_YEARLY_RR)$RR_OASI %>%
+  dplyr::select(-age_retire)
+st(RR_OASI, file = file.path(path_graphs, "RR_DESCR.tex"))
 
-#--- Table cluster id, benef_type ---------------------------------------------
-tab_benef_clust <- table(all_csv$PLOTDATKAM$cluster_id, all_csv$PLOTDATKAM$benef_type)
-print(
-  xtable(format(tab_benef_clust),
-    label = "Type of Benefit and Clusters Contingency Table",
-    caption = "Type of Benefit and ClustersContingency Table"
-  ),
-  table.placement = "H",
-  caption.placement = "top",
-  include.rownames = TRUE,
-  include.colnames = TRUE,
-  size = "normalsize",
-  hline.after = c(-1, 0, nrow(tab_benef_clust)),
-  file = file.path(path_graphs, "tab_benef_clust.tex")
-)
+# #--- Table cluster id, benef_type ---------------------------------------------
+# tab_benef_clust <- table(all_csv$PLOTDATKAM$cluster_id, all_csv$PLOTDATKAM$benef_type)
+# print(
+#   xtable(format(tab_benef_clust),
+#     label = "Type of Benefit and Clusters Contingency Table",
+#     caption = "Type of Benefit and ClustersContingency Table"
+#   ),
+#   table.placement = "H",
+#   caption.placement = "top",
+#   include.rownames = TRUE,
+#   include.colnames = TRUE,
+#   size = "normalsize",
+#   hline.after = c(-1, 0, nrow(tab_benef_clust)),
+#   file = file.path(path_graphs, "tab_benef_clust.tex")
+# )
 
 #--- PSPLOT --------------------------------------------------------------------
 psplot <- with(

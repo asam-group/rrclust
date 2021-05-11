@@ -47,8 +47,19 @@ if (!file.exists(output_dir)) {
 #--- Table Variable characteristics tibble ---------------------------------------------
 RR_OASI <- mod_prepa_rr(all_csv_inputs$IND_YEARLY_RR)$RR_OASI %>%
   dplyr::select(-age_retire)
-st(RR_OASI, file = file.path(path_graphs, "RR_DESCR.tex"))
 
+print(
+  st(RR_OASI,
+     file = file.path(path_graphs, "RR_DESCR"),
+     anchor = "sum_stats_rr_oasi",
+     out = 'latex'),
+  tabular.environment = "longtable",
+  caption.placement = "top",
+  table.placement = "",
+  floating = FALSE,
+  size = "\\fontsize{8pt}{9pt}\\selectfont",
+  file = file.path(path_graphs, "RR_DESCR.tex")
+)
 # #--- Table cluster id, benef_type ---------------------------------------------
 # tab_benef_clust <- table(all_csv$PLOTDATKAM$cluster_id, all_csv$PLOTDATKAM$benef_type)
 # print(

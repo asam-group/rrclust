@@ -153,8 +153,13 @@ categ_var <- c(
   "marital_stat",
   "cluster_id"
 )
-ftab_categ <- ftable(DATA_FTABLE %>%
-  dplyr::select(any_of(categ_var)))
+pattern <- as.formula(paste(" ~ ", paste(categ_var, collapse = " + ")))
+xtab1 <- xtabs(pattern, DATA_FTABLE)
+ftab_categ <- ftable(addmargins(xtab1, margin = 2:3, list(Total = sum)))
+
+# ftab_categ <- ftable(DATA_FTABLE %>%
+#   dplyr::select(any_of(categ_var)))
+
 write.ftable(ftab_categ, file = file.path(
   path_graphs,
   "ftab_categ.csv"

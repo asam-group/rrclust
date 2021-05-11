@@ -52,6 +52,7 @@ print(
   st(RR_OASI,
      file = file.path(path_graphs, "RR_DESCR"),
      anchor = "sum_stats_rr_oasi",
+     title = "Summary Statistics of the Register of Rents",
      out = 'latex'),
   tabular.environment = "longtable",
   caption.placement = "top",

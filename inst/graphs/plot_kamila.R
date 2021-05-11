@@ -50,10 +50,11 @@ RR_OASI <- mod_prepa_rr(all_csv_inputs$IND_YEARLY_RR)$RR_OASI %>%
 
 print(
   st(RR_OASI,
-     file = file.path(path_graphs, "RR_DESCR"),
-     anchor = "sum_stats_rr_oasi",
-     title = "Summary Statistics of the Register of Rents",
-     out = 'latex'),
+    file = file.path(path_graphs, "RR_DESCR"),
+    anchor = "sum_stats_rr_oasi",
+    title = "Summary Statistics of the Register of Rents",
+    out = "latex"
+  ),
   tabular.environment = "longtable",
   caption.placement = "top",
   table.placement = "",
@@ -65,28 +66,52 @@ print(
 cnames <- c(colnames(RR_OASI), "cluster_id")
 cnames_pattern <- paste(cnames, collapse = "|")
 
-DATA_CLUST <- all_csv$PLOTDATKAM %>%
-  mutate(year = unique(RR_OASI$year)) %>%
-  dplyr::select(grep(cnames_pattern, names(.)))
+dataclust_fun <- function(clust_number, ...) {
+  DATA_CLUST <- all_csv$PLOTDATKAM %>%
+    mutate(year = unique(RR_OASI$year)) %>%
+    dplyr::select(grep(cnames_pattern, names(.))) %>%
+    filter(cluster_id == clust_number)
 
-reorder_idx <- match(cnames, names(DATA_CLUST))[!is.na(match(cnames, names(DATA_CLUST)))]# Saving indices for how to reorder `second` to match `first`
-DATA_CLUST[reorder_idx]  # Reordering the second vector to match the order of the first vector
-DATA_CLUST_REORDERED <- DATA_CLUST[reorder_idx]  # Reordering and saving the output to a variable
+  reorder_idx <- match(cnames, names(DATA_CLUST))[!is.na(match(cnames, names(DATA_CLUST)))] # Saving indices for how to reorder `second` to match `first`
+  DATA_CLUST[reorder_idx] # Reordering the second vector to match the order of the first vector
+  DATA_CLUST_REORDERED <- DATA_CLUST[reorder_idx] # Reordering and saving the output to a variable
+
+  print(
+    st(DATA_CLUST_REORDERED,
+      file = file.path(path_graphs, paste0("DATA_CLUST_REORDERED_", clust_number)),
+      anchor = "sum_stats_rr_oasi",
+      title = paste0("Summary Statistics of the Clustered Register of Rents, Cluster ", clust_number),
+      out = "latex"
+    ),
+    tabular.environment = "longtable",
+    caption.placement = "top",
+    table.placement = "",
+    floating = FALSE,
+    size = "\\fontsize{8pt}{9pt}\\selectfont",
+    file = file.path(
+      path_graphs,
+      paste0("DATA_CLUST_REORDERED_", clust_number, ".tex")
+    )
+  )
+}
+
+DATA_CLUST_ALL <- tibble(clust_number = unique(all_csv$PLOTDATKAM$cluster_id)) %>%
+  arrange(clust_number) %>%
+  mutate(
+    cnames = list(cnames),
+    cnames_pattern = list(cnames_pattern)
+  ) %>%
+  rowwise() %>%
+  mutate(data_clust_reord = list(lapply(clust_number, dataclust_fun))) %>%
+  unnest(cols = data_clust_reord) %>%
+  dplyr::select(
+    -cnames,
+    -cnames_pattern
+  ) %>%
+  unnest(cols = data_clust_reord)
 
 
-print(
-  st(DATA_CLUST_REORDERED,
-     file = file.path(path_graphs, "DATA_CLUST_REORDERED"),
-     anchor = "sum_stats_rr_oasi",
-     title = "Summary Statistics of the Clustered Register of Rents",
-     out = 'latex'),
-  tabular.environment = "longtable",
-  caption.placement = "top",
-  table.placement = "",
-  floating = FALSE,
-  size = "\\fontsize{8pt}{9pt}\\selectfont",
-  file = file.path(path_graphs, "DATA_CLUST_REORDERED.tex")
-)
+
 
 # #--- Table cluster id, benef_type ---------------------------------------------
 # tab_benef_clust <- table(all_csv$PLOTDATKAM$cluster_id, all_csv$PLOTDATKAM$benef_type)

@@ -1,6 +1,10 @@
+# rrclust 1.0.0
+
+first operational version used for the working paper 
+
 # rrclust 0.1.4
 
-changement de nom de gstar en kstar
+kstar instead of gstar
 
 # rrclust 0.1.3
 

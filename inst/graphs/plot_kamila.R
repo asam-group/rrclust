@@ -44,7 +44,7 @@ if (!file.exists(output_dir)) {
   fs::dir_create(output_dir, recursive = TRUE)
   file.copy(path_output, output_dir, recursive = TRUE)
 }
-#--- Table Variable characteristics tibble ---------------------------------------------
+#--- Table Summary Statistics --------------------------------------------------
 RR_OASI <- mod_prepa_rr(all_csv_inputs$IND_YEARLY_RR)$RR_OASI %>%
   dplyr::select(-age_retire)
 
@@ -63,6 +63,7 @@ print(
   file = file.path(path_graphs, "RR_DESCR.tex")
 )
 
+#--- Table Summary Statistics per Cluster --------------------------------------
 cnames <- c(colnames(RR_OASI), "cluster_id")
 cnames_pattern <- paste(cnames, collapse = "|")
 
@@ -79,7 +80,7 @@ dataclust_fun <- function(clust_number, ...) {
   print(
     st(DATA_CLUST_REORDERED,
       file = file.path(path_graphs, paste0("DATA_CLUST_REORDERED_", clust_number)),
-      anchor = "sum_stats_rr_oasi",
+      anchor = paste0("sum_stats_rr_oasi_", clust_number),
       title = paste0("Summary Statistics of the Clustered Register of Rents, Cluster ", clust_number),
       out = "latex"
     ),

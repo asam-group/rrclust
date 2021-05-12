@@ -1,7 +1,6 @@
 Package: rrclust
 Type: Package
-Title: Clustering observations from the Swiss Old-Age and Survivors's Insurance 
-(OASI) Register of Rents
+Title: Clustering observations from the Swiss Old-Age and Survivors's Insurance (OASI) Register of Rents
 Version: 1.0.0
 Date: 2021-05-12
 Author@R: person("Layal Christine", "Lettry", email = "layalchristine.lettry@unifr.ch")

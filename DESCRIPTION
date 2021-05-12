@@ -6,7 +6,8 @@ Date: 2021-05-12
 Author@R: person("Layal Christine", "Lettry", email = "layalchristine.lettry@unifr.ch")
 Maintainer: Layal Christine Lettry <layalchristine.lettry@unifr.ch>
 Description: This package allows to cluster the Swiss register of rents by using 
-             different clustering methods.
+             Kamila clustering method.
+URL: https://github.com/asam-group/rrclust
 Depends: dplyr, tidyr, tibble, yaml, roxygen2, MASS, knitr
 Imports: ggplot2, xtable, data.table, kableExtra, Hmisc, kamila, caTools
 Encoding: UTF-8

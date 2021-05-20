@@ -20,26 +20,26 @@ function_kamplot <- function(dta) {
           resid == 0 ~ "Swiss living in Switzerland"
       ),
       benef_type1 = dplyr::recode(benef_type1,
-                                  "1" = "Old-age insurance",
-                                  "0" = "Survivor insurance"
+        "1" = "Old-age insurance",
+        "0" = "Survivor insurance"
       ),
       sex = dplyr::recode(sex,
-                          "0" = "Male",
-                          "1" = "Female"
+        "0" = "Male",
+        "1" = "Female"
       ),
       marital_stat = dplyr::recode(marital_stat,
-                                   "1" = "Divorced",
-                                   "2" = "Single",
-                                   "3" = "Married",
-                                   "4" = "Widowed"
+        "1" = "Divorced",
+        "2" = "Single",
+        "3" = "Married",
+        "4" = "Widowed"
       ),
       nat = dplyr::recode(nat,
-                          "1" = "Foreign",
-                          "0" = "Swiss"
+        "1" = "Foreign",
+        "0" = "Swiss"
       ),
       resid = dplyr::recode(resid,
-                            "1" = "Foreign Country",
-                            "0" = "Switzerland"
+        "1" = "Foreign Country",
+        "0" = "Switzerland"
       )
     )
 
@@ -60,9 +60,9 @@ function_kamplot <- function(dta) {
     labs(
       title = "Distribution of Monthly Rent Natural Logarithm",
       subtitle = paste(unique(KAMRESDATA$sex),
-                       unique(KAMRESDATA$benef_type1),
-                       "beneficiaries",
-                       sep = " "
+        unique(KAMRESDATA$benef_type1),
+        "beneficiaries",
+        sep = " "
       ),
       x = "Age",
       y = "Monthly Rent Natural Logarithm",
@@ -115,9 +115,9 @@ function_kamplot <- function(dta) {
     labs(
       title = "Distribution of Monthly Rent Natural Logarithm",
       subtitle = paste(unique(KAMRESDATA$sex),
-                       unique(KAMRESDATA$benef_type1),
-                       "beneficiaries",
-                       sep = " "
+        unique(KAMRESDATA$benef_type1),
+        "beneficiaries",
+        sep = " "
       ),
       x = "Scale",
       y = "Monthly Rent Natural Logarithm",
@@ -155,61 +155,62 @@ function_kamplot <- function(dta) {
     width = 11.69
     )
 
-  # Log Monthly Rent pro age_retire
-  kamPlot5 <- KAMRESDATA %>%
-    ggplot(
-      aes(
-        x = age_retire,
-        y = log(monthly_rent),
-        # shape = groups2,
-        color = KamilaCluster
-      )
-    ) +
-    facet_wrap(marital_stat ~ natres) +
-    theme_light() +
-    labs(
-      title = "Distribution of Monthly Rent Natural Logarithm",
-      subtitle = paste(unique(KAMRESDATA$sex),
-                       unique(KAMRESDATA$benef_type1),
-                       "beneficiaries",
-                       sep = " "
-      ),
-      x = "Age of Effective Retirement",
-      y = "Monthly Rent Natural Logarithm",
-      caption = paste(
-        Sys.Date(),
-        "Llc",
-        sep = ", "
-      )
-    ) +
-    theme(
-      strip.text.x = element_text(
-        size = 11, color = "black", face = "bold"
-      ),
-      strip.text.y = element_text(
-        size = 11, color = "black", face = "bold"
-      ),
-      legend.position = "bottom",
-      axis.text = element_text(size = 12),
-      axis.title = element_text(size = 12)
-    ) +
-    scale_color_discrete("Cluster") +
-    scale_x_continuous(breaks = seq(min(age_retire), max(age_retire), 1))
+  if (KAMRESDATA$age_retire > 0) {
+    # Log Monthly Rent pro age_retire
+    kamPlot5 <- KAMRESDATA %>%
+      ggplot(
+        aes(
+          x = age_retire,
+          y = log(monthly_rent),
+          # shape = groups2,
+          color = KamilaCluster
+        )
+      ) +
+      facet_wrap(marital_stat ~ natres) +
+      theme_light() +
+      labs(
+        title = "Distribution of Monthly Rent Natural Logarithm",
+        subtitle = paste(unique(KAMRESDATA$sex),
+          unique(KAMRESDATA$benef_type1),
+          "beneficiaries",
+          sep = " "
+        ),
+        x = "Age of Effective Retirement",
+        y = "Monthly Rent Natural Logarithm",
+        caption = paste(
+          Sys.Date(),
+          "Llc",
+          sep = ", "
+        )
+      ) +
+      theme(
+        strip.text.x = element_text(
+          size = 11, color = "black", face = "bold"
+        ),
+        strip.text.y = element_text(
+          size = 11, color = "black", face = "bold"
+        ),
+        legend.position = "bottom",
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12)
+      ) +
+      scale_color_discrete("Cluster") +
+      scale_x_continuous(breaks = seq(min(KAMRESDATA$age_retire), max(KAMRESDATA$age_retire), 1))
 
-  p5 <- plotOpts(kamPlot5) +
-    ggsave(file.path(
-      path_graphs,
-      paste(
-        "sex", unique(dta$sex),
-        "typerent", unique(dta$benef_type1),
-        "mr_age_retire.png",
-        sep = "_"
+    p5 <- plotOpts(kamPlot5) +
+      ggsave(file.path(
+        path_graphs,
+        paste(
+          "sex", unique(dta$sex),
+          "typerent", unique(dta$benef_type1),
+          "mr_age_retire.png",
+          sep = "_"
+        )
+      ),
+      height = 8.27,
+      width = 11.69
       )
-    ),
-    height = 8.27,
-    width = 11.69
-    )
-
+  }
   #--- AADR Plot ---------------------------------------------------------------
   # Log AADR pro Age
   kamPlot3 <- KAMRESDATA %>%
@@ -226,9 +227,9 @@ function_kamplot <- function(dta) {
     labs(
       title = "Distribution of AADR Natural Logarithm",
       subtitle = paste(unique(KAMRESDATA$sex),
-                       unique(KAMRESDATA$benef_type1),
-                       "beneficiaries",
-                       sep = " "
+        unique(KAMRESDATA$benef_type1),
+        "beneficiaries",
+        sep = " "
       ),
       x = "Age",
       y = "AADR Natural Logarithm",
@@ -281,9 +282,9 @@ function_kamplot <- function(dta) {
     labs(
       title = "Distribution of AADR Natural Logarithm",
       subtitle = paste(unique(KAMRESDATA$sex),
-                       unique(KAMRESDATA$benef_type1),
-                       "beneficiaries",
-                       sep = " "
+        unique(KAMRESDATA$benef_type1),
+        "beneficiaries",
+        sep = " "
       ),
       x = "Scale",
       y = "AADR Natural Logarithm",
@@ -321,61 +322,62 @@ function_kamplot <- function(dta) {
     width = 11.69
     )
 
+  if (KAMRESDATA$age_retire > 0) {
+    # Log AADR pro Age_retire
+    kamPlot6 <- KAMRESDATA %>%
+      ggplot(
+        aes(
+          x = age_retire,
+          y = log(aadr),
+          # shape = groups2,
+          color = KamilaCluster
+        )
+      ) +
+      facet_wrap(marital_stat ~ natres) +
+      theme_light() +
+      labs(
+        title = "Distribution of AADR Natural Logarithm",
+        subtitle = paste(unique(KAMRESDATA$sex),
+          unique(KAMRESDATA$benef_type1),
+          "beneficiaries",
+          sep = " "
+        ),
+        x = "Age of Effective Retirement",
+        y = "AADR Natural Logarithm",
+        caption = paste(
+          Sys.Date(),
+          "Llc",
+          sep = ", "
+        )
+      ) +
+      theme(
+        strip.text.x = element_text(
+          size = 11, color = "black", face = "bold"
+        ),
+        strip.text.y = element_text(
+          size = 11, color = "black", face = "bold"
+        ),
+        legend.position = "bottom",
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12)
+      ) +
+      scale_color_discrete("Cluster") +
+      scale_x_continuous(breaks = seq(min(KAMRESDATA$age_retire), max(KAMRESDATA$age_retire), 1))
 
-  # Log AADR pro Age_retire
-  kamPlot6 <- KAMRESDATA %>%
-    ggplot(
-      aes(
-        x = age_retire,
-        y = log(aadr),
-        # shape = groups2,
-        color = KamilaCluster
-      )
-    ) +
-    facet_wrap(marital_stat ~ natres) +
-    theme_light() +
-    labs(
-      title = "Distribution of AADR Natural Logarithm",
-      subtitle = paste(unique(KAMRESDATA$sex),
-                       unique(KAMRESDATA$benef_type1),
-                       "beneficiaries",
-                       sep = " "
+    p6 <- plotOpts(kamPlot6) +
+      ggsave(file.path(
+        path_graphs,
+        paste(
+          "sex", unique(dta$sex),
+          "typerent", unique(dta$benef_type1),
+          "aadr_age_retire.png",
+          sep = "_"
+        )
       ),
-      x = "Age of Effective Retirement",
-      y = "AADR Natural Logarithm",
-      caption = paste(
-        Sys.Date(),
-        "Llc",
-        sep = ", "
+      height = 8.27,
+      width = 11.69
       )
-    ) +
-    theme(
-      strip.text.x = element_text(
-        size = 11, color = "black", face = "bold"
-      ),
-      strip.text.y = element_text(
-        size = 11, color = "black", face = "bold"
-      ),
-      legend.position = "bottom",
-      axis.text = element_text(size = 12),
-      axis.title = element_text(size = 12)
-    ) +
-    scale_color_discrete("Cluster") +
-    scale_x_continuous(breaks = seq(min(age_retire), max(age_retire), 1))
-
-  p6 <- plotOpts(kamPlot6) +
-    ggsave(file.path(
-      path_graphs,
-      paste(
-        "sex", unique(dta$sex),
-        "typerent", unique(dta$benef_type1),
-        "aadr_age_retire.png",
-        sep = "_"
-      )
-    ),
-    height = 8.27,
-    width = 11.69
-    )
+  }
 }
 
 
@@ -421,36 +423,36 @@ fun_ggplot_hist2 <- function(dta) {
     ) %>%
     mutate(
       variable = dplyr::recode(variable,
-                               "age" = "Age",
-                               "ln_aadr" = "ln(AADR)"
+        "age" = "Age",
+        "ln_aadr" = "ln(AADR)"
       ),
       benef_type1 = dplyr::recode(benef_type1,
-                                  "1" = "Old-age insurance beneficiaries",
-                                  "0" = "Survivor insurance beneficiaries"
+        "1" = "Old-age insurance beneficiaries",
+        "0" = "Survivor insurance beneficiaries"
       ),
       sex = dplyr::recode(sex,
-                          "1" = "Female", # "Woman"
-                          "0" = "Male" # "Man"
+        "1" = "Female", # "Woman"
+        "0" = "Male" # "Man"
       ),
       marital_stat = dplyr::recode(marital_stat,
-                                   "1" = "Divorced",
-                                   "2" = "Single",
-                                   "3" = "Married",
-                                   "4" = "Widowed"
+        "1" = "Divorced",
+        "2" = "Single",
+        "3" = "Married",
+        "4" = "Widowed"
       ),
       nat = dplyr::recode(nat,
-                          "1" = "Foreign Nationality",
-                          "0" = "Swiss Nationality"
+        "1" = "Foreign Nationality",
+        "0" = "Swiss Nationality"
       ),
       resid = dplyr::recode(resid,
-                            "1" = "Living Abroad",
-                            "0" = "Living in CH"
+        "1" = "Living Abroad",
+        "0" = "Living in CH"
       )
     )
 
   n_ind <- unique(GGDATA %>%
-                    mutate(n_ind = n()) %>%
-                    dplyr::select(n_ind))$n_ind
+    mutate(n_ind = n()) %>%
+    dplyr::select(n_ind))$n_ind
 
 
   ggplot(
@@ -458,8 +460,8 @@ fun_ggplot_hist2 <- function(dta) {
     aes(value, fill = as.factor(cluster_id))
   ) +
     facet_wrap(benef_type1 + sex + nat + resid ~ marital_stat + variable,
-               scales = "free_x",
-               ncol = 2
+      scales = "free_x",
+      ncol = 2
     ) +
     geom_histogram(binwidth = function(x) 2 * IQR(x) / (length(x)^(1 / 3))) +
     theme_light() +
@@ -489,8 +491,8 @@ fun_ggplot_hist2 <- function(dta) {
       )
     ) +
     scale_fill_manual("Cluster",
-                      breaks = c("1", "2", "3", "4"),
-                      values = c("red", "blue", "green", "orange")
+      breaks = c("1", "2", "3", "4"),
+      values = c("red", "blue", "green", "orange")
     ) +
     ggsave(file.path(
       path_graphs,

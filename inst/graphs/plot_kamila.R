@@ -268,14 +268,14 @@ function_kamplot <- function(dta) {
     facet_wrap(marital_stat ~ natres) +
     theme_light() +
     labs(
-      title = "Distribution of Monthly Rent Natural Logarithm",
+      title = "Distribution of AADR Natural Logarithm",
       subtitle = paste(unique(KAMRESDATA$sex),
         unique(KAMRESDATA$benef_type1),
         "beneficiaries",
         sep = " "
       ),
       x = "Age",
-      y = "Monthly Rent Natural Logarithm",
+      y = "AADR Natural Logarithm",
       caption = paste(
         Sys.Date(),
         "Llc",
@@ -323,14 +323,14 @@ function_kamplot <- function(dta) {
     facet_wrap(marital_stat ~ natres) +
     theme_light() +
     labs(
-      title = "Distribution of Monthly Rent Natural Logarithm",
+      title = "Distribution of AADR Natural Logarithm",
       subtitle = paste(unique(KAMRESDATA$sex),
         unique(KAMRESDATA$benef_type1),
         "beneficiaries",
         sep = " "
       ),
       x = "Scale",
-      y = "Monthly Rent Natural Logarithm",
+      y = "AADR Natural Logarithm",
       caption = paste(
         Sys.Date(),
         "Llc",
@@ -371,6 +371,118 @@ PLOTS_TIB_KAMRES <- CROSS_TIB_KAMRES %>%
   mutate(data = list(dta)) %>%
   dplyr::select(-dta) %>%
   mutate(plots = map(list(data), function_kamplot)) %>%
+  dplyr::select(-data)
+
+#--- Plotly --------------------------------------------------------------------
+
+# Function Plot KAMILA results
+function_kamplotly <- function(dta) {
+  KAMRESDATA <- dta %>%
+    # filter(
+    #   sex == 0,
+    #   benef_type1 == 1
+    # ) %>%
+    arrange(nat, resid) %>%
+    mutate(
+      natres = case_when(
+        nat == 1 &
+          resid == 1 ~ "Foreign living in a foreign country",
+        nat == 1 &
+          resid == 0 ~ "Foreign living in Switzerland",
+        nat == 0 &
+          resid == 1 ~ "Swiss living in a foreign country",
+        nat == 0 &
+          resid == 0 ~ "Swiss living in Switzerland"
+      ),
+      benef_type1 = dplyr::recode(benef_type1,
+                                  "1" = "Old-age insurance",
+                                  "0" = "Survivor insurance"
+      ),
+      sex = dplyr::recode(sex,
+                          "0" = "Male",
+                          "1" = "Female"
+      ),
+      marital_stat = dplyr::recode(marital_stat,
+                                   "1" = "Divorced",
+                                   "2" = "Single",
+                                   "3" = "Married",
+                                   "4" = "Widowed"
+      ),
+      nat = dplyr::recode(nat,
+                          "1" = "Foreign",
+                          "0" = "Swiss"
+      ),
+      resid = dplyr::recode(resid,
+                            "1" = "Foreign Country",
+                            "0" = "Switzerland"
+      )
+    )
+
+
+
+  pal <- brewer.pal(length(unique(KAMRESDATA$KamilaCluster)), "Paired")
+  axx <- list(
+    nticks = 50,
+    range = c(-25, 75)
+  )
+
+  axy <- list(
+    nticks = 50,
+    range = c(-25, 75)
+  )
+
+  axz <- list(
+    nticks = 50,
+    range = c(0, 50)
+  )
+
+  myplot <- KAMRESDATA %>%
+    plot_ly(
+      x = ~age, y = ~scale, z = ~ log(monthly_rent),
+      colors = pal,
+      type = "scatter3d",
+      mode = "markers",
+      marker = list(size = 5)
+    ) %>%
+    add_markers(color = ~KamilaCluster) %>%
+    layout(
+      scene = list(
+        xaxis = list(title = "x = Age"),
+        yaxis = list(title = "y = Scale"),
+        zaxis = list(title = "z = ln(Monthly Rent)")
+      ),
+      title = paste0(
+        "Distribution of Monthly Rent Natural Logarithm: ",
+        paste(unique(KAMRESDATA$sex),
+              unique(KAMRESDATA$benef_type1),
+              "beneficiaries",
+              sep = " "
+        )
+      )
+    ) %>%
+    layout(legend = list(orientation = "h"))
+
+  # Save plotly
+  htmlwidgets::saveWidget(
+    widget = myplot,
+    file = file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "mr_age_plotly.html",
+        sep = "_"
+      )
+    )
+  )
+}
+
+
+# Plots
+PLOTLY_TIB_KAMRES <- CROSS_TIB_KAMRES %>%
+  mutate(data = list(dta)) %>%
+  dplyr::select(-dta) %>%
+  mutate(plots = map(list(data), function_kamplotly)) %>%
   dplyr::select(-data)
 
 #--- Table Summary Statistics --------------------------------------------------

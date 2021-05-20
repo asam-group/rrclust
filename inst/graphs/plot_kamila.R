@@ -7,6 +7,8 @@ library(purrr)
 library(delfin)
 library(vtable)
 
+
+
 # Output directory
 path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
 output_name <- "cl_kamila_20210318093616_layal_kamila"
@@ -44,6 +46,333 @@ if (!file.exists(output_dir)) {
   fs::dir_create(output_dir, recursive = TRUE)
   file.copy(path_output, output_dir, recursive = TRUE)
 }
+
+
+#--- Scatterplot pro Cluster ---------------------------------------------------
+load(file = file.path(path_output, "kmres.RData"))
+load(file = file.path(path_output, "FULL_CONT_DF.RData"))
+load(file = file.path(path_output, "FULL_CATEG_DF.RData"))
+load(file = file.path(path_output, "CONTVARS.RData"))
+load(file = file.path(path_output, "CATFACTOR.RData"))
+
+# FULL_CONT_DF$ln_aadr <- log(FULL_CONT_DF$aadr)
+# conVars <- data.frame(scale(FULL_CONT_DF))
+conVars <- data.frame(FULL_CONT_DF)
+catVarsFac <- lapply(
+  CATFACTOR %>%
+    mutate(marital_stat = FULL_CATEG_DF$marital_stat),
+  factor
+)
+# catVarsDum <- dummyCodeFactorDf(catVarsFac)
+kamRes <- kmres
+KamilaCluster <- factor(kmres$finalMemb)
+plottingData <- cbind(
+  conVars,
+  catVarsFac,
+  KamilaCluster = factor(kamRes$finalMemb)
+)
+
+plotOpts <- function(pl) {
+  (pl + geom_point() +
+    scale_shape_manual(
+      values = c(
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        11, 12, 13, 14, 15, 16
+      )
+    ) +
+    geom_jitter())
+}
+
+
+# All combinations
+CROSS_TIB_KAMRES <- tibble(unique_sex = unique(plottingData$sex)) %>%
+  crossing(
+    unique_benef_type1 = unique(plottingData$benef_type1)
+  ) %>%
+  rowwise() %>%
+  mutate(
+    dta = list(plottingData %>%
+      filter(
+        sex == unique_sex,
+        benef_type1 == unique_benef_type1
+      ))
+  )
+
+
+# Function Plot KAMILA results
+function_kamplot <- function(dta) {
+  KAMRESDATA <- dta %>%
+    # filter(
+    #   sex == 0,
+    #   benef_type1 == 1
+    # ) %>%
+    arrange(nat, resid) %>%
+    mutate(
+      natres = case_when(
+        nat == 1 &
+          resid == 1 ~ "Foreign living in a foreign country",
+        nat == 1 &
+          resid == 0 ~ "Foreign living in Switzerland",
+        nat == 0 &
+          resid == 1 ~ "Swiss living in a foreign country",
+        nat == 0 &
+          resid == 0 ~ "Swiss living in Switzerland"
+      ),
+      benef_type1 = dplyr::recode(benef_type1,
+        "1" = "Old-age insurance",
+        "0" = "Survivor insurance"
+      ),
+      sex = dplyr::recode(sex,
+        "0" = "Male",
+        "1" = "Female"
+      ),
+      marital_stat = dplyr::recode(marital_stat,
+        "1" = "Divorced",
+        "2" = "Single",
+        "3" = "Married",
+        "4" = "Widowed"
+      ),
+      nat = dplyr::recode(nat,
+        "1" = "Foreign",
+        "0" = "Swiss"
+      ),
+      resid = dplyr::recode(resid,
+        "1" = "Foreign Country",
+        "0" = "Switzerland"
+      )
+    )
+
+  #--- Log Monthly Rent Plot ---------------------------------------------------
+
+  # Log Monthly Rent pro Age
+  kamPlot1 <- KAMRESDATA %>%
+    ggplot(
+      aes(
+        x = age,
+        y = log(monthly_rent),
+        # shape = groups2,
+        color = KamilaCluster
+      )
+    ) +
+    facet_wrap(marital_stat ~ natres) +
+    theme_light() +
+    labs(
+      title = "Distribution of Monthly Rent Natural Logarithm",
+      subtitle = paste(unique(KAMRESDATA$sex),
+        unique(KAMRESDATA$benef_type1),
+        "beneficiaries",
+        sep = " "
+      ),
+      x = "Age",
+      y = "Monthly Rent Natural Logarithm",
+      caption = paste(
+        Sys.Date(),
+        "Llc",
+        sep = ", "
+      )
+    ) +
+    theme(
+      strip.text.x = element_text(
+        size = 11, color = "black", face = "bold"
+      ),
+      strip.text.y = element_text(
+        size = 11, color = "black", face = "bold"
+      ),
+      legend.position = "bottom",
+      axis.text = element_text(size = 12),
+      axis.title = element_text(size = 12)
+    ) +
+    scale_color_discrete("Cluster") +
+    scale_x_continuous(breaks = seq(0, 100, 10))
+
+  p1 <- plotOpts(kamPlot1) +
+    ggsave(file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "mr_age.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
+    )
+
+  # Log Monthly Rent pro Scale
+  kamPlot2 <- KAMRESDATA %>%
+    ggplot(
+      aes(
+        x = scale,
+        y = log(monthly_rent),
+        # shape = groups2,
+        color = KamilaCluster
+      )
+    ) +
+    facet_wrap(marital_stat ~ natres) +
+    theme_light() +
+    labs(
+      title = "Distribution of Monthly Rent Natural Logarithm",
+      subtitle = paste(unique(KAMRESDATA$sex),
+        unique(KAMRESDATA$benef_type1),
+        "beneficiaries",
+        sep = " "
+      ),
+      x = "Scale",
+      y = "Monthly Rent Natural Logarithm",
+      caption = paste(
+        Sys.Date(),
+        "Llc",
+        sep = ", "
+      )
+    ) +
+    theme(
+      strip.text.x = element_text(
+        size = 11, color = "black", face = "bold"
+      ),
+      strip.text.y = element_text(
+        size = 11, color = "black", face = "bold"
+      ),
+      legend.position = "bottom",
+      axis.text = element_text(size = 12),
+      axis.title = element_text(size = 12)
+    ) +
+    scale_color_discrete("Cluster") +
+    scale_x_continuous(breaks = seq(0, 44, 4))
+
+  p2 <- plotOpts(kamPlot2) +
+    ggsave(file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "mr_scale.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
+    )
+
+  #--- AADR Plot ---------------------------------------------------------------
+  # Log AADR pro Age
+  kamPlot3 <- KAMRESDATA %>%
+    ggplot(
+      aes(
+        x = age,
+        y = log(aadr),
+        # shape = groups2,
+        color = KamilaCluster
+      )
+    ) +
+    facet_wrap(marital_stat ~ natres) +
+    theme_light() +
+    labs(
+      title = "Distribution of Monthly Rent Natural Logarithm",
+      subtitle = paste(unique(KAMRESDATA$sex),
+        unique(KAMRESDATA$benef_type1),
+        "beneficiaries",
+        sep = " "
+      ),
+      x = "Age",
+      y = "Monthly Rent Natural Logarithm",
+      caption = paste(
+        Sys.Date(),
+        "Llc",
+        sep = ", "
+      )
+    ) +
+    theme(
+      strip.text.x = element_text(
+        size = 11, color = "black", face = "bold"
+      ),
+      strip.text.y = element_text(
+        size = 11, color = "black", face = "bold"
+      ),
+      legend.position = "bottom",
+      axis.text = element_text(size = 12),
+      axis.title = element_text(size = 12)
+    ) +
+    scale_color_discrete("Cluster") +
+    scale_x_continuous(breaks = seq(0, 100, 10))
+
+  p3 <- plotOpts(kamPlot3) +
+    ggsave(file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "aadr_age.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
+    )
+
+  # Log AADR pro Scale
+  kamPlot4 <- KAMRESDATA %>%
+    ggplot(
+      aes(
+        x = scale,
+        y = log(monthly_rent),
+        # shape = groups2,
+        color = KamilaCluster
+      )
+    ) +
+    facet_wrap(marital_stat ~ natres) +
+    theme_light() +
+    labs(
+      title = "Distribution of Monthly Rent Natural Logarithm",
+      subtitle = paste(unique(KAMRESDATA$sex),
+        unique(KAMRESDATA$benef_type1),
+        "beneficiaries",
+        sep = " "
+      ),
+      x = "Scale",
+      y = "Monthly Rent Natural Logarithm",
+      caption = paste(
+        Sys.Date(),
+        "Llc",
+        sep = ", "
+      )
+    ) +
+    theme(
+      strip.text.x = element_text(
+        size = 11, color = "black", face = "bold"
+      ),
+      strip.text.y = element_text(
+        size = 11, color = "black", face = "bold"
+      ),
+      legend.position = "bottom",
+      axis.text = element_text(size = 12),
+      axis.title = element_text(size = 12)
+    ) +
+    scale_color_discrete("Cluster") +
+    scale_x_continuous(breaks = seq(0, 44, 4))
+
+  p4 <- plotOpts(kamPlot4) +
+    ggsave(file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "aadr_scale.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
+    )
+}
+
+# Plots
+PLOTS_TIB_KAMRES <- CROSS_TIB_KAMRES %>%
+  mutate(data = list(dta)) %>%
+  dplyr::select(-dta) %>%
+  mutate(plots = map(list(data), function_kamplot)) %>%
+  dplyr::select(-data)
+
 #--- Table Summary Statistics --------------------------------------------------
 RR_OASI <- mod_prepa_rr(all_csv_inputs$IND_YEARLY_RR)$RR_OASI %>%
   dplyr::select(-age_retire)

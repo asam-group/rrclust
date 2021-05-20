@@ -1,4 +1,3 @@
-
 # Libraries
 library(ggplot2)
 library(rrclust)
@@ -9,8 +8,6 @@ library(vtable)
 library(plotly)
 library(RColorBrewer)
 library(htmlwidgets)
-
-
 
 # Output directory
 path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"

@@ -194,7 +194,7 @@ function_kamplot <- function(dta) {
       axis.title = element_text(size = 12)
     ) +
     scale_color_discrete("Cluster") +
-    scale_x_continuous(breaks = seq(0, 44, 4))
+    scale_x_continuous(breaks = seq(min(age_retire), max(age_retire), 1))
 
   p5 <- plotOpts(kamPlot5) +
     ggsave(file.path(
@@ -361,7 +361,7 @@ function_kamplot <- function(dta) {
       axis.title = element_text(size = 12)
     ) +
     scale_color_discrete("Cluster") +
-    scale_x_continuous(breaks = seq(0, 44, 4))
+    scale_x_continuous(breaks = seq(min(age_retire), max(age_retire), 1))
 
   p6 <- plotOpts(kamPlot6) +
     ggsave(file.path(

@@ -26,6 +26,12 @@ all_csv_inputs <- rrclust::tidylist_read(path_input)
 # all_csv$PLOTDATKAM
 numb_clust <- max(as.double(all_csv$PLOTDATKAM$cluster_id))
 
+N_IND <- distinct(all_csv$PLOTDATKAM %>%
+  group_by(cluster_id) %>%
+  mutate(n_ind = n()) %>%
+  dplyr::select(cluster_id, n_ind)) %>%
+  arrange(cluster_id)
+
 # Graphs directory
 path_allgraph <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/graphs"
 path_graphs <- file.path(path_allgraph, paste(numb_clust, "clusters", sep = "_"))
@@ -47,30 +53,198 @@ if (!file.exists(output_dir)) {
   file.copy(path_output, output_dir, recursive = TRUE)
 }
 
-
-#--- Scatterplot pro Cluster ---------------------------------------------------
+# Results files
 load(file = file.path(path_output, "kmres.RData"))
 load(file = file.path(path_output, "FULL_CONT_DF.RData"))
 load(file = file.path(path_output, "FULL_CATEG_DF.RData"))
 load(file = file.path(path_output, "CONTVARS.RData"))
 load(file = file.path(path_output, "CATFACTOR.RData"))
 
-# FULL_CONT_DF$ln_aadr <- log(FULL_CONT_DF$aadr)
-# conVars <- data.frame(scale(FULL_CONT_DF))
-conVars <- data.frame(FULL_CONT_DF)
-catVarsFac <- lapply(
-  CATFACTOR %>%
-    mutate(marital_stat = FULL_CATEG_DF$marital_stat),
-  factor
-)
-# catVarsDum <- dummyCodeFactorDf(catVarsFac)
-kamRes <- kmres
-KamilaCluster <- factor(kmres$finalMemb)
-plottingData <- cbind(
-  conVars,
-  catVarsFac,
-  KamilaCluster = factor(kamRes$finalMemb)
-)
+
+#--- Histograms pro Cluster ----------------------------------------------------
+
+ggplot(
+  all_csv$PLOTDATKAM %>%
+    group_by(cluster_id) %>%
+    mutate(n_ind = n()),
+  aes(log(aadr), fill = as.factor(cluster_id))
+) +
+  facet_wrap(~ as.factor(cluster_id),
+    scales = "free_x",
+    ncol = 2
+  ) +
+  geom_histogram(binwidth = function(x) 2 * IQR(x) / (length(x)^(1 / 3))) +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 12),
+    strip.text.x = element_text(
+      size = 11, color = "black", face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 11, color = "black", face = "bold"
+    )
+  ) +
+  labs(
+    title = "Histograms of the natural logarithm of the AADR",
+    subtitle = paste0(
+      "Number of obs. per cluster:",
+      " C", N_IND$cluster_id[1], ": ", N_IND$n_ind[1],
+      ", C", N_IND$cluster_id[2], ": ", N_IND$n_ind[2],
+      ", C", N_IND$cluster_id[3], ": ", N_IND$n_ind[3],
+      ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
+      ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
+    ),
+    x = "Natural logarithm of AADR",
+    y = "log10(Frequency)",
+    caption = paste(
+      Sys.Date(),
+      "Llc",
+      sep = ", "
+    )
+  ) +
+  scale_y_log10() +
+  scale_fill_manual("Cluster",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      numb_clust,
+      "clusters_hist_log10aadr.png",
+      sep = "_"
+    )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
+
+
+ggplot(
+  all_csv$PLOTDATKAM %>%
+    group_by(cluster_id) %>%
+    mutate(n_ind = n()),
+  aes(log(aadr), fill = as.factor(cluster_id))
+) +
+  facet_wrap(~ as.factor(cluster_id),
+    scales = "free_x",
+    ncol = 2
+  ) +
+  geom_histogram(binwidth = function(x) 2 * IQR(x) / (length(x)^(1 / 3))) +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 12),
+    strip.text.x = element_text(
+      size = 11, color = "black", face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 11, color = "black", face = "bold"
+    )
+  ) +
+  labs(
+    title = "Histograms of the natural logarithm of the AADR",
+    subtitle = paste0(
+      "Number of obs. per cluster:",
+      " C", N_IND$cluster_id[1], ": ", N_IND$n_ind[1],
+      ", C", N_IND$cluster_id[2], ": ", N_IND$n_ind[2],
+      ", C", N_IND$cluster_id[3], ": ", N_IND$n_ind[3],
+      ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
+      ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
+    ),
+    x = "Natural logarithm of AADR",
+    y = "Frequency",
+    caption = paste(
+      Sys.Date(),
+      "Llc",
+      sep = ", "
+    )
+  ) +
+  scale_fill_manual("Cluster",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      numb_clust,
+      "clusters_hist_aadr.png",
+      sep = "_"
+    )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
+ggplot(
+  all_csv$PLOTDATKAM %>%
+    group_by(cluster_id) %>%
+    mutate(n_ind = n()),
+  aes(monthly_rent, fill = as.factor(cluster_id))
+) +
+  facet_wrap(~ as.factor(cluster_id),
+    scales = "free_x",
+    ncol = 2
+  ) +
+  geom_histogram(binwidth = function(x) 2 * IQR(x) / (length(x)^(1 / 3))) +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 12),
+    strip.text.x = element_text(
+      size = 11, color = "black", face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 11, color = "black", face = "bold"
+    )
+  ) +
+  labs(
+    title = "Histograms of the monthly rent (maximal rent = 2370 CHF except for the married couples)",
+    subtitle = paste0(
+      "Number of obs. per cluster:",
+      " C", N_IND$cluster_id[1], ": ", N_IND$n_ind[1],
+      ", C", N_IND$cluster_id[2], ": ", N_IND$n_ind[2],
+      ", C", N_IND$cluster_id[3], ": ", N_IND$n_ind[3],
+      ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
+      ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
+    ),
+    x = "Natural logarithm of the monthly rent",
+    y = "log10(Frequency)",
+    caption = paste(
+      Sys.Date(),
+      "Llc",
+      sep = ", "
+    )
+  ) +
+  scale_x_continuous( # <- set the limits for your y-axis
+    limits = c(0, 3800)
+  ) +
+  scale_y_log10() +
+  scale_fill_manual("Cluster",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      numb_clust,
+      "clusters_hist_mr.png",
+      sep = "_"
+    )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
+#--- Scatterplot pro Cluster ---------------------------------------------------
+
+pattern_names <- paste(colnames(FULL_CONT_DF), collapse = "|")
+
+plottingData <- all_csv$PLOTDATKAM %>%
+  mutate_if(!grepl(pattern_names, colnames(.)), as.factor) %>%
+  mutate(KamilaCluster = cluster_id)
 
 plotOpts <- function(pl) {
   (pl + geom_point() +
@@ -564,3 +738,22 @@ descr_stat_fun(
 #   dplyr::select(-dta) %>%
 #   mutate(plots = map(list(data), function_kamplotly)) %>%
 #   dplyr::select(-data)
+
+
+
+# # FULL_CONT_DF$ln_aadr <- log(FULL_CONT_DF$aadr)
+# # conVars <- data.frame(scale(FULL_CONT_DF))
+# conVars <- data.frame(FULL_CONT_DF)
+# catVarsFac <- lapply(
+#   CATFACTOR %>%
+#     mutate(marital_stat = FULL_CATEG_DF$marital_stat),
+#   factor
+# )
+# # catVarsDum <- dummyCodeFactorDf(catVarsFac)
+# kamRes <- kmres
+# KamilaCluster <- factor(kmres$finalMemb)
+# plottingData <- cbind(
+#   conVars,
+#   catVarsFac,
+#   KamilaCluster = factor(kamRes$finalMemb)
+# )

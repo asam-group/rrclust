@@ -11,7 +11,7 @@ library(htmlwidgets)
 
 # Output directory
 path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
-output_name <- "cl_kamila_20210602143821_layal_kamila"
+output_name <- "cl_kamila_20210602151449_layal_kamila"
 path_output <- file.path(
   path_out,
   output_name
@@ -32,12 +32,28 @@ N_IND <- distinct(all_csv$PLOTDATKAM %>%
   dplyr::select(cluster_id, n_ind)) %>%
   arrange(cluster_id)
 
+# Rente minimale
+rmin <- min((all_csv$PLOTDATKAM %>%
+  filter(
+    scale == 44,
+    age_retire == age,
+    age == 64 + 1 * (sex == 0)
+  ) %>%
+  dplyr::select(monthly_rent))$monthly_rent)
+
+# Rente maximale
+rmax <- 2 * rmin
+
+# Plafond max pour couples mariés
+plaf <- 1.5 * rmax
+
 # Graphs directory
 path_allgraph <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/graphs"
-path_graphs <- file.path(path_allgraph, paste(gsub("-","_",Sys.Date()),
-                                              numb_clust,
-                                              "clusters",
-                                              sep = "_"))
+path_graphs <- file.path(path_allgraph, paste(gsub("-", "_", Sys.Date()),
+  numb_clust,
+  "clusters",
+  sep = "_"
+))
 if (file.exists(path_graphs)) stop(path_graphs, " already exists")
 if (!file.exists(path_graphs)) {
   fs::dir_create(path_graphs, recurse = TRUE)
@@ -53,19 +69,12 @@ output_dir <- file.path(path_graphs, "r_output")
 if (file.exists(output_dir)) stop(output_dir, " already exists")
 if (!file.exists(output_dir)) {
   fs::dir_create(output_dir, recurse = TRUE)
-  file.copy(path_output, output_dir, recurse = TRUE)
+  file.copy(path_output, output_dir, recursive = TRUE)
 }
-
-# # Results files
-# load(file = file.path(path_output, "kmres.RData"))
-# load(file = file.path(path_output, "FULL_CONT_DF.RData"))
-# load(file = file.path(path_output, "FULL_CATEG_DF.RData"))
-# load(file = file.path(path_output, "CONTVARS.RData"))
-# load(file = file.path(path_output, "CATFACTOR.RData"))
 
 
 #--- Histograms pro Cluster ----------------------------------------------------
-
+# AADR
 ggplot(
   all_csv$PLOTDATKAM %>%
     group_by(cluster_id) %>%
@@ -124,7 +133,7 @@ ggplot(
   width = 11.69
   )
 
-
+# AADR
 ggplot(
   all_csv$PLOTDATKAM %>%
     group_by(cluster_id) %>%
@@ -181,6 +190,8 @@ ggplot(
   height = 8.27,
   width = 11.69
   )
+
+# Monthly rent
 ggplot(
   all_csv$PLOTDATKAM %>%
     group_by(cluster_id) %>%
@@ -205,7 +216,12 @@ ggplot(
     )
   ) +
   labs(
-    title = "Histograms of the monthly rent (maximal rent = 2370 CHF except for the married couples)",
+    title = paste0(
+      "Histograms of the monthly rent (min. = ",
+      rmin, " CHF,",
+      " max. = ", rmax, " CHF,",
+      " max. for couples = ", plaf, " CHF)"
+    ),
     subtitle = paste0(
       "Number of obs. per cluster:",
       " C", N_IND$cluster_id[1], ": ", N_IND$n_ind[1],
@@ -223,7 +239,7 @@ ggplot(
     )
   ) +
   scale_x_continuous( # <- set the limits for your y-axis
-    limits = c(0, 3800)
+    limits = c(0, plaf + 100)
   ) +
   scale_y_log10() +
   scale_fill_manual("Cluster",
@@ -243,7 +259,7 @@ ggplot(
   )
 #--- Scatterplot pro Cluster ---------------------------------------------------
 
-pattern_names <- paste(colnames(FULL_CONT_DF), collapse = "|")
+pattern_names <- paste(colnames(all_csv$FULL_CONT_DF), collapse = "|")
 
 plottingData <- all_csv$PLOTDATKAM %>%
   mutate_if(!grepl(pattern_names, colnames(.)), as.factor) %>%

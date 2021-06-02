@@ -11,7 +11,7 @@ library(htmlwidgets)
 
 # Output directory
 path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
-output_name <- "cl_kamila_20210318093616_layal_kamila"
+output_name <- "cl_kamila_20210602143821_layal_kamila"
 path_output <- file.path(
   path_out,
   output_name
@@ -34,31 +34,34 @@ N_IND <- distinct(all_csv$PLOTDATKAM %>%
 
 # Graphs directory
 path_allgraph <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/graphs"
-path_graphs <- file.path(path_allgraph, paste(numb_clust, "clusters", sep = "_"))
+path_graphs <- file.path(path_allgraph, paste(gsub("-","_",Sys.Date()),
+                                              numb_clust,
+                                              "clusters",
+                                              sep = "_"))
 if (file.exists(path_graphs)) stop(path_graphs, " already exists")
 if (!file.exists(path_graphs)) {
-  fs::dir_create(path_graphs, recursive = TRUE)
+  fs::dir_create(path_graphs, recurse = TRUE)
 }
 # Descriptive Stats directory
 descrstat_dpath <- file.path(path_graphs, "descrstat")
 if (file.exists(descrstat_dpath)) stop(descrstat_dpath, " already exists")
 if (!file.exists(descrstat_dpath)) {
-  fs::dir_create(descrstat_dpath, recursive = TRUE)
+  fs::dir_create(descrstat_dpath, recurse = TRUE)
 }
 # Output copy directory
 output_dir <- file.path(path_graphs, "r_output")
 if (file.exists(output_dir)) stop(output_dir, " already exists")
 if (!file.exists(output_dir)) {
-  fs::dir_create(output_dir, recursive = TRUE)
-  file.copy(path_output, output_dir, recursive = TRUE)
+  fs::dir_create(output_dir, recurse = TRUE)
+  file.copy(path_output, output_dir, recurse = TRUE)
 }
 
-# Results files
-load(file = file.path(path_output, "kmres.RData"))
-load(file = file.path(path_output, "FULL_CONT_DF.RData"))
-load(file = file.path(path_output, "FULL_CATEG_DF.RData"))
-load(file = file.path(path_output, "CONTVARS.RData"))
-load(file = file.path(path_output, "CATFACTOR.RData"))
+# # Results files
+# load(file = file.path(path_output, "kmres.RData"))
+# load(file = file.path(path_output, "FULL_CONT_DF.RData"))
+# load(file = file.path(path_output, "FULL_CATEG_DF.RData"))
+# load(file = file.path(path_output, "CONTVARS.RData"))
+# load(file = file.path(path_output, "CATFACTOR.RData"))
 
 
 #--- Histograms pro Cluster ----------------------------------------------------

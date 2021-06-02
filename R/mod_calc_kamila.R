@@ -76,6 +76,9 @@ mod_calc_kamila <- function(PARAM_KAMILA,
 
   mod_return(
     PLOTDATKAM,
+    CONTVARS,
+    FULL_CONT_DF,
+    FULL_CATEG_DF,
     KM_RES_FINAL
   )
 }

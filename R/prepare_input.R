@@ -10,7 +10,7 @@
 #'
 #' @export
 
-# Last change: 2021-03-03 / Llc
+# Last change: 2021-06-02 / Llc
 
 
 prepare_input <- function(path,
@@ -23,11 +23,10 @@ prepare_input <- function(path,
 
   # Paths ----------------------------------------------------------------------
 
-  inp_path_all <- file.path(path_out, "all")
-  inp_path_kamila <- file.path(path_out, "kamila")
+  inp_path_csv <- file.path(path_out, "csv")
 
   ensure_path <- function(path) {
-    # do not allow overwriting if overwrite == FALSE
+    # do not csvow overwriting if overwrite == FALSE
     if (!overwrite && file.exists(path)) stop(path, "already exists")
     if (!file.exists(path)) {
       dir.create(path, recursive = TRUE)
@@ -35,8 +34,7 @@ prepare_input <- function(path,
     file.remove(list.files(path, full.names = TRUE))
   }
 
-  ensure_path(inp_path_all)
-  ensure_path(inp_path_kamila)
+  ensure_path(inp_path_csv)
 
   # Input Data -----------------------------------------------------------------
 
@@ -50,13 +48,8 @@ prepare_input <- function(path,
   ## Collect and store inputs --------------------------------------------------
 
   # Kamila
-  all_inputs <- tidylist(
+  csv_inputs <- tidylist(
     IND_YEARLY_RR
   )
-  tidylist_write(all_inputs, inp_path_all)
-
-  # Kamila
-  kamila_inputs <- tidylist()
-
-  tidylist_write(kamila_inputs, inp_path_kamila)
+  tidylist_write(csv_inputs, inp_path_csv)
 }

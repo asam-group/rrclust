@@ -14,11 +14,16 @@
 #' variables.
 #' @return KM_RES_FINAL database containing the resulting parameters of the
 #' clustering.
+#' @return CONTVARS database containing the continuous standardised variables.
+#' @return FULL_CONT_DF database containing the continuous variables used for the
+#' estimation.
+#' @return FULL_CATEG_DF database containing the categorical variables used for
+#' the estimation.
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 #' @import kamila
 
-# Last change: 2021-03-04 / Llc
+# Last change: 2021-06-02 / Llc
 
 mod_calc_kamila <- function(PARAM_KAMILA,
                             CONT_DF,

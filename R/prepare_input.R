@@ -24,6 +24,7 @@ prepare_input <- function(path,
   # Paths ----------------------------------------------------------------------
 
   inp_path_all <- file.path(path_out, "all")
+  inp_path_kamila <- file.path(path_out, "kamila")
 
   ensure_path <- function(path) {
     # do not allow overwriting if overwrite == FALSE
@@ -35,6 +36,7 @@ prepare_input <- function(path,
   }
 
   ensure_path(inp_path_all)
+  ensure_path(inp_path_kamila)
 
   # Input Data -----------------------------------------------------------------
 
@@ -52,4 +54,9 @@ prepare_input <- function(path,
     IND_YEARLY_RR
   )
   tidylist_write(all_inputs, inp_path_all)
+
+  # Kamila
+  kamila_inputs <- tidylist()
+
+  tidylist_write(kamila_inputs, inp_path_kamila)
 }

@@ -23,10 +23,10 @@ prepare_input <- function(path,
 
   # Paths ----------------------------------------------------------------------
 
-  inp_path_csv <- file.path(path_out, "csv")
+  inp_path_all <- file.path(path_out, "all")
 
   ensure_path <- function(path) {
-    # do not csvow overwriting if overwrite == FALSE
+    # do not allow overwriting if overwrite == FALSE
     if (!overwrite && file.exists(path)) stop(path, "already exists")
     if (!file.exists(path)) {
       dir.create(path, recursive = TRUE)
@@ -34,7 +34,7 @@ prepare_input <- function(path,
     file.remove(list.files(path, full.names = TRUE))
   }
 
-  ensure_path(inp_path_csv)
+  ensure_path(inp_path_all)
 
   # Input Data -----------------------------------------------------------------
 
@@ -48,8 +48,8 @@ prepare_input <- function(path,
   ## Collect and store inputs --------------------------------------------------
 
   # Kamila
-  csv_inputs <- tidylist(
+  all_inputs <- tidylist(
     IND_YEARLY_RR
   )
-  tidylist_write(csv_inputs, inp_path_csv)
+  tidylist_write(all_inputs, inp_path_all)
 }

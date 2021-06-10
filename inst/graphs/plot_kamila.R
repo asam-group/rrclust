@@ -8,6 +8,9 @@ library(vtable)
 library(plotly)
 library(RColorBrewer)
 library(htmlwidgets)
+library(lattice)
+library(qqplotr)
+library(moments)
 
 # Output directory
 path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
@@ -72,7 +75,27 @@ if (!file.exists(output_dir)) {
   file.copy(path_output, output_dir, recursive = TRUE)
 }
 
+#Skewness and kurtosis
+SKEW_KURT <-all_csv$PLOTDATKAM %>%
+  group_by(cluster_id) %>%
+  summarise(skew_mr = skewness(monthly_rent),
+            kurtosis_mr= kurtosis(monthly_rent),
+            skew_aadr = skewness(aadr),
+            kurtosis_aadr= kurtosis(aadr))
 
+
+print(
+  xtable(format(ftab_categ),
+         label = "Clusters Contingency Table",
+         caption = "Clusters Contingency Table"
+  ),
+  tabular.environment = "longtable",
+  caption.placement = "top",
+  table.placement = "",
+  floating = FALSE,
+  size = "\\fontsize{8pt}{9pt}\\selectfont",
+  file = file.path(path_graphs, "ftab_categ.tex")
+)
 #--- Histograms pro Cluster ----------------------------------------------------
 # AADR
 ggplot(
@@ -191,7 +214,128 @@ ggplot(
   width = 11.69
   )
 
-# Monthly rent
+# Density plot log(aadr)
+ggplot(
+  all_csv$PLOTDATKAM %>%
+    group_by(cluster_id) %>%
+    mutate(n_ind = n()),
+  aes(log(aadr), fill = as.factor(cluster_id))
+) +
+  theme_light() +
+  geom_density(alpha = 0.4) +
+  theme_light() +
+  facet_grid(~ as.factor(cluster_id)) +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 12),
+    strip.text.x = element_text(
+      size = 11, color = "black", face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 11, color = "black", face = "bold"
+    )
+  ) +
+  labs(
+    title = "Density of the natural logarithm of the AADR",
+    subtitle = paste0(
+      "Number of obs. per cluster:",
+      " C", N_IND$cluster_id[1], ": ", N_IND$n_ind[1],
+      ", C", N_IND$cluster_id[2], ": ", N_IND$n_ind[2],
+      ", C", N_IND$cluster_id[3], ": ", N_IND$n_ind[3],
+      ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
+      ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
+    ),
+    x = "Natural logarithm of AADR",
+    y = "Density",
+    caption = paste(
+      Sys.Date(),
+      "Llc",
+      sep = ", "
+    )
+  ) +
+  # scale_x_continuous( # <- set the limits for your y-axis
+  #   limits = c(0, plaf + 100)
+  # ) +
+  scale_fill_manual("Cluster Density",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      numb_clust,
+      "clusters_aadr_dens.png",
+      sep = "_"
+    )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
+
+# ECDF plot aadr
+ggplot(
+  all_csv$PLOTDATKAM %>%
+    group_by(cluster_id) %>%
+    mutate(
+      n_ind = n(),
+      grp.mean = mean(aadr)
+    ),
+  aes(log(aadr))
+) +
+  stat_ecdf(aes(
+    group = as.factor(cluster_id),
+    colour = as.factor(cluster_id)
+  ),
+  size = 1
+  ) +
+  # facet_wrap(~ as.factor(cluster_id)) +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 12),
+    strip.text.x = element_text(
+      size = 11, color = "black", face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 11, color = "black", face = "bold"
+    )
+  ) +
+  labs(
+    title = "ECDF of the AADR",
+    subtitle = paste0(
+      "Number of obs. per cluster:",
+      " C", N_IND$cluster_id[1], ": ", N_IND$n_ind[1],
+      ", C", N_IND$cluster_id[2], ": ", N_IND$n_ind[2],
+      ", C", N_IND$cluster_id[3], ": ", N_IND$n_ind[3],
+      ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
+      ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
+    ),
+    x = "Natural logarithm of the AADR",
+    y = "Empirical Cumulative Density Function",
+    caption = paste(
+      Sys.Date(),
+      "Llc",
+      sep = ", "
+    )
+  ) +
+  scale_color_manual("Cluster",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      numb_clust,
+      "clusters_aadr_ecdf.png",
+      sep = "_"
+    )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
+#---  Monthly rent -------------------------------------------------------------
 ggplot(
   all_csv$PLOTDATKAM %>%
     group_by(cluster_id) %>%
@@ -230,7 +374,7 @@ ggplot(
       ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
       ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
     ),
-    x = "Natural logarithm of the monthly rent",
+    x = "Monthly rent (CHF)",
     y = "log10(Frequency)",
     caption = paste(
       Sys.Date(),
@@ -257,6 +401,219 @@ ggplot(
   height = 8.27,
   width = 11.69
   )
+
+# Density plot mr
+ggplot(
+  all_csv$PLOTDATKAM %>%
+    group_by(cluster_id) %>%
+    mutate(
+      n_ind = n(),
+      grp.mean = mean(monthly_rent)
+    ),
+  aes(monthly_rent, fill = as.factor(cluster_id))
+) +
+  geom_density(alpha = 0.4) +
+  geom_vline(aes(xintercept = grp.mean, color = as.factor(cluster_id)),
+    linetype = "dashed"
+  ) +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 12),
+    strip.text.x = element_text(
+      size = 11, color = "black", face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 11, color = "black", face = "bold"
+    )
+  ) +
+  labs(
+    title = paste0(
+      "Density of the monthly rent (min. = ",
+      rmin, " CHF,",
+      " max. = ", rmax, " CHF,",
+      " max. for couples = ", plaf, " CHF)"
+    ),
+    subtitle = paste0(
+      "Number of obs. per cluster:",
+      " C", N_IND$cluster_id[1], ": ", N_IND$n_ind[1],
+      ", C", N_IND$cluster_id[2], ": ", N_IND$n_ind[2],
+      ", C", N_IND$cluster_id[3], ": ", N_IND$n_ind[3],
+      ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
+      ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
+    ),
+    x = "Monthly rent (CHF)",
+    y = "Density",
+    caption = paste(
+      Sys.Date(),
+      "Llc",
+      sep = ", "
+    )
+  ) +
+  scale_x_continuous( # <- set the limits for your y-axis
+    limits = c(0, plaf + 100)
+  ) +
+  scale_color_manual("Cluster Mean",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  scale_fill_manual("Cluster Density",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      numb_clust,
+      "clusters_mr_dens.png",
+      sep = "_"
+    )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
+
+# ECDF plot mr
+ggplot(
+  all_csv$PLOTDATKAM %>%
+    group_by(cluster_id) %>%
+    mutate(
+      n_ind = n(),
+      grp.mean = mean(monthly_rent)
+    ),
+  aes(monthly_rent)
+) +
+  stat_ecdf(aes(
+    group = as.factor(cluster_id),
+    colour = as.factor(cluster_id)
+  ),
+  size = 1
+  ) +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 12),
+    strip.text.x = element_text(
+      size = 11, color = "black", face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 11, color = "black", face = "bold"
+    )
+  ) +
+  labs(
+    title = paste0(
+      "ECDF of the monthly rent (min. = ",
+      rmin, " CHF,",
+      " max. = ", rmax, " CHF,",
+      " max. for couples = ", plaf, " CHF)"
+    ),
+    subtitle = paste0(
+      "Number of obs. per cluster:",
+      " C", N_IND$cluster_id[1], ": ", N_IND$n_ind[1],
+      ", C", N_IND$cluster_id[2], ": ", N_IND$n_ind[2],
+      ", C", N_IND$cluster_id[3], ": ", N_IND$n_ind[3],
+      ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
+      ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
+    ),
+    x = "Monthly rent (CHF)",
+    y = "Empirical Cumulative Density Function",
+    caption = paste(
+      Sys.Date(),
+      "Llc",
+      sep = ", "
+    )
+  ) +
+  scale_x_continuous( # <- set the limits for your y-axis
+    limits = c(0, plaf + 100)
+  ) +
+  scale_color_manual("Cluster",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      numb_clust,
+      "clusters_mr_ecdf.png",
+      sep = "_"
+    )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
+
+# Normal Q-Q plot of monthly rent
+df <- all_csv$PLOTDATKAM %>%
+  group_by(cluster_id) %>%
+  mutate(n_ind = n())
+
+ggplot(
+  data = df,
+  mapping = aes(
+    sample = monthly_rent,
+    color = as.factor(cluster_id),
+    fill = as.factor(cluster_id)
+  )
+) +
+  stat_qq_band(alpha = 0.5) +
+  stat_qq_point() +
+  stat_qq_line() +
+  facet_wrap(~ as.factor(cluster_id)) +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 12),
+    strip.text.x = element_text(
+      size = 11, color = "black", face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 11, color = "black", face = "bold"
+    )
+  ) +
+  labs(
+    title = paste0(
+      "ECDF of the monthly rent (min. = ",
+      rmin, " CHF,",
+      " max. = ", rmax, " CHF,",
+      " max. for couples = ", plaf, " CHF)"
+    ),
+    subtitle = paste0(
+      "Number of obs. per cluster:",
+      " C", N_IND$cluster_id[1], ": ", N_IND$n_ind[1],
+      ", C", N_IND$cluster_id[2], ": ", N_IND$n_ind[2],
+      ", C", N_IND$cluster_id[3], ": ", N_IND$n_ind[3],
+      ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
+      ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
+    ),
+    x = "Theoretical Quantiles",
+    y = "Sample Quantiles",
+    caption = paste(
+      Sys.Date(),
+      "Llc",
+      sep = ", "
+    )
+  ) +
+  scale_color_manual("Cluster",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      numb_clust,
+      "clusters_mr_qqplot.png",
+      sep = "_"
+    )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
+
+
+
 #--- Scatterplot pro Cluster ---------------------------------------------------
 
 pattern_names <- paste(colnames(all_csv$FULL_CONT_DF), collapse = "|")

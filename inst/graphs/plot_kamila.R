@@ -75,26 +75,43 @@ if (!file.exists(output_dir)) {
   file.copy(path_output, output_dir, recursive = TRUE)
 }
 
-#Skewness and kurtosis
-SKEW_KURT <-all_csv$PLOTDATKAM %>%
+#--- Skewness and kurtosis -----------------------------------------------------
+SKEW_KURT <- all_csv$PLOTDATKAM %>%
   group_by(cluster_id) %>%
-  summarise(skew_mr = skewness(monthly_rent),
-            kurtosis_mr= kurtosis(monthly_rent),
-            skew_aadr = skewness(aadr),
-            kurtosis_aadr= kurtosis(aadr))
+  summarise(
+    skew_mr = skewness(monthly_rent),
+    kurtosis_mr = kurtosis(monthly_rent),
+    skew_aadr = skewness(aadr),
+    kurtosis_aadr = kurtosis(aadr)
+  ) %>%
+  gather(key = moment, value = value, - cluster_id) %>%
+  mutate(moment_type = gsub("_.*(.*)", "", moment),
+         var = gsub("^.+?_", "", moment),
+         Moment = recode(moment_type,
+                              "skew" = "Skewness",
+                              "kurtosis" = "Kurtosis"),
+         var = recode(var,
+                      "mr" = "Monthly Rent",
+                      "aadr" = "AADR"),
+         Cluster = cluster_id) %>%
+  dplyr::select(-moment, -moment_type, -cluster_id) %>%
+  spread(key = var, value = value) %>%
+  arrange(desc(Moment)) %>%
+  mutate_if(sapply(., is.character), as.factor)
+
 
 
 print(
-  xtable(format(ftab_categ),
-         label = "Clusters Contingency Table",
-         caption = "Clusters Contingency Table"
+  xtable(SKEW_KURT,
+    label = "Table of Moments pro Cluster",
+    caption = "Table of Moments pro Cluster"
   ),
-  tabular.environment = "longtable",
+  # tabular.environment = "longtable",
   caption.placement = "top",
   table.placement = "",
   floating = FALSE,
   size = "\\fontsize{8pt}{9pt}\\selectfont",
-  file = file.path(path_graphs, "ftab_categ.tex")
+  file = file.path(path_graphs, "moments_table.tex")
 )
 #--- Histograms pro Cluster ----------------------------------------------------
 # AADR
@@ -329,6 +346,76 @@ ggplot(
     paste(
       numb_clust,
       "clusters_aadr_ecdf.png",
+      sep = "_"
+    )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
+
+# Normal Q-Q plot of monthly rent
+df1 <- all_csv$PLOTDATKAM %>%
+  group_by(cluster_id) %>%
+  mutate(
+    n_ind = n(),
+    std_aadr = rangeStandardize(aadr)
+  )
+
+ggplot(
+  data = df1,
+  mapping = aes(
+    sample = std_aadr,
+    color = as.factor(cluster_id),
+    fill = as.factor(cluster_id)
+  )
+) +
+  stat_qq_band(alpha = 0.5) +
+  stat_qq_point() +
+  stat_qq_line() +
+  facet_wrap(~ as.factor(cluster_id)) +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 12),
+    strip.text.x = element_text(
+      size = 11, color = "black", face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 11, color = "black", face = "bold"
+    )
+  ) +
+  labs(
+    title = "Normal Q-Q plot of the AADR (standardised for range)",
+    subtitle = paste0(
+      "Number of obs. per cluster:",
+      " C", N_IND$cluster_id[1], ": ", N_IND$n_ind[1],
+      ", C", N_IND$cluster_id[2], ": ", N_IND$n_ind[2],
+      ", C", N_IND$cluster_id[3], ": ", N_IND$n_ind[3],
+      ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
+      ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
+    ),
+    x = "Theoretical Quantiles",
+    y = "Sample Quantiles",
+    caption = paste(
+      Sys.Date(),
+      "Llc",
+      sep = ", "
+    )
+  ) +
+  scale_color_manual("Cluster Sample Quantiles",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  scale_fill_manual("Cluster Theoretical Quantiles",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      numb_clust,
+      "clusters_aadr_qqplot.png",
       sep = "_"
     )
   ),
@@ -575,7 +662,7 @@ ggplot(
   ) +
   labs(
     title = paste0(
-      "ECDF of the monthly rent (min. = ",
+      "Normal Q-Q plot of the monthly rent (min. = ",
       rmin, " CHF,",
       " max. = ", rmax, " CHF,",
       " max. for couples = ", plaf, " CHF)"
@@ -596,7 +683,11 @@ ggplot(
       sep = ", "
     )
   ) +
-  scale_color_manual("Cluster",
+  scale_color_manual("Cluster Sample Quantiles",
+    breaks = c("1", "2", "3", "4", "5"),
+    values = c("red", "blue", "green", "orange", "violet")
+  ) +
+  scale_fill_manual("Cluster Theoretical Quantiles",
     breaks = c("1", "2", "3", "4", "5"),
     values = c("red", "blue", "green", "orange", "violet")
   ) +

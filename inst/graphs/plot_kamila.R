@@ -103,14 +103,15 @@ SKEW_KURT <- all_csv$PLOTDATKAM %>%
 
 print(
   xtable(SKEW_KURT,
+         align="lcccc",
     label = "Table of Moments pro Cluster",
     caption = "Table of Moments pro Cluster"
   ),
   # tabular.environment = "longtable",
   caption.placement = "top",
-  table.placement = "",
-  floating = FALSE,
-  size = "\\fontsize{8pt}{9pt}\\selectfont",
+  table.placement = "H",
+  floating = TRUE,
+  size = "\\fontsize{10pt}{11pt}\\selectfont",
   file = file.path(path_graphs, "moments_table.tex")
 )
 #--- Histograms pro Cluster ----------------------------------------------------

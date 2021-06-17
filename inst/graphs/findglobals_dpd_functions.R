@@ -163,4 +163,10 @@ saveWorkbook(
   file.path(wd, filename)
 )
 
+#Export to txt file to write it into latex
+library(readxl)
+excel_rrclust <- read_excel(file.path(wd, filename))
+write.table(excel_rrclust,
+            file = paste0(file.path(wd, filename), ".txt"),
+            sep = " & ", row.names = FALSE, quote = FALSE)
 browseURL(wd)

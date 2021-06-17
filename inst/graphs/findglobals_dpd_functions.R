@@ -22,7 +22,7 @@ filename <- paste0(
 
 # Function to retrieve functions from rrclust
 gen_fun <- function(elmnt) {
-
+browser()
   # Get the name of the retrieved function
   if (class(elmnt) == "function") {
     x <- deparse(substitute(elmnt))
@@ -31,7 +31,7 @@ gen_fun <- function(elmnt) {
   }
 
   # Exported objects from rrclust
-  list_exp_delf <- list(getNamespaceExports("rrclust"))
+  list_exp_rrcl <- list(getNamespaceExports("rrclust"))
 
   if (!is.na(x == "NA")) {
     if (x != ".browser_at_settings" &
@@ -51,7 +51,7 @@ gen_fun <- function(elmnt) {
 
       # Create function to detect match for each str
       any_match <- function(str) {
-        any(sapply(list_exp_delf, function(x) {
+        any(sapply(list_exp_rrcl, function(x) {
           str_detect(str, x)
         }))
       }
@@ -76,20 +76,13 @@ gen_fun <- function(elmnt) {
 }
 
 # exported functions from rrclust
-exp_delf <- getNamespaceExports("rrclust")
+exp_rrcl <- getNamespaceExports("rrclust")
 
-# mod_opt functions
-vect_mod_opt1 <- c(exp_delf[grepl("^mod_opt", exp_delf)])
-vect_mod_opt <- vect_mod_opt1[!grepl("eo", vect_mod_opt1)] %>%
-  sort()
-# For EO
-vect_mod_opt_eo <- vect_mod_opt1[grepl("eo", vect_mod_opt1)] %>%
-  sort()
 
 # wraps functions
 vect_wraps1 <- c(
-  exp_delf[grepl("^wrap", exp_delf)],
-  exp_delf[grepl("^prepare", exp_delf)]
+  exp_rrcl[grepl("^wrap", exp_rrcl)],
+  exp_rrcl[grepl("^prepare", exp_rrcl)]
 ) %>%
   sort()
 
@@ -112,10 +105,9 @@ VECT_WRAPS <- tibble(vect = vect_wraps1[!sapply(vect_wraps1, any_match_neg)]) %>
   arrange(vect) %>%
   # take only the not memoised (with "_")
   filter(
-    vect != "wrap_ahv",
-    vect != "wrap_beitragstab",
-    vect != "wrap_rententab",
-    vect != "wrap_rententab_dcai"
+    vect != "wrap_kamila",
+    vect != "wrap_computation_kamila",
+    vect != "wrap_prepadata"
   )
 
 # For Kamila
@@ -124,8 +116,8 @@ vect_wraps_kamila <- (VECT_WRAPS %>%
 
 
 
-#--- AHV -----------------------------------------------------------------------
-# AHV Dependencies table
+#--- KAMILA -----------------------------------------------------------------------
+# KAMILA Dependencies table
 DPC_KAMILA<- tibble(
   fun_name = c(
     "run_kamila",

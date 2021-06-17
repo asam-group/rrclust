@@ -22,7 +22,7 @@ filename <- paste0(
 
 # Function to retrieve functions from rrclust
 gen_fun <- function(elmnt) {
-browser()
+
   # Get the name of the retrieved function
   if (class(elmnt) == "function") {
     x <- deparse(substitute(elmnt))
@@ -42,8 +42,8 @@ browser()
       x != "trace_this" &
       x != "tidylist_ensure" &
       x != "justierung_ls" &
-      x != "write_sheet_eo_go" &  #à revoir
-      x != "write_sheet_eo_round" &  #à revoir
+      x != "write_sheet_eo_go" & # à revoir
+      x != "write_sheet_eo_round" & # à revoir
       x != "mod_init" &
       x != "mod_return") {
       y1 <- findGlobals(x)
@@ -118,7 +118,7 @@ vect_wraps_kamila <- (VECT_WRAPS %>%
 
 #--- KAMILA -----------------------------------------------------------------------
 # KAMILA Dependencies table
-DPC_KAMILA<- tibble(
+DPC_KAMILA <- tibble(
   fun_name = c(
     "run_kamila",
     vect_wraps_kamila
@@ -151,20 +151,10 @@ tl_dpc <- tidylist(
 wb <- createWorkbook()
 
 # Add worksheets
-addWorksheet(wb, "DPC_AHV")
-addWorksheet(wb, "DPC_AHV_MASSN")
-addWorksheet(wb, "DPC_RENTENTAB")
-addWorksheet(wb, "DPC_BEITRAGSTAB")
-addWorksheet(wb, "DPC_EO")
-addWorksheet(wb, "DPC_EO_MASSN")
+addWorksheet(wb, "DPC_KAMILA")
 
 # Write Data in each worksheet
-writeData(wb, "DPC_AHV", DPC_AHV, startCol = 2, startRow = 3, rowNames = TRUE)
-writeData(wb, "DPC_AHV_MASSN", DPC_AHV_MASSN, startCol = 2, startRow = 3, rowNames = TRUE)
-writeData(wb, "DPC_EO", DPC_EO, startCol = 2, startRow = 3, rowNames = TRUE)
-writeData(wb, "DPC_EO_MASSN", DPC_EO_MASSN, startCol = 2, startRow = 3, rowNames = TRUE)
-writeData(wb, "DPC_RENTENTAB", DPC_RENTENTAB, startCol = 2, startRow = 3, rowNames = TRUE)
-writeData(wb, "DPC_BEITRAGSTAB", DPC_BEITRAGSTAB, startCol = 2, startRow = 3, rowNames = TRUE)
+writeData(wb, "DPC_KAMILA", DPC_KAMILA, startCol = 2, startRow = 3, rowNames = TRUE)
 
 # save workbook
 # openXL(wb)

@@ -1,4 +1,6 @@
 # Add description to PARAM_GLOBAL
+#' @title read the path fo the data
+#' @export
 read_description <- function(path_container = "/Users/christoph/local/bsv/container_abr18def_rr18_statpop2017_estv3_va20004_real_stafasgo") {
   path.to.description <- normalizePath(
     file.path(path_container, "description"),
@@ -28,7 +30,8 @@ read_description <- function(path_container = "/Users/christoph/local/bsv/contai
   )) %>%
     mutate(description = descr)
 }
-
+#' @title read the path fo the data
+#' @export
 read_path_data <- function(path_container = "/Users/christoph/local/bsv/container_abr18def_rr18_statpop2017_estv3_va20004_real_stafasgo") {
   path.to.inp <- normalizePath(
     file.path(path_container, "inp"),

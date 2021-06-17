@@ -1,27 +1,26 @@
 # Libraries
 library(codetools)
-library(delfin)
+library(rrclust)
 library(stringr)
 library(openxlsx)
 
 # Working Directory
-wd <- "O:/MASS/06_auftraege/01_bsv/11_delfins/02_delfin/04_documentation/doc_structure"
-# wd <- "C:/delfin"
+wd <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/graphs/2021_06_10_5_clusters"
 
-# Delfin version
-version_delfin <- getNamespaceVersion("delfin")
+# rrclust version
+version_rrclust <- getNamespaceVersion("rrclust")
 
 # Filename
 filename <- paste0(
-  "delfin_",
+  "rrclust_",
   paste0(
     "vrs",
-    gsub("\\.", "_", version_delfin)
+    gsub("\\.", "_", version_rrclust)
   ),
   ".xlsx"
 )
 
-# Function to retrieve functions from delfin
+# Function to retrieve functions from rrclust
 gen_fun <- function(elmnt) {
 
   # Get the name of the retrieved function
@@ -31,8 +30,8 @@ gen_fun <- function(elmnt) {
     x <- elmnt
   }
 
-  # Exported objects from delfin
-  list_exp_delf <- list(getNamespaceExports("delfin"))
+  # Exported objects from rrclust
+  list_exp_delf <- list(getNamespaceExports("rrclust"))
 
   if (!is.na(x == "NA")) {
     if (x != ".browser_at_settings" &
@@ -76,8 +75,8 @@ gen_fun <- function(elmnt) {
   }
 }
 
-# exported functions from delfin
-exp_delf <- getNamespaceExports("delfin")
+# exported functions from rrclust
+exp_delf <- getNamespaceExports("rrclust")
 
 # mod_opt functions
 vect_mod_opt1 <- c(exp_delf[grepl("^mod_opt", exp_delf)])
@@ -119,36 +118,18 @@ VECT_WRAPS <- tibble(vect = vect_wraps1[!sapply(vect_wraps1, any_match_neg)]) %>
     vect != "wrap_rententab_dcai"
   )
 
-# For AHV
-vect_wraps_ahv <- (VECT_WRAPS %>%
-  filter(
-    !grepl("beitragstab", vect),
-    !grepl("rententab", vect)
-  ) %>%
-  select(vect))$vect
+# For Kamila
+vect_wraps_kamila <- (VECT_WRAPS %>%
+  dplyr::select(vect))$vect
 
-# For Rententab
-vect_wraps_rententab <- (VECT_WRAPS %>%
-  filter(grepl("rententab", vect)) %>%
-  select(vect))$vect
 
-# For Beitragstab
-vect_wraps_beitragstab <- (VECT_WRAPS %>%
-  filter(grepl("beitragstab", vect)) %>%
-  select(vect))$vect
-
-# For EO
-vect_wraps_eo1 <- vect_wraps1[grepl(c("eo"), vect_wraps1)] %>%
-  sort()
-vect_wraps_eo <- vect_wraps_eo1[!grepl(c("massnahmen"), vect_wraps_eo1)] %>%
-  sort()
 
 #--- AHV -----------------------------------------------------------------------
 # AHV Dependencies table
-DPC_AHV <- tibble(
+DPC_KAMILA<- tibble(
   fun_name = c(
-    "run_ahv",
-    vect_wraps_ahv
+    "run_kamila",
+    vect_wraps_kamila
   )
 ) %>%
   rowwise() %>%
@@ -167,132 +148,10 @@ DPC_AHV <- tibble(
   mutate(level4 = lapply(level3, gen_fun)) %>%
   unnest(cols = c(level4))
 
-
-# AHV_MASSN Dependencies table
-DPC_AHV_MASSN <- tibble(
-  fun_name = c(
-    "wrap_ahv_massnahmen",
-    vect_mod_opt
-  )
-) %>%
-  rowwise() %>%
-  mutate(level0 = lapply(fun_name, gen_fun)) %>%
-  unnest(cols = c(level0)) %>%
-  rowwise() %>%
-  mutate(level1 = lapply(level0, gen_fun)) %>%
-  unnest(cols = c(level1)) %>%
-  rowwise() %>%
-  mutate(level2 = lapply(level1, gen_fun)) %>%
-  unnest(cols = c(level2)) %>%
-  rowwise() %>%
-  mutate(level3 = lapply(level2, gen_fun)) %>%
-  unnest(cols = c(level3)) %>%
-  rowwise() %>%
-  mutate(level4 = lapply(level3, gen_fun)) %>%
-  unnest(cols = c(level4))
-
-#--- RENTENTAB -----------------------------------------------------------------
-# RENTENTAB Dependencies table
-DPC_RENTENTAB <- tibble(
-  fun_name = c(
-    "run_rententab",
-    vect_wraps_rententab
-  )
-) %>%
-  rowwise() %>%
-  mutate(level0 = lapply(fun_name, gen_fun)) %>%
-  unnest(cols = c(level0)) %>%
-  rowwise() %>%
-  mutate(level1 = lapply(level0, gen_fun)) %>%
-  unnest(cols = c(level1)) %>%
-  rowwise() %>%
-  mutate(level2 = lapply(level1, gen_fun)) %>%
-  unnest(cols = c(level2)) %>%
-  rowwise() %>%
-  mutate(level3 = lapply(level2, gen_fun)) %>%
-  unnest(cols = c(level3)) %>%
-  rowwise() %>%
-  mutate(level4 = lapply(level3, gen_fun)) %>%
-  unnest(cols = c(level4))
-
-#--- BEITRAGSTAB -----------------------------------------------------------------
-# BEITRAGSTAB Dependencies table
-DPC_BEITRAGSTAB <- tibble(
-  fun_name = c(
-    "run_beitragstab",
-    vect_wraps_rententab
-  )
-) %>%
-  rowwise() %>%
-  mutate(level0 = lapply(fun_name, gen_fun)) %>%
-  unnest(cols = c(level0)) %>%
-  rowwise() %>%
-  mutate(level1 = lapply(level0, gen_fun)) %>%
-  unnest(cols = c(level1)) %>%
-  rowwise() %>%
-  mutate(level2 = lapply(level1, gen_fun)) %>%
-  unnest(cols = c(level2)) %>%
-  rowwise() %>%
-  mutate(level3 = lapply(level2, gen_fun)) %>%
-  unnest(cols = c(level3)) %>%
-  rowwise() %>%
-  mutate(level4 = lapply(level3, gen_fun)) %>%
-  unnest(cols = c(level4))
-
-#--- EO -----------------------------------------------------------------------
-# EO Dependencies table
-DPC_EO <- tibble(
-  fun_name = c(
-    "run_eo",
-    vect_wraps_eo
-  )
-) %>%
-  rowwise() %>%
-  mutate(level0 = lapply(fun_name, gen_fun)) %>%
-  unnest(cols = c(level0)) %>%
-  rowwise() %>%
-  mutate(level1 = lapply(level0, gen_fun)) %>%
-  unnest(cols = c(level1)) %>%
-  rowwise() %>%
-  mutate(level2 = lapply(level1, gen_fun)) %>%
-  unnest(cols = c(level2)) %>%
-  rowwise() %>%
-  mutate(level3 = lapply(level2, gen_fun)) %>%
-  unnest(cols = c(level3)) %>%
-  rowwise() %>%
-  mutate(level4 = lapply(level3, gen_fun)) %>%
-  unnest(cols = c(level4))
-
-
-# EO_MASSN Dependencies table
-DPC_EO_MASSN <- tibble(
-  fun_name = c(
-    "wrap_eo_massnahmen",
-    vect_mod_opt_eo
-  )
-) %>%
-  rowwise() %>%
-  mutate(level0 = lapply(fun_name, gen_fun)) %>%
-  unnest(cols = c(level0)) %>%
-  rowwise() %>%
-  mutate(level1 = lapply(level0, gen_fun)) %>%
-  unnest(cols = c(level1)) %>%
-  rowwise() %>%
-  mutate(level2 = lapply(level1, gen_fun)) %>%
-  unnest(cols = c(level2)) %>%
-  rowwise() %>%
-  mutate(level3 = lapply(level2, gen_fun)) %>%
-  unnest(cols = c(level3)) %>%
-  rowwise() %>%
-  mutate(level4 = lapply(level3, gen_fun)) %>%
-  unnest(cols = c(level4))
 
 #--- Tidylist ------------------------------------------------------------------
 tl_dpc <- tidylist(
-  DPC_AHV, DPC_AHV_MASSN,
-  DPC_RENTENTAB,
-  DPC_BEITRAGSTAB,
-  DPC_EO, DPC_EO_MASSN
+  DPC_KAMILA
 )
 
 #--- Output --------------------------------------------------------------------

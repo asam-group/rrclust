@@ -1,3 +1,7 @@
+# rrclust 1.0.1
+
+new graphs to add in the working paper
+
 # rrclust 1.0.0
 
 first operational version used for the working paper 

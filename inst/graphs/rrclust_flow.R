@@ -1,17 +1,17 @@
 # 'Package Laden'
-library(delfin)
+library(rrclust)
 
 # Pfade setzen
-inp_dir <- "O:/MASS/09_mathprod/01_fh/container_tools/containers_dummy/ahv/sgk_n"
+inp_dir <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/containers_dummy"
 # Choose a container in the list --
 path_file <- function(x) file.path(inp_dir, x)
 
 paths <- file.path(inp_dir, c(
-  "container_abr20prov_rr20_ik18_statpop19_szen20_estv221_va22001" # Droit en vigueur
+  "params_kamila" # Droit en vigueur
 ))
 
 
-path_out <- file.path("C:/delfin/fhh/sgk_n")
+path_out <- tempdir()
 
 # Daten vorbereiten (wenn nötig)
 # prepare_input(path = path)
@@ -21,13 +21,13 @@ path_out <- file.path("C:/delfin/fhh/sgk_n")
 
 #------ Trace Diagramm ------------------------------------------------#
 TF <- trace_flow({
-  run_ahv(path = paths, path_out = path_out)
+  run_kamila(path = paths, path_out = path_out)
 }) %>%
   filter(!grepl("^PARAM", df))
 
 library(DiagrammeR)
-name_plot <- "delfin_flow.png"
-wd <- "O:/MASS/06_auftraege/01_bsv/11_delfins/02_delfin/04_documentation/doc_structure"
+name_plot <- "rrclust_flow.png"
+wd <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/graphs/2021_06_10_5_clusters"
 
 plot <- draw_flow(TF)
 

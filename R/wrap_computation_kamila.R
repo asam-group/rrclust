@@ -1,11 +1,12 @@
-#' @title Wrapper for the clusters construction
+#' @title Wrapper for the clusters construction.
 #'
 #' @description This wrapper contains all the necessary modules which allow to
-#' construct the clusters
+#' construct the clusters.
 #'
 #' @param tl_inp List of input data frames of which we use:
 #' - `PARAM_KAMILA$calc_kstar`: If TRUE, estimates the clusters. Else, takes the
 #' parameter PARAM_KAMILA$param_kstar.
+#'
 #' @param tl_prepadata List of data frames prepared in a first step.
 #'
 #' @return a `tidylist` containing the following tidylists:

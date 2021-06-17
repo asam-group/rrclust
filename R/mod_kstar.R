@@ -1,11 +1,10 @@
-#' @title Estimation of the clusters according to the Kamila method.
+#' @title Estimation of the best number of clusters using the Kamila algorithm.
 #'
-#' @description Estimation of the clusters according to the Kamila method on the
-#' training set.
+#' @description Estimation of best number of clusters using the Kamila algorithm
+#' on the training set.
 #'
 #' @param PARAM_KAMILA dataframe with all needed parameters for the Kamila method,
 #' from which the following parameters are used:
-#' - `calc_kstar`: If TRUE, estimates the clusters.
 #' - `numberofclusters`: The number of clusters returned by the algorithm, i.e.
 #' sequence indicating the number of clusters which should be investigated to
 #' extract the optimal number of clusters.
@@ -14,17 +13,25 @@
 #' - `calcnumclust`: Character: Method for selecting the number of clusters. Setting
 #' calcNumClust to ’ps’ uses the prediction strength method of
 #' Tibshirani &Walther (J. of Comp. and Graphical Stats. 14(3), 2005).
+#' - `pred_threshold`: Threshold fixed to 0.8 for well separated clusters (i.e.
+#' not overlapping).
+#'
 #' @param CATEG_DF_TS Training set of the register of rents containing all categorical
 #' variables as factors.
+#'
 #' @param CONT_DF_TS Training set of the register of rents containing all the continuous
-#' variables
-#' @return KM_RES database containing the results of the clustering.
-#' @return PARAM_KAMILA dataframe with the updated kstar parameter.
+#' variables.
+#'
+#' @return a tidylist containing the following tidy data frames:
+#'  - `KM_RES` database containing the results of the clustering.
+#'  - `PARAM_KAMILA` dataframe with the updated kstar parameter.
+#'
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#'
 #' @export
 #' @import kamila
 
-# Last change: 2021-03-04 / Llc
+# Last change: 2021-06-17 / Llc
 
 mod_kstar <- function(PARAM_KAMILA,
                       CATEG_DF_TS,

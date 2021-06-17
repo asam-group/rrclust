@@ -1,11 +1,16 @@
-#' @title wrap_kamila
-#' @description wrap_kamila is a simple function which executes the computations
-#' following th kamila clustering method.
+#' @title Wrapper to execute the Kamila algorithm.
+#'
+#' @description Simple function which executes the computations needed for the
+#' Kamila algorithm.
+#'
 #' @param tl_inp tidylist of inputs
-#' @return tidylists
+#'
+#' @return a `tidylist` containing the following tidylists:
+#' - `tl_computation_kamila`
+#'
 #' @export
 #'
-# Last change: 2021-02-28 / Llc
+# Last change: 2021-06-17 / Llc
 
 wrap_kamila_ <- function(tl_inp_kamila) {
 

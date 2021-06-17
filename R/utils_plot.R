@@ -491,8 +491,8 @@ fun_ggplot_hist2 <- function(dta) {
       )
     ) +
     scale_fill_manual("Cluster",
-                      breaks = c("1", "2", "3", "4", "5"),
-                      values = c("red", "blue", "green", "orange", "violet")
+      breaks = c("1", "2", "3", "4", "5"),
+      values = c("red", "blue", "green", "orange", "violet")
     ) +
     ggsave(file.path(
       path_graphs,

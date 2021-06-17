@@ -1,24 +1,38 @@
-#' @title Estimation of the clusters according to the Kamila method.
+#' @title Splitting the initial dataset into kstar clusters.
 #'
-#' @description Estimation of the clusters according to the Kamila method.
+#' @description Splitting the initial dataset into kstar clusters by using the
+#' parameter kstar determined in the module \code{\link{mod_kstar}}.
 #'
 #' @param PARAM_KAMILA dataframe with all needed parameters for the Kamila method,
 #' from which the following parameters are used:
 #' - `numinit`: The number of initializations used.
 #' - `maxiter`: The maximum number of iterations in each run.
+#' - `param_kstar`: Best number of clusters estimated in the module
+#' \code{\link{mod_kstar}}.
+#'
 #' @param CATEG_DF subset of the register of rents containing all categorical
-#' variables as factors.
+#' variables as factors except for the nominal variables marital_stat and benef_type.
+#'
 #' @param CONT_DF subset of the register of rents containing all the continuous
-#' variables
-#' @return PLOTDATKAM database containing the clusters factor and the other
+#' variables except for the outcome variables aadr and monthly_rent.
+#'
+#' @param FULL_CONT_DF database containing the continuous variables used for the
+#' estimation plus the outcome variables aadr and monthly_rent.
+#'
+#' @param FULL_CATEG_DF database containing the categorical variables used for
+#' the estimation plus the nominal variables marital_stat and benef_type.
+#'
+#' @return a `tidylist` containing the following tidy data frames:
+#' - `PLOTDATKAM` database containing the clusters factor and the other
 #' variables.
-#' @return KM_RES_FINAL database containing the resulting parameters of the
+#' - `KM_RES_FINAL` database containing the resulting parameters of the
 #' clustering.
-#' @return CONTVARS database containing the continuous standardised variables.
-#' @return FULL_CONT_DF database containing the continuous variables used for the
+#' - `CONTVARS` database containing the continuous standardised variables.
+#' - `FULL_CONT_DF` database containing the continuous variables used for the
 #' estimation.
-#' @return FULL_CATEG_DF database containing the categorical variables used for
+#' - `FULL_CATEG_DF` database containing the categorical variables used for
 #' the estimation.
+#'
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 #' @import kamila

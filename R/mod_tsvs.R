@@ -2,7 +2,7 @@
 #'
 #' @description Splits the data into a training and a validation sets, given
 #' the too large number of observations, in order to determine the best number of
-#' clusters for the KAMILA method.
+#' clusters for the KAMILA algorithm.
 #'
 #' @param RR_OASI a data frame containing the all the data.
 #'

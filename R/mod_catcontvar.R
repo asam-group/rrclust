@@ -16,10 +16,9 @@
 #'
 #' @references [www.geeksforgeeks.org](https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/)
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
-#' @import caTools
 #' @export
 
-# - `Last change`: 2021-03-11 / Llc
+# - `Last change`: 2021-06-17 / Llc
 
 mod_catcontvar <- function(RR_OASI,
                            RR_OASI_TS,

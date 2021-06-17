@@ -2,18 +2,19 @@
 #'
 #' @description Prepares the variables of the register of rents.
 #'
-#' @param IND_YEARLY_RR a data frame containing the data of the register of rents.
+#' @param IND_YEARLY_RR a data frame containing the data of the register of rents
+#' subsetted for one year only.
 #'
 #' @param list List of input data frames.
 #'
 #' @return a `tidylist` containing the following tidy data frames:
-#'   - `RR_OASI` : contains all the beneficiaries of the OASI
+#'   - `RR_OASI` : contains all the beneficiaries of the OASI.
 #'
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #'
 #' @export
 
-# - `Last change`: 2021-02-25 / Llc
+# - `Last change`: 2021-06-17 / Llc
 
 mod_prepa_rr <- function(IND_YEARLY_RR,
                          list = NULL) {

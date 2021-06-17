@@ -3,10 +3,10 @@
 #' of the output production.
 #' @param list tidylist
 #' @author [Layal Christine Lettry](mailto:layalchristine.pipoz@bsv.admin.ch)
-#' @return LOG tibble with information about time and packages version.
+#' @return `LOG` tibble with information about time and packages version.
 #' @export
 
-# Last change: 2021-03-01 / Llc
+# Last change: 2021-06-17 / Llc
 
 mod_log <- function(list = NULL) {
   LOG <- tibble(

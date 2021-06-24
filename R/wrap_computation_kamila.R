@@ -12,7 +12,7 @@
 #' @return a `tidylist` containing the following tidylists:
 #' - `tl_mod_calc_kamila`
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.pipoz@bsv.admin.ch)
+#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #'
 #' @export
 

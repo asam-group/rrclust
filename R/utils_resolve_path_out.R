@@ -3,7 +3,7 @@
 #' @param path_out directory to store the output folder.
 #' @param identifier_number unique identifier number to name the output folder,
 #' defined in the function \code{\link{(mod_inp_kamila}}.
-#' @author [Layal Christine Lettry](mailto:layalchristine.pipoz@bsv.admin.ch)
+#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @return path_out directory to store the output
 #' @export
 

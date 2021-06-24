@@ -4,7 +4,7 @@
 #' PARAM_GLOBAL.
 #' @param path_out directory to store the output folder.
 #' @param path path of the parameter folder.
-#' @author [Layal Christine Lettry](mailto:layalchristine.pipoz@bsv.admin.ch)
+#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 
 # Last change: 2021-03-01 / Llc

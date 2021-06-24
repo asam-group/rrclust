@@ -12,7 +12,7 @@
 #'
 #' @return path_out_identifier path to output container
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.pipoz@bsv.admin.ch)
+#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #'
 #' @export
 

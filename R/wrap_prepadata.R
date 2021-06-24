@@ -8,7 +8,7 @@
 #' @return a `tidylist` containing the following tidylists:
 #' - `tl_prepa_rr`
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.pipoz@bsv.admin.ch)
+#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #'
 #' @export
 

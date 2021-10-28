@@ -14,22 +14,70 @@
 #'
 #' @export
 
-# - `Last change`: 2021-06-17 / Llc
+# - `Last change`: 2021-09-02 / Llc
 
 mod_prepa_rr <- function(IND_YEARLY_RR,
                          list = NULL) {
   mod_init()
 
   # --- Recoding and renaming the variables ------------------------------------
-  RR_OASI <- IND_YEARLY_RR %>%
-    dplyr::rename(
-      "aadr" = ram,
-      "monthly_rent" = monatliche_rente,
-      "age" = alt,
-      "year" = jahr,
-      "resid" = dom
-    ) %>%
-    # Rename the realizations of the variables
+  RR_OASI1 <- if ("lbedu" %in% names(IND_YEARLY_RR)) {
+    IND_YEARLY_RR %>%
+      dplyr::rename(
+        "aadr" = ram,
+        "monthly_rent" = monatliche_rente,
+        "age" = alt,
+        "year" = jahr,
+        "resid" = dom,
+        "contrib_m_ind" = lcot,
+        "contrib_y_ageclass" = lcotg,
+        "splitting" = csplit,
+        "bonus_m_edu" = lbedu,
+        "bonus_m_assist" = lbass,
+        "capping" = cplaf
+      ) %>%
+      mutate(
+        # Recode contrib_m_ind for NA values
+        contrib_m_ind = case_when(
+          is.na(contrib_m_ind) ~ as.double(-0),
+          TRUE ~ as.double(contrib_m_ind)
+        ),
+        # Recode contrib_y_ageclass for NA values
+        contrib_y_ageclass = case_when(
+          is.na(contrib_y_ageclass) ~ as.double(-0),
+          TRUE ~ as.double(contrib_y_ageclass)
+        ),
+        # Recode splitting for NA values
+        splitting = case_when(
+          is.na(splitting) ~ as.double(-0),
+          TRUE ~ as.double(splitting)
+        ),
+        # Recode bonus_m_edu for NA values
+        bonus_m_edu = case_when(
+          is.na(bonus_m_edu) ~ as.double(-0),
+          TRUE ~ as.double(bonus_m_edu)
+        ),
+
+        # Recode bonus_m_assist for NA values
+        bonus_m_assist = case_when(
+          is.na(bonus_m_assist) ~ as.double(-0),
+          TRUE ~ as.double(bonus_m_assist)
+        )
+      )
+  } else {
+    IND_YEARLY_RR %>%
+      dplyr::rename(
+        "aadr" = ram,
+        "monthly_rent" = monatliche_rente,
+        "age" = alt,
+        "year" = jahr,
+        "resid" = dom
+      )
+  }
+
+
+  # Rename the realizations of the variables
+  RR_OASI2 <- RR_OASI1 %>%
     mutate(
       benef_type = dplyr::recode(gpr,
         "rvieillesse_simple" = 1, # "Old-age"
@@ -89,10 +137,20 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
     ) %>%
     dplyr::select(
       -zv,
-      -gpr,
-      -napref
+      -gpr
     )
 
+  # Verify all variables are numeric
+  RR_OASI <- if ("napref" %in% names(RR_OASI2)) {
+    RR_OASI2 %>%
+      dplyr::select(
+        -napref
+      ) %>%
+      mutate_all(funs(as.numeric(.)))
+  } else {
+    RR_OASI2 %>%
+      mutate_all(funs(as.numeric(.)))
+  }
 
   mod_return(
     RR_OASI

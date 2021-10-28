@@ -3,9 +3,42 @@
 #' @description Splits the continuous from the categorical data, in order to use
 #' a clustering method.
 #'
-#' @param RR_OASI a data frame containing the all the data.
+#' @param RR_OASI a data frame containing the all the data, whose variables are:
+#'  - `year`: Year of the pension register extract.
+#'  - `age`: Age of the individual.
+#'  - `age_retire`: Retirement age.
+#'  - `sex`: Sex, if 1: female, if 0:male
+#'  - `nat`: Nationality, if 1: Foreign, if 0:Swiss.
+#'  - `resid`: Residence, if 1: Foreign, if 0:Swiss.
+#'  - `benef_type1`: If 1, Old-age type of benefit (dummy)
+#'  - `benef_type2`: Widow type of benefit (dummy)
+#'  - `benef_type3`: Father's orphan type of benefit (dummy)
+#'  - `benef_type4`: Mother's orphan type of benefit (dummy)
+#'  - `benef_type5`: Twice orphan type of benefit (dummy)
+#'  - `benef_type6`: Spouse's compl. type of benefit (dummy)
+#'  - `benef_type7`: Father's child rent type of benefit (dummy)
+#'  - `benef_type8`: Mother's child rent type of benefit (dummy)
+#'  - `benef_type` : Types of benefits type of benefit (categorical)
+#'  - `marital_stat1`: Divorced marital status (dummy)
+#'  - `marital_stat2`: Single as reference category marital status (dummy)
+#'  - `marital_stat3`: Married marital status (dummy)
+#'  - `marital_stat4`: Widowed marital status (dummy)
+#'  - `marital_stat`: Marital Status
+#'  - `splitting`: If 1, splitting of the revenues, 0 otherwise.
+#'  - `capping`:  If 1, the pension is capped, 0 otherwise.
+#'  - `contrib_m_ind`: total number of OASI contribution months per individual.
+#'  - `contrib_y_ageclass`: total number of contribution years per age group.
+#'  - `bonus_m_edu`: number of months paid with a bonus for educative tasks.
+#'  - `bonus_m_assist`: number of months paid with a bonus for assistance/care
+#'  tasks.
+#'
 #' @param RR_OASI_TS a training dataset containing x% of the data.
+#'
 #' @param RR_OASI_VS a validation dataset containing (100 - x)% of the data.
+#'
+#' @param PARAM_GLOBAL a data frame containing the parameters. We use the following:
+#'  - `categ_var`: Chosen categorical variables
+#'  - `cont_var`: Chosen continuous variables
 #'
 #' @param list List of input data frames.
 #'
@@ -18,52 +51,20 @@
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 
-# - `Last change`: 2021-06-17 / Llc
+# - `Last change`: 2021-09-02 / Llc
 
 mod_catcontvar <- function(RR_OASI,
                            RR_OASI_TS,
                            RR_OASI_VS,
+                           PARAM_GLOBAL,
                            list = NULL) {
   mod_init()
 
+  # Chosen categorical variables
+  categ_var <- separate_at_comma(PARAM_GLOBAL$categ_var)
 
-  # Desired categorical variables
-  categ_var <- c(
-    "sex",
-    "nat",
-    "resid",
-
-    # Split the benefit type in 2 groups: old-age (benef_type1 = 1) and survivors
-    # (benef_type1 = 0)
-    "benef_type1", # Old-age
-    # "benef_type2", # Widow
-    # "benef_type3", # Father's orphan
-    # "benef_type4", # Mother's orphan
-    # "benef_type5", # Twice orphan
-    # "benef_type6", # Spouse's compl.
-    # "benef_type7", # Father's child rent
-    # "benef_type8", # Mother's child rent
-
-    # Keep the original categorical variable for information in the analysis
-    "benef_type",
-
-    "marital_stat1", # Divorced
-    # "marital_stat2", # Single as reference category
-    "marital_stat3", # Married
-    "marital_stat4", # Widowed
-
-    # Keep the original categorical variable for information in the analysis
-    "marital_stat"
-  )
-
-  # Desired continuous variables
-  cont_var <- c(
-    "aadr",
-    "monthly_rent",
-    "age",
-    "age_retire",
-    "scale"
-  )
+  # Chosen continuous variables
+  cont_var <- separate_at_comma(PARAM_GLOBAL$cont_var)
 
   #--- Full dataset ------------------------------------------------------------
   # Dataframe of categorical variables
@@ -119,10 +120,8 @@ mod_catcontvar <- function(RR_OASI,
   mod_return(
     CATEG_DF,
     CONT_DF,
-
     CATEG_DF_TS,
     CONT_DF_TS,
-
     CATEG_DF_VS,
     CONT_DF_VS
   )

@@ -86,19 +86,21 @@ function_kamplot <- function(dta) {
     scale_color_discrete("Cluster") +
     scale_x_continuous(breaks = seq(0, 100, 10))
 
-  p1 <- plotOpts(kamPlot1) +
-    ggsave(file.path(
-      path_graphs,
-      paste(
-        "sex", unique(dta$sex),
-        "typerent", unique(dta$benef_type1),
-        "mr_age.png",
-        sep = "_"
-      )
-    ),
-    height = 8.27,
-    width = 11.69
+  # p1 <- plotOpts(kamPlot1)
+  plotOpts(kamPlot1)
+
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      "sex", unique(dta$sex),
+      "typerent", unique(dta$benef_type1),
+      "mr_age.png",
+      sep = "_"
     )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
 
   # Log Monthly Rent pro Scale
   kamPlot2 <- KAMRESDATA %>%
@@ -141,19 +143,21 @@ function_kamplot <- function(dta) {
     scale_color_discrete("Cluster") +
     scale_x_continuous(breaks = seq(0, 44, 4))
 
-  p2 <- plotOpts(kamPlot2) +
-    ggsave(file.path(
-      path_graphs,
-      paste(
-        "sex", unique(dta$sex),
-        "typerent", unique(dta$benef_type1),
-        "mr_scale.png",
-        sep = "_"
-      )
-    ),
-    height = 8.27,
-    width = 11.69
+  # p2 <- plotOpts(kamPlot2)
+  plotOpts(kamPlot2)
+
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      "sex", unique(dta$sex),
+      "typerent", unique(dta$benef_type1),
+      "mr_scale.png",
+      sep = "_"
     )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
 
   if (KAMRESDATA$age_retire > 0) {
     # Log Monthly Rent pro age_retire
@@ -197,19 +201,21 @@ function_kamplot <- function(dta) {
       scale_color_discrete("Cluster") +
       scale_x_continuous(breaks = seq(min(KAMRESDATA$age_retire), max(KAMRESDATA$age_retire), 1))
 
-    p5 <- plotOpts(kamPlot5) +
-      ggsave(file.path(
-        path_graphs,
-        paste(
-          "sex", unique(dta$sex),
-          "typerent", unique(dta$benef_type1),
-          "mr_age_retire.png",
-          sep = "_"
-        )
-      ),
-      height = 8.27,
-      width = 11.69
+    # p5 <- plotOpts(kamPlot5)
+    plotOpts(kamPlot5)
+
+    ggsave(file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "mr_age_retire.png",
+        sep = "_"
       )
+    ),
+    height = 8.27,
+    width = 11.69
+    )
   }
   #--- AADR Plot ---------------------------------------------------------------
   # Log AADR pro Age
@@ -253,19 +259,21 @@ function_kamplot <- function(dta) {
     scale_color_discrete("Cluster") +
     scale_x_continuous(breaks = seq(0, 100, 10))
 
-  p3 <- plotOpts(kamPlot3) +
-    ggsave(file.path(
-      path_graphs,
-      paste(
-        "sex", unique(dta$sex),
-        "typerent", unique(dta$benef_type1),
-        "aadr_age.png",
-        sep = "_"
-      )
-    ),
-    height = 8.27,
-    width = 11.69
+  # p3 <- plotOpts(kamPlot3)
+  plotOpts(kamPlot3)
+
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      "sex", unique(dta$sex),
+      "typerent", unique(dta$benef_type1),
+      "aadr_age.png",
+      sep = "_"
     )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
 
   # Log AADR pro Scale
   kamPlot4 <- KAMRESDATA %>%
@@ -308,19 +316,21 @@ function_kamplot <- function(dta) {
     scale_color_discrete("Cluster") +
     scale_x_continuous(breaks = seq(0, 44, 4))
 
-  p4 <- plotOpts(kamPlot4) +
-    ggsave(file.path(
-      path_graphs,
-      paste(
-        "sex", unique(dta$sex),
-        "typerent", unique(dta$benef_type1),
-        "aadr_scale.png",
-        sep = "_"
-      )
-    ),
-    height = 8.27,
-    width = 11.69
+  # p4 <- plotOpts(kamPlot4)
+  plotOpts(kamPlot4)
+
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      "sex", unique(dta$sex),
+      "typerent", unique(dta$benef_type1),
+      "aadr_scale.png",
+      sep = "_"
     )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
 
   if (KAMRESDATA$age_retire > 0) {
     # Log AADR pro Age_retire
@@ -364,19 +374,21 @@ function_kamplot <- function(dta) {
       scale_color_discrete("Cluster") +
       scale_x_continuous(breaks = seq(min(KAMRESDATA$age_retire), max(KAMRESDATA$age_retire), 1))
 
-    p6 <- plotOpts(kamPlot6) +
-      ggsave(file.path(
-        path_graphs,
-        paste(
-          "sex", unique(dta$sex),
-          "typerent", unique(dta$benef_type1),
-          "aadr_age_retire.png",
-          sep = "_"
-        )
-      ),
-      height = 8.27,
-      width = 11.69
+    # p6 <- plotOpts(kamPlot6)
+    plotOpts(kamPlot6)
+
+    ggsave(file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "aadr_age_retire.png",
+        sep = "_"
       )
+    ),
+    height = 8.27,
+    width = 11.69
+    )
   }
 }
 
@@ -493,20 +505,20 @@ fun_ggplot_hist2 <- function(dta) {
     scale_fill_manual("Cluster",
       breaks = c("1", "2", "3", "4", "5"),
       values = c("red", "blue", "green", "orange", "violet")
-    ) +
-    ggsave(file.path(
-      path_graphs,
-      paste(
-        "hist",
-        "sex", unique(GGDATA$sex),
-        "typerent", unique(GGDATA$benef_type1),
-        "mstat", unique(GGDATA$marital_stat),
-        numb_clust,
-        "clusters.png",
-        sep = "_"
-      )
-    ),
-    height = 8.27,
-    width = 11.69
     )
+  ggsave(file.path(
+    path_graphs,
+    paste(
+      "hist",
+      "sex", unique(GGDATA$sex),
+      "typerent", unique(GGDATA$benef_type1),
+      "mstat", unique(GGDATA$marital_stat),
+      numb_clust,
+      "clusters.png",
+      sep = "_"
+    )
+  ),
+  height = 8.27,
+  width = 11.69
+  )
 }

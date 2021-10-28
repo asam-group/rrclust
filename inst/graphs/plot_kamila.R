@@ -13,14 +13,23 @@ library(qqplotr)
 library(moments)
 
 # Output directory
-path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
-output_name <- "cl_kamila_20210602151449_layal_kamila"
+path_out_init <- "O:/MASS/09_mathprod/01_fh/output/research"
+# path_out_init <- "C:/research/outputs"
+path_out <- file.path(path_out_init, "rrclust")
+output_name <- "cl_kamila_20211014085917_u80844426_kamila_large"
 path_output <- file.path(
   path_out,
   output_name
 )
 
-path_input <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/inputs/inp_kamila/all"
+# Input directory
+filenames <- list.files(path_output, full.names = TRUE, pattern = "param")
+params <- list.files(filenames, full.names = TRUE, pattern = "PARAM_GLOBAL.csv$")
+PARAM_GLOBAL_RRCLUST <- rrclust::tidylist_read(params)$PARAM_GLOBAL %>% 
+  spread(key = key, value = value)
+path_input <- c(PARAM_GLOBAL_RRCLUST$path_data,
+                file.path(PARAM_GLOBAL_RRCLUST$path_data, "all"),
+                file.path(PARAM_GLOBAL_RRCLUST$path_data, "kamila"))
 
 # Retrieve outputs and inputs
 all_csv <- rrclust::tidylist_read(path_output)
@@ -51,7 +60,7 @@ rmax <- 2 * rmin
 plaf <- 1.5 * rmax
 
 # Graphs directory
-path_allgraph <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/graphs"
+path_allgraph <- "O:/MASS/02_team/03_math/anderes/doctorat_plc/travail/w02_rrclust/figures"
 path_graphs <- file.path(path_allgraph, paste(gsub("-", "_", Sys.Date()),
   numb_clust,
   "clusters",
@@ -84,16 +93,20 @@ SKEW_KURT <- all_csv$PLOTDATKAM %>%
     skew_aadr = skewness(aadr),
     kurtosis_aadr = kurtosis(aadr)
   ) %>%
-  gather(key = moment, value = value, - cluster_id) %>%
-  mutate(moment_type = gsub("_.*(.*)", "", moment),
-         var = gsub("^.+?_", "", moment),
-         Moment = recode(moment_type,
-                              "skew" = "Skewness",
-                              "kurtosis" = "Kurtosis"),
-         var = recode(var,
-                      "mr" = "Monthly Rent",
-                      "aadr" = "AADR"),
-         Cluster = cluster_id) %>%
+  gather(key = moment, value = value, -cluster_id) %>%
+  mutate(
+    moment_type = gsub("_.*(.*)", "", moment),
+    var = gsub("^.+?_", "", moment),
+    Moment = recode(moment_type,
+      "skew" = "Skewness",
+      "kurtosis" = "Kurtosis"
+    ),
+    var = recode(var,
+      "mr" = "Monthly Rent",
+      "aadr" = "AADR"
+    ),
+    Cluster = cluster_id
+  ) %>%
   dplyr::select(-moment, -moment_type, -cluster_id) %>%
   spread(key = var, value = value) %>%
   arrange(desc(Moment)) %>%
@@ -103,7 +116,7 @@ SKEW_KURT <- all_csv$PLOTDATKAM %>%
 
 print(
   xtable(SKEW_KURT,
-         align="lcccc",
+    align = "lcccc",
     label = "Table of Moments pro Cluster",
     caption = "Table of Moments pro Cluster"
   ),
@@ -161,18 +174,18 @@ ggplot(
   scale_fill_manual("Cluster",
     breaks = c("1", "2", "3", "4", "5"),
     values = c("red", "blue", "green", "orange", "violet")
-  ) +
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      numb_clust,
-      "clusters_hist_log10aadr.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
   )
+ggsave(file.path(
+  path_graphs,
+  paste(
+    numb_clust,
+    "clusters_hist_log10aadr.png",
+    sep = "_"
+  )
+),
+height = 8.27,
+width = 11.69
+)
 
 # AADR
 ggplot(
@@ -219,18 +232,18 @@ ggplot(
   scale_fill_manual("Cluster",
     breaks = c("1", "2", "3", "4", "5"),
     values = c("red", "blue", "green", "orange", "violet")
-  ) +
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      numb_clust,
-      "clusters_hist_aadr.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
   )
+ggsave(file.path(
+  path_graphs,
+  paste(
+    numb_clust,
+    "clusters_hist_aadr.png",
+    sep = "_"
+  )
+),
+height = 8.27,
+width = 11.69
+)
 
 # Density plot log(aadr)
 ggplot(
@@ -278,18 +291,18 @@ ggplot(
   scale_fill_manual("Cluster Density",
     breaks = c("1", "2", "3", "4", "5"),
     values = c("red", "blue", "green", "orange", "violet")
-  ) +
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      numb_clust,
-      "clusters_aadr_dens.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
   )
+ggsave(file.path(
+  path_graphs,
+  paste(
+    numb_clust,
+    "clusters_aadr_dens.png",
+    sep = "_"
+  )
+),
+height = 8.27,
+width = 11.69
+)
 
 # ECDF plot aadr
 ggplot(
@@ -341,18 +354,18 @@ ggplot(
   scale_color_manual("Cluster",
     breaks = c("1", "2", "3", "4", "5"),
     values = c("red", "blue", "green", "orange", "violet")
-  ) +
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      numb_clust,
-      "clusters_aadr_ecdf.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
   )
+ggsave(file.path(
+  path_graphs,
+  paste(
+    numb_clust,
+    "clusters_aadr_ecdf.png",
+    sep = "_"
+  )
+),
+height = 8.27,
+width = 11.69
+)
 
 # Normal Q-Q plot of monthly rent
 df1 <- all_csv$PLOTDATKAM %>%
@@ -411,18 +424,18 @@ ggplot(
   scale_fill_manual("Cluster Theoretical Quantiles",
     breaks = c("1", "2", "3", "4", "5"),
     values = c("red", "blue", "green", "orange", "violet")
-  ) +
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      numb_clust,
-      "clusters_aadr_qqplot.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
   )
+ggsave(file.path(
+  path_graphs,
+  paste(
+    numb_clust,
+    "clusters_aadr_qqplot.png",
+    sep = "_"
+  )
+),
+height = 8.27,
+width = 11.69
+)
 #---  Monthly rent -------------------------------------------------------------
 ggplot(
   all_csv$PLOTDATKAM %>%
@@ -477,18 +490,18 @@ ggplot(
   scale_fill_manual("Cluster",
     breaks = c("1", "2", "3", "4", "5"),
     values = c("red", "blue", "green", "orange", "violet")
-  ) +
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      numb_clust,
-      "clusters_hist_mr.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
   )
+ggsave(file.path(
+  path_graphs,
+  paste(
+    numb_clust,
+    "clusters_hist_mr.png",
+    sep = "_"
+  )
+),
+height = 8.27,
+width = 11.69
+)
 
 # Density plot mr
 ggplot(
@@ -549,18 +562,18 @@ ggplot(
   scale_fill_manual("Cluster Density",
     breaks = c("1", "2", "3", "4", "5"),
     values = c("red", "blue", "green", "orange", "violet")
-  ) +
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      numb_clust,
-      "clusters_mr_dens.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
   )
+ggsave(file.path(
+  path_graphs,
+  paste(
+    numb_clust,
+    "clusters_mr_dens.png",
+    sep = "_"
+  )
+),
+height = 8.27,
+width = 11.69
+)
 
 # ECDF plot mr
 ggplot(
@@ -619,18 +632,18 @@ ggplot(
   scale_color_manual("Cluster",
     breaks = c("1", "2", "3", "4", "5"),
     values = c("red", "blue", "green", "orange", "violet")
-  ) +
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      numb_clust,
-      "clusters_mr_ecdf.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
   )
+ggsave(file.path(
+  path_graphs,
+  paste(
+    numb_clust,
+    "clusters_mr_ecdf.png",
+    sep = "_"
+  )
+),
+height = 8.27,
+width = 11.69
+)
 
 # Normal Q-Q plot of monthly rent
 df <- all_csv$PLOTDATKAM %>%
@@ -691,18 +704,18 @@ ggplot(
   scale_fill_manual("Cluster Theoretical Quantiles",
     breaks = c("1", "2", "3", "4", "5"),
     values = c("red", "blue", "green", "orange", "violet")
-  ) +
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      numb_clust,
-      "clusters_mr_qqplot.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
   )
+ggsave(file.path(
+  path_graphs,
+  paste(
+    numb_clust,
+    "clusters_mr_qqplot.png",
+    sep = "_"
+  )
+),
+height = 8.27,
+width = 11.69
+)
 
 
 
@@ -750,7 +763,7 @@ PLOTS_TIB_KAMRES <- CROSS_TIB_KAMRES %>%
 
 
 #--- Table Summary Statistics --------------------------------------------------
-RR_OASI <- mod_prepa_rr(all_csv_inputs$IND_YEARLY_RR)$RR_OASI %>%
+RR_OASI <- mod_prepa_rr(IND_YEARLY_RR = all_csv_inputs$IND_YEARLY_RR)$RR_OASI %>%
   dplyr::select(-age_retire)
 
 print(
@@ -861,11 +874,11 @@ psplot <- with(
   ) +
   geom_hline(yintercept = 0.8, lty = 2) +
   scale_x_continuous(breaks = sort(unique(all_csv$KM_RES$cluster_id))) +
-  ylim(0, 1.1) +
-  ggsave(file.path(path_graphs, "psplot.png"),
-    height = 8.27,
-    width = 11.69
-  )
+  ylim(0, 1.1)
+ggsave(file.path(path_graphs, "psplot.png"),
+  height = 8.27,
+  width = 11.69
+)
 
 #--- Ftable ----------------------------------------------------
 DATA_FTABLE <- all_csv$PLOTDATKAM %>%
@@ -987,12 +1000,13 @@ CROSS_TIB <- tibble(unique_sex = unique_sex) %>%
   )
 
 # Plots
+suppressWarnings(
 PLOTS_TIB <- CROSS_TIB %>%
   mutate(data = list(dta)) %>%
   dplyr::select(-dta) %>%
   mutate(plots = map(list(data), rrclust::fun_ggplot_hist2)) %>%
   dplyr::select(-data)
-
+)
 
 #---- Characteristics of each cluster ------------------------------------------
 RR_DESCR <- all_csv$PLOTDATKAM %>%
@@ -1027,7 +1041,7 @@ descr_stat_fun(
   lvalues = lvalues
 )
 
-
+browseURL(path_graphs)
 #--- Plotly --------------------------------------------------------------------
 
 # # Function Plot KAMILA results

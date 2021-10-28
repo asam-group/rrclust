@@ -2,12 +2,13 @@
 library(rrclust)
 
 # Pfade setzen
-inp_dir <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/containers_dummy"
+dir_path_ahv <- "O:/MASS/09_mathprod/01_fh/container_tools/containers_dummy/research"
+inp_dir <- file.path(dir_path_ahv, "rrclust")
 # Choose a container in the list --
 path_file <- function(x) file.path(inp_dir, x)
 
 paths <- file.path(inp_dir, c(
-  "params_kamila" # Droit en vigueur
+  "params_kamila_large" 
 ))
 
 
@@ -27,7 +28,40 @@ TF <- trace_flow({
 
 library(DiagrammeR)
 name_plot <- "rrclust_flow.png"
-wd <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs/graphs/2021_06_10_5_clusters"
+
+
+
+# Output directory
+path_out_init <- "O:/MASS/09_mathprod/01_fh/output/research"
+# path_out_init <- "C:/research/outputs"
+path_out <- file.path(path_out_init, "rrclust")
+output_name <- "cl_kamila_20211014085917_u80844426_kamila_large"
+path_output <- file.path(
+  path_out,
+  output_name
+)
+
+# Input directory
+filenames <- list.files(path_output, full.names = TRUE, pattern = "param")
+params <- list.files(filenames, full.names = TRUE, pattern = "PARAM_GLOBAL.csv$")
+PARAM_GLOBAL_RRCLUST <- rrclust::tidylist_read(params)$PARAM_GLOBAL %>% 
+  spread(key = key, value = value)
+path_input <- c(PARAM_GLOBAL_RRCLUST$path_data,
+                file.path(PARAM_GLOBAL_RRCLUST$path_data, "all"),
+                file.path(PARAM_GLOBAL_RRCLUST$path_data, "kamila"))
+
+# Retrieve outputs and inputs
+all_csv <- rrclust::tidylist_read(path_output)
+# all_csv$PLOTDATKAM
+numb_clust <- max(as.double(all_csv$PLOTDATKAM$cluster_id))
+# Graphs directory
+path_allgraph <- "O:/MASS/02_team/03_math/anderes/doctorat_plc/travail/w02_rrclust/figures"
+path_graphs <- file.path(path_allgraph, paste(gsub("-", "_", Sys.Date()),
+                                              numb_clust,
+                                              "clusters",
+                                              sep = "_"
+))
+wd <- path_graphs
 
 plot <- draw_flow(TF)
 

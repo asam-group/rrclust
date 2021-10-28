@@ -12,7 +12,15 @@ path_data <- function(path) {
   path_data <- tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]]
 }
 
-
+#' @title Separate a string of several words at commas to a vector
+#' @param x string of words to separate
+#' @author [Christoph Sax](mailto:christoph@cynkra.com)
+#' @export
+separate_at_comma <- function(x) {
+  if (!is.na(x)) {
+    trimws(strsplit(x, ",")[[1]])
+  }
+}
 
 
 #' @title Write parameters
@@ -73,7 +81,7 @@ clustmeth_identifier_number <- function(method_name,
     "_",
     format(Sys.time(), format = "%Y%m%d%H%M%S"),
     "_",
-    tolower(Sys.getenv("USER")),
+    tolower(Sys.getenv("USERNAME")),
     "_",
     params_folder_suffix
   )

@@ -1,21 +1,24 @@
+### Run a list of containers
+
 ## Load package ----------------------------------------------------------------
+
 # Load from repository on server:
-libloc <- "/Users/Layal/OFAS/doctorat/package_tools/softwares/lib_rrclust"
-# libloc <- "/Users/donzel/Développement/OFAS/package_tools/softwares/lib_rrclust"
-
+libloc <- "O:/MASS/04_software/01_r/lib_research/lib_rrclust"
 .libPaths(c(.libPaths(), libloc))
-library(rrclust, lib.loc = libloc)
-
-# Load from the local repository
-library(rrclust)
+library(delfin, lib.loc = libloc)
 
 # For local test or development purposes load sources virtually:
 # devtools::load_all(".")
-# impedes that line break makes the browser() leave.
+# verhindert, dass Zeilenumbruch browser() verlaesst
 options(browserNLdisabled = TRUE)
 
-root <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/inputs"
-inp <- "inp_kamila"
+# libloc <- "/Users/donzel/Développement/OFAS/package_tools/softwares/lib_rrclust"
+
+
+root <- "O:/MASS/09_mathprod/01_fh/container_tools/inputs/research"
+# root <- "C:/research/inputs/research"
+# inp <- "inp_kamila"
+inp <- "inp_kamila_large"
 
 prepare_input(path = file.path(root,
                                inp,

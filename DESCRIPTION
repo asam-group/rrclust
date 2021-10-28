@@ -1,18 +1,22 @@
 Package: rrclust
 Type: Package
-Title: Clustering observations from the Swiss Old-Age and Survivors's Insurance (OASI) Register of Rents
-Version: 1.0.1
-Date: 2021-06-17
-Author@R: person("Layal Christine", "Lettry", email = "layalchristine.lettry@unifr.ch")
+Title: Clustering observations from the Swiss Old-Age and Survivors's
+        Insurance (OASI) Register of Rents
+Version: 1.0.2
+Date: 2021-10-14
+Author@R: person("Layal Christine", "Lettry", email =
+        "layalchristine.lettry@unifr.ch")
 Maintainer: Layal Christine Lettry <layalchristine.lettry@unifr.ch>
 Description: This package allows to cluster the Swiss register of rents by using 
              Kamila clustering method.
 URL: https://github.com/asam-group/rrclust
 Depends: dplyr, tidyr, tibble, yaml, roxygen2, MASS, knitr
-Imports: ggplot2, xtable, data.table, kableExtra, Hmisc, kamila, caTools
+Imports: ggplot2, xtable, data.table, kableExtra, Hmisc, kamila,
+        caTools
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 NeedsCompilation: no
 Author: Layal Christine Lettry [aut, cre]
+Packaged: 2021-10-28 10:42:36 UTC; U80844426

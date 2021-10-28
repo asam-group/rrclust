@@ -13,16 +13,18 @@
 #'
 #' @export
 
-# - `Last change`: 2021-03-04 / Llc
+# - `Last change`: 2021-09-02 / Llc
 
 mod_input_ind_yearly_rr <- function(PARAM_INPUTS,
                                     list = NULL) {
   mod_init()
 
-  load(file = file.path(
+  x <- load(file = file.path(
     PARAM_INPUTS$path_rr,
     PARAM_INPUTS$file_rr
   ))
+
+  IND_YEARLY_RR <- get(x)
 
   mod_return(IND_YEARLY_RR)
 }

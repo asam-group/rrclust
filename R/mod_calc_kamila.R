@@ -37,13 +37,14 @@
 #' @export
 #' @import kamila
 
-# Last change: 2021-06-02 / Llc
+# Last change: 2021-09-02 / Llc
 
 mod_calc_kamila <- function(PARAM_KAMILA,
                             CONT_DF,
                             CATEG_DF,
                             FULL_CONT_DF,
                             FULL_CATEG_DF,
+                            KM_RES,
                             list = NULL) {
   mod_init()
 

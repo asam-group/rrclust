@@ -33,14 +33,15 @@ wrap_prepadata_ <- function(tl_inp) {
   # Full datasets, training and validation sets of categorical and continuous
   # variables
 
-  tl_prepa_rr <- mod_catcontvar(
+  tl_mod_catcontvar <- mod_catcontvar(
     RR_OASI = tl_prepa_rr$RR_OASI,
     RR_OASI_TS = tl_mod_tsvs$RR_OASI_TS,
-    RR_OASI_VS = tl_mod_tsvs$RR_OASI_VS
+    RR_OASI_VS = tl_mod_tsvs$RR_OASI_VS,
+    PARAM_GLOBAL = tl_inp$PARAM_GLOBAL
   )
 
   # Output
-  c(tl_prepa_rr)
+  c(tl_mod_catcontvar)
 }
 
 

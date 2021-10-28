@@ -1,3 +1,7 @@
+# rrclust 1.0.2
+
+adaptation to the large pension register (more variables available)
+
 # rrclust 1.0.1
 
 new graphs to add in the working paper

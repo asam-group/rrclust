@@ -14,7 +14,6 @@
 #' @return a `tidylist` containing the following tidy data frames:
 #'   - `RR_OASI_TS` : Training set of categorical data.
 #'   - `RR_OASI_VS`: Validation set of categorical data.
-
 #'
 #' @references [www.geeksforgeeks.org](https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/)
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)

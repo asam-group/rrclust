@@ -1,30 +1,39 @@
+### Run a list of containers
+
 ## Load package ----------------------------------------------------------------
+
 # Load from repository on server:
-libloc <- "/Users/Layal/OFAS/doctorat/package_tools/softwares/lib_rrclust"
-# libloc <- "/Users/donzel/Développement/OFAS/package_tools/softwares/lib_rrclust"
-
+libloc <- "O:/MASS/04_software/01_r/lib_research/lib_rrclust"
 .libPaths(c(.libPaths(), libloc))
-library(rrclust, lib.loc = libloc)
-
-# Load from the local repository
-library(rrclust)
+library(delfin, lib.loc = libloc)
 
 # For local test or development purposes load sources virtually:
 # devtools::load_all(".")
-# impedes that line break makes the browser() leave.
+# verhindert, dass Zeilenumbruch browser() verlaesst
 options(browserNLdisabled = TRUE)
 
-path_init <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/containers_dummy"
-# path_init <- "/Users/Donzel/Développement/OFAS/package_tools/container_tools/containers_dummy"
+# libloc <- "/Users/donzel/Développement/OFAS/package_tools/softwares/lib_rrclust"
+
+# Rrclust --------------------------------------------------------------------------
+dir_path_ahv <- "O:/MASS/09_mathprod/01_fh/container_tools/containers_dummy/research"
+inp_dir <- file.path(dir_path_ahv, "rrclust")
 
 path <- file.path(
-  path_init,
-  "params_kamila" # kamila clustering method
+  inp_dir,
+  # "params_kamila" # kamila clustering method
+  "params_kamila_large" # kamila clustering method with more variables
 )
 
 
 # Container to be archived
-path_out <- "/Users/Layal/OFAS/doctorat/package_tools/container_tools/outputs"
+path_out_init <- "O:/MASS/09_mathprod/01_fh/output/research"
+# path_out_init <- "C:/research/outputs"
+
+path_out <-  file.path(path_out_init, "rrclust")
+if (!file.exists(path_out)) {
+  dir.create(path_out, recursive = TRUE)
+}
+
 # path_out <- "/Users/DonzeL/Développement/OFAS/_temp"
 rrclust::run_kamila(path = path, path_out = path_out)
 

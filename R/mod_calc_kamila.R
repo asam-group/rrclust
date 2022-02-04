@@ -14,10 +14,10 @@
 #' variables as factors except for the nominal variables marital_stat and benef_type.
 #'
 #' @param CONT_DF subset of the register of rents containing all the continuous
-#' variables except for the outcome variables aadr and monthly_rent.
+#' variables except for the outcome variables aadr and monthly_pension.
 #'
 #' @param FULL_CONT_DF database containing the continuous variables used for the
-#' estimation plus the outcome variables aadr and monthly_rent.
+#' estimation plus the outcome variables aadr and monthly_pension.
 #'
 #' @param FULL_CATEG_DF database containing the categorical variables used for
 #' the estimation plus the nominal variables marital_stat and benef_type.

@@ -16,7 +16,7 @@ library(moments)
 path_out_init <- "O:/MASS/09_mathprod/01_fh/output/research"
 # path_out_init <- "C:/research/outputs"
 path_out <- file.path(path_out_init, "rrclust")
-output_name <- "cl_kamila_20211104141309_u80844426_kamila_large"
+output_name <- "cl_kamila_20211014085917_u80844426_kamila_large"
 path_output <- file.path(
   path_out,
   output_name
@@ -51,7 +51,7 @@ rmin <- min((all_csv$PLOTDATKAM %>%
     age_retire == age,
     age == 64 + 1 * (sex == 0)
   ) %>%
-  dplyr::select(monthly_pension))$monthly_pension)
+  dplyr::select(monthly_rent))$monthly_rent)
 
 # Rente maximale
 rmax <- 2 * rmin
@@ -88,8 +88,8 @@ if (!file.exists(output_dir)) {
 SKEW_KURT <- all_csv$PLOTDATKAM %>%
   group_by(cluster_id) %>%
   summarise(
-    skew_mr = skewness(monthly_pension),
-    kurtosis_mr = kurtosis(monthly_pension),
+    skew_mr = skewness(monthly_rent),
+    kurtosis_mr = kurtosis(monthly_rent),
     skew_aadr = skewness(aadr),
     kurtosis_aadr = kurtosis(aadr)
   ) %>%
@@ -102,8 +102,8 @@ SKEW_KURT <- all_csv$PLOTDATKAM %>%
       "kurtosis" = "Kurtosis"
     ),
     var = recode(var,
-      "mr" = "Monthly Pension Amount (CHF)",
-      "aadr" = "AADR (CHF)"
+      "mr" = "Monthly Rent",
+      "aadr" = "AADR"
     ),
     Cluster = cluster_id
   ) %>%
@@ -441,7 +441,7 @@ ggplot(
   all_csv$PLOTDATKAM %>%
     group_by(cluster_id) %>%
     mutate(n_ind = n()),
-  aes(monthly_pension, fill = as.factor(cluster_id))
+  aes(monthly_rent, fill = as.factor(cluster_id))
 ) +
   facet_wrap(~ as.factor(cluster_id),
     scales = "free_x",
@@ -509,9 +509,9 @@ ggplot(
     group_by(cluster_id) %>%
     mutate(
       n_ind = n(),
-      grp.mean = mean(monthly_pension)
+      grp.mean = mean(monthly_rent)
     ),
-  aes(monthly_pension, fill = as.factor(cluster_id))
+  aes(monthly_rent, fill = as.factor(cluster_id))
 ) +
   geom_density(alpha = 0.4) +
   geom_vline(aes(xintercept = grp.mean, color = as.factor(cluster_id)),
@@ -581,9 +581,9 @@ ggplot(
     group_by(cluster_id) %>%
     mutate(
       n_ind = n(),
-      grp.mean = mean(monthly_pension)
+      grp.mean = mean(monthly_rent)
     ),
-  aes(monthly_pension)
+  aes(monthly_rent)
 ) +
   stat_ecdf(aes(
     group = as.factor(cluster_id),
@@ -653,7 +653,7 @@ df <- all_csv$PLOTDATKAM %>%
 ggplot(
   data = df,
   mapping = aes(
-    sample = monthly_pension,
+    sample = monthly_rent,
     color = as.factor(cluster_id),
     fill = as.factor(cluster_id)
   )
@@ -884,7 +884,7 @@ ggsave(file.path(path_graphs, "psplot.png"),
 DATA_FTABLE <- all_csv$PLOTDATKAM %>%
   mutate(
     ln_aadr = log(aadr),
-    ln_monthly_pension = log(monthly_pension),
+    ln_monthly_rent = log(monthly_rent),
     benef_type = as.factor(benef_type),
     marital_stat = as.factor(marital_stat),
     nat = as.factor(nat),
@@ -900,7 +900,7 @@ DATA_FTABLE <- all_csv$PLOTDATKAM %>%
       # age_retire,
       benef_type1,
       marital_stat,
-      # monthly_pension#,
+      # monthly_rent#,
       nat,
       resid,
       # scale,
@@ -922,8 +922,8 @@ DATA_FTABLE <- all_csv$PLOTDATKAM %>%
       "ln_aadr" = "ln(AADR)"
     ),
     benef_type1 = dplyr::recode(benef_type1,
-      "1" = "Old-age pensioners",
-      "0" = "Other types of OASI pensioners"
+      "1" = "Old-age insurance beneficiaries",
+      "0" = "Survivor insurance beneficiaries"
     ),
     sex = dplyr::recode(sex,
       "1" = "Female", # "Woman"
@@ -1064,8 +1064,8 @@ browseURL(path_graphs)
 #           resid == 0 ~ "Swiss living in Switzerland"
 #       ),
 #       benef_type1 = dplyr::recode(benef_type1,
-#                                   "1" = "Old-age pension",
-#                                   "0" = "Other OASI pension types"
+#                                   "1" = "Old-age insurance",
+#                                   "0" = "Survivor insurance"
 #       ),
 #       sex = dplyr::recode(sex,
 #                           "0" = "Male",
@@ -1107,7 +1107,7 @@ browseURL(path_graphs)
 #
 #   myplot1 <- KAMRESDATA %>%
 #     plot_ly(
-#       x = ~age, y = ~scale, z = ~ log(monthly_pension),
+#       x = ~age, y = ~scale, z = ~ log(monthly_rent),
 #       # colors = pal,
 #       type = "scatter3d",
 #       mode = "markers",

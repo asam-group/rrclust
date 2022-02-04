@@ -8,7 +8,7 @@
 
 ## Create two text files with content
 
-filenames <- list.files("/Users/Layal/OFAS/doctorat/package_tools/source/rrclust/R",
+filenames <- list.files("C:/research/rrclust_llc_subwork/inst/graphs",
                         full.names = TRUE,  pattern = "\\.R$")
 
 ## Replace Merry Christmas with Happy New Year
@@ -19,8 +19,8 @@ for( f in filenames ){
 
   x <- readLines(f)
 
-  y <- gsub( "mailto:layalchristine.pipoz@bsv.admin.ch",
-             "mailto:layalchristine.lettry@unifr.ch",
+  y <- gsub( 'Other types of pensioners',
+             'Other types of OASI pensioners',
              x )
 
   cat(y, file=f, sep="\n")

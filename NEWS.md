@@ -1,3 +1,7 @@
+# rrclust 1.0.3
+
+correction "monthly_rent" into "monthly_pension"
+
 # rrclust 1.0.2
 
 adaptation to the large pension register (more variables available)

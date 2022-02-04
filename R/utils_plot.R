@@ -20,8 +20,8 @@ function_kamplot <- function(dta) {
           resid == 0 ~ "Swiss living in Switzerland"
       ),
       benef_type1 = dplyr::recode(benef_type1,
-        "1" = "Old-age insurance",
-        "0" = "Survivor insurance"
+        "1" = "Old-age pension",
+        "0" = "Other OASI pension types"
       ),
       sex = dplyr::recode(sex,
         "0" = "Male",
@@ -43,14 +43,14 @@ function_kamplot <- function(dta) {
       )
     )
 
-  #--- Log Monthly Rent Plot ---------------------------------------------------
+  #--- Log Monthly Pension Plot ---------------------------------------------------
 
-  # Log Monthly Rent pro Age
+  # Log Monthly Pension pro Age
   kamPlot1 <- KAMRESDATA %>%
     ggplot(
       aes(
         x = age,
-        y = log(monthly_rent),
+        y = log(monthly_pension),
         # shape = groups2,
         color = KamilaCluster
       )
@@ -58,14 +58,14 @@ function_kamplot <- function(dta) {
     facet_wrap(marital_stat ~ natres) +
     theme_light() +
     labs(
-      title = "Distribution of Monthly Rent Natural Logarithm",
+      title = "Distribution of Monthly Pension Natural Logarithm",
       subtitle = paste(unique(KAMRESDATA$sex),
         unique(KAMRESDATA$benef_type1),
         "beneficiaries",
         sep = " "
       ),
       x = "Age",
-      y = "Monthly Rent Natural Logarithm",
+      y = "Monthly Pension Natural Logarithm",
       caption = paste(
         Sys.Date(),
         "Llc",
@@ -102,12 +102,12 @@ function_kamplot <- function(dta) {
   width = 11.69
   )
 
-  # Log Monthly Rent pro Scale
+  # Log Monthly Pension pro Scale
   kamPlot2 <- KAMRESDATA %>%
     ggplot(
       aes(
         x = scale,
-        y = log(monthly_rent),
+        y = log(monthly_pension),
         # shape = groups2,
         color = KamilaCluster
       )
@@ -115,14 +115,14 @@ function_kamplot <- function(dta) {
     facet_wrap(marital_stat ~ natres) +
     theme_light() +
     labs(
-      title = "Distribution of Monthly Rent Natural Logarithm",
+      title = "Distribution of Monthly Pension Natural Logarithm",
       subtitle = paste(unique(KAMRESDATA$sex),
         unique(KAMRESDATA$benef_type1),
         "beneficiaries",
         sep = " "
       ),
       x = "Scale",
-      y = "Monthly Rent Natural Logarithm",
+      y = "Monthly Pension Natural Logarithm",
       caption = paste(
         Sys.Date(),
         "Llc",
@@ -160,12 +160,12 @@ function_kamplot <- function(dta) {
   )
 
   if (KAMRESDATA$age_retire > 0) {
-    # Log Monthly Rent pro age_retire
+    # Log Monthly Pension pro age_retire
     kamPlot5 <- KAMRESDATA %>%
       ggplot(
         aes(
           x = age_retire,
-          y = log(monthly_rent),
+          y = log(monthly_pension),
           # shape = groups2,
           color = KamilaCluster
         )
@@ -173,14 +173,14 @@ function_kamplot <- function(dta) {
       facet_wrap(marital_stat ~ natres) +
       theme_light() +
       labs(
-        title = "Distribution of Monthly Rent Natural Logarithm",
+        title = "Distribution of Monthly Pension Natural Logarithm",
         subtitle = paste(unique(KAMRESDATA$sex),
           unique(KAMRESDATA$benef_type1),
           "beneficiaries",
           sep = " "
         ),
         x = "Age of Effective Retirement",
-        y = "Monthly Rent Natural Logarithm",
+        y = "Monthly Pension Natural Logarithm",
         caption = paste(
           Sys.Date(),
           "Llc",
@@ -401,7 +401,7 @@ fun_ggplot_hist2 <- function(dta) {
   GGDATA <- dta %>%
     mutate(
       ln_aadr = log(aadr),
-      ln_monthly_rent = log(monthly_rent),
+      ln_monthly_pension = log(monthly_pension),
       benef_type = as.factor(benef_type),
       marital_stat = as.factor(marital_stat),
       nat = as.factor(nat),
@@ -417,7 +417,7 @@ fun_ggplot_hist2 <- function(dta) {
         # age_retire,
         benef_type1,
         marital_stat,
-        # monthly_rent,
+        # monthly_pension,
         nat,
         resid,
         # scale,
@@ -439,8 +439,8 @@ fun_ggplot_hist2 <- function(dta) {
         "ln_aadr" = "ln(AADR)"
       ),
       benef_type1 = dplyr::recode(benef_type1,
-        "1" = "Old-age insurance beneficiaries",
-        "0" = "Survivor insurance beneficiaries"
+        "1" = "Old-age pensioners",
+        "0" = "Other types of OASI pensioners"
       ),
       sex = dplyr::recode(sex,
         "1" = "Female", # "Woman"

@@ -25,7 +25,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
     IND_YEARLY_RR %>%
       dplyr::rename(
         "aadr" = ram,
-        "monthly_rent" = monatliche_rente,
+        "monthly_pension" = monatliche_rente,
         "age" = alt,
         "year" = jahr,
         "resid" = dom,
@@ -68,7 +68,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
     IND_YEARLY_RR %>%
       dplyr::rename(
         "aadr" = ram,
-        "monthly_rent" = monatliche_rente,
+        "monthly_pension" = monatliche_rente,
         "age" = alt,
         "year" = jahr,
         "resid" = dom
@@ -151,7 +151,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
     RR_OASI2 %>%
       mutate_all(funs(as.numeric(.)))
   }
-
+browser()
   mod_return(
     RR_OASI
   )

@@ -35,7 +35,7 @@ name_plot <- "rrclust_flow.png"
 path_out_init <- "O:/MASS/09_mathprod/01_fh/output/research"
 # path_out_init <- "C:/research/outputs"
 path_out <- file.path(path_out_init, "rrclust")
-output_name <- "cl_kamila_20211014085917_u80844426_kamila_large"
+output_name <- "cl_kamila_20211104141309_u80844426_kamila_large"
 path_output <- file.path(
   path_out,
   output_name

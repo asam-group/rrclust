@@ -26,8 +26,8 @@ path <- file.path(
 
 
 # Container to be archived
-path_out_init <- "O:/MASS/09_mathprod/01_fh/output/research"
-# path_out_init <- "C:/research/outputs"
+# path_out_init <- "O:/MASS/09_mathprod/01_fh/output/research"
+path_out_init <- "C:/research/outputs"
 
 path_out <-  file.path(path_out_init, "rrclust")
 if (!file.exists(path_out)) {

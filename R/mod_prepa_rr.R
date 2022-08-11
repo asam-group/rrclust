@@ -151,7 +151,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
     RR_OASI2 %>%
       mutate_all(funs(as.numeric(.)))
   }
-browser()
+
   mod_return(
     RR_OASI
   )

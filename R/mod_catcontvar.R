@@ -45,13 +45,16 @@
 #' @return a `tidylist` containing the following tidy data frames:
 #'   - `CATEG_DF`: contains only categorical variables (factors)
 #'   - `CONT_DF` : contains only continuous variables (numeric)
-
+#'   - `CATEG_DF_TS`: contains only categorical variables (factors), training set
+#'   - `CONT_DF_TS` : contains only continuous variables (numeric), training set
+#'   - `CATEG_DF_VS`: contains only categorical variables (factors), validation set
+#'   - `CONT_DF_VS` : contains only continuous variables (numeric), validation set
 #'
 #' @references [www.geeksforgeeks.org](https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/)
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 
-# - `Last change`: 2021-09-02 / Llc
+# - `Last change`: 2022-08-11 / Llc
 
 mod_catcontvar <- function(RR_OASI,
                            RR_OASI_TS,

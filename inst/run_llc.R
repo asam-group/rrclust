@@ -5,7 +5,7 @@
 # Load from repository on server:
 libloc <- "O:/MASS/04_software/01_r/lib_research/lib_rrclust"
 .libPaths(c(.libPaths(), libloc))
-library(delfin, lib.loc = libloc)
+library(rrclust, lib.loc = libloc)
 
 # For local test or development purposes load sources virtually:
 # devtools::load_all(".")

@@ -3,9 +3,12 @@
 ## Load package ----------------------------------------------------------------
 
 # Load from repository on server:
-libloc <- "O:/MASS/04_software/01_r/lib_research/lib_rrclust"
-.libPaths(c(.libPaths(), libloc))
-library(rrclust, lib.loc = libloc)
+# libloc <- "O:/MASS/04_software/01_r/lib_research/lib_rrclust"
+# .libPaths(c(.libPaths(), libloc))
+# library(rrclust, lib.loc = libloc)
+
+# Local
+library(rrclust)
 
 # For local test or development purposes load sources virtually:
 # devtools::load_all(".")
@@ -15,8 +18,9 @@ options(browserNLdisabled = TRUE)
 # libloc <- "/Users/donzel/Développement/OFAS/package_tools/softwares/lib_rrclust"
 
 # Rrclust --------------------------------------------------------------------------
-dir_path_ahv <- "O:/MASS/09_mathprod/01_fh/container_tools/containers_dummy/research"
-inp_dir <- file.path(dir_path_ahv, "rrclust")
+# dir_path_ahv <- "O:/MASS/09_mathprod/01_fh/container_tools/containers_dummy/research"
+dir_path <- "/Users/Layal/OFAS/doctorat/package_tools/container_dummy"
+inp_dir <- file.path(dir_path, "rrclust")
 
 path <- file.path(
   inp_dir,
@@ -27,7 +31,8 @@ path <- file.path(
 
 # Container to be archived
 # path_out_init <- "O:/MASS/09_mathprod/01_fh/output/research"
-path_out_init <- "C:/research/outputs"
+# path_out_init <- "C:/research/outputs"
+path_out_init <- "/Users/Layal/OFAS/doctorat/package_tools/output"
 
 path_out <-  file.path(path_out_init, "rrclust")
 if (!file.exists(path_out)) {

@@ -25,6 +25,8 @@ root <- "/Users/Layal/OFAS/doctorat/package_tools/data"
 # inp <- "inp_kamila"
 inp <- "inp_kamila_large"
 
-prepare_input(path = file.path(root,
-                               inp,
-                               "PARAM_INPUTS.csv"))
+prepare_input(path = file.path(
+  root,
+  inp,
+  "PARAM_INPUTS.csv"
+))

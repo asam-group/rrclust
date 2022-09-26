@@ -13,10 +13,15 @@ library(qqplotr)
 library(moments)
 
 # Output directory
-path_out_init <- "O:/MASS/09_mathprod/01_fh/output/research"
+# path_out_init <- "O:/MASS/09_mathprod/01_fh/output/research"
 # path_out_init <- "C:/research/outputs"
+path_out_init <- "/Users/Layal/OFAS/doctorat/package_tools/output"
+
 path_out <- file.path(path_out_init, "rrclust")
-output_name <- "cl_kamila_20211104141309_u80844426_kamila_large"
+
+# output_name <- "cl_kamila_20211104141309_u80844426_kamila_large"
+output_name <- "cl_kamila_20220926170231__kamila_large"
+
 path_output <- file.path(
   path_out,
   output_name
@@ -25,7 +30,7 @@ path_output <- file.path(
 # Input directory
 filenames <- list.files(path_output, full.names = TRUE, pattern = "param")
 params <- list.files(filenames, full.names = TRUE, pattern = "PARAM_GLOBAL.csv$")
-PARAM_GLOBAL_RRCLUST <- rrclust::tidylist_read(params)$PARAM_GLOBAL %>% 
+PARAM_GLOBAL_RRCLUST <- rrclust::tidylist_read(params)$PARAM_GLOBAL %>%
   spread(key = key, value = value)
 path_input <- c(PARAM_GLOBAL_RRCLUST$path_data,
                 file.path(PARAM_GLOBAL_RRCLUST$path_data, "all"),
@@ -60,7 +65,9 @@ rmax <- 2 * rmin
 plaf <- 1.5 * rmax
 
 # Graphs directory
-path_allgraph <- "O:/MASS/02_team/03_math/anderes/doctorat_plc/travail/w02_rrclust/figures"
+# path_allgraph <- "O:/MASS/02_team/03_math/anderes/doctorat_plc/travail/w02_rrclust/figures"
+path_allgraph <- "/Users/Layal/OFAS/doctorat/travail/w02_rrclust/figures"
+
 path_graphs <- file.path(path_allgraph, paste(gsub("-", "_", Sys.Date()),
   numb_clust,
   "clusters",

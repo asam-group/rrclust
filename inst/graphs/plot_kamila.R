@@ -367,7 +367,7 @@ height = 8.27,
 width = 11.69
 )
 
-# Normal Q-Q plot of monthly rent
+# Normal Q-Q plot of monthly pension amount
 df1 <- all_csv$PLOTDATKAM %>%
   group_by(cluster_id) %>%
   mutate(
@@ -436,7 +436,7 @@ ggsave(file.path(
 height = 8.27,
 width = 11.69
 )
-#---  Monthly rent -------------------------------------------------------------
+#---  Monthly pension amount -------------------------------------------------------------
 ggplot(
   all_csv$PLOTDATKAM %>%
     group_by(cluster_id) %>%
@@ -462,7 +462,7 @@ ggplot(
   ) +
   labs(
     title = paste0(
-      "Histograms of the monthly rent (min. = ",
+      "Histograms of the monthly pension amount (min. = ",
       rmin, " CHF,",
       " max. = ", rmax, " CHF,",
       " max. for couples = ", plaf, " CHF)"
@@ -475,7 +475,7 @@ ggplot(
       ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
       ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
     ),
-    x = "Monthly rent (CHF)",
+    x = "Monthly pension amount (CHF)",
     y = "log10(Frequency)",
     caption = paste(
       Sys.Date(),
@@ -531,7 +531,7 @@ ggplot(
   ) +
   labs(
     title = paste0(
-      "Density of the monthly rent (min. = ",
+      "Density of the monthly pension amount (min. = ",
       rmin, " CHF,",
       " max. = ", rmax, " CHF,",
       " max. for couples = ", plaf, " CHF)"
@@ -544,7 +544,7 @@ ggplot(
       ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
       ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
     ),
-    x = "Monthly rent (CHF)",
+    x = "Monthly pension amount (CHF)",
     y = "Density",
     caption = paste(
       Sys.Date(),
@@ -605,7 +605,7 @@ ggplot(
   ) +
   labs(
     title = paste0(
-      "ECDF of the monthly rent (min. = ",
+      "ECDF of the monthly pension amount (min. = ",
       rmin, " CHF,",
       " max. = ", rmax, " CHF,",
       " max. for couples = ", plaf, " CHF)"
@@ -618,7 +618,7 @@ ggplot(
       ", C", N_IND$cluster_id[4], ": ", N_IND$n_ind[4],
       ", C", N_IND$cluster_id[5], ": ", N_IND$n_ind[5]
     ),
-    x = "Monthly rent (CHF)",
+    x = "Monthly pension amount (CHF)",
     y = "Empirical Cumulative Density Function",
     caption = paste(
       Sys.Date(),
@@ -645,7 +645,7 @@ height = 8.27,
 width = 11.69
 )
 
-# Normal Q-Q plot of monthly rent
+# Normal Q-Q plot of monthly pension amount
 df <- all_csv$PLOTDATKAM %>%
   group_by(cluster_id) %>%
   mutate(n_ind = n())
@@ -676,7 +676,7 @@ ggplot(
   ) +
   labs(
     title = paste0(
-      "Normal Q-Q plot of the monthly rent (min. = ",
+      "Normal Q-Q plot of the monthly pension amount (min. = ",
       rmin, " CHF,",
       " max. = ", rmax, " CHF,",
       " max. for couples = ", plaf, " CHF)"
@@ -770,7 +770,7 @@ print(
   st(RR_OASI,
     file = file.path(path_graphs, "RR_DESCR"),
     anchor = "sum_stats_rr_oasi",
-    title = "Summary Statistics of the Register of Rents",
+    title = "Summary Statistics of the Pension Register",
     out = "latex"
   ),
   tabular.environment = "longtable",
@@ -799,7 +799,7 @@ dataclust_fun <- function(clust_number, ...) {
     st(DATA_CLUST_REORDERED,
       file = file.path(path_graphs, paste0("DATA_CLUST_REORDERED_", clust_number)),
       anchor = paste0("sum_stats_rr_oasi_", clust_number),
-      title = paste0("Summary Statistics of the Clustered Register of Rents, Cluster ", clust_number),
+      title = paste0("Summary Statistics of the Clustered Pension Register, Cluster ", clust_number),
       out = "latex"
     ),
     tabular.environment = "longtable",
@@ -1118,10 +1118,10 @@ browseURL(path_graphs)
 #       scene = list(
 #         xaxis = list(title = "x = Age"),
 #         yaxis = list(title = "y = Scale"),
-#         zaxis = list(title = "z = ln(Monthly Rent)")
+#         zaxis = list(title = "z = ln(Monthly pension amount)")
 #       ),
 #       title = paste0(
-#         "Distribution of Monthly Rent Natural Logarithm: ",
+#         "Distribution of Monthly pension amount Natural Logarithm: ",
 #         paste(unique(KAMRESDATA$sex),
 #               unique(KAMRESDATA$benef_type1),
 #               "beneficiaries",

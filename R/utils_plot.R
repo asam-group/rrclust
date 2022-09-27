@@ -216,6 +216,23 @@ function_kamplot <- function(dta) {
     height = 8.27,
     width = 11.69
     )
+  } else {
+    # Draw an empty plot if impossible for some combinations of data
+    ggplot() +
+      geom_blank()
+
+    ggsave(file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "mr_age_retire.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
+    )
   }
   #--- AADR Plot ---------------------------------------------------------------
   # Log AADR pro Age

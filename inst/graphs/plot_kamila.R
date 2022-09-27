@@ -20,7 +20,7 @@ path_out_init <- "/Users/Layal/OFAS/doctorat/package_tools/output"
 path_out <- file.path(path_out_init, "rrclust")
 
 # output_name <- "cl_kamila_20211104141309_u80844426_kamila_large"
-output_name <- "cl_kamila_20220927081348__kamila_large"
+output_name <- "cl_kamila_20220927091009__kamila_large"
 
 path_output <- file.path(
   path_out,

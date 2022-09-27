@@ -2,6 +2,8 @@
 
 Add a new table for descriptive statistics
 
+Add an empty scatterplot graph for not working combinations of variables
+
 # rrclust 1.0.4
 
 Correction  "monthly_rent" into "monthly_pension" and "Register of Rents" into "Pension register" in the graphs

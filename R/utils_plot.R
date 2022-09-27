@@ -2,7 +2,7 @@
 #' @param dta Filtered dataframe for each desired population sample
 #' @export
 function_kamplot <- function(dta) {
-  browser()
+
   KAMRESDATA <- dta %>%
     # filter(
     #   sex == 0,

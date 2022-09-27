@@ -2,7 +2,7 @@
 
 Add a new table for descriptive statistics
 
-Add an empty scatterplot graph for not working combinations of variables
+Correct condition in function_kamplot
 
 # rrclust 1.0.4
 

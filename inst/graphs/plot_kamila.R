@@ -20,7 +20,7 @@ path_out_init <- "/Users/Layal/OFAS/doctorat/package_tools/output"
 path_out <- file.path(path_out_init, "rrclust")
 
 # output_name <- "cl_kamila_20211104141309_u80844426_kamila_large"
-output_name <- "cl_kamila_20220926170231__kamila_large"
+output_name <- "cl_kamila_20220927081348__kamila_large"
 
 path_output <- file.path(
   path_out,
@@ -771,7 +771,7 @@ PLOTS_TIB_KAMRES <- CROSS_TIB_KAMRES %>%
   dplyr::select(-data)
 
 #--- Table for raw lbedu and lbass ---------------------------------------------
-RR_NA_VAR <- IND_YEARLY_RR %>%
+RR_NA_VAR <- all_csv_inputs$IND_YEARLY_RR %>%
   dplyr::select(
     raw_contrib_m_ind = lcot,
     raw_contrib_y_ageclass = lcotg,

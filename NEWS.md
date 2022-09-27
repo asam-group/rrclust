@@ -1,3 +1,7 @@
+# rrclust 1.0.5
+
+Add a new table for descriptive statistics
+
 # rrclust 1.0.4
 
 Correction  "monthly_rent" into "monthly_pension" and "Register of Rents" into "Pension register" in the graphs

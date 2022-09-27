@@ -18,3 +18,4 @@ docs/
 NAMESPACE
 Thumbs.db
 .Rbuildignore
+.DS_Store

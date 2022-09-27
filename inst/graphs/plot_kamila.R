@@ -32,9 +32,11 @@ filenames <- list.files(path_output, full.names = TRUE, pattern = "param")
 params <- list.files(filenames, full.names = TRUE, pattern = "PARAM_GLOBAL.csv$")
 PARAM_GLOBAL_RRCLUST <- rrclust::tidylist_read(params)$PARAM_GLOBAL %>%
   spread(key = key, value = value)
-path_input <- c(PARAM_GLOBAL_RRCLUST$path_data,
-                file.path(PARAM_GLOBAL_RRCLUST$path_data, "all"),
-                file.path(PARAM_GLOBAL_RRCLUST$path_data, "kamila"))
+path_input <- c(
+  PARAM_GLOBAL_RRCLUST$path_data,
+  file.path(PARAM_GLOBAL_RRCLUST$path_data, "all"),
+  file.path(PARAM_GLOBAL_RRCLUST$path_data, "kamila")
+)
 
 # Retrieve outputs and inputs
 all_csv <- rrclust::tidylist_read(path_output)
@@ -770,19 +772,21 @@ PLOTS_TIB_KAMRES <- CROSS_TIB_KAMRES %>%
 
 #--- Table for raw lbedu and lbass ---------------------------------------------
 RR_NA_VAR <- IND_YEARLY_RR %>%
-  dplyr::select(raw_contrib_m_ind = lcot,
-                raw_contrib_y_ageclass = lcotg,
-                raw_splitting = csplit,
-                raw_bonus_m_edu = lbedu,
-                raw_bonus_m_assist = lbass)
+  dplyr::select(
+    raw_contrib_m_ind = lcot,
+    raw_contrib_y_ageclass = lcotg,
+    raw_splitting = csplit,
+    raw_bonus_m_edu = lbedu,
+    raw_bonus_m_assist = lbass
+  )
 
 
 print(
   st(RR_NA_VAR,
-     file = file.path(path_graphs, "RR_NA_VAR"),
-     anchor = "sum_stats_rr_na_var",
-     title = "Summary Statistics of the Pension Register's Variables Recoded for NAs",
-     out = "latex"
+    file = file.path(path_graphs, "RR_NA_VAR"),
+    anchor = "sum_stats_rr_na_var",
+    title = "Summary Statistics of the Pension Register's Variables Recoded for NAs",
+    out = "latex"
   ),
   tabular.environment = "longtable",
   caption.placement = "top",
@@ -1030,11 +1034,11 @@ CROSS_TIB <- tibble(unique_sex = unique_sex) %>%
 
 # Plots
 suppressWarnings(
-PLOTS_TIB <- CROSS_TIB %>%
-  mutate(data = list(dta)) %>%
-  dplyr::select(-dta) %>%
-  mutate(plots = map(list(data), rrclust::fun_ggplot_hist2)) %>%
-  dplyr::select(-data)
+  PLOTS_TIB <- CROSS_TIB %>%
+    mutate(data = list(dta)) %>%
+    dplyr::select(-dta) %>%
+    mutate(plots = map(list(data), rrclust::fun_ggplot_hist2)) %>%
+    dplyr::select(-data)
 )
 
 #---- Characteristics of each cluster ------------------------------------------

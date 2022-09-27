@@ -160,7 +160,8 @@ function_kamplot <- function(dta) {
   width = 11.69
   )
 
-  if (mean(KAMRESDATA$age_retire) > 0) {
+  if (mean(KAMRESDATA$age_retire, na.rm = TRUE) > 0) {
+
     # Log Monthly Pension pro age_retire
     kamPlot5 <- KAMRESDATA %>%
       ggplot(
@@ -333,7 +334,7 @@ function_kamplot <- function(dta) {
   width = 11.69
   )
 
-  if (KAMRESDATA$age_retire > 0) {
+  if (mean(KAMRESDATA$age_retire, na.rm = TRUE) > 0) {
     # Log AADR pro Age_retire
     kamPlot6 <- KAMRESDATA %>%
       ggplot(

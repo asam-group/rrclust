@@ -768,7 +768,29 @@ PLOTS_TIB_KAMRES <- CROSS_TIB_KAMRES %>%
   mutate(plots = map(list(data), rrclust::function_kamplot)) %>%
   dplyr::select(-data)
 
+#--- Table for raw lbedu and lbass ---------------------------------------------
+RR_NA_VAR <- IND_YEARLY_RR %>%
+  dplyr::select(raw_contrib_m_ind = lcot,
+                raw_contrib_y_ageclass = lcotg,
+                raw_splitting = csplit,
+                raw_bonus_m_edu = lbedu,
+                raw_bonus_m_assist = lbass)
 
+
+print(
+  st(RR_NA_VAR,
+     file = file.path(path_graphs, "RR_NA_VAR"),
+     anchor = "sum_stats_rr_na_var",
+     title = "Summary Statistics of the Pension Register's Variables Recoded for NAs",
+     out = "latex"
+  ),
+  tabular.environment = "longtable",
+  caption.placement = "top",
+  table.placement = "",
+  floating = FALSE,
+  size = "\\fontsize{8pt}{9pt}\\selectfont",
+  file = file.path(path_graphs, "RR_NA_VAR.tex")
+)
 #--- Table Summary Statistics --------------------------------------------------
 RR_OASI <- mod_prepa_rr(IND_YEARLY_RR = all_csv_inputs$IND_YEARLY_RR)$RR_OASI %>%
   dplyr::select(-age_retire)

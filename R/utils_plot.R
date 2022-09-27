@@ -2,6 +2,7 @@
 #' @param dta Filtered dataframe for each desired population sample
 #' @export
 function_kamplot <- function(dta) {
+  browser()
   KAMRESDATA <- dta %>%
     # filter(
     #   sex == 0,
@@ -159,7 +160,7 @@ function_kamplot <- function(dta) {
   width = 11.69
   )
 
-  if (KAMRESDATA$age_retire > 0) {
+  if (mean(KAMRESDATA$age_retire) > 0) {
     # Log Monthly Pension pro age_retire
     kamPlot5 <- KAMRESDATA %>%
       ggplot(
@@ -203,23 +204,6 @@ function_kamplot <- function(dta) {
 
     # p5 <- plotOpts(kamPlot5)
     plotOpts(kamPlot5)
-
-    ggsave(file.path(
-      path_graphs,
-      paste(
-        "sex", unique(dta$sex),
-        "typerent", unique(dta$benef_type1),
-        "mr_age_retire.png",
-        sep = "_"
-      )
-    ),
-    height = 8.27,
-    width = 11.69
-    )
-  } else {
-    # Draw an empty plot if impossible for some combinations of data
-    ggplot() +
-      geom_blank()
 
     ggsave(file.path(
       path_graphs,

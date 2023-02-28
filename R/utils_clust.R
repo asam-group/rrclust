@@ -102,9 +102,6 @@ path_param <- function(path) {
 #' @ title Check if a directory looks like a container
 #' @param from directory to container
 #' @export
-#' @examples
-#' from <- system.file("input_container", package = "delfingui")
-#' check_container_dir(from)
 check_container_dir <- function(from) {
   from <- normalizePath(from, mustWork = TRUE)
 

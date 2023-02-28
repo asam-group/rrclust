@@ -4,12 +4,6 @@
 #'
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #'
-#' @examples
-#' argnames <- c("PARAM_GLOBAL", "AHV_ABRECHNUNG")
-#' tl <- tidylist_read(cache_files(argnames))
-#' tidylist_read(cache_files(argnames), fst = TRUE)
-#' tidylist_write(tl, cache_dir(), fst = TRUE)
-#' mod.function <- "mod_input_ahv_abrechnung"
 #' @export
 
 # init and return functions for mod_ functions

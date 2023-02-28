@@ -15,7 +15,8 @@ Imports: ggplot2, xtable, data.table, kableExtra, Hmisc, kamila,
         caTools
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 NeedsCompilation: no
 Author: Layal Christine Lettry [aut, cre]
 Packaged: 2022-09-26 13:00:01 UTC; U80844426
+License: MIT + file LICENSE

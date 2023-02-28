@@ -1,3 +1,31 @@
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+## Bug fixes
+
+- Remove obsolete examples.
+
+## Build system, external dependencies
+
+- Update .gitignore.
+
+- Build .Rbuildignore.
+
+- Add license.
+
+## Documentation
+
+- Create NAMESPACE.
+
+- Build README.
+
+- Create all Rd files in man folder.
+
+## Uncategorized
+
+- Merge branch 'rrclust_llc' of github.com:asam-group/rrclust into rrclust_llc.
+
+
+
 # rrclust 1.0.5
 
 Add a new table for descriptive statistics

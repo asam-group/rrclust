@@ -14,7 +14,6 @@
 mod_inp_kamila <- function(path,
                            list = NULL,
                            method_name = "kamila") {
-
   # Parameter path
   path_parameter <- path_param(path)
 

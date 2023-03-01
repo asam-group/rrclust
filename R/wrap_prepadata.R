@@ -16,7 +16,6 @@
 
 
 wrap_prepadata_ <- function(tl_inp) {
-
   # Register of rents
 
   tl_prepa_rr <- mod_prepa_rr(

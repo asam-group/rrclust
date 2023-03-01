@@ -89,17 +89,18 @@ function_kamplot <- function(dta) {
   # p1 <- plotOpts(kamPlot1)
   plotOpts(kamPlot1)
 
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      "sex", unique(dta$sex),
-      "typerent", unique(dta$benef_type1),
-      "mr_age.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
+  ggsave(
+    file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "mr_age.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
   )
 
   # Log Monthly Pension pro Scale
@@ -146,21 +147,21 @@ function_kamplot <- function(dta) {
   # p2 <- plotOpts(kamPlot2)
   plotOpts(kamPlot2)
 
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      "sex", unique(dta$sex),
-      "typerent", unique(dta$benef_type1),
-      "mr_scale.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
+  ggsave(
+    file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "mr_scale.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
   )
 
   if (mean(KAMRESDATA$age_retire, na.rm = TRUE) > 0) {
-
     # Log Monthly Pension pro age_retire
     kamPlot5 <- KAMRESDATA %>%
       ggplot(
@@ -205,17 +206,18 @@ function_kamplot <- function(dta) {
     # p5 <- plotOpts(kamPlot5)
     plotOpts(kamPlot5)
 
-    ggsave(file.path(
-      path_graphs,
-      paste(
-        "sex", unique(dta$sex),
-        "typerent", unique(dta$benef_type1),
-        "mr_age_retire.png",
-        sep = "_"
-      )
-    ),
-    height = 8.27,
-    width = 11.69
+    ggsave(
+      file.path(
+        path_graphs,
+        paste(
+          "sex", unique(dta$sex),
+          "typerent", unique(dta$benef_type1),
+          "mr_age_retire.png",
+          sep = "_"
+        )
+      ),
+      height = 8.27,
+      width = 11.69
     )
   }
   #--- AADR Plot ---------------------------------------------------------------
@@ -263,17 +265,18 @@ function_kamplot <- function(dta) {
   # p3 <- plotOpts(kamPlot3)
   plotOpts(kamPlot3)
 
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      "sex", unique(dta$sex),
-      "typerent", unique(dta$benef_type1),
-      "aadr_age.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
+  ggsave(
+    file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "aadr_age.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
   )
 
   # Log AADR pro Scale
@@ -320,17 +323,18 @@ function_kamplot <- function(dta) {
   # p4 <- plotOpts(kamPlot4)
   plotOpts(kamPlot4)
 
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      "sex", unique(dta$sex),
-      "typerent", unique(dta$benef_type1),
-      "aadr_scale.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
+  ggsave(
+    file.path(
+      path_graphs,
+      paste(
+        "sex", unique(dta$sex),
+        "typerent", unique(dta$benef_type1),
+        "aadr_scale.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
   )
 
   if (mean(KAMRESDATA$age_retire, na.rm = TRUE) > 0) {
@@ -378,17 +382,18 @@ function_kamplot <- function(dta) {
     # p6 <- plotOpts(kamPlot6)
     plotOpts(kamPlot6)
 
-    ggsave(file.path(
-      path_graphs,
-      paste(
-        "sex", unique(dta$sex),
-        "typerent", unique(dta$benef_type1),
-        "aadr_age_retire.png",
-        sep = "_"
-      )
-    ),
-    height = 8.27,
-    width = 11.69
+    ggsave(
+      file.path(
+        path_graphs,
+        paste(
+          "sex", unique(dta$sex),
+          "typerent", unique(dta$benef_type1),
+          "aadr_age_retire.png",
+          sep = "_"
+        )
+      ),
+      height = 8.27,
+      width = 11.69
     )
   }
 }
@@ -507,19 +512,20 @@ fun_ggplot_hist2 <- function(dta) {
       breaks = c("1", "2", "3", "4", "5"),
       values = c("red", "blue", "green", "orange", "violet")
     )
-  ggsave(file.path(
-    path_graphs,
-    paste(
-      "hist",
-      "sex", unique(GGDATA$sex),
-      "typerent", unique(GGDATA$benef_type1),
-      "mstat", unique(GGDATA$marital_stat),
-      numb_clust,
-      "clusters.png",
-      sep = "_"
-    )
-  ),
-  height = 8.27,
-  width = 11.69
+  ggsave(
+    file.path(
+      path_graphs,
+      paste(
+        "hist",
+        "sex", unique(GGDATA$sex),
+        "typerent", unique(GGDATA$benef_type1),
+        "mstat", unique(GGDATA$marital_stat),
+        numb_clust,
+        "clusters.png",
+        sep = "_"
+      )
+    ),
+    height = 8.27,
+    width = 11.69
   )
 }

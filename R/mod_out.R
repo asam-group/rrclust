@@ -23,7 +23,6 @@ mod_out_kamila <- function(path,
                            path_out,
                            tl_inp_kamila,
                            tl_out_kamila) {
-
   # construct output path
   path_out_identifier <-
     path_out_resolve(

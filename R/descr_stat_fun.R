@@ -19,7 +19,6 @@
 # - `Last test`: 2021-03-18 / Llc
 
 descr_stat_fun <- function(descrstat_dpath, lvalues) {
-
   # --- Needed Libraries ---------------------------------------------------------
   library(Hmisc) # procedures: label, units, contents, describe, bystats, summarize, html, format.df
 
@@ -59,7 +58,6 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
     # --- Function "My descriptive" ------------------------------------------------
 
     mydescriptive <- function(x) {
-
       # Ad hoc table of descriptive statistics
       des <- c(
         # "N non NA" = nmiss(x),

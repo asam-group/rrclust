@@ -16,7 +16,6 @@
 prepare_input <- function(path,
                           path_out = file.path(dirname(path)),
                           overwrite = FALSE) {
-
   # Parameters -----------------------------------------------------------------
 
   PARAM_INPUTS <- read_param(path)

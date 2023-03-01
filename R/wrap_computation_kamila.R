@@ -24,8 +24,6 @@
 
 wrap_computation_kamila_ <- function(tl_inp,
                                      tl_prepadata) {
-
-
   # Select the desired continuous explicative variables
   cont_var_expl <- separate_at_comma(tl_inp$PARAM_KAMILA$cont_var_expl)
 

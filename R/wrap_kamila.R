@@ -13,7 +13,6 @@
 # Last change: 2021-06-17 / Llc
 
 wrap_kamila_ <- function(tl_inp_kamila) {
-
   # Dataset preparation
   tl_prepadata <- wrap_prepadata(tl_inp = tl_inp_kamila)
 

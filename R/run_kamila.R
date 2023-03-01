@@ -17,7 +17,6 @@
 run_kamila <- function(path,
                        path_out = file.path(tempdir(), "out"),
                        param_replace = NULL) {
-
   # batch run
   if (length(path) > 1) {
     return(multi_run(

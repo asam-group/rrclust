@@ -14,7 +14,7 @@ royalty_free_image <- image_read(system.file("logo", "grapes-g0cbd3743f_1280.png
 package_name <- "rrclust"
 
 # set the package url
-url_package <- "https://gitea.cynkra.com/cynkra/rrclust"
+url_package <- "https://github.com/asam-group/rrclust"
 
 # load the fonts from the package
 fonts_dataset <- font_files()

@@ -2,6 +2,24 @@
 
 ## Bug fixes
 
+- Fix url rrclust logo.
+
+## Features
+
+- Style all package files.
+
+## Uncategorized
+
+- Merge pull request #1 from asam-group/rrclust_lyl.
+
+Add logo and R CMD check package
+
+- Merge branch 'rrclust_llc' of github.com:asam-group/rrclust into rrclust_llc.
+
+
+
+## Bug fixes
+
 - Remove obsolete examples.
 
 ## Build system, external dependencies

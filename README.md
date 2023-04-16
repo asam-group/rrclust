@@ -56,14 +56,14 @@ You can install the development version of rrclust from
 devtools::install_github("asam-group/rrclust")
 ```
 
-# Related Paper
+## Related Paper
 
 One needs to have the proper Pension Register data in order to run this
 code. As this register is not public, you can find how it is used and
 learn more about the results in this [Working
 Paper](https://folia.unifr.ch/unifr/documents/324081).
 
-# Future work
+## Future work
 
 The next step is to implement some classification methods which will be
 applied to the kamila-clustered Swiss Pension Register thanks to the

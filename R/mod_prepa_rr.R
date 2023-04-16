@@ -11,7 +11,7 @@
 #'   - `RR_OASI` : contains all the beneficiaries of the OASI.
 #'
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
-#'
+#' @autoglobal
 #' @export
 
 # - `Last change`: 2021-09-02 / Llc

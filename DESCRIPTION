@@ -9,14 +9,19 @@ Maintainer: Layal Christine Lettry <layal.lettry@gmail.com>
 Description: This package allows to cluster the Swiss Pension Register by using 
              Kamila clustering method.
 URL: https://github.com/asam-group/rrclust
-Depends: dplyr, tidyr, tibble, yaml, roxygen2, MASS, knitr
 Imports: 
     data.table,
     kamila,
     caTools,
     Hmisc,
     stats,
-    utils
+    utils,
+    dplyr,
+    ggplot2,
+    tidyselect,
+    tibble,
+    tidyr,
+    fst
 Encoding: UTF-8
 Roxygen: list(
     markdown = TRUE,

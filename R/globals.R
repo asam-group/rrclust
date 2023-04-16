@@ -2,6 +2,25 @@
 
 utils::globalVariables(c(
   ".browser_at_settings", # <mod_init>
+  "ram", # <mod_prepa_rr>
+  "monatliche_rente", # <mod_prepa_rr>
+  "alt", # <mod_prepa_rr>
+  "jahr", # <mod_prepa_rr>
+  "dom", # <mod_prepa_rr>
+  "lcot", # <mod_prepa_rr>
+  "lcotg", # <mod_prepa_rr>
+  "csplit", # <mod_prepa_rr>
+  "lbedu", # <mod_prepa_rr>
+  "lbass", # <mod_prepa_rr>
+  "cplaf", # <mod_prepa_rr>
+  "gpr", # <mod_prepa_rr>
+  "sex", # <mod_prepa_rr>
+  "nat", # <mod_prepa_rr>
+  "resid", # <mod_prepa_rr>
+  "zv", # <mod_prepa_rr>
+  "eprc", # <mod_prepa_rr>
+  ".", # <mod_prepa_rr>
+  "napref", # <mod_prepa_rr>
   "nat", # <function_kamplot>
   "resid", # <function_kamplot>
   "benef_type1", # <function_kamplot>

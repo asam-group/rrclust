@@ -55,6 +55,6 @@ this register is not public, you can find how it is used and learn more about th
 results in this [Working Paper](https://folia.unifr.ch/unifr/documents/324081). 
 
 ## Future work
-The next step is to implement some classification methods which will be applied 
+The next step is to implement some classification methods in the package [`rrml`](https://github.com/asam-group/rrml) which will be applied 
 to the kamila-clustered Swiss Pension Register thanks to the package [`rrclust`](https://github.com/asam-group/rrclust). 
 

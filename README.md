@@ -65,6 +65,7 @@ Paper](https://folia.unifr.ch/unifr/documents/324081).
 
 ## Future work
 
-The next step is to implement some classification methods which will be
-applied to the kamila-clustered Swiss Pension Register thanks to the
-package [`rrclust`](https://github.com/asam-group/rrclust).
+The next step is to implement some classification methods in the package
+[`rrml`](https://github.com/asam-group/rrml) which will be applied to
+the kamila-clustered Swiss Pension Register thanks to the package
+[`rrclust`](https://github.com/asam-group/rrclust).

@@ -4,11 +4,11 @@
 \name{rrclust-package}
 \alias{rrclust}
 \alias{rrclust-package}
-\title{rrclust: Clustering observations from the Swiss Old-Age and Survivors's Insurance (OASI) Register of Rents}
+\title{rrclust: Clustering the Swiss Pension Register}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-This package allows to cluster the Swiss register of rents by using Kamila clustering method.
+This package allows to cluster the Swiss Pension Register by using Kamila clustering method.
 }
 \seealso{
 Useful links:

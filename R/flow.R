@@ -97,7 +97,7 @@ draw_flow <- function(DF) {
     directed = TRUE,
     attr_theme = NULL
   ) |>
-    add_global_graph_attrs(
+    DiagrammeR::add_global_graph_attrs(
       attr = "overlap",
       value = "true",
       attr_type = "node"

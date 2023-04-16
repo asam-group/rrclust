@@ -3,7 +3,7 @@
 #' @description Vérifie si tous les inputs sont des tibbles.
 #'
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
-#'
+#' @autoglobal
 #' @export
 
 # init and return functions for mod_ functions

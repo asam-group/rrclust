@@ -11,12 +11,23 @@ Description: This package allows to cluster the Swiss register of rents by using
              Kamila clustering method.
 URL: https://github.com/asam-group/rrclust
 Depends: dplyr, tidyr, tibble, yaml, roxygen2, MASS, knitr
-Imports: ggplot2, xtable, data.table, kableExtra, Hmisc, kamila,
-        caTools
+Imports: 
+    data.table,
+    kamila,
+    caTools,
+    Hmisc,
+    stats,
+    utils
 Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
+Roxygen: list(
+    markdown = TRUE,
+    roclets = c("collate", "namespace", "rd", "roxyglobals::global_roclet"))
 RoxygenNote: 7.2.3
 NeedsCompilation: no
 Author: Layal Christine Lettry [aut, cre]
 Packaged: 2022-09-26 13:00:01 UTC; U80844426
 License: MIT + file LICENSE
+Suggests: 
+    roxyglobals (>= 0.2.2)
+Remotes: 
+    anthonynorth/roxyglobals

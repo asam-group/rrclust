@@ -4,10 +4,7 @@
 \alias{read_path_data}
 \title{read the path fo the data}
 \usage{
-read_path_data(
-  path_container =
-    "/Users/christoph/local/bsv/container_abr18def_rr18_statpop2017_estv3_va20004_real_stafasgo"
-)
+read_path_data(path_container)
 }
 \description{
 read the path fo the data

@@ -27,26 +27,26 @@ wrap_computation_kamila_ <- function(tl_inp,
   # Select the desired continuous explicative variables
   cont_var_expl <- separate_at_comma(tl_inp$PARAM_KAMILA$cont_var_expl)
 
-  CONT_DF_TS <- tl_prepadata$CONT_DF_TS %>%
+  CONT_DF_TS <- tl_prepadata$CONT_DF_TS |>
     dplyr::select(any_of(cont_var_expl))
 
-  CONT_DF_VS <- tl_prepadata$CONT_DF_VS %>%
+  CONT_DF_VS <- tl_prepadata$CONT_DF_VS |>
     dplyr::select(any_of(cont_var_expl))
 
-  CONT_DF <- tl_prepadata$CONT_DF %>%
+  CONT_DF <- tl_prepadata$CONT_DF |>
     dplyr::select(any_of(cont_var_expl))
 
 
   # Select the desired categorical explicative variables
   categ_var_expl <- separate_at_comma(tl_inp$PARAM_KAMILA$categ_var_expl)
 
-  CATEG_DF_TS <- tl_prepadata$CATEG_DF_TS %>%
+  CATEG_DF_TS <- tl_prepadata$CATEG_DF_TS |>
     dplyr::select(any_of(categ_var_expl))
 
-  CATEG_DF_VS <- tl_prepadata$CATEG_DF_VS %>%
+  CATEG_DF_VS <- tl_prepadata$CATEG_DF_VS |>
     dplyr::select(any_of(categ_var_expl))
 
-  CATEG_DF <- tl_prepadata$CATEG_DF %>%
+  CATEG_DF <- tl_prepadata$CATEG_DF |>
     dplyr::select(any_of(categ_var_expl))
 
 
@@ -60,7 +60,7 @@ wrap_computation_kamila_ <- function(tl_inp,
     )
     KM_RES <- tl_mod_kstar$KM_RES
   } else {
-    KM_RES <- tibble(cluster_id = NA_real_) %>%
+    KM_RES <- tibble(cluster_id = NA_real_) |>
       mutate(
         kstar = NA_real_,
         ps_values = NA_real_, # Prediction Strength value

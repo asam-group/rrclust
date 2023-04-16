@@ -26,7 +26,7 @@ run_kamila <- function(path,
   }
 
   # input
-  tl_inp_kamila <- mod_inp_kamila(path = path, method_name = "kamila") %>%
+  tl_inp_kamila <- mod_inp_kamila(path = path, method_name = "kamila") |>
     param_replace(param_replace = param_replace)
 
   # computations

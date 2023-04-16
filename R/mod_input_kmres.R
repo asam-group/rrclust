@@ -26,11 +26,11 @@ mod_input_kmres <- function(PARAM_INPUTS,
   ))
 
   # Optimal number of clusters
-  KSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) %>%
+  KSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) |>
     mutate(kstar = kmresps$nClust$bestNClust)
 
   # Other information of the run
-  NCLUST <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) %>%
+  NCLUST <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) |>
     mutate(
       psvalues = kmresps$nClust$psValues,
       avgpredstr = kmresps$nClust$avgPredStr,
@@ -39,17 +39,17 @@ mod_input_kmres <- function(PARAM_INPUTS,
 
   fun_rename <- function(x) gsub("Run ", "run_", x)
 
-  PS_CV_RES <- kmresps$nClust$psCvRes %>%
-    as_tibble() %>%
-    mutate(cluster_id = as.integer(rownames(kmresps$nClust$psCvRes))) %>%
-    rename_if(!grepl("^Run", .), fun_rename) %>%
+  PS_CV_RES <- kmresps$nClust$psCvRes |>
+    as_tibble() |>
+    mutate(cluster_id = as.integer(rownames(kmresps$nClust$psCvRes))) |>
+    rename_if(!grepl("^Run", .), fun_rename) |>
     mutate_all(as.numeric)
 
 
-  KM_RES <- KSTAR %>%
+  KM_RES <- KSTAR |>
     left_join(NCLUST,
       by = "cluster_id"
-    ) %>%
+    ) |>
     left_join(PS_CV_RES,
       by = "cluster_id"
     )

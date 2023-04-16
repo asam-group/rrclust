@@ -2,12 +2,12 @@
 #' @param dta Filtered dataframe for each desired population sample
 #' @export
 function_kamplot <- function(dta) {
-  KAMRESDATA <- dta %>%
+  KAMRESDATA <- dta |>
     # filter(
     #   sex == 0,
     #   benef_type1 == 1
-    # ) %>%
-    arrange(nat, resid) %>%
+    # ) |>
+    arrange(nat, resid) |>
     mutate(
       natres = case_when(
         nat == 1 &
@@ -46,7 +46,7 @@ function_kamplot <- function(dta) {
   #--- Log Monthly Pension Plot ---------------------------------------------------
 
   # Log Monthly Pension pro Age
-  kamPlot1 <- KAMRESDATA %>%
+  kamPlot1 <- KAMRESDATA |>
     ggplot(
       aes(
         x = age,
@@ -104,7 +104,7 @@ function_kamplot <- function(dta) {
   )
 
   # Log Monthly Pension pro Scale
-  kamPlot2 <- KAMRESDATA %>%
+  kamPlot2 <- KAMRESDATA |>
     ggplot(
       aes(
         x = scale,
@@ -163,7 +163,7 @@ function_kamplot <- function(dta) {
 
   if (mean(KAMRESDATA$age_retire, na.rm = TRUE) > 0) {
     # Log Monthly Pension pro age_retire
-    kamPlot5 <- KAMRESDATA %>%
+    kamPlot5 <- KAMRESDATA |>
       ggplot(
         aes(
           x = age_retire,
@@ -222,7 +222,7 @@ function_kamplot <- function(dta) {
   }
   #--- AADR Plot ---------------------------------------------------------------
   # Log AADR pro Age
-  kamPlot3 <- KAMRESDATA %>%
+  kamPlot3 <- KAMRESDATA |>
     ggplot(
       aes(
         x = age,
@@ -280,7 +280,7 @@ function_kamplot <- function(dta) {
   )
 
   # Log AADR pro Scale
-  kamPlot4 <- KAMRESDATA %>%
+  kamPlot4 <- KAMRESDATA |>
     ggplot(
       aes(
         x = scale,
@@ -339,7 +339,7 @@ function_kamplot <- function(dta) {
 
   if (mean(KAMRESDATA$age_retire, na.rm = TRUE) > 0) {
     # Log AADR pro Age_retire
-    kamPlot6 <- KAMRESDATA %>%
+    kamPlot6 <- KAMRESDATA |>
       ggplot(
         aes(
           x = age_retire,
@@ -404,7 +404,7 @@ function_kamplot <- function(dta) {
 #' @export
 #'
 fun_ggplot_hist2 <- function(dta) {
-  GGDATA <- dta %>%
+  GGDATA <- dta |>
     mutate(
       ln_aadr = log(aadr),
       ln_monthly_pension = log(monthly_pension),
@@ -414,7 +414,7 @@ fun_ggplot_hist2 <- function(dta) {
       resid = as.factor(resid),
       sex = as.factor(sex),
       cluster_id = as.factor(cluster_id)
-    ) %>%
+    ) |>
     dplyr::select(
       c(
         cluster_id,
@@ -429,7 +429,7 @@ fun_ggplot_hist2 <- function(dta) {
         # scale,
         sex
       )
-    ) %>%
+    ) |>
     gather(
       key = variable, value = value,
       -cluster_id,
@@ -438,7 +438,7 @@ fun_ggplot_hist2 <- function(dta) {
       -marital_stat,
       -nat,
       -resid
-    ) %>%
+    ) |>
     mutate(
       variable = dplyr::recode(variable,
         "age" = "Age",
@@ -468,8 +468,8 @@ fun_ggplot_hist2 <- function(dta) {
       )
     )
 
-  n_ind <- unique(GGDATA %>%
-    mutate(n_ind = n()) %>%
+  n_ind <- unique(GGDATA |>
+    mutate(n_ind = n()) |>
     dplyr::select(n_ind))$n_ind
 
 

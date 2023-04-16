@@ -71,14 +71,14 @@ mod_catcontvar <- function(RR_OASI,
 
   #--- Full dataset ------------------------------------------------------------
   # Dataframe of categorical variables
-  CATEG_DF <- RR_OASI %>%
-    dplyr::select(any_of(categ_var)) %>%
+  CATEG_DF <- RR_OASI |>
+    dplyr::select(any_of(categ_var)) |>
     # Transform all variables as factors
     mutate_all(as.factor)
 
   # Dataframe of continuous variables
-  CONT_DF <- RR_OASI %>%
-    dplyr::select(any_of(cont_var)) %>%
+  CONT_DF <- RR_OASI |>
+    dplyr::select(any_of(cont_var)) |>
     # Transform all variables as numeric
     mutate_all(as.numeric)
 
@@ -88,14 +88,14 @@ mod_catcontvar <- function(RR_OASI,
 
   #--- Training set ------------------------------------------------------------
   # Dataframe of categorical variables
-  CATEG_DF_TS <- RR_OASI_TS %>%
-    dplyr::select(any_of(categ_var)) %>%
+  CATEG_DF_TS <- RR_OASI_TS |>
+    dplyr::select(any_of(categ_var)) |>
     # Transform all variables as factors
     mutate_all(as.factor)
 
   # Dataframe of continuous variables
-  CONT_DF_TS <- RR_OASI_TS %>%
-    dplyr::select(any_of(cont_var)) %>%
+  CONT_DF_TS <- RR_OASI_TS |>
+    dplyr::select(any_of(cont_var)) |>
     # Transform all variables as numeric
     mutate_all(as.numeric)
 
@@ -105,14 +105,14 @@ mod_catcontvar <- function(RR_OASI,
 
   #--- Validation set ------------------------------------------------------------
   # Dataframe of categorical variables
-  CATEG_DF_VS <- RR_OASI_VS %>%
-    dplyr::select(any_of(categ_var)) %>%
+  CATEG_DF_VS <- RR_OASI_VS |>
+    dplyr::select(any_of(categ_var)) |>
     # Transform all variables as factors
     mutate_all(as.factor)
 
   # Dataframe of continuous variables
-  CONT_DF_VS <- RR_OASI_VS %>%
-    dplyr::select(any_of(cont_var)) %>%
+  CONT_DF_VS <- RR_OASI_VS |>
+    dplyr::select(any_of(cont_var)) |>
     # Transform all variables as numeric
     mutate_all(as.numeric)
 

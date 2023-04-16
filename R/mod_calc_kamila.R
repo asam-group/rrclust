@@ -91,7 +91,7 @@ mod_calc_kamila <- function(PARAM_KAMILA,
     FULL_CONT_DF,
     # CATFACTOR,
     FULL_CATEG_DF
-  ) %>%
+  ) |>
     as_tibble()
 
   mod_return(

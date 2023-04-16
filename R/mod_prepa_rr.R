@@ -22,7 +22,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
 
   # --- Recoding and renaming the variables ------------------------------------
   RR_OASI1 <- if ("lbedu" %in% names(IND_YEARLY_RR)) {
-    IND_YEARLY_RR %>%
+    IND_YEARLY_RR |>
       dplyr::rename(
         "aadr" = ram,
         "monthly_pension" = monatliche_rente,
@@ -35,7 +35,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
         "bonus_m_edu" = lbedu,
         "bonus_m_assist" = lbass,
         "capping" = cplaf
-      ) %>%
+      ) |>
       mutate(
         # Recode contrib_m_ind for NA values
         contrib_m_ind = case_when(
@@ -65,7 +65,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
         )
       )
   } else {
-    IND_YEARLY_RR %>%
+    IND_YEARLY_RR |>
       dplyr::rename(
         "aadr" = ram,
         "monthly_pension" = monatliche_rente,
@@ -77,7 +77,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
 
 
   # Rename the realizations of the variables
-  RR_OASI2 <- RR_OASI1 %>%
+  RR_OASI2 <- RR_OASI1 |>
     mutate(
       benef_type = dplyr::recode(gpr,
         "rvieillesse_simple" = 1, # "Old-age"
@@ -109,9 +109,9 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
       ),
       # Mutate the total years of contribution
       scale = round(eprc * 44, 0),
-    ) %>%
+    ) |>
     # Transform character variables to factors
-    mutate_if(sapply(., is.character), as.factor) %>%
+    mutate_if(sapply(., is.character), as.factor) |>
     mutate(
       # Dummy variables for each marital status
       marital_stat1 = case_when(marital_stat == 1 ~ 1, TRUE ~ 0),
@@ -134,7 +134,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
         is.na(age_ret) ~ as.double(-99999),
         TRUE ~ as.double(age_ret)
       ),
-    ) %>%
+    ) |>
     dplyr::select(
       -zv,
       -gpr
@@ -142,13 +142,13 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
 
   # Verify all variables are numeric
   RR_OASI <- if ("napref" %in% names(RR_OASI2)) {
-    RR_OASI2 %>%
+    RR_OASI2 |>
       dplyr::select(
         -napref
-      ) %>%
+      ) |>
       mutate_all(funs(as.numeric(.)))
   } else {
-    RR_OASI2 %>%
+    RR_OASI2 |>
       mutate_all(funs(as.numeric(.)))
   }
 

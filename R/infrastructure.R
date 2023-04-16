@@ -144,9 +144,9 @@ trace_this <- function(x, at = "", mod = "") {
       stop("do not use `mod_init()` in functions without arguments.")
     }
 
-    df <- bind_rows(tr, .id = "name") %>%
-      rename(df = name) %>%
-      mutate(at = at) %>%
+    df <- bind_rows(tr, .id = "name") |>
+      rename(df = name) |>
+      mutate(at = at) |>
       mutate(mod = mod)
 
     df$nframe <- sys.nframe()

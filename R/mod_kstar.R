@@ -73,12 +73,12 @@ mod_kstar <- function(PARAM_KAMILA,
 
 
   # Optimal number of clusters
-  KSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) %>%
+  KSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) |>
     mutate(kstar = kmresps$nClust$bestNClust)
 
   # Other information of the run
   # Note: PS = 1 - Variance
-  NCLUST <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) %>%
+  NCLUST <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) |>
     mutate(
       ps_values = kmresps$nClust$psValues, # Prediction Strength value
       avg_pred_str = kmresps$nClust$avgPredStr, # Average prediction strength
@@ -86,8 +86,8 @@ mod_kstar <- function(PARAM_KAMILA,
     )
 
 
-  PS_CV_RES <- kmresps$nClust$psCvRes %>% # Pred. Strength CV residuals
-    as_tibble() %>%
+  PS_CV_RES <- kmresps$nClust$psCvRes |> # Pred. Strength CV residuals
+    as_tibble() |>
     mutate(cluster_id = as.integer(rownames(kmresps$nClust$psCvRes)))
   colnames(PS_CV_RES)[!grepl(
     "cluster_id",
@@ -98,10 +98,10 @@ mod_kstar <- function(PARAM_KAMILA,
   )
 
   # Join all datasets of results
-  KM_RES <- KSTAR %>%
+  KM_RES <- KSTAR |>
     left_join(NCLUST,
       by = "cluster_id"
-    ) %>%
+    ) |>
     left_join(PS_CV_RES,
       by = "cluster_id"
     )

@@ -27,7 +27,7 @@ read_description <- function(path_container) {
   as_tibble(c(
     as.list(titles),
     as.list(subtitles)
-  )) %>%
+  )) |>
     mutate(description = descr)
 }
 #' @title read the path fo the data

@@ -29,8 +29,8 @@ separate_at_comma <- function(x) {
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 write_param <- function(x, file) {
-  x %>%
-    gather(key, value) %>%
+  x |>
+    gather(key, value) |>
     data.table::fwrite(file = file, sep = ";")
 }
 
@@ -41,7 +41,7 @@ write_param <- function(x, file) {
 #' @export
 #' @import data.table
 read_param <- function(file) {
-  z0 <- data.table::fread(file = file, sep = ";") %>%
+  z0 <- data.table::fread(file = file, sep = ";") |>
     as_tibble()
 
   z1 <- spread(z0, key, value, convert = TRUE)

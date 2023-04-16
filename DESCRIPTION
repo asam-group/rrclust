@@ -1,13 +1,12 @@
 Package: rrclust
 Type: Package
-Title: Clustering observations from the Swiss Old-Age and Survivors's
-        Insurance (OASI) Register of Rents
+Title: Clustering the Swiss Pension Register
 Version: 1.0.5
 Date: 2022-09-27
 Author@R: person("Layal Christine", "Lettry", email =
-        "layalchristine.lettry@unifr.ch")
-Maintainer: Layal Christine Lettry <layalchristine.lettry@unifr.ch>
-Description: This package allows to cluster the Swiss register of rents by using 
+        "layal.lettry@gmail.com")
+Maintainer: Layal Christine Lettry <layal.lettry@gmail.com>
+Description: This package allows to cluster the Swiss Pension Register by using 
              Kamila clustering method.
 URL: https://github.com/asam-group/rrclust
 Depends: dplyr, tidyr, tibble, yaml, roxygen2, MASS, knitr

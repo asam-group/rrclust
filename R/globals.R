@@ -23,6 +23,8 @@ utils::globalVariables(c(
   "eprc", # <mod_prepa_rr>
   ".", # <mod_prepa_rr>
   "napref", # <mod_prepa_rr>
+  "key", # <write_param>
+  "value", # <write_param>
   "nat", # <function_kamplot>
   "resid", # <function_kamplot>
   "benef_type1", # <function_kamplot>

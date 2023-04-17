@@ -27,6 +27,7 @@ separate_at_comma <- function(x) {
 #' @param x parameters tibble to write
 #' @param file file to write to
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
+#' @autoglobal
 #' @export
 write_param <- function(x, file) {
   x |>

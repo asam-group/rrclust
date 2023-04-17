@@ -39,7 +39,7 @@ write_param <- function(x, file) {
 #' @param file file
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
-#' @import data.table
+
 read_param <- function(file) {
   z0 <- data.table::fread(file = file, sep = ";") |>
     as_tibble()

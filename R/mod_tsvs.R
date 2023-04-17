@@ -17,7 +17,6 @@
 #'
 #' @references [www.geeksforgeeks.org](https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/)
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
-#' @import caTools
 #' @export
 
 # - `Last change`: 2022-08-11 / Llc

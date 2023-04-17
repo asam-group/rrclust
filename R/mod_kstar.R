@@ -29,7 +29,7 @@
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #'
 #' @export
-#' @import kamila
+#' @autoglobal
 
 # Last change: 2021-06-17 / Llc
 

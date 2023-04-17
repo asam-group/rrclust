@@ -11,7 +11,7 @@
 #'   - `KM_RES` : contains the kamila results of the training set.
 #'
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
-#'
+#' @autoglobal
 #' @export
 
 # - `Last change`: 2021-03-03 / Llc

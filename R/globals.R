@@ -2,6 +2,8 @@
 
 utils::globalVariables(c(
   ".browser_at_settings", # <mod_init>
+  "kmresps", # <mod_input_kmres>
+  ".", # <mod_input_kmres>
   "ram", # <mod_prepa_rr>
   "monatliche_rente", # <mod_prepa_rr>
   "alt", # <mod_prepa_rr>

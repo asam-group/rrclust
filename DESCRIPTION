@@ -21,7 +21,9 @@ Imports:
     tidyselect,
     tibble,
     tidyr,
-    fst
+    fst,
+    grid,
+    shiny
 Encoding: UTF-8
 Roxygen: list(
     markdown = TRUE,

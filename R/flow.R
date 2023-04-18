@@ -88,7 +88,7 @@ draw_flow <- function(DF) {
     data.frame(from = DF0_OUT$mod, to = DF0_OUT$df, stringsAsFactors = FALSE)
   )
 
-  edf <- DiagrammeR::create_edge_df(
+  edf <- create_edge_df(
     from = match(edf0$from, ndf$label),
     to = match(edf0$to, ndf$label)
   )

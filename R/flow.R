@@ -104,5 +104,5 @@ draw_flow <- function(DF) {
       value = "true",
       attr_type = "node"
     ) |>
-    DiagrammeR::render_graph()
+    render_graph()
 }

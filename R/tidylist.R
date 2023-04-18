@@ -56,8 +56,9 @@ tidylist_write <- function(x, path = ".", fst = FALSE, verbose = TRUE) {
 }
 
 #' @title Import a Tidylist from a Collection of tidy CSV files
-#'
-#' @param path character, containg the path(s) to a directory or to one or several CSV files.
+#' @param path path
+#' @param fst if TRUE, write fst, otherwise csv
+#' @param verbose print a message if TRUE
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 tidylist_read <- function(path = ".", fst = FALSE, verbose = TRUE) {
@@ -81,7 +82,6 @@ tidylist_read <- function(path = ".", fst = FALSE, verbose = TRUE) {
     if (verbose) cat("reading: ", file.i, "\n")
     # message("reading: ", file.i)
     if (fst) {
-      library(fst)
       z[[file.i]] <- read_fst(path = file.i)
     } else {
       z[[file.i]] <- data.table::fread(file = file.i, sep = ";", na.strings = c("NA", ""), encoding = "UTF-8")

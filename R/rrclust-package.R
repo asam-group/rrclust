@@ -7,6 +7,7 @@
 #' @importFrom DiagrammeR create_edge_df
 #' @importFrom DiagrammeR create_graph
 #' @importFrom DiagrammeR create_node_df
+#' @importFrom DiagrammeR render_graph
 #' @importFrom dplyr arrange
 #' @importFrom dplyr bind_cols
 #' @importFrom dplyr bind_rows

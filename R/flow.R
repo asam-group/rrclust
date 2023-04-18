@@ -93,7 +93,7 @@ draw_flow <- function(DF) {
     to = match(edf0$to, ndf$label)
   )
 
-  DiagrammeR::create_graph(
+  create_graph(
     nodes_df = ndf,
     edges_df = edf,
     directed = TRUE,

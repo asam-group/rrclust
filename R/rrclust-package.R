@@ -3,6 +3,7 @@
 
 ## usethis namespace: start
 #' @importFrom caTools sample.split
+#' @importFrom data.table fwrite
 #' @importFrom DiagrammeR add_global_graph_attrs
 #' @importFrom DiagrammeR create_edge_df
 #' @importFrom DiagrammeR create_graph

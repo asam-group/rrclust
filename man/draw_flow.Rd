@@ -6,6 +6,9 @@
 \usage{
 draw_flow(DF)
 }
+\arguments{
+\item{DF}{data frame}
+}
 \description{
 Draw workflow
 }

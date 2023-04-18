@@ -23,7 +23,8 @@ Imports:
     tidyr,
     fst,
     grid,
-    shiny
+    shiny,
+    DiagrammeR
 Encoding: UTF-8
 Roxygen: list(
     markdown = TRUE,

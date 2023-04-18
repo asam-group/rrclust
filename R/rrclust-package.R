@@ -3,6 +3,7 @@
 
 ## usethis namespace: start
 #' @importFrom caTools sample.split
+#' @importFrom DiagrammeR create_node_df
 #' @importFrom dplyr arrange
 #' @importFrom dplyr bind_cols
 #' @importFrom dplyr bind_rows

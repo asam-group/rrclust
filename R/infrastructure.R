@@ -132,7 +132,7 @@ mod_return <- function(...) {
 #' @description Retourne "do not use `mod_init()` in functions without arguments." si aucun argument n'est donné dans la fonction.
 #'
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
-#'
+#' @autoglobal
 #' @export
 trace_this <- function(x, at = "", mod = "") {
   trace.env <- getOption("trace.env", NULL)

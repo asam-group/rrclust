@@ -35,6 +35,7 @@ trace_flow <- function(expr) {
 #' @description Draw workflow
 #'
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)
+#' @autoglobal
 #' @export
 draw_flow <- function(DF) {
   if (nrow(DF) == 0) stop("DF has no rows.")

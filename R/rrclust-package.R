@@ -4,6 +4,7 @@
 ## usethis namespace: start
 #' @importFrom caTools sample.split
 #' @importFrom DiagrammeR create_edge_df
+#' @importFrom DiagrammeR create_graph
 #' @importFrom DiagrammeR create_node_df
 #' @importFrom dplyr arrange
 #' @importFrom dplyr bind_cols

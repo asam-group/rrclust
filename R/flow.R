@@ -99,12 +99,10 @@ draw_flow <- function(DF) {
     directed = TRUE,
     attr_theme = NULL
   ) |>
-    DiagrammeR::add_global_graph_attrs(
+    add_global_graph_attrs(
       attr = "overlap",
       value = "true",
       attr_type = "node"
     ) |>
-    # DiagrammeR::set_global_graph_attrs("node", "fontname", "Helvetica") |>
-    # DiagrammeR::add_global_graph_attrs("node", "fontname", "Helvetica") |>
     DiagrammeR::render_graph()
 }

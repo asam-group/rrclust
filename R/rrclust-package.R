@@ -22,6 +22,7 @@
 #' @importFrom dplyr n
 #' @importFrom dplyr rename
 #' @importFrom dplyr rename_if
+#' @importFrom fs dir_copy
 #' @importFrom fst read_fst
 #' @importFrom fst write_fst
 #' @importFrom ggplot2 aes

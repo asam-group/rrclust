@@ -24,7 +24,8 @@ Imports:
     fst,
     grid,
     shiny,
-    DiagrammeR
+    DiagrammeR,
+    fs
 Encoding: UTF-8
 Roxygen: list(
     markdown = TRUE,

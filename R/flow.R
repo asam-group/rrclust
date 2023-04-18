@@ -71,7 +71,7 @@ draw_flow <- function(DF) {
   ndf0$fillcolor[ndf0$class == "mod"] <- "DarkGreen"
   ndf0$style <- "filled"
 
-  ndf <- DiagrammeR::create_node_df(
+  ndf <- create_node_df(
     n = nrow(ndf0),
     type = "type_1",
     label = ndf0$nodes,

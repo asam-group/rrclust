@@ -7,7 +7,11 @@
 tidylist_read(path = ".", fst = FALSE, verbose = TRUE)
 }
 \arguments{
-\item{path}{character, containg the path(s) to a directory or to one or several CSV files.}
+\item{path}{path}
+
+\item{fst}{if TRUE, write fst, otherwise csv}
+
+\item{verbose}{print a message if TRUE}
 }
 \description{
 Import a Tidylist from a Collection of tidy CSV files

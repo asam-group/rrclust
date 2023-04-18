@@ -33,6 +33,11 @@ tidylist_ensure <- function(x) {
 
 #' @title Function to write a list of CSV files
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
+#' @param x object to write
+#' @param path path
+#' @param fst if TRUE, write fst, otherwise csv
+#' @param verbose print a message if TRUE
+#' @autoglobal
 #' @export
 tidylist_write <- function(x, path = ".", fst = FALSE, verbose = TRUE) {
   x <- tidylist_ensure(x)
@@ -43,7 +48,6 @@ tidylist_write <- function(x, path = ".", fst = FALSE, verbose = TRUE) {
     file.i <- paste0(file.path(path, name.i), ".", file.ending)
     if (verbose) cat("writing: ", file.i, "\n")
     if (fst) {
-      library(fst)
       write_fst(x[[name.i]], path = file.i)
     } else {
       data.table::fwrite(x[[name.i]], file = file.i, sep = ";")

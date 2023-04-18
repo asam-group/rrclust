@@ -72,7 +72,12 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
       )
       return(des)
     }
-    tab2_1 <- Hmisc::bystats(y = x, title = name_x, fun = function(x) mydescriptive(x), nmiss = T)
+    tab2_1 <- bystats(
+      y = x,
+      title = name_x,
+      fun = function(x) mydescriptive(x),
+      nmiss = T
+    )
     tab2 <- tab2_1[1, ]
     names(tab2) <- c(
       names(tab2)[1:6],

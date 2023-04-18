@@ -6,6 +6,15 @@
 \usage{
 tidylist_write(x, path = ".", fst = FALSE, verbose = TRUE)
 }
+\arguments{
+\item{x}{object to write}
+
+\item{path}{path}
+
+\item{fst}{if TRUE, write fst, otherwise csv}
+
+\item{verbose}{print a message if TRUE}
+}
 \description{
 Function to write a list of CSV files
 }

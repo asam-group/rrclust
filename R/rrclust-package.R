@@ -39,6 +39,7 @@
 #' @importFrom grid grid.newpage
 #' @importFrom grid pushViewport
 #' @importFrom grid viewport
+#' @importFrom Hmisc describe
 #' @importFrom Hmisc label<-
 #' @importFrom Hmisc latex
 #' @importFrom kamila kamila

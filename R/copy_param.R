@@ -11,7 +11,7 @@
 #
 copy_param <- function(path,
                        path_out) {
-  fs::dir_copy(path_param(path), file.path(path_out, "param"))
+  dir_copy(path_param(path), file.path(path_out, "param"))
 
   # legacy mode, substitute PARAM_GLOBAL by one that contains description and input path
   if (check_container_dir(path)) {

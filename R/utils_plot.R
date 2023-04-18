@@ -45,7 +45,12 @@ function_kamplot <- function(dta) {
     )
 
   #--- Log Monthly Pension Plot ---------------------------------------------------
-
+  plotOpts <- function(pl) {
+    (pl +
+      geom_point() +
+      scale_shape_manual(values = c(2, 3, 7)) +
+      geom_jitter())
+  }
   # Log Monthly Pension pro Age
   kamPlot1 <- KAMRESDATA |>
     ggplot(

@@ -19,9 +19,6 @@
 # - `Last test`: 2021-03-18 / Llc
 
 descr_stat_fun <- function(descrstat_dpath, lvalues) {
-  # --- Needed Libraries ---------------------------------------------------------
-  library(Hmisc) # procedures: label, units, contents, describe, bystats, summarize, html, format.df
-
   # --- Loop -------------------------------------------------------------------
   for (i in 1:length(lvalues$values)) {
     x <- c(lvalues$values[[i]])

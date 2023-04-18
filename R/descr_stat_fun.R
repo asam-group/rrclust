@@ -39,7 +39,7 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
 
     # --- Function describe for the histogram ----------------------------------
 
-    des.x <- Hmisc::describe(x, descript = name_x)
+    des.x <- describe(x, descript = name_x)
     tab1l <- latex(des.x, file = file_hist_tex)
 
     # --- Definition of ad hoc functions ---------------------------------------

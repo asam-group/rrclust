@@ -34,6 +34,7 @@ trace_flow <- function(expr) {
 #'
 #' @description Draw workflow
 #'
+#' @param DF data frame
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)
 #' @autoglobal
 #' @export

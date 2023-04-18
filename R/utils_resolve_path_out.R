@@ -11,7 +11,7 @@
 path_out_resolve <- function(path_out,
                              identifier_number) {
   path_out <- file.path(path_out, identifier_number)
-  fs::dir_create(path_out)
-  fs::dir_create(file.path(path_out, "post_process"))
+  dir_create(path_out)
+  dir_create(file.path(path_out, "post_process"))
   path_out
 }

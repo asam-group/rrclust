@@ -6,6 +6,9 @@
 \usage{
 read_path_data(path_container)
 }
+\arguments{
+\item{path_container}{path to container}
+}
 \description{
 read the path fo the data
 }

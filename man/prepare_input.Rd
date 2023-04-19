@@ -8,6 +8,10 @@ prepare_input(path, path_out = file.path(dirname(path)), overwrite = FALSE)
 }
 \arguments{
 \item{path}{path to container}
+
+\item{path_out}{path to output container}
+
+\item{overwrite}{if TRUE, the ouptut should be overwritten}
 }
 \value{
 nothing. Output (the input data) is stored in the assigned location

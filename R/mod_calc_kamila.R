@@ -21,7 +21,7 @@
 #'
 #' @param FULL_CATEG_DF data frame containing the categorical variables used for
 #' the estimation plus the nominal variables marital_stat and benef_type.
-#' 
+#'
 #' @param KM_RES tibble contains the kamila results of the training set.
 #'
 #' @param list List of input data frames.

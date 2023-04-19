@@ -1,7 +1,7 @@
 #' @title mod_init() pour les fonctions mod_
 #'
 #' @description Vérifie si tous les inputs sont des tibbles.
-#'
+#' @param mod.function module
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @autoglobal
 #' @export
@@ -83,9 +83,11 @@ mod_init <- function(mod.function = NULL) {
   invisible(z)
 }
 
-#' @title mod_return() pour les fonctions mod_
+#' @title mod_return() for the modules
 #'
-#' @description Vérifie si tous les outputs sont des tibbles.
+#' @description Checks whether all the ouptus are tibbles.
+#'
+#' @param ... any tidylist containing tibble or simply tibble.
 #'
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #'

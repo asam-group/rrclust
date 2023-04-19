@@ -22,6 +22,8 @@
 #' @param CONT_DF_TS Training set of the register of rents containing all the continuous
 #' variables.
 #'
+#' @param list List of input data frames.
+#'
 #' @return a tidylist containing the following tidy data frames:
 #'  - `KM_RES` data frame containing the results of the clustering.
 #'  - `PARAM_KAMILA` data frame with the updated kstar parameter.

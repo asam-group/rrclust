@@ -3,7 +3,7 @@
 #' @description Splitting the initial dataset into kstar clusters by using the
 #' parameter kstar determined in the module \code{\link{mod_kstar}}.
 #'
-#' @param PARAM_KAMILA dataframe with all needed parameters for the Kamila method,
+#' @param PARAM_KAMILA data frame with all needed parameters for the Kamila method,
 #' from which the following parameters are used:
 #' - `numinit`: The number of initializations used.
 #' - `maxiter`: The maximum number of iterations in each run.
@@ -16,21 +16,25 @@
 #' @param CONT_DF subset of the register of rents containing all the continuous
 #' variables except for the outcome variables aadr and monthly_pension.
 #'
-#' @param FULL_CONT_DF database containing the continuous variables used for the
+#' @param FULL_CONT_DF data frame containing the continuous variables used for the
 #' estimation plus the outcome variables aadr and monthly_pension.
 #'
-#' @param FULL_CATEG_DF database containing the categorical variables used for
+#' @param FULL_CATEG_DF data frame containing the categorical variables used for
 #' the estimation plus the nominal variables marital_stat and benef_type.
+#' 
+#' @param KM_RES tibble contains the kamila results of the training set.
+#'
+#' @param list List of input data frames.
 #'
 #' @return a `tidylist` containing the following tidy data frames:
-#' - `PLOTDATKAM` database containing the clusters factor and the other
+#' - `PLOTDATKAM` data frame containing the clusters factor and the other
 #' variables.
-#' - `KM_RES_FINAL` database containing the resulting parameters of the
+#' - `KM_RES_FINAL` data frame containing the resulting parameters of the
 #' clustering.
-#' - `CONTVARS` database containing the continuous standardised variables.
-#' - `FULL_CONT_DF` database containing the continuous variables used for the
+#' - `CONTVARS` data frame containing the continuous standardised variables.
+#' - `FULL_CONT_DF` data frame containing the continuous variables used for the
 #' estimation.
-#' - `FULL_CATEG_DF` database containing the categorical variables used for
+#' - `FULL_CATEG_DF` data frame containing the categorical variables used for
 #' the estimation.
 #'
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)

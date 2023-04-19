@@ -3,7 +3,7 @@
 #' @description Estimation of best number of clusters using the Kamila algorithm
 #' on the training set.
 #'
-#' @param PARAM_KAMILA dataframe with all needed parameters for the Kamila method,
+#' @param PARAM_KAMILA data frame with all needed parameters for the Kamila method,
 #' from which the following parameters are used:
 #' - `numberofclusters`: The number of clusters returned by the algorithm, i.e.
 #' sequence indicating the number of clusters which should be investigated to
@@ -23,8 +23,8 @@
 #' variables.
 #'
 #' @return a tidylist containing the following tidy data frames:
-#'  - `KM_RES` database containing the results of the clustering.
-#'  - `PARAM_KAMILA` dataframe with the updated kstar parameter.
+#'  - `KM_RES` data frame containing the results of the clustering.
+#'  - `PARAM_KAMILA` data frame with the updated kstar parameter.
 #'
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #'

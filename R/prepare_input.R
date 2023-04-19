@@ -3,6 +3,10 @@
 #' @description Reading, preparing and saving the inputs.
 #'
 #' @param path path to container
+#' 
+#' @param path_out path to output container
+#' 
+#' @param overwrite if TRUE, the ouptut should be overwritten
 #'
 #' @return nothing. Output (the input data) is stored in the assigned location
 #'

@@ -40,6 +40,7 @@ read_utf8 <- function(con, error = FALSE) {
 # Add description to PARAM_GLOBAL
 #' @title read the path fo the data
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
+#' @param path_container path to container
 #' @export
 read_description <- function(path_container) {
   path.to.description <- normalizePath(
@@ -71,6 +72,7 @@ read_description <- function(path_container) {
     mutate(description = descr)
 }
 #' @title read the path fo the data
+#' @param path_container path to container
 #' @export
 read_path_data <- function(path_container) {
   path.to.inp <- normalizePath(

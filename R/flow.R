@@ -9,7 +9,7 @@ trace_flow <- function(expr) {
   on.exit(options(op)) # restore options on exit
   assign("TRACE_DF", NULL, envir = getOption("trace.env", NULL))
 
-  eval(expr, env = sys.frame(-1))
+  eval(expr = expr, envir = sys.frame(-1))
 
   TRACE_DF <- get("TRACE_DF", envir = getOption("trace.env", NULL))
 

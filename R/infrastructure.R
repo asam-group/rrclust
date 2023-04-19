@@ -47,11 +47,11 @@ mod_init <- function(mod.function = NULL) {
     }
     list <- list[argnames]
     for (name.i in names(list)) {
-      assign(name.i, list[[name.i]], env = fenv)
+      assign(x = name.i, value = list[[name.i]], envir = fenv)
     }
   }
 
-  not.found <- argnames[!argnames %in% ls(env = fenv)]
+  not.found <- argnames[!argnames %in% ls(envir = fenv)]
 
   if (length(not.found) > 0) {
     stop("Cannot find data frames: ", paste(not.found, collapse = ", "))

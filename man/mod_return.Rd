@@ -2,12 +2,15 @@
 % Please edit documentation in R/infrastructure.R
 \name{mod_return}
 \alias{mod_return}
-\title{mod_return() pour les fonctions mod_}
+\title{mod_return() for the modules}
 \usage{
 mod_return(...)
 }
+\arguments{
+\item{...}{any tidylist containing tibble or simply tibble.}
+}
 \description{
-Vérifie si tous les outputs sont des tibbles.
+Checks whether all the ouptus are tibbles.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

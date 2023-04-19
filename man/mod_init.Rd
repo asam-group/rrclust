@@ -6,6 +6,9 @@
 \usage{
 mod_init(mod.function = NULL)
 }
+\arguments{
+\item{mod.function}{module}
+}
 \description{
 Vérifie si tous les inputs sont des tibbles.
 }

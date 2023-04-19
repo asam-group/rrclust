@@ -7,7 +7,7 @@
 function_kamplot(dta)
 }
 \arguments{
-\item{dta}{Filtered dataframe for each desired population sample}
+\item{dta}{Filtered data frame for each desired population sample}
 }
 \description{
 Function to make scatterplot using clusters distribution

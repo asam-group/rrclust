@@ -7,7 +7,7 @@
 fun_ggplot_hist2(dta)
 }
 \arguments{
-\item{dta}{Filtered dataframe for each desired population sample}
+\item{dta}{Filtered data frame for each desired population sample}
 }
 \description{
 Function to make histograms using clusters distribution

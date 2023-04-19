@@ -7,7 +7,7 @@
 mod_kstar(PARAM_KAMILA, CATEG_DF_TS, CONT_DF_TS, list = NULL)
 }
 \arguments{
-\item{PARAM_KAMILA}{dataframe with all needed parameters for the Kamila method,
+\item{PARAM_KAMILA}{data frame with all needed parameters for the Kamila method,
 from which the following parameters are used:
 \itemize{
 \item \code{numberofclusters}: The number of clusters returned by the algorithm, i.e.
@@ -27,12 +27,14 @@ variables as factors.}
 
 \item{CONT_DF_TS}{Training set of the register of rents containing all the continuous
 variables.}
+
+\item{list}{List of input data frames.}
 }
 \value{
 a tidylist containing the following tidy data frames:
 \itemize{
-\item \code{KM_RES} database containing the results of the clustering.
-\item \code{PARAM_KAMILA} dataframe with the updated kstar parameter.
+\item \code{KM_RES} data frame containing the results of the clustering.
+\item \code{PARAM_KAMILA} data frame with the updated kstar parameter.
 }
 }
 \description{

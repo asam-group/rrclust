@@ -12,6 +12,8 @@ multi_run(path, fun, ...)
 than 1 path can be set.}
 
 \item{fun}{function to apply to those sets of parameters.}
+
+\item{...}{any other arguments}
 }
 \description{
 This function executes the computations according to the parameters

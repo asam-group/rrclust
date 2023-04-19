@@ -15,7 +15,7 @@ mod_calc_kamila(
 )
 }
 \arguments{
-\item{PARAM_KAMILA}{dataframe with all needed parameters for the Kamila method,
+\item{PARAM_KAMILA}{data frame with all needed parameters for the Kamila method,
 from which the following parameters are used:
 \itemize{
 \item \code{numinit}: The number of initializations used.
@@ -30,23 +30,27 @@ variables except for the outcome variables aadr and monthly_pension.}
 \item{CATEG_DF}{subset of the register of rents containing all categorical
 variables as factors except for the nominal variables marital_stat and benef_type.}
 
-\item{FULL_CONT_DF}{database containing the continuous variables used for the
+\item{FULL_CONT_DF}{data frame containing the continuous variables used for the
 estimation plus the outcome variables aadr and monthly_pension.}
 
-\item{FULL_CATEG_DF}{database containing the categorical variables used for
+\item{FULL_CATEG_DF}{data frame containing the categorical variables used for
 the estimation plus the nominal variables marital_stat and benef_type.}
+
+\item{KM_RES}{tibble contains the kamila results of the training set.}
+
+\item{list}{List of input data frames.}
 }
 \value{
 a \code{tidylist} containing the following tidy data frames:
 \itemize{
-\item \code{PLOTDATKAM} database containing the clusters factor and the other
+\item \code{PLOTDATKAM} data frame containing the clusters factor and the other
 variables.
-\item \code{KM_RES_FINAL} database containing the resulting parameters of the
+\item \code{KM_RES_FINAL} data frame containing the resulting parameters of the
 clustering.
-\item \code{CONTVARS} database containing the continuous standardised variables.
-\item \code{FULL_CONT_DF} database containing the continuous variables used for the
+\item \code{CONTVARS} data frame containing the continuous standardised variables.
+\item \code{FULL_CONT_DF} data frame containing the continuous variables used for the
 estimation.
-\item \code{FULL_CATEG_DF} database containing the categorical variables used for
+\item \code{FULL_CATEG_DF} data frame containing the categorical variables used for
 the estimation.
 }
 }

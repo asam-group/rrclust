@@ -12,3 +12,6 @@ wrap_prepadata(tl_inp)
 \description{
 Create a memoised copy of \code{\link{wrap_prepadata}}
 }
+\author{
+\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+}

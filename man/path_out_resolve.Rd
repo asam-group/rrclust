@@ -9,8 +9,7 @@ path_out_resolve(path_out, identifier_number)
 \arguments{
 \item{path_out}{directory to store the output folder.}
 
-\item{identifier_number}{unique identifier number to name the output folder,
-defined in the function \code{\link{(mod_inp_kamila}}.}
+\item{identifier_number}{unique identifier number to name the output folder.}
 }
 \value{
 path_out directory to store the output

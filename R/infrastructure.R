@@ -57,7 +57,7 @@ mod_init <- function(mod.function = NULL) {
     stop("Cannot find data frames: ", paste(not.found, collapse = ", "))
   }
 
-  z <- lapply(argnames, get, env = fenv)
+  z <- lapply(argnames, get, envir = fenv)
   names(z) <- argnames
   z <- tidylist_ensure(z)
 

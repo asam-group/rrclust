@@ -1,8 +1,7 @@
 #' @title Function resolving the path_out
 #' @description Writes the path_out and the unique identifier_number of the output.
 #' @param path_out directory to store the output folder.
-#' @param identifier_number unique identifier number to name the output folder,
-#' defined in the function \code{\link{(mod_inp_kamila}}.
+#' @param identifier_number unique identifier number to name the output folder.
 #' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @return path_out directory to store the output
 #' @export

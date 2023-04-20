@@ -16,10 +16,6 @@ invalid_utf8 <- function(x) {
 #' @param con A connection or a file path.
 #' @param error Whether to signal an error when non-UTF8 characters are detected
 #'   (if \code{FALSE}, only a warning message is issued).
-#' @param text A character vector (will be converted to UTF-8 via
-#'   \code{\link{enc2utf8}()}).
-#' @param ... Other arguments passed to \code{\link{writeLines}()} (except
-#'   \code{useBytes}, which is \code{TRUE} in \code{write_utf8()}).
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 read_utf8 <- function(con, error = FALSE) {

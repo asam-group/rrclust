@@ -44,6 +44,9 @@ wrap_prepadata_ <- function(tl_inp) {
 }
 
 
-#' @title wrap_prepadata (memoised)
+#' @title Memoised copy of \code{\link{wrap_prepadata}}
+#' @description Create a memoised copy of \code{\link{wrap_prepadata}}
+#' @param tl_inp List of input data frames.
+#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
 #' @export
 wrap_prepadata <- memoise::memoise(wrap_prepadata_)

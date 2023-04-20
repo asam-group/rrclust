@@ -2,6 +2,7 @@
 
 #' @title Creator function for tidylists
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
+#' @param ... any other arguments
 #' @export
 tidylist <- function(...) {
   z <- list(...)
@@ -12,7 +13,8 @@ tidylist <- function(...) {
 }
 
 
-#' Ensure a tidylist contains only 'tidy' dfs
+#' @title Ensure a tidylist contains only 'tidy' dfs
+#' @param x tidylist
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 tidylist_ensure <- function(x) {

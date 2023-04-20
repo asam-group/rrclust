@@ -46,9 +46,6 @@ run_kamila <- function(path,
     path_out_identifier
   )
 
-  # Excel
-  # ...
-
   # Store params (for reference)
   copy_param(path, path_out_identifier)
 

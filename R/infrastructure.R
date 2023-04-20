@@ -131,8 +131,11 @@ mod_return <- function(...) {
 
 #' @title trace_this()
 #'
-#' @description Retourne "do not use `mod_init()` in functions without arguments." si aucun argument n'est donné dans la fonction.
-#'
+#' @description Trace the inputs (\code{\link{mod_init}}) and the outputs
+#' (\code{\link{mod_return}}).
+#' @param x tidylist
+#' @param at level of the module ("input" or "output")
+#' @param mod "mod.function"
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @autoglobal
 #' @export

@@ -2,10 +2,13 @@
 % Please edit documentation in R/wrap_prepadata.R
 \name{wrap_prepadata}
 \alias{wrap_prepadata}
-\title{wrap_prepadata (memoised)}
+\title{Memoised copy of \code{\link{wrap_prepadata}}}
 \usage{
 wrap_prepadata(tl_inp)
 }
+\arguments{
+\item{tl_inp}{List of input data frames.}
+}
 \description{
-wrap_prepadata (memoised)
+Create a memoised copy of \code{\link{wrap_prepadata}}
 }

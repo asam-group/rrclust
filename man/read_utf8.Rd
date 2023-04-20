@@ -11,12 +11,6 @@ read_utf8(con, error = FALSE)
 
 \item{error}{Whether to signal an error when non-UTF8 characters are detected
 (if \code{FALSE}, only a warning message is issued).}
-
-\item{text}{A character vector (will be converted to UTF-8 via
-\code{\link{enc2utf8}()}).}
-
-\item{...}{Other arguments passed to \code{\link{writeLines}()} (except
-\code{useBytes}, which is \code{TRUE} in \code{write_utf8()}).}
 }
 \description{
 Read or write files, assuming they are encoded in UTF-8. \code{read_utf8()}

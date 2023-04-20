@@ -6,6 +6,10 @@
 \usage{
 trace_flow(expr)
 }
+\arguments{
+\item{expr}{expression for which the flow should be traced, e.g.
+\code{{run_kamila(path = paths, path_out = path_out)}}.}
+}
 \description{
 Trace and visualize workflow
 }

@@ -6,8 +6,16 @@
 \usage{
 trace_this(x, at = "", mod = "")
 }
+\arguments{
+\item{x}{tidylist}
+
+\item{at}{level of the module ("input" or "output")}
+
+\item{mod}{"mod.function"}
+}
 \description{
-Retourne "do not use \code{mod_init()} in functions without arguments." si aucun argument n'est donné dans la fonction.
+Trace the inputs (\code{\link{mod_init}}) and the outputs
+(\code{\link{mod_return}}).
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

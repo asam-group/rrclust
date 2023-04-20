@@ -6,6 +6,9 @@
 \usage{
 tidylist_ensure(x)
 }
+\arguments{
+\item{x}{tidylist}
+}
 \description{
 Ensure a tidylist contains only 'tidy' dfs
 }

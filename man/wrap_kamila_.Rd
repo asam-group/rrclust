@@ -7,7 +7,7 @@
 wrap_kamila_(tl_inp_kamila)
 }
 \arguments{
-\item{tl_inp}{tidylist of inputs}
+\item{tl_inp_kamila}{tidylist of inputs}
 }
 \value{
 a \code{tidylist} containing the following tidylists:
@@ -18,4 +18,7 @@ a \code{tidylist} containing the following tidylists:
 \description{
 Simple function which executes the computations needed for the
 Kamila algorithm.
+}
+\author{
+\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
 }

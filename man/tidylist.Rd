@@ -6,6 +6,9 @@
 \usage{
 tidylist(...)
 }
+\arguments{
+\item{...}{any other arguments}
+}
 \description{
 Creator function for tidylists
 }

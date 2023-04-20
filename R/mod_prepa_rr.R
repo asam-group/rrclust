@@ -75,7 +75,6 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
       )
   }
 
-
   # Rename the realizations of the variables
   RR_OASI2 <- RR_OASI1 |>
     mutate(
@@ -111,7 +110,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
       scale = round(eprc * 44, 0),
     ) |>
     # Transform character variables to factors
-    mutate_if(sapply(., is.character), as.factor) |>
+    mutate_if(is.character, as.factor) |>
     mutate(
       # Dummy variables for each marital status
       marital_stat1 = case_when(marital_stat == 1 ~ 1, TRUE ~ 0),
@@ -146,10 +145,10 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
       dplyr::select(
         -napref
       ) |>
-      mutate_all(funs(as.numeric(.)))
+      mutate_all(as.numeric)
   } else {
     RR_OASI2 |>
-      mutate_all(funs(as.numeric(.)))
+      mutate_all(as.numeric)
   }
 
   mod_return(

@@ -24,7 +24,6 @@ utils::globalVariables(c(
   "resid", # <mod_prepa_rr>
   "zv", # <mod_prepa_rr>
   "eprc", # <mod_prepa_rr>
-  ".", # <mod_prepa_rr>
   "napref", # <mod_prepa_rr>
   "key", # <write_param>
   "value", # <write_param>

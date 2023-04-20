@@ -20,5 +20,5 @@ tl_inp tidylist of inputs
 Function to read the data.
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

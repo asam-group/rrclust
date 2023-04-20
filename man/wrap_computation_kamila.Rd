@@ -29,5 +29,5 @@ a \code{tidylist} containing the following tidylists:
 Create a memoised copy of \code{\link{wrap_computation_kamila}}
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

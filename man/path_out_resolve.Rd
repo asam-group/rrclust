@@ -18,5 +18,5 @@ path_out directory to store the output
 Writes the path_out and the unique identifier_number of the output.
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

@@ -69,5 +69,5 @@ a clustering method.
 \href{https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/}{www.geeksforgeeks.org}
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

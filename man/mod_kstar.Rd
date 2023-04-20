@@ -42,5 +42,5 @@ Estimation of best number of clusters using the Kamila algorithm
 on the training set.
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

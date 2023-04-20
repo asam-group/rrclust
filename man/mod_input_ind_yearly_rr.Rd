@@ -21,5 +21,5 @@ a \code{tidylist} containing the following tidy data frames:
 Prepares and saves the register of rents.
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

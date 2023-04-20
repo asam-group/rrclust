@@ -17,5 +17,5 @@ Writes the description and the input path from text files to the
 PARAM_GLOBAL.
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

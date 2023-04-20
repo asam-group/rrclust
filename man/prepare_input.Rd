@@ -20,5 +20,5 @@ nothing. Output (the input data) is stored in the assigned location
 Reading, preparing and saving the inputs.
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

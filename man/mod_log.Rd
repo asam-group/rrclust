@@ -17,5 +17,5 @@ Writes the version of the rrclust and dplyr packages and the time
 of the output production.
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

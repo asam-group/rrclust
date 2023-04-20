@@ -59,5 +59,5 @@ Splitting the initial dataset into kstar clusters by using the
 parameter kstar determined in the module \code{\link{mod_kstar}}.
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

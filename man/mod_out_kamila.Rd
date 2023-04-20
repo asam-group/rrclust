@@ -22,5 +22,5 @@ path_out_identifier path to output container
 Saves the Kamila output
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

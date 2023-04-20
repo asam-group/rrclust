@@ -22,5 +22,5 @@ Prepares the kamila results of the training set and saves the
 optimal number of clusters kstar.
 }
 \author{
-\href{mailto:layalchristine.lettry@unifr.ch}{Layal Christine Lettry}
+\href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}
 }

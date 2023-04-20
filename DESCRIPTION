@@ -1,7 +1,7 @@
 Package: rrclust
 Type: Package
 Title: Clustering the Swiss Pension Register
-Version: 1.0.5.9000
+Version: 1.0.5.9001
 Date: 2023-04-20
 Author@R: person("Layal Christine", "Lettry", email = "layal.lettry@gmail.com")
 Maintainer: Layal Christine Lettry <layal.lettry@gmail.com>

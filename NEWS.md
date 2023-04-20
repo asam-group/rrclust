@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# rrclust 1.0.5.9001
+
+## Chore
+
+- Set options(warnPartialMatchArgs = FALSE) in the .Rprofile of the project.
+
+
 # rrclust 1.0.5.9000
 
 ## Bug fixes

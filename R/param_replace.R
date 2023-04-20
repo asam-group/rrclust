@@ -1,3 +1,9 @@
+#' @title Build the tibble PARAM_ALL
+#' @param tl tidylist
+#' @param ... any other arguments
+#' @param param_replace parameter which can be used to test some other parameters.
+#' @param update_param_all if TRUE, update all parameters
+#' @author [Christoph Sax](mailto:christoph@christophsax.com)
 #' @export
 param_replace <- function(tl, ..., param_replace = NULL, update_param_all = TRUE) {
   # non-list input via ...
@@ -30,6 +36,10 @@ param_replace <- function(tl, ..., param_replace = NULL, update_param_all = TRUE
   ans
 }
 
+
+#' @title Update the PARAM_ALL
+#' @param tl tidylist
+#' @author [Christoph Sax](mailto:christoph@christophsax.com)
 #' @export
 param_all_update <- function(tl) {
   param_tbls <- grep("^PARAM", names(tl), value = TRUE)

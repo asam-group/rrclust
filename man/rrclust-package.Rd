@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-This package allows to cluster the Swiss Pension Register by using Kamila clustering method.
+This package allows to cluster the Swiss Pension Register by using the Kamila clustering method.
 }
 \seealso{
 Useful links:

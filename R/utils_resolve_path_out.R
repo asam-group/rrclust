@@ -2,7 +2,7 @@
 #' @description Writes the path_out and the unique identifier_number of the output.
 #' @param path_out directory to store the output folder.
 #' @param identifier_number unique identifier number to name the output folder.
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @return path_out directory to store the output
 #' @export
 

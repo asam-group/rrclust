@@ -28,7 +28,7 @@
 #'  - `KM_RES` data frame containing the results of the clustering.
 #'  - `PARAM_KAMILA` data frame with the updated kstar parameter.
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'
 #' @export
 #' @autoglobal

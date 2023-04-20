@@ -10,7 +10,7 @@
 #' @return a `tidylist` containing the following tidy data frames:
 #'   - `RR_OASI` : contains all the beneficiaries of the OASI.
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @autoglobal
 #' @export
 

@@ -8,7 +8,7 @@
 #' @return a `tidylist` containing the following tidylists:
 #' - `tl_computation_kamila`
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'
 #' @export
 #'
@@ -32,6 +32,6 @@ wrap_kamila_ <- function(tl_inp_kamila) {
 #' @title Memoised copy of \code{\link{wrap_kamila}}
 #' @description Create a memoised copy of \code{\link{wrap_kamila}}
 #' @param tl_inp_kamila tidylist of inputs
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 wrap_kamila <- memoise::memoise(wrap_kamila_)

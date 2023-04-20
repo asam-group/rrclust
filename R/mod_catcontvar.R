@@ -51,7 +51,7 @@
 #'   - `CONT_DF_VS` : contains only continuous variables (numeric), validation set
 #'
 #' @references [www.geeksforgeeks.org](https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/)
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 
 # - `Last change`: 2022-08-11 / Llc

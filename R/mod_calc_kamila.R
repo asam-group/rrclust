@@ -37,7 +37,7 @@
 #' - `FULL_CATEG_DF` data frame containing the categorical variables used for
 #' the estimation.
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 
 # Last change: 2021-09-02 / Llc

@@ -10,7 +10,7 @@
 #' @return a `tidylist` containing the following tidy data frames:
 #'   - `KM_RES` : contains the kamila results of the training set.
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @autoglobal
 #' @export
 

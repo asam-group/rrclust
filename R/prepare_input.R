@@ -10,7 +10,7 @@
 #'
 #' @return nothing. Output (the input data) is stored in the assigned location
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'
 #' @export
 

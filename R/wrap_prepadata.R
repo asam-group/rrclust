@@ -8,7 +8,7 @@
 #' @return a `tidylist` containing the following tidylists:
 #' - `tl_prepa_rr`
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'
 #' @export
 
@@ -47,6 +47,6 @@ wrap_prepadata_ <- function(tl_inp) {
 #' @title Memoised copy of \code{\link{wrap_prepadata}}
 #' @description Create a memoised copy of \code{\link{wrap_prepadata}}
 #' @param tl_inp List of input data frames.
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 wrap_prepadata <- memoise::memoise(wrap_prepadata_)

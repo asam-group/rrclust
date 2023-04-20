@@ -6,7 +6,7 @@
 #' @param list path where the outputs are saved.
 #' @param method_name name of the clustering method.
 #' @return tl_inp tidylist of inputs
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 
 # Last change: 2021-03-04 / Llc

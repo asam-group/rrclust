@@ -16,7 +16,7 @@
 #' @return a `tidylist` containing the following tidylists:
 #' - `tl_mod_calc_kamila`
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'
 #' @export
 
@@ -115,6 +115,6 @@ wrap_computation_kamila_ <- function(tl_inp,
 #' @return a `tidylist` containing the following tidylists:
 #' - `tl_mod_calc_kamila`
 #'
-#' @author [Layal Christine Lettry](mailto:layalchristine.lettry@unifr.ch)
+#' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 wrap_computation_kamila <- memoise::memoise(wrap_computation_kamila_)

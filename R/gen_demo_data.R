@@ -53,9 +53,15 @@ gen_demo_data <- function(path = tempdir()) {
     )
   )
 
+  # create an "all" folder
+  new_path <- file.path(path, "all")
+  if (!file.exists(new_path)) {
+    dir.create(new_path, recursive = TRUE)
+  }
+  
   # create a csv with the demo data
-  tidylist_write(tidylist(demo_data), path = path)
+  tidylist_write(tidylist(demo_data), path = new_path)
 
   # return
-  file.path(path, "demo_data.csv")
+  file.path(new_path, "demo_data.csv")
 }

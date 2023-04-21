@@ -1,5 +1,5 @@
-#' @title Generate demo data
-#' @description Generate demo data and write into a csv file
+#' @title Generate random demo data
+#' @description Generate random demo data and write into a csv file
 #' @param path path where to store the demo data. Default: `tempdir()`.
 #' @param method_name name of the clustering method.
 #' @return the path of the csv file
@@ -16,8 +16,8 @@ gen_demo_data <- function(path = tempdir(),
   # set the data size
   data_size <- 1000
 
-  # generate demo data
-  demo_data <- tibble(
+  # generate random demo data
+  IND_YEARLY_RR <- tibble(
     age = sample(0:99, data_size, replace = TRUE),
     sex = sample(c(0, 1), replace = TRUE, size = data_size),
     nat = sample(c(0, 1), replace = TRUE, size = data_size),
@@ -68,8 +68,8 @@ gen_demo_data <- function(path = tempdir(),
   }
 
   # create a csv with the demo data
-  tidylist_write(tidylist(demo_data), path = new_path_all)
+  tidylist_write(tidylist(IND_YEARLY_RR), path = new_path_all)
 
   # return
-  file.path(new_path_all, "demo_data.csv")
+  file.path(new_path_all, "IND_YEARLY_RR.csv")
 }

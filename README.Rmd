@@ -58,3 +58,37 @@ results in this [Working Paper](https://folia.unifr.ch/unifr/documents/324081).
 The next step is to implement some classification methods in the package [`rrml`](https://github.com/asam-group/rrml) which will be applied 
 to the kamila-clustered Swiss Pension Register thanks to the package [`rrclust`](https://github.com/asam-group/rrclust). 
 
+## Example with randomly generated data
+
+```{r}
+library(rrclust)
+
+# generate random demo data
+path_random_data <- gen_demo_data()
+
+# read the demo data
+demo_data <- tidylist_read(path_random_data)
+
+# relative path to the params container
+path <- file.path(getwd(), "inst", "extdata", "params_kamila_large")
+
+# read PARAM_GLOBAL
+tl_PARAM_GLOBAL <- param_tidylist_read(path)
+
+# replace empty variable with the temporary path
+tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(dirname(path_random_data), "/all")
+PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
+  dplyr::mutate_all(as.character) |>
+  tidyr::pivot_longer(
+    everything(),
+    names_to = "key",
+    values_to = "value"
+  )
+
+# rewrite PARAM_GLOBAL with the demo data path
+tidylist_write(tidylist(PARAM_GLOBAL), path = path)
+
+# input
+tl_inp_kamila <- mod_inp_kamila(path = path, method_name = "kamila")
+```
+

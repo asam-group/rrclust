@@ -4,10 +4,12 @@
 \alias{gen_demo_data}
 \title{Generate demo data}
 \usage{
-gen_demo_data(path = tempdir())
+gen_demo_data(path = tempdir(), method_name = "kamila")
 }
 \arguments{
 \item{path}{path where to store the demo data. Default: \code{tempdir()}.}
+
+\item{method_name}{name of the clustering method.}
 }
 \value{
 the path of the csv file

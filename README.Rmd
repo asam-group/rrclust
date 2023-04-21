@@ -60,7 +60,7 @@ to the kamila-clustered Swiss Pension Register thanks to the package [`rrclust`]
 
 ## Example with randomly generated data
 
-```{r}
+```{r demo, message=FALSE, warning=FALSE, eval=FALSE}
 library(rrclust)
 
 # generate random demo data

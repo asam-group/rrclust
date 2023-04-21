@@ -77,11 +77,9 @@ library(rrclust)
 
 # generate random demo data
 path_random_data <- gen_demo_data()
-#> writing:  /private/var/folders/nt/m0krkrqx6jgcl_9km5g116240000gq/T/RtmpB7hDj7/all/IND_YEARLY_RR.csv
 
 # read the demo data
 demo_data <- tidylist_read(path_random_data)
-#> reading:  /private/var/folders/nt/m0krkrqx6jgcl_9km5g116240000gq/T/RtmpB7hDj7/all/IND_YEARLY_RR.csv
 
 # relative path to the params container
 path <- file.path(getwd(), "inst", "extdata", "params_kamila_large")
@@ -101,9 +99,7 @@ PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
 
 # rewrite PARAM_GLOBAL with the demo data path
 tidylist_write(tidylist(PARAM_GLOBAL), path = path)
-#> writing:  /Users/layalcynkra/GitHub/rrclust/inst/extdata/params_kamila_large/PARAM_GLOBAL.csv
 
 # input
 tl_inp_kamila <- mod_inp_kamila(path = path, method_name = "kamila")
-#> reading:  /private/var/folders/nt/m0krkrqx6jgcl_9km5g116240000gq/T/RtmpB7hDj7/all/IND_YEARLY_RR.csv
 ```

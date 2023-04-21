@@ -1,0 +1,10 @@
+key;value
+calc_kstar;TRUE
+numberofclusters;2:20
+numinit;10
+maxiter;50
+calcnumclust;ps
+pred_threshold;0.8
+param_kstar;
+categ_var_expl;sex, nat, resid, benef_type1, marital_stat1, marital_stat3, marital_stat4
+cont_var_expl;age, age_retire, scale

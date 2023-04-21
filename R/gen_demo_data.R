@@ -1,13 +1,15 @@
 #' @title Generate demo data
 #' @description Generate demo data and write into a csv file
 #' @param path path where to store the demo data. Default: `tempdir()`.
+#' @param method_name name of the clustering method.
 #' @return the path of the csv file
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @autoglobal
 #' @export
 #'
 #' @examples gen_demo_data()
-gen_demo_data <- function(path = tempdir()) {
+gen_demo_data <- function(path = tempdir(),
+                          method_name = "kamila") {
   # set the seed
   set.seed(42)
 
@@ -54,14 +56,20 @@ gen_demo_data <- function(path = tempdir()) {
   )
 
   # create an "all" folder
-  new_path <- file.path(path, "all")
-  if (!file.exists(new_path)) {
-    dir.create(new_path, recursive = TRUE)
+  new_path_all <- file.path(path, "all")
+  if (!file.exists(new_path_all)) {
+    dir.create(new_path_all, recursive = TRUE)
   }
-  
+
+  # create an method_name folder
+  new_path_method <- file.path(path, method_name)
+  if (!file.exists(new_path_method)) {
+    dir.create(new_path_method, recursive = TRUE)
+  }
+
   # create a csv with the demo data
-  tidylist_write(tidylist(demo_data), path = new_path)
+  tidylist_write(tidylist(demo_data), path = new_path_all)
 
   # return
-  file.path(new_path, "demo_data.csv")
+  file.path(new_path_all, "demo_data.csv")
 }

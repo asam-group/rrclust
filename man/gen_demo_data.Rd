@@ -2,7 +2,7 @@
 % Please edit documentation in R/gen_demo_data.R
 \name{gen_demo_data}
 \alias{gen_demo_data}
-\title{Generate demo data}
+\title{Generate random demo data}
 \usage{
 gen_demo_data(path = tempdir(), method_name = "kamila")
 }
@@ -15,7 +15,7 @@ gen_demo_data(path = tempdir(), method_name = "kamila")
 the path of the csv file
 }
 \description{
-Generate demo data and write into a csv file
+Generate random demo data and write into a csv file
 }
 \examples{
 gen_demo_data()

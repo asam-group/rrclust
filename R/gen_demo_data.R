@@ -18,39 +18,39 @@ gen_demo_data <- function(path = tempdir(),
 
   # generate random demo data
   IND_YEARLY_RR <- tibble(
-    age = sample(0:99, data_size, replace = TRUE),
+    alt = sample(0:99, data_size, replace = TRUE),
     sex = sample(c(0, 1), replace = TRUE, size = data_size),
     nat = sample(c(0, 1), replace = TRUE, size = data_size),
-    resid = sample(c(0, 1), replace = TRUE, size = data_size),
-    benef_type = sample(1:8, replace = TRUE, size = data_size),
-    marital_stat = case_when(
-      age <= 18 ~ 2L, # single
+    dom = sample(c(0, 1), replace = TRUE, size = data_size),
+    gpr = sample(1:8, replace = TRUE, size = data_size),
+    zv = case_when(
+      alt <= 18 ~ 2L, # single
       TRUE ~ sample(1:4, replace = TRUE, size = data_size)
     ),
-    splitting = case_when(
-      age <= 62 ~ NA_integer_, # before 62, no possible splitting
+    csplit = case_when(
+      alt <= 62 ~ NA_integer_, # before 62, no possible splitting
       TRUE ~ sample(c(0, 1), replace = TRUE, size = data_size)
     ),
-    capping = case_when(
-      age <= 62 ~ NA_integer_, # before 62, no possible capping
+    cplaf = case_when(
+      alt <= 62 ~ NA_integer_, # before 62, no possible capping
       TRUE ~ sample(c(0, 1), replace = TRUE, size = data_size)
     ),
-    year = format(Sys.time(), "%Y"),
-    aadr = sample(10e4:10e6, replace = TRUE, size = data_size),
-    monthly_pension = sample(1:4000, replace = TRUE, size = data_size),
-    age_retire = case_when(
-      age <= 62 ~ NA_integer_, # before 62, no possible retirement
+    jahr = format(Sys.time(), "%Y"),
+    ram = sample(10e4:10e6, replace = TRUE, size = data_size),
+    monatliche_rente = sample(1:4000, replace = TRUE, size = data_size),
+    age_ret = case_when(
+      alt <= 62 ~ NA_integer_, # before 62, no possible retirement
       TRUE ~ sample(62:70, replace = TRUE, size = data_size)
     ),
-    scale = sample(0:44, replace = TRUE, size = data_size),
-    contrib_m_ind = sample(0:500, replace = TRUE, size = data_size),
-    contrib_y_ageclass = sample(0:44, replace = TRUE, size = data_size),
-    bonus_m_edu = case_when(
-      age <= 62 ~ NA_integer_, # before 62, no possible bonus for education
+    eprc = sample(1 / 44:1, replace = TRUE, size = data_size),
+    lcot = sample(0:500, replace = TRUE, size = data_size),
+    lcotg = sample(0:44, replace = TRUE, size = data_size),
+    lbedu = case_when(
+      alt <= 62 ~ NA_integer_, # before 62, no possible bonus for education
       TRUE ~ sample(0:500, replace = TRUE, size = data_size)
     ),
-    bonus_m_assist = case_when(
-      age <= 62 ~ NA_integer_, # before 62, no possible bonus for assistance
+    lbass = case_when(
+      alt <= 62 ~ NA_integer_, # before 62, no possible bonus for assistance
       TRUE ~ sample(0:500, replace = TRUE, size = data_size)
     )
   )

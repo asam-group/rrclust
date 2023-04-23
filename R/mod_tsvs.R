@@ -34,18 +34,21 @@ mod_tsvs <- function(RR_OASI,
   freqtable <- table(RR_OASI$sex)
   proptable <- prop.table(freqtable) # approximately balanced
 
-  # Dividing the complete RR_OASI dataset into 2 parts having ratio of 99.9% and 0.1%
+  # Dividing the complete RR_OASI dataset into 2 parts having ratio of 
+  # (1 - PARAM_GLOBAL$pct_sample_ts)% and PARAM_GLOBAL$pct_sample_ts%
   oasi_spl <- sample.split(RR_OASI$sex,
     SplitRatio = PARAM_GLOBAL$pct_sample_ts / 100
   )
 
   # Training set
-  # Selecting that part of RR_OASI dataset which belongs to the 0.1% of the dataset
+  # Selecting that part of RR_OASI dataset which belongs to the 
+  # PARAM_GLOBAL$pct_sample_ts% of the dataset
   # divided in previous step
   RR_OASI_TS <- subset(RR_OASI, oasi_spl == TRUE)
 
   # Validation set
-  # Selecting that part of RR_OASI dataset which belongs to the 99.9% of the dataset
+  # Selecting that part of RR_OASI dataset which belongs to the 
+  # (1 - PARAM_GLOBAL$pct_sample_ts)% of the dataset
   # divided in previous step
   RR_OASI_VS <- subset(RR_OASI, oasi_spl == FALSE)
 

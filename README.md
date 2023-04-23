@@ -59,7 +59,7 @@ devtools::install_github("asam-group/rrclust")
 ## Related Paper
 
 One needs to have the proper Pension Register data in order to run this
-code. As this register is not public, you can find how it is used and
+code. Since this register is not public, you can find how it is used and
 learn more about the results in this [Working
 Paper](https://folia.unifr.ch/unifr/documents/324081).
 
@@ -71,6 +71,10 @@ the kamila-clustered Swiss Pension Register thanks to the package
 [`rrclust`](https://github.com/asam-group/rrclust).
 
 ## Examples
+
+Since the Pension Register data are not public, we offer two examples
+with randomly generated data which are used to demonstrate the workflow
+of this package.
 
 ### Example step by step with randomly generated data
 

@@ -70,10 +70,15 @@ The next step is to implement some classification methods in the package
 the kamila-clustered Swiss Pension Register thanks to the package
 [`rrclust`](https://github.com/asam-group/rrclust).
 
-## Example with randomly generated data
+## Examples
+
+### Example step by step with randomly generated data
 
 ``` r
 library(rrclust)
+
+# directory for the output
+path_out <- tempdir()
 
 # generate random demo data
 path_random_data <- gen_demo_data()
@@ -102,4 +107,73 @@ tidylist_write(tidylist(PARAM_GLOBAL), path = path)
 
 # input
 tl_inp_kamila <- mod_inp_kamila(path = path, method_name = "kamila")
+
+# computations
+tl_out_kamila <- wrap_kamila(tl_inp_kamila = tl_inp_kamila)
+
+# output
+path_out_identifier <- mod_out_kamila(
+  path = path,
+  path_out = path_out,
+  tl_inp_kamila = tl_inp_kamila,
+  tl_out_kamila = tl_out_kamila
+)
+
+# write the csv files
+tidylist_write(
+  c(tl_out_kamila, mod_log()),
+  path_out_identifier
+)
+
+# store parameters (as a reference)
+copy_param(path, path_out_identifier)
+
+# access the output
+browseURL(path_out_identifier)
 ```
+
+### Example in one step with randomly generated data
+
+``` r
+library(rrclust)
+
+# directory for the output
+path_out <- tempdir()
+
+# generate random demo data
+path_random_data <- gen_demo_data()
+
+# read the demo data
+demo_data <- tidylist_read(path_random_data)
+
+# relative path to the params container
+path <- file.path(getwd(), "inst", "extdata", "params_kamila_large")
+
+# read PARAM_GLOBAL
+tl_PARAM_GLOBAL <- param_tidylist_read(path)
+
+# replace empty variable with the temporary path
+tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(dirname(path_random_data), "/all")
+PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
+  dplyr::mutate_all(as.character) |>
+  tidyr::pivot_longer(
+    everything(),
+    names_to = "key",
+    values_to = "value"
+  )
+
+# rewrite PARAM_GLOBAL with the demo data path
+tidylist_write(tidylist(PARAM_GLOBAL), path = path)
+
+# execute the whole workflow
+rrclust::run_kamila(path = path, path_out = path_out)
+
+# access the output
+browseURL(path_out)
+```
+
+## Results
+
+You can see the results in the csv named `KM_RES_FINAL.csv`. The best
+number of clusters, i.e. the parameter `kstar`, is given by the value of
+the variable `num_clust`.

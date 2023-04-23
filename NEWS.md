@@ -1,4 +1,49 @@
-<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+<!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
+
+# rrclust 1.0.5.9002
+
+## Bug fixes
+
+- Fix the original names.
+
+- Use 80% of the data on the training set to determine kstar.
+
+- Rename variables with their original names.
+
+- Fix the name of the tibble random data.
+
+- Add subfolders to be able to store data specific for kamila and general data in 'all'.
+
+- Add 'all' folder.
+
+## Features
+
+- Add new parameters files.
+
+- Create randomly demo data.
+
+## Chore
+
+- Stop tracking .Rprofile.
+
+## Documentation
+
+- Add the complete examples to the README.
+
+- Remove unnecessary spaces.
+
+- Use rewrite comments.
+
+- Update Rd file with new title.
+
+- Fix options R chunk.
+
+- Start example with demo_data.
+
+- Add argument method_name to gen_demo_data().
+
+- Add documentation to NAMESPACE and man folder for gen_demo_data().
+
 
 # rrclust 1.0.5.9001
 
@@ -229,6 +274,7 @@ Correct condition in function_kamplot
 
 Correction  "monthly_rent" into "monthly_pension" and "Register of Rents" into "Pension register" in the graphs
  
+
 # rrclust 1.0.3
 
 correction "monthly_rent" into "monthly_pension"

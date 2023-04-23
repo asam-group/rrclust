@@ -10,22 +10,33 @@
 #' @examples gen_demo_data()
 gen_demo_data <- function(path = tempdir(),
                           method_name = "kamila") {
-  # set the seed
-  set.seed(42)
-
   # set the data size
   data_size <- 1000
 
   # generate random demo data
   IND_YEARLY_RR <- tibble(
-    alt = sample(0:99, data_size, replace = TRUE),
-    sex = sample(c(0, 1), replace = TRUE, size = data_size),
-    nat = sample(c(0, 1), replace = TRUE, size = data_size),
-    dom = sample(c(0, 1), replace = TRUE, size = data_size),
-    gpr = sample(1:8, replace = TRUE, size = data_size),
+    alt = sample(0:99, size = data_size, replace = TRUE),
+    sex = sample(c("f", "m"), replace = TRUE, size = data_size),
+    nat = sample(c("au", "ch"), replace = TRUE, size = data_size),
+    dom = sample(c("au", "ch"), replace = TRUE, size = data_size),
+    gpr = sample(c(
+      "rvieillesse_simple",
+      "rveuve",
+      "rorphelin_pere_simple",
+      "rorphelin_mere_simple",
+      "rorphelin_double",
+      "rcompl_femme",
+      "renfant_pere_simple",
+      "renfant_mere_simple"
+    ), replace = TRUE, size = data_size),
     zv = case_when(
-      alt <= 18 ~ 2L, # single
-      TRUE ~ sample(1:4, replace = TRUE, size = data_size)
+      alt <= 18 ~ "ledig", # single
+      TRUE ~ sample(c(
+        "geschieden",
+        "ledig",
+        "verheiratet",
+        "verwitwet"
+      ), replace = TRUE, size = data_size)
     ),
     csplit = case_when(
       alt <= 62 ~ NA_integer_, # before 62, no possible splitting

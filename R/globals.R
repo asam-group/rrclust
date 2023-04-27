@@ -3,7 +3,6 @@
 utils::globalVariables(c(
   "nframe", # <draw_flow>
   "at", # <draw_flow>
-  ".browser_at_settings", # <mod_init>
   "name", # <trace_this>
   "kmresps", # <mod_input_kmres>
   ".", # <mod_input_kmres>

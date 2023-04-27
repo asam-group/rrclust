@@ -61,24 +61,6 @@ mod_init <- function(mod.function = NULL) {
   names(z) <- argnames
   z <- tidylist_ensure(z)
 
-  if (exists(".browser_at_settings") && !is.null(.browser_at_settings)) {
-    if (.browser_at_settings$mod.function == mod.function) {
-      message("******************************************************************")
-      message("Globally assigning the input of '", mod.function, "()':")
-      message(paste(names(z), collapse = ", "))
-      message("******************************************************************")
-      ans <- Map(function(x, value) assign(x, value, envir = globalenv()), x = names(z), value = z)
-
-      # not too useful, as it would also end 'source'
-      # soft_stop <- function(msg) {
-      #   message(msg)
-      #   do.call(return, list(invisible(TRUE)), envir = as.environment(sys.frames()[[1]]))
-      # }
-
-      if (.browser_at_settings$stop) stop("stop exection, as requested by 'stop' argument.", call. = FALSE)
-    }
-  }
-
   trace_this(z, at = "input", mod = mod.function)
   invisible(z)
 }
@@ -115,15 +97,6 @@ mod_return <- function(...) {
   }
 
   z <- tidylist_ensure(z)
-
-  # data trace functionionality: if options(keep.intermediate = TRUE), module
-  # functions store their output as a tidy list in the global environment
-
-  if (isTRUE(getOption("keep.intermediate"))) {
-    oname <- paste0("tl_intermediate_", mod.function)
-    assign(oname, z, envir = globalenv())
-    # assign the enviroment to the globalenv
-  }
 
   trace_this(z, at = "output", mod = mod.function)
   z

@@ -70,6 +70,36 @@ The next step is to implement some classification methods in the package
 the kamila-clustered Swiss Pension Register thanks to the package
 [`rrclust`](https://github.com/asam-group/rrclust).
 
+## Flow
+
+The global workflow of the `rrclust` package is depicted in the figure
+shown below.
+
+The green ellipses correspond to modules defined as functions accepting
+only a certain class of inputs, namely `tibbles`.
+
+These `tibbles` can enter the modules individually or in the form of
+lists of `tibbles`, namely `tidylists`, containing the `tibbles` in a
+`tidy` form needed by the modules.
+
+The red rectangles give the name of the `tibbles` which either are
+inputs or outputs of the modules. Therefore, they are the outputs of a
+transformation of the initial `tibbles`.
+
+The blue rectangles depict the top level outputs, such as `LOG`
+indicating the run `log` including the `rrclust` package version, the
+`dplyr` library version, the date and the time of the code execution.
+
+The arrows indicate the direction of the process. If there are two
+arrows between an ellipse and a rectangle in both directions, this means
+that an input has been renamed especially for this module and is given
+back as an output. This is the case of `FULL_CONT_DF` and
+`FULL_CATEG_DF` which are renamed `tibbles` of resp. `CONT_DF` and
+`CATEG_DF` and which contains the outcome variables `aadr` and
+`monthly_pension` opposite to their siblings.
+
+<img src="man/figures/rrclust_flow.png" align="center"/>
+
 ## Examples
 
 Since the Pension Register data are not public, we offer two examples
@@ -181,33 +211,3 @@ browseURL(path_out)
 You can see the results in the csv named `KM_RES_FINAL.csv`. The best
 number of clusters, i.e. the parameter `kstar`, is given by the value of
 the variable `num_clust`.
-
-## Flow
-
-The global workflow of the `rrclust` package is depicted in the figure
-shown below.
-
-The green ellipses correspond to modules defined as functions accepting
-only a certain class of inputs, namely `tibbles`.
-
-These `tibbles` can enter the modules individually or in the form of
-lists of `tibbles`, namely `tidylists`, containing the `tibbles` in a
-`tidy` form needed by the modules.
-
-The red rectangles give the name of the `tibbles` which either are
-inputs or outputs of the modules. Therefore, they are the outputs of a
-transformation of the initial `tibbles`.
-
-The blue rectangles depict the top level outputs, such as `LOG`
-indicating the run `log` including the `rrclust` package version, the
-`dplyr` library version, the date and the time of the code execution.
-
-The arrows indicate the direction of the process. If there are two
-arrows between an ellipse and a rectangle in both directions, this means
-that an input has been renamed especially for this module and is given
-back as an output. This is the case of `FULL_CONT_DF` and
-`FULL_CATEG_DF` which are renamed `tibbles` of resp. `CONT_DF` and
-`CATEG_DF` and which contains the outcome variables `aadr` and
-`monthly_pension` opposite to their siblings.
-
-# <img src="man/figures/rrclust_flow.png" align="center"/>

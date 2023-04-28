@@ -6,8 +6,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of rrclust is to cluster the Swiss Pension Register (CCO/FSIO)
-using the [`kamila`](https://github.com/ahfoss/kamila) R package.
+The goal of `rrclust` is to cluster the Swiss Pension Register
+(CCO/FSIO) using the [`kamila`](https://github.com/ahfoss/kamila) R
+package.
 
 The anonymous data of the Swiss Pension Register (CCO/FSIO) are
 typically used to estimate and project (in the short, middle and long
@@ -52,7 +53,7 @@ crucial to predicting revenues and expenditures of the OASI.
 
 ## Installation
 
-You can install the development version of rrclust from
+You can install the development version of `rrclust` from
 [GitHub](https://github.com/) with:
 
 ``` r

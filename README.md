@@ -6,15 +6,16 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of rrclust is to cluster the Swiss Pension Register.
+The goal of rrclust is to cluster the Swiss Pension Register (CCO/FSIO)
+using the [`kamila`](https://github.com/ahfoss/kamila) R package.
 
-The anonymous data of the Swiss Pension Register (PR) are typically used
-to estimate and project (in the short, middle and long term) the
-revenues and the expenditures of the Old-Age and Survivors’ Insurance
-(OASI). In this perspective, it is essential to have a clear look at the
-register’s main statistical features. To better understand it and
-benefit more from its richness, we propose analysing the raw data by an
-appropriate clustering method.
+The anonymous data of the Swiss Pension Register (CCO/FSIO) are
+typically used to estimate and project (in the short, middle and long
+term) the revenues and the expenditures of the Old-Age and Survivors’
+Insurance (OASI). In this perspective, it is essential to have a clear
+look at the register’s main statistical features. To better understand
+it and benefit more from its richness, we propose analysing the raw data
+by an appropriate clustering method.
 
 We face three main difficulties:
 
@@ -27,24 +28,27 @@ We face three main difficulties:
 
 3)  The method should run over big data.
 
-Recently, A. Foss et al. (2016) and A. H. Foss and Markatou (2018)
-proposed the kamila Method (KAy-means for MIxed LArge data), which is
-specifically designed to manage a clustering process for mixed
-distributions. Furthermore, a simple rewriting of the kamila’s algorithm
-permits an easy implementation in a map-reduce framework like Hadoop,
-thus being run on very large data sets. On the other hand, Tibshirani
-and Walther (2005) advocate the use of the “Prediction Strength” as a
-measure to find the optimal number of clusters.
+Recently, [A. Foss et
+al. (2016)](https://doi.org/10.1007/s10994-016-5575-7) and [A. H. Foss
+and Markatou (2018)](https://doi.org/10.18637/jss.v083.i13) proposed the
+kamila Method (KAy-means for MIxed LArge data), which is specifically
+designed to manage a clustering process for mixed distributions.
+Furthermore, a simple rewriting of the kamila’s algorithm permits an
+easy implementation in a map-reduce framework like Hadoop, thus being
+run on very large data sets. On the other hand, [Tibshirani and Walther
+(2005)](https://www.jstor.org/stable/27594130) advocate the use of the
+“Prediction Strength” as a measure to find the optimal number of
+clusters.
 
 We applied the kamila clustering method on the more than 2 000 000
-observations of the PR data. The technique allows us to determine the
-optimal number of clusters. On this basis, we can analyse the partition
-of our data. Indeed, each cluster is then analysed, and its principal
-features are described. As a result, it becomes possible to recognise
-the similarities and dissimilarities between the OASI pensioners
-subgroups according to their socio-demographic characteristics. These
-pieces of information are crucial to predicting revenues and
-expenditures of the OASI.
+observations of the Swiss Pension Register (CCO/FSIO) data. The
+technique allows us to determine the optimal number of clusters. On this
+basis, we can analyse the partition of our data. Indeed, each cluster is
+then analysed, and its principal features are described. As a result, it
+becomes possible to recognise the similarities and dissimilarities
+between the OASI pensioners subgroups according to their
+socio-demographic characteristics. These pieces of information are
+crucial to predicting revenues and expenditures of the OASI.
 
 ## Installation
 
@@ -67,8 +71,8 @@ Paper](https://folia.unifr.ch/unifr/documents/324081).
 
 The next step is to implement some classification methods in the package
 [`rrml`](https://github.com/asam-group/rrml) which will be applied to
-the kamila-clustered Swiss Pension Register thanks to the package
-[`rrclust`](https://github.com/asam-group/rrclust).
+the kamila-clustered Swiss Pension Register (CCO/FSIO) thanks to the
+package [`rrclust`](https://github.com/asam-group/rrclust).
 
 ## Flow
 

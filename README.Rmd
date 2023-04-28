@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -169,3 +170,79 @@ browseURL(path_out)
 You can see the results in the csv named `KM_RES_FINAL.csv`. The best number of 
 clusters, i.e. the parameter `kstar`, is given by the value of the variable `num_clust`.
 
+## Flow
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(rrclust)
+
+# directory for the output
+path_out <- tempdir()
+
+# generate random demo data
+path_random_data <- gen_demo_data(data_size = 100)
+
+# read the demo data
+demo_data <- tidylist_read(path_random_data)
+
+# relative path to the params container
+path <- file.path(getwd(), "inst", "extdata", "params_kamila_large")
+
+# read PARAM_GLOBAL
+tl_PARAM_GLOBAL <- param_tidylist_read(path)
+
+# replace empty variable with the temporary path
+tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(dirname(path_random_data), "/all")
+PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
+  dplyr::mutate_all(as.character) |>
+  tidyr::pivot_longer(
+    tidyselect::everything(),
+    names_to = "key",
+    values_to = "value"
+  )
+
+# rewrite PARAM_GLOBAL with the demo data path
+tidylist_write(tidylist(PARAM_GLOBAL), path = path)
+
+# trace flow
+TF0 <- trace_flow({
+  run_kamila(path = path, path_out = path_out)
+})
+
+# remove the parameters files
+TF <- TF0 |>
+  # rename df into df_renamed to avoid the confusion with the function df()
+  dplyr::mutate(df_renamed = df) |>
+  dplyr::filter(!grepl("^PARAM", df_renamed)) |>
+  dplyr::select(-df_renamed)
+
+# five a name to the plot
+name_plot <- "rrclust_flow.png"
+
+# define a path for the graph
+path_graphs <- file.path(tempdir(), "graphs")
+
+# create the directory if it does not exist
+if (!file.exists(path_graphs)) {
+  dir.create(path_graphs, recursive = TRUE)
+}
+
+
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# create the plot
+plot <- draw_flow(TF)
+plot
+# render the plot as SVG
+tmp0 <- DiagrammeRsvg::export_svg(plot)
+
+# convert to a raw vector
+tmp <- charToRaw(tmp0) # flatten
+
+# render svg image into a high quality bitmap
+rsvg::rsvg_png(tmp, file.path(path_graphs, name_plot))
+
+# go to the graphs directory
+# browseURL(file.path(path_graphs, name_plot))
+```

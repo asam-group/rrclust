@@ -219,21 +219,16 @@ TF <- TF0 |>
 name_plot <- "rrclust_flow.png"
 
 # define a path for the graph
-path_graphs <- file.path(tempdir(), "graphs")
+path_graphs <- file.path("man", "figures")
 
 # create the directory if it does not exist
 if (!file.exists(path_graphs)) {
   dir.create(path_graphs, recursive = TRUE)
 }
 
-
-
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
 # create the plot
 plot <- draw_flow(TF)
-plot
+
 # render the plot as SVG
 tmp0 <- DiagrammeRsvg::export_svg(plot)
 
@@ -245,4 +240,7 @@ rsvg::rsvg_png(tmp, file.path(path_graphs, name_plot))
 
 # go to the graphs directory
 # browseURL(file.path(path_graphs, name_plot))
+
 ```
+
+# <img src="man/figures/rrclust_flow.png" align="center"/>

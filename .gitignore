@@ -54,4 +54,5 @@ rsconnect/
 # scripts
 inst/scripts/*
 
+# .Rprofile
 .Rprofile

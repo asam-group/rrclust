@@ -257,5 +257,8 @@ browseURL(path_out)
 
 ## Results
 
-You can see the results in the csv named `KM_RES_FINAL.csv`. The best number of 
+You can see the results in the CSV file named `KM_RES_FINAL.csv`. The best number of 
 clusters, i.e. the parameter `kstar`, is given by the value of the variable `num_clust`.
+
+The CSV file `KM_RES.csv` shows you all the prediction strengths values for each number of clusters for which you ran the program (see parameter `numberofclusters` in `PARAM_KAMILA.csv`) and for each iteration. 
+

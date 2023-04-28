@@ -430,7 +430,7 @@ fun_ggplot_hist2 <- function(dta) {
       sex = as.factor(sex),
       cluster_id = as.factor(cluster_id)
     ) |>
-    dplyr::select(
+    select(
       c(
         cluster_id,
         ln_aadr,
@@ -485,7 +485,7 @@ fun_ggplot_hist2 <- function(dta) {
 
   n_ind <- unique(GGDATA |>
     mutate(n_ind = n()) |>
-    dplyr::select(n_ind))$n_ind
+    select(n_ind))$n_ind
 
 
   ggplot(

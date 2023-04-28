@@ -134,7 +134,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
         TRUE ~ as.double(age_ret)
       ),
     ) |>
-    dplyr::select(
+    select(
       -zv,
       -gpr
     )
@@ -142,7 +142,7 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
   # Verify all variables are numeric
   RR_OASI <- if ("napref" %in% names(RR_OASI2)) {
     RR_OASI2 |>
-      dplyr::select(
+      select(
         -napref
       ) |>
       mutate_all(as.numeric)

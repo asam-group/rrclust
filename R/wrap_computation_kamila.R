@@ -28,26 +28,26 @@ wrap_computation_kamila_ <- function(tl_inp,
   cont_var_expl <- separate_at_comma(tl_inp$PARAM_KAMILA$cont_var_expl)
 
   CONT_DF_TS <- tl_prepadata$CONT_DF_TS |>
-    dplyr::select(any_of(cont_var_expl))
+    select(any_of(cont_var_expl))
 
   CONT_DF_VS <- tl_prepadata$CONT_DF_VS |>
-    dplyr::select(any_of(cont_var_expl))
+    select(any_of(cont_var_expl))
 
   CONT_DF <- tl_prepadata$CONT_DF |>
-    dplyr::select(any_of(cont_var_expl))
+    select(any_of(cont_var_expl))
 
 
   # Select the desired categorical explicative variables
   categ_var_expl <- separate_at_comma(tl_inp$PARAM_KAMILA$categ_var_expl)
 
   CATEG_DF_TS <- tl_prepadata$CATEG_DF_TS |>
-    dplyr::select(any_of(categ_var_expl))
+    select(any_of(categ_var_expl))
 
   CATEG_DF_VS <- tl_prepadata$CATEG_DF_VS |>
-    dplyr::select(any_of(categ_var_expl))
+    select(any_of(categ_var_expl))
 
   CATEG_DF <- tl_prepadata$CATEG_DF |>
-    dplyr::select(any_of(categ_var_expl))
+    select(any_of(categ_var_expl))
 
 
   # Run the algorithm on the TS to find the optimal number of clusters kstar

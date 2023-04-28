@@ -63,9 +63,9 @@ devtools::install_github("asam-group/rrclust")
 
 ## Related Paper
 
-One needs to have the proper Pension Register data in order to run this
-code. Since this register is not public, you can find how it is used and
-learn more about the results in this [Working
+One needs to have the proper Swiss Pension Register (CCO/FSIO) data in
+order to run this code. Since this register is not public, you can find
+how it is used and learn more about the results in this [Working
 Paper](https://folia.unifr.ch/unifr/documents/324081).
 
 ## Future work
@@ -107,9 +107,9 @@ back as an output. This is the case of `FULL_CONT_DF` and
 
 ## Examples
 
-Since the Pension Register data are not public, we offer two examples
-with randomly generated data which are used to demonstrate the workflow
-of this package.
+Since the Swiss Pension Register (CCO/FSIO) data are not public, we
+offer two examples with randomly generated data which are used to
+demonstrate the workflow of this package.
 
 ### Example step by step with randomly generated data
 

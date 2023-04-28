@@ -1,5 +1,44 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rrclust 1.0.5.9003
+
+## Bug fixes
+
+- Add arguments for the data size of the simulated data.
+
+- Remove all 'dplyr::select' and replace by 'select'.
+
+- Remove unncessary functionalities for browser_at() and options(keep.intermediate = TRUE).
+
+these functionalities served originally to set a browser at a particular module externally (browser_at) and to return all the outputs if the code stops at a particular point in the workflow for options(keep.intermediate = TRUE)
+
+## Build system, external dependencies
+
+- Add dependency to dplyr select().
+
+- Remove one global variable.
+
+## Documentation
+
+- Add precision for the results.
+
+- Add links and remove allow html.
+
+- Move the flow plot and legend to the top of the page.
+
+- Add legend to the flow plot.
+
+- Read flow figure from man/figures.
+
+- Add flow png to man/figures.
+
+- Add flow plot to README.
+
+- Add comment.
+
+- Add precision about the examples.
+
+
 # rrclust 1.0.5.9002
 
 ## Bug fixes

@@ -22,6 +22,7 @@
 #' @importFrom dplyr n
 #' @importFrom dplyr rename
 #' @importFrom dplyr rename_if
+#' @importFrom dplyr select
 #' @importFrom fs dir_copy
 #' @importFrom fs dir_create
 #' @importFrom fst read_fst

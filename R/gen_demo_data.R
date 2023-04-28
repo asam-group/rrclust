@@ -2,6 +2,7 @@
 #' @description Generate random demo data and write into a csv file
 #' @param path path where to store the demo data. Default: `tempdir()`.
 #' @param method_name name of the clustering method.
+#' @param data_size size of the simulated data frame. Default: 1000 rows.
 #' @return the path of the csv file
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @autoglobal
@@ -9,9 +10,10 @@
 #'
 #' @examples gen_demo_data()
 gen_demo_data <- function(path = tempdir(),
-                          method_name = "kamila") {
+                          method_name = "kamila",
+                          data_size = 1000) {
   # set the data size
-  data_size <- 1000
+  data_size <- data_size
 
   # generate random demo data
   IND_YEARLY_RR <- tibble(

@@ -4,12 +4,14 @@
 \alias{gen_demo_data}
 \title{Generate random demo data}
 \usage{
-gen_demo_data(path = tempdir(), method_name = "kamila")
+gen_demo_data(path = tempdir(), method_name = "kamila", data_size = 1000)
 }
 \arguments{
 \item{path}{path where to store the demo data. Default: \code{tempdir()}.}
 
 \item{method_name}{name of the clustering method.}
+
+\item{data_size}{size of the simulated data frame. Default: 1000 rows.}
 }
 \value{
 the path of the csv file

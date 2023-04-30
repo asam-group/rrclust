@@ -144,7 +144,6 @@ rsvg::rsvg_png(tmp, file.path(path_graphs, name_plot))
 
 # go to the graphs directory
 # browseURL(file.path(path_graphs, name_plot))
-
 ```
 
 <img src="man/figures/rrclust_flow.png" align="center"/>

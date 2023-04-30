@@ -34,6 +34,8 @@ Author: Layal Christine Lettry [aut, cre]
 Packaged: 2022-09-26 13:00:01 UTC; U80844426
 License: MIT + file LICENSE
 Suggests: 
-    roxyglobals (>= 0.2.2)
+    roxyglobals (>= 0.2.2),
+    testthat (>= 3.0.0)
 Remotes: 
     anthonynorth/roxyglobals
+Config/testthat/edition: 3

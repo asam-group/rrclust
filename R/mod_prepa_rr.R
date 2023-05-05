@@ -13,6 +13,7 @@
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @autoglobal
 #' @export
+#' @example inst/examples/ex-mod_prepa_rr.R
 
 # - `Last change`: 2021-09-02 / Llc
 

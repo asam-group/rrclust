@@ -90,7 +90,7 @@
 #' )
 #' # spread PARAM_GLOBAL_TIB
 #' read_param_tib <- function(tib) {
-#'   tidyr::pivot_wider(tib, names_from = key, values_from = value)
+#'   z1 <- tidyr::pivot_wider(tib, names_from = key, values_from = value)
 #'
 #'   if (identical(dim(z1), c(0L, 0L))) {
 #'     return(z1)
@@ -98,7 +98,8 @@
 #'
 #'   select(z1, one_of(tib[["key"]]))
 #' }
-#' PARAM_GLOBAL <- read_param_tib(PARAM_GLOBAL_TIDY)
+#' PARAM_GLOBAL <- read_param_tib(PARAM_GLOBAL_TIDY) |>
+#'   mutate(pct_sample_ts = as.numeric(pct_sample_ts))
 #'
 #' # Splitting the data into a Training and a Validation sets
 #' tl_mod_tsvs <- mod_tsvs(

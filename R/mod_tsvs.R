@@ -18,6 +18,8 @@
 #' @references [www.geeksforgeeks.org](https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/)
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
+#' @example inst/examples/ex-mod_tsvs.R
+
 
 # - `Last change`: 2022-08-11 / Llc
 

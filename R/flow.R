@@ -40,6 +40,10 @@ trace_flow <- function(expr) {
 #' @autoglobal
 #' @export
 draw_flow <- function(DF) {
+  if (!rlang::is_installed("DiagrammeR")) {
+    stop("The package {DiagrammerR} is required for this action")
+  }
+
   if (nrow(DF) == 0) stop("DF has no rows.")
 
   # sufficient, as long as we don't use var names

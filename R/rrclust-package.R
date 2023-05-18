@@ -51,6 +51,7 @@
 #' @importFrom Hmisc label<-
 #' @importFrom Hmisc latex
 #' @importFrom kamila kamila
+#' @importFrom rlang is_installed
 #' @importFrom shiny incProgress
 #' @importFrom stats IQR
 #' @importFrom stats median

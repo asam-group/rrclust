@@ -24,7 +24,8 @@ Imports:
     shiny,
     DiagrammeR,
     fs,
-    stringr
+    stringr,
+    rlang
 Encoding: UTF-8
 Roxygen: list(
     markdown = TRUE,

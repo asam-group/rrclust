@@ -4,14 +4,14 @@ Title: Clustering the Swiss Pension Register
 Version: 1.0.5.9003
 Date: 2023-04-28
 Author@R: 
-    person(
-    given = "Layal Christine", 
-    family = "Lettry", 
-    role = c("aut", "cre"),
-    email = "layal.lettry@gmail.com", 
-    comment = c(ORCID = "0009-0008-6396-0523"))
+    person(given = c("Layal", "Christine"), 
+           family = "Lettry", 
+           role = c("aut", "cre"),
+           email = "layal.lettry@gmail.com", 
+           comment = c(ORCID = "0009-0008-6396-0523"))
 Maintainer: Layal Christine Lettry <layal.lettry@gmail.com>
 Description: This package allows to cluster the Swiss Pension Register by using the Kamila clustering method.
+BugReports: https://github.com/asam-group/rrclust/issues
 URL: https://github.com/asam-group/rrclust
 Imports: 
     data.table,

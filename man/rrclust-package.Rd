@@ -14,6 +14,7 @@ This package allows to cluster the Swiss Pension Register by using the Kamila cl
 Useful links:
 \itemize{
   \item \url{https://github.com/asam-group/rrclust}
+  \item Report bugs at \url{https://github.com/asam-group/rrclust/issues}
 }
 
 }

@@ -1,4 +1,4 @@
-test_that("RR_OASI is split in 6 different tibbles CATEG_DF, CONT_DF, CATEG_DF_TS, CONT_DF_TS, CATEG_DF_VS, 
+test_that("RR_OASI is split in 6 different tibbles CATEG_DF, CONT_DF, CATEG_DF_TS, CONT_DF_TS, CATEG_DF_VS,
 CONT_DF_VS", {
   IND_YEARLY_RR <- structure(
     list(
@@ -57,7 +57,7 @@ CONT_DF_VS", {
   )
   # create RR_OASI
   tl_mod_prepa_rr <- mod_prepa_rr(IND_YEARLY_RR = IND_YEARLY_RR)
-  
+
   # create PARAM_GLOBAL
   PARAM_GLOBAL_TIDY <- structure(
     list(
@@ -77,7 +77,7 @@ CONT_DF_VS", {
         "sex, nat, resid, benef_type1, benef_type2, benef_type3, benef_type4, benef_type5,
      benef_type6, benef_type7, benef_type8, benef_type, marital_stat1, marital_stat2,
      marital_stat3, marital_stat4, marital_stat, splitting, capping",
-     "year, aadr, monthly_pension, age, age_retire, scale, contrib_m_ind,
+        "year, aadr, monthly_pension, age, age_retire, scale, contrib_m_ind,
      contrib_y_ageclass, bonus_m_edu, bonus_m_assist"
       )
     ),
@@ -90,16 +90,16 @@ CONT_DF_VS", {
   # spread PARAM_GLOBAL_TIB
   read_param_tib <- function(tib) {
     z1 <- tidyr::pivot_wider(tib, names_from = key, values_from = value)
-    
+
     if (identical(dim(z1), c(0L, 0L))) {
       return(z1)
     }
-    
+
     select(z1, one_of(tib[["key"]]))
   }
   PARAM_GLOBAL <- read_param_tib(PARAM_GLOBAL_TIDY) |>
     mutate(pct_sample_ts = as.numeric(pct_sample_ts))
-  
+
   # Splitting the data into a Training and a Validation sets
   tl_mod_tsvs <- mod_tsvs(
     RR_OASI = tl_mod_prepa_rr$RR_OASI,
@@ -107,14 +107,16 @@ CONT_DF_VS", {
   )
   # Full datasets, training and validation sets of categorical and continuous
   # variables
-  
+
   tl_mod_catcontvar <- mod_catcontvar(
     RR_OASI = tl_mod_prepa_rr$RR_OASI,
     RR_OASI_TS = tl_mod_tsvs$RR_OASI_TS,
     RR_OASI_VS = tl_mod_tsvs$RR_OASI_VS,
     PARAM_GLOBAL = PARAM_GLOBAL
   )
-  
-  expect_equal(names(tl_mod_catcontvar), c("CATEG_DF", "CONT_DF", "CATEG_DF_TS", "CONT_DF_TS", "CATEG_DF_VS", 
-                                           "CONT_DF_VS"))
+
+  expect_equal(names(tl_mod_catcontvar), c(
+    "CATEG_DF", "CONT_DF", "CATEG_DF_TS", "CONT_DF_TS", "CATEG_DF_VS",
+    "CONT_DF_VS"
+  ))
 })

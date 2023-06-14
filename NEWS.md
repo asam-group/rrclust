@@ -1,5 +1,62 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rrclust 1.0.5.9004
+
+## Bug fixes
+
+- Remove space.
+
+## Features
+
+- Add a message to check whether DiagrammeR is installed to run the draw_flow() function.
+
+## Build system, external dependencies
+
+- Add new dependency to rlang::is_installed.
+
+- Add influenceR in the Suggests field.
+
+## Documentation
+
+- Update DESCRIPTION fields.
+
+- Update info about author.
+
+- Add example to mod_tsvs.
+
+- Add example for mod_tsvs.
+
+- Add example to mod_tsvs.
+
+- Add example to mod_prepa_rr.
+
+- Add new dependencies.
+
+- Remove empty line.
+
+- Add missing (CCO/FSIO).
+
+- Fix typo.
+
+## Testing
+
+- Add test to mod_catcontvar.
+
+- Write test for mod_tsvs.
+
+- Add new test for mod_prepa_rr.
+
+- Add new test for mod_inp_kamila.
+
+- Add external files in testthat directory.
+
+- Add more tests to gen_demo_data.
+
+- Write first test.
+
+- Use testthat.
+
+
 # rrclust 1.0.5.9003
 
 ## Bug fixes

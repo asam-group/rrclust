@@ -114,6 +114,16 @@ demonstrate the workflow of this package.
 ### Example step by step with randomly generated data
 
 ``` r
+# enumerate required packages and test if they are installed
+required_pkgs <- c(
+  "data.table", "DiagrammeRsvg", "dplyr", "fs", "magick", "memoise",
+  "rlang", "rrclust", "rstudioapi", "rsvg", "shiny", "tidyr", "utils"
+)
+for (pkg in required_pkgs) {
+  requireNamespace(pkg)
+}
+
+# load rrclust
 library(rrclust)
 
 # directory for the output
@@ -174,6 +184,16 @@ browseURL(path_out_identifier)
 ### Example in one step with randomly generated data
 
 ``` r
+# enumerate required packages and test if they are installed
+required_pkgs <- c(
+  "data.table", "DiagrammeRsvg", "dplyr", "fs", "magick", "memoise",
+  "rlang", "rrclust", "rstudioapi", "rsvg", "shiny", "tidyr", "utils"
+)
+for (pkg in required_pkgs) {
+  requireNamespace(pkg)
+}
+
+# load rrclust
 library(rrclust)
 
 # directory for the output

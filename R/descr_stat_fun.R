@@ -49,7 +49,7 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
     # Standard error
     se <- function(x) {
       # Standard error of x
-      apply(x, 2, sd, na.rm = T) / sqrt(nmiss(x))
+      apply(x, 2, sd, na.rm = TRUE) / sqrt(nmiss(x))
     }
 
 
@@ -59,14 +59,14 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
       # Ad hoc table of descriptive statistics
       des <- c(
         # "N non NA" = nmiss(x),
-        "Mean" = mean(x, na.rm = T),
-        "S.D." = apply(x, 2, sd, na.rm = T),
+        "Mean" = mean(x, na.rm = TRUE),
+        "S.D." = apply(x, 2, sd, na.rm = TRUE),
         "S.E." = se(x),
-        "Min." = min(x, na.rm = T),
-        "1st quartile" = quantile(x, probs = 0.25, na.rm = T),
-        "Median" = median(x, na.rm = T),
-        "3rd quartile" = quantile(x, probs = 0.75, na.rm = T),
-        "Max." = max(x, na.rm = T)
+        "Min." = min(x, na.rm = TRUE),
+        "1st quartile" = quantile(x, probs = 0.25, na.rm = TRUE),
+        "Median" = median(x, na.rm = TRUE),
+        "3rd quartile" = quantile(x, probs = 0.75, na.rm = TRUE),
+        "Max." = max(x, na.rm = TRUE)
       )
       return(des)
     }
@@ -74,7 +74,7 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
       y = x,
       title = name_x,
       fun = function(x) mydescriptive(x),
-      nmiss = T
+      nmiss = TRUE
     )
     tab2 <- tab2_1[1, ]
     names(tab2) <- c(
@@ -86,7 +86,7 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
     )
     label(tab2) <- name_x
 
-    tab2l <- latex(format(round(tab2, 2), scientific = F),
+    tab2l <- latex(format(round(tab2, 2), scientific = FALSE),
       file = file_tex,
       label = paste0("descr_stats_", name_x),
       size = "small",

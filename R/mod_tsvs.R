@@ -58,7 +58,7 @@ mod_tsvs <- function(RR_OASI,
   print(dim(RR_OASI_TS))
   print(dim(RR_OASI_VS))
   print(proptable)
-  
+
   mod_return(
     RR_OASI_TS,
     RR_OASI_VS

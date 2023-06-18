@@ -122,6 +122,6 @@ check_container_dir <- function(from) {
     # message("missing in ", from, ": ", paste(missing, collapse = ", "))
     return(FALSE)
   }
- 
+
   TRUE
 }

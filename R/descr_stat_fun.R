@@ -39,7 +39,7 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
     des.x <- describe(x, descript = name_x)
     tab1l <- latex(des.x, file = file_hist_tex)
     tab1l
-    
+
     # --- Definition of ad hoc functions ---------------------------------------
     # Number of non NA observations
     nmiss <- function(x) {

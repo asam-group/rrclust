@@ -10,6 +10,7 @@ path_data <- function(path) {
   # read from PARAM_GLOBAL
   tl_PARAM_GLOBAL <- param_tidylist_read(path)
   path_data <- tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]]
+  path_data
 }
 
 #' @title Separate a string of several words at commas to a vector
@@ -71,6 +72,7 @@ param_tidylist_read <- function(path) {
 #' @title Function to create a single identifier number
 #' @param method_name name of the clustering method
 #' @param path directory path
+#' @return identifier_number container identifier
 #' @export
 clustmeth_identifier_number <- function(method_name,
                                         path) {
@@ -86,6 +88,7 @@ clustmeth_identifier_number <- function(method_name,
     "_",
     params_folder_suffix
   )
+  identifier_number
 }
 
 #' @title Function to create a the path of the parameters
@@ -111,21 +114,14 @@ check_container_dir <- function(from) {
   # output containers contain an input container
   if ("inp_container" %in% root) root <- list.files(file.path(from, "inp_container"))
 
-  expected <- c("inp", "rrclust", "param", "description")
   required <- c("param", "inp")
 
   missing <- setdiff(required, root)
-  unexpected <- setdiff(root, expected)
 
   if (length(missing) > 0) {
     # message("missing in ", from, ": ", paste(missing, collapse = ", "))
     return(FALSE)
   }
-  #
-  #   if (length(unexpected) > 0) {
-  #     # message("unexpected in ", from, ": ", paste(unexpected, collapse = ", "))
-  #     return(FALSE)
-  #   }
-
+ 
   TRUE
 }

@@ -57,7 +57,8 @@ mod_tsvs <- function(RR_OASI,
   # checking number of rows and column in training and validation datasets
   print(dim(RR_OASI_TS))
   print(dim(RR_OASI_VS))
-
+  print(proptable)
+  
   mod_return(
     RR_OASI_TS,
     RR_OASI_VS

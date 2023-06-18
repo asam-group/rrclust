@@ -47,4 +47,5 @@ mod_inp_kamila <- function(path,
     tl_PARAM_GLOBAL,
     tl_PARAM_KAMILA
   )
+  tl_inp
 }

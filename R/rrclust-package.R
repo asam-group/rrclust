@@ -69,5 +69,6 @@
 #' @importFrom utils head
 #' @importFrom utils installed.packages
 #' @importFrom utils packageVersion
+#' @importFrom withr with_options
 ## usethis namespace: end
 NULL

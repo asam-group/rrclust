@@ -31,7 +31,8 @@ Imports:
     DiagrammeR,
     fs,
     stringr,
-    rlang
+    rlang,
+    withr
 Encoding: UTF-8
 Roxygen: list(
     markdown = TRUE,

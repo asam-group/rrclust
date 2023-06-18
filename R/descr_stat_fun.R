@@ -20,7 +20,7 @@
 
 descr_stat_fun <- function(descrstat_dpath, lvalues) {
   # --- Loop -------------------------------------------------------------------
-  for (i in 1:length(lvalues$values)) {
+  for (i in seq_along(lvalues$values)) {
     x <- c(lvalues$values[[i]])
     name_x <- names(lvalues$values)[i]
 

@@ -26,7 +26,7 @@ param_replace <- function(tl, ..., param_replace = NULL, update_param_all = TRUE
 
   ans <- tl
   if (!is.null(param_replace)) {
-    for (i in 1:length(param_replace)) {
+    for (i in seq_along(param_replace)) {
       ans <- replace_one_value_in_tl(name = names(param_replace[i]), value = unname(param_replace[[i]]), ans)
     }
   }

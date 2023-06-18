@@ -11,6 +11,9 @@ clustmeth_identifier_number(method_name, path)
 
 \item{path}{directory path}
 }
+\value{
+identifier_number container identifier
+}
 \description{
 Function to create a single identifier number
 }

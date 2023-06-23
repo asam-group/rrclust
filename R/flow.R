@@ -13,7 +13,6 @@ trace_flow <- function(expr) {
 
     TRACE_DF <- get("TRACE_DF", envir = getOption("trace.env", NULL))
 
-    # options(trace.env = NULL)
     as.data.frame(TRACE_DF)
   })
 }

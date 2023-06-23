@@ -14,8 +14,6 @@
 #' @autoglobal
 #' @export
 
-# - `Last change`: 2021-03-03 / Llc
-
 mod_input_kmres <- function(PARAM_INPUTS,
                             list = NULL) {
   mod_init()

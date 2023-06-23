@@ -15,8 +15,6 @@
 #' @export
 #' @example inst/examples/ex-mod_prepa_rr.R
 
-# - `Last change`: 2021-09-02 / Llc
-
 mod_prepa_rr <- function(IND_YEARLY_RR,
                          list = NULL) {
   mod_init()

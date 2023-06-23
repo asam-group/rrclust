@@ -119,7 +119,6 @@ check_container_dir <- function(from) {
   missing <- setdiff(required, root)
 
   if (length(missing) > 0) {
-    # message("missing in ", from, ": ", paste(missing, collapse = ", "))
     return(FALSE)
   }
 

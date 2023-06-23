@@ -54,8 +54,6 @@
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 
-# - `Last change`: 2022-08-11 / Llc
-
 mod_catcontvar <- function(RR_OASI,
                            RR_OASI_TS,
                            RR_OASI_VS,
@@ -69,7 +67,7 @@ mod_catcontvar <- function(RR_OASI,
   # Chosen continuous variables
   cont_var <- separate_at_comma(PARAM_GLOBAL$cont_var)
 
-  #--- Full dataset ------------------------------------------------------------
+  # Full dataset ---------------------------------------------------------------
   # Dataframe of categorical variables
   CATEG_DF <- RR_OASI |>
     select(any_of(categ_var)) |>
@@ -86,7 +84,7 @@ mod_catcontvar <- function(RR_OASI,
   print(dim(CATEG_DF))
   print(dim(CONT_DF))
 
-  #--- Training set ------------------------------------------------------------
+  # Training set ---------------------------------------------------------------
   # Dataframe of categorical variables
   CATEG_DF_TS <- RR_OASI_TS |>
     select(any_of(categ_var)) |>
@@ -103,7 +101,7 @@ mod_catcontvar <- function(RR_OASI,
   print(dim(CATEG_DF_TS))
   print(dim(CONT_DF_TS))
 
-  #--- Validation set ------------------------------------------------------------
+  # Validation set -------------------------------------------------------------
   # Dataframe of categorical variables
   CATEG_DF_VS <- RR_OASI_VS |>
     select(any_of(categ_var)) |>

@@ -13,8 +13,6 @@
 #'
 #' @export
 
-# - `Last change`: 2021-09-02 / Llc
-
 mod_input_ind_yearly_rr <- function(PARAM_INPUTS,
                                     list = NULL) {
   mod_init()

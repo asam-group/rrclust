@@ -42,14 +42,14 @@ mod_kstar <- function(PARAM_KAMILA,
   mod_init()
 
 
-  #--- 1.1) Standardize the continuous variables -------------------------------
+  # 1.1) Standardize the continuous variables -------------------------------
 
   CONTVARS <- as.data.frame(lapply(CONT_DF_TS, rangeStandardize))
   names(CONTVARS) <- paste0(names(CONTVARS), "_std")
 
   CATFACTOR <- as.data.frame(CATEG_DF_TS)
 
-  #--- 1.2) Estimate the best number of clusters g* ----------------------------
+  # 1.2) Estimate the best number of clusters g* ----------------------------
 
   # Computes the clusters and reruns the inputs with the newest results.
 
@@ -78,8 +78,7 @@ mod_kstar <- function(PARAM_KAMILA,
   KSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) |>
     mutate(kstar = kmresps$nClust$bestNClust)
 
-  # Other information of the run
-  # Note: PS = 1 - Variance
+  # Other information of the run (Note: PS = 1 - Variance)
   NCLUST <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) |>
     mutate(
       ps_values = kmresps$nClust$psValues, # Prediction Strength value

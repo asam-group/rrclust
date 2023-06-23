@@ -14,12 +14,8 @@
 #'
 #' @export
 
-# - `Last change`: 2021-03-18 / Llc
-# - `Code review`:
-# - `Last test`: 2021-03-18 / Llc
-
 descr_stat_fun <- function(descrstat_dpath, lvalues) {
-  # --- Loop -------------------------------------------------------------------
+  # Loop -----------------------------------------------------------------------
   for (i in seq_along(lvalues$values)) {
     x <- c(lvalues$values[[i]])
     name_x <- names(lvalues$values)[i]
@@ -34,13 +30,13 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
       paste0("descr_hist_", name_x, ".tex")
     )
 
-    # --- Function describe for the histogram ----------------------------------
+    # Function describe for the histogram --------------------------------------
 
     des.x <- describe(x, descript = name_x)
     tab1l <- latex(des.x, file = file_hist_tex)
     tab1l
 
-    # --- Definition of ad hoc functions ---------------------------------------
+    # Definition of ad hoc functions -------------------------------------------
     # Number of non NA observations
     nmiss <- function(x) {
       sum(!is.na(x))
@@ -53,12 +49,11 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
     }
 
 
-    # --- Function "My descriptive" ------------------------------------------------
+    # Function "My descriptive" ------------------------------------------------
 
     mydescriptive <- function(x) {
       # Ad hoc table of descriptive statistics
       des <- c(
-        # "N non NA" = nmiss(x),
         "Mean" = mean(x, na.rm = TRUE),
         "S.D." = apply(x, 2, sd, na.rm = TRUE),
         "S.E." = se(x),

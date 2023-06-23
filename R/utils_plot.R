@@ -4,10 +4,6 @@
 #' @export
 function_kamplot <- function(dta) {
   KAMRESDATA <- dta |>
-    # filter(
-    #   sex == 0,
-    #   benef_type1 == 1
-    # ) |>
     arrange(nat, resid) |>
     mutate(
       natres = case_when(
@@ -44,7 +40,7 @@ function_kamplot <- function(dta) {
       )
     )
 
-  #--- Log Monthly Pension Plot ---------------------------------------------------
+  # Log Monthly Pension Plot ---------------------------------------------------
   plotOpts <- function(pl) {
     (pl +
       geom_point() +
@@ -57,7 +53,6 @@ function_kamplot <- function(dta) {
       aes(
         x = age,
         y = log(monthly_pension),
-        # shape = groups2,
         color = KamilaCluster
       )
     ) +
@@ -92,7 +87,6 @@ function_kamplot <- function(dta) {
     scale_color_discrete("Cluster") +
     scale_x_continuous(breaks = seq(from = 0, to = 100, by = 10))
 
-  # p1 <- plotOpts(kamPlot1)
   plotOpts(kamPlot1)
 
   ggsave(
@@ -115,7 +109,6 @@ function_kamplot <- function(dta) {
       aes(
         x = scale,
         y = log(monthly_pension),
-        # shape = groups2,
         color = KamilaCluster
       )
     ) +
@@ -150,7 +143,6 @@ function_kamplot <- function(dta) {
     scale_color_discrete("Cluster") +
     scale_x_continuous(breaks = seq(from = 0, to = 44, by = 4))
 
-  # p2 <- plotOpts(kamPlot2)
   plotOpts(kamPlot2)
 
   ggsave(
@@ -174,7 +166,6 @@ function_kamplot <- function(dta) {
         aes(
           x = age_retire,
           y = log(monthly_pension),
-          # shape = groups2,
           color = KamilaCluster
         )
       ) +
@@ -213,7 +204,6 @@ function_kamplot <- function(dta) {
         by = 1
       ))
 
-    # p5 <- plotOpts(kamPlot5)
     plotOpts(kamPlot5)
 
     ggsave(
@@ -230,14 +220,13 @@ function_kamplot <- function(dta) {
       width = 11.69
     )
   }
-  #--- AADR Plot ---------------------------------------------------------------
+  # AADR Plot ---------------------------------------------------------------
   # Log AADR pro Age
   kamPlot3 <- KAMRESDATA |>
     ggplot(
       aes(
         x = age,
         y = log(aadr),
-        # shape = groups2,
         color = KamilaCluster
       )
     ) +
@@ -272,7 +261,6 @@ function_kamplot <- function(dta) {
     scale_color_discrete("Cluster") +
     scale_x_continuous(breaks = seq(from = 0, to = 100, by = 10))
 
-  # p3 <- plotOpts(kamPlot3)
   plotOpts(kamPlot3)
 
   ggsave(
@@ -295,7 +283,6 @@ function_kamplot <- function(dta) {
       aes(
         x = scale,
         y = log(aadr),
-        # shape = groups2,
         color = KamilaCluster
       )
     ) +
@@ -330,7 +317,6 @@ function_kamplot <- function(dta) {
     scale_color_discrete("Cluster") +
     scale_x_continuous(breaks = seq(from = 0, to = 44, by = 4))
 
-  # p4 <- plotOpts(kamPlot4)
   plotOpts(kamPlot4)
 
   ggsave(
@@ -354,7 +340,6 @@ function_kamplot <- function(dta) {
         aes(
           x = age_retire,
           y = log(aadr),
-          # shape = groups2,
           color = KamilaCluster
         )
       ) +
@@ -393,7 +378,6 @@ function_kamplot <- function(dta) {
         by = 1
       ))
 
-    # p6 <- plotOpts(kamPlot6)
     plotOpts(kamPlot6)
 
     ggsave(

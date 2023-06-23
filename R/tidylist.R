@@ -82,7 +82,6 @@ tidylist_read <- function(path = ".", fst = FALSE, verbose = TRUE) {
   z <- list()
   for (file.i in files) {
     if (verbose) cat("reading: ", file.i, "\n")
-    # message("reading: ", file.i)
     if (fst) {
       z[[file.i]] <- read_fst(path = file.i)
     } else {

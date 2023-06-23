@@ -52,14 +52,14 @@ mod_calc_kamila <- function(PARAM_KAMILA,
   mod_init()
 
 
-  #--- 1.1 Construction of the g* (from 1.2) clusters with the Kamila method----
+  # 1.1 Construction of the g* (from 1.2) clusters with the Kamila method----
 
   CONTVARS <- as.data.frame(lapply(CONT_DF, rangeStandardize))
   names(CONTVARS) <- paste0(names(CONTVARS), "_std")
 
   CATFACTOR <- as.data.frame(CATEG_DF)
 
-  #--- 1.2 Construction of the g* (from 1.2) clusters with the Kamila method on
+  # 1.2 Construction of the g* (from 1.2) clusters with the Kamila method on
   # the whole dataset ----------------------------------------------------------
 
   # Setting seed to generate a reproducible random sampling

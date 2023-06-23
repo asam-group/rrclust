@@ -20,9 +20,6 @@
 #' @export
 #' @example inst/examples/ex-mod_tsvs.R
 
-
-# - `Last change`: 2022-08-11 / Llc
-
 mod_tsvs <- function(RR_OASI,
                      PARAM_GLOBAL,
                      list = NULL) {

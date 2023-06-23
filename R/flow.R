@@ -6,14 +6,14 @@
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)
 #' @export
 trace_flow <- function(expr) {
-  op <- withr::with_options(trace.env, new.env())
-  on.exit(withr::with_options(op)) # restore options on exit
+  op <- options(trace.env = new.env())
+  on.exit(options(op)) # restore options on exit
   assign("TRACE_DF", NULL, envir = getOption("trace.env", NULL))
-
+  
   eval(expr = expr, envir = sys.frame(-1))
-
+  
   TRACE_DF <- get("TRACE_DF", envir = getOption("trace.env", NULL))
-
+  
   # options(trace.env = NULL)
   as.data.frame(TRACE_DF)
 }

@@ -6,18 +6,17 @@
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)
 #' @export
 trace_flow <- function(expr) {
-  op <- options(trace.env = new.env())
-  on.exit(options(op)) # restore options on exit
-  assign("TRACE_DF", NULL, envir = getOption("trace.env", NULL))
-  
-  eval(expr = expr, envir = sys.frame(-1))
-  
-  TRACE_DF <- get("TRACE_DF", envir = getOption("trace.env", NULL))
-  
-  # options(trace.env = NULL)
-  as.data.frame(TRACE_DF)
-}
+  withr::with_options(list(trace.env = new.env()), {
+    assign("TRACE_DF", NULL, envir = getOption("trace.env", NULL))
 
+    eval(expr = expr, envir = sys.frame(-1))
+
+    TRACE_DF <- get("TRACE_DF", envir = getOption("trace.env", NULL))
+
+    # options(trace.env = NULL)
+    as.data.frame(TRACE_DF)
+  })
+}
 
 # DF <- structure(list(df = c("bevoelkerung", "zivilstand", "rentenbetrag",
 # "param", "bevoelkerung", "zivilstand", "rentenbetrag", "rentensumme_total",

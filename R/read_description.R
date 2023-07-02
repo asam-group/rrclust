@@ -8,7 +8,8 @@ invalid_utf8 <- function(x) {
 
 #' @title Read / write files encoded in UTF-8
 #'
-#' @description Read or write files, assuming they are encoded in UTF-8. \code{read_utf8()}
+#' @description
+#' Read or write files, assuming they are encoded in UTF-8. \code{read_utf8()}
 #' is roughly \code{readLines(encoding = 'UTF-8')} (a warning will be issued if
 #' non-UTF8 lines are found), and \code{write_utf8()} calls
 #' \code{writeLines(enc2utf8(text), useBytes = TRUE)}.
@@ -34,9 +35,9 @@ read_utf8 <- function(con, error = FALSE) {
 }
 
 # Add description to PARAM_GLOBAL
-#' @title read the path fo the data
+#' @title Read the path fo the data.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
-#' @param path_container path to container
+#' @param path_container Path to container.
 #' @export
 read_description <- function(path_container) {
   path.to.description <- normalizePath(
@@ -46,16 +47,21 @@ read_description <- function(path_container) {
 
   txt <- read_utf8(path.to.description)
 
-  # Le titre est donné en 3 langues dans les 3 premières lignes de la description
   titles <- setNames(txt[1:3], c("title_d", "title_f", "title_i"))
 
-  # Pour entrer un sous-titre, mettre "<<subtitle>>" au début de la phrase
+  #  To enter a subtitle, put "<<subtitle>>" at the beginning of the sentence.
   if (unique(grepl("<<subtitle>>", txt[5:7])) == TRUE) {
-    subtitles_full <- setNames(txt[5:7], c("subtitle_d", "subtitle_f", "subtitle_i"))
+    subtitles_full <- setNames(
+      txt[5:7],
+      c("subtitle_d", "subtitle_f", "subtitle_i")
+    )
     subtitles <- gsub("<<subtitle>>", "", subtitles_full)
     descr0 <- txt[-(1:7)]
   } else {
-    subtitles <- setNames(rep("", 3), c("subtitle_d", "subtitle_f", "subtitle_i"))
+    subtitles <- setNames(
+      rep("", 3),
+      c("subtitle_d", "subtitle_f", "subtitle_i")
+    )
     descr0 <- txt[-(1:3)]
   }
 
@@ -67,8 +73,8 @@ read_description <- function(path_container) {
   )) |>
     mutate(description = descr)
 }
-#' @title read the path fo the data
-#' @param path_container path to container
+#' @title Read the path fo the data
+#' @param path_container Path to container.
 #' @export
 read_path_data <- function(path_container) {
   path.to.inp <- normalizePath(

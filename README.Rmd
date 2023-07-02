@@ -95,7 +95,9 @@ path <- file.path(getwd(), "inst", "extdata", "params_kamila_large")
 tl_PARAM_GLOBAL <- param_tidylist_read(path)
 
 # replace empty variable with the temporary path
-tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(dirname(path_random_data), "/all")
+tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(
+  dirname(path_random_data), "/all"
+)
 PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
   dplyr::mutate_all(as.character) |>
   tidyr::pivot_longer(
@@ -184,7 +186,9 @@ path <- file.path(getwd(), "inst", "extdata", "params_kamila_large")
 tl_PARAM_GLOBAL <- param_tidylist_read(path)
 
 # replace empty variable with the temporary path
-tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(dirname(path_random_data), "/all")
+tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(
+  dirname(path_random_data), "/all"
+)
 PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
   dplyr::mutate_all(as.character) |>
   tidyr::pivot_longer(
@@ -255,7 +259,9 @@ path <- file.path(getwd(), "inst", "extdata", "params_kamila_large")
 tl_PARAM_GLOBAL <- param_tidylist_read(path)
 
 # replace empty variable with the temporary path
-tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(dirname(path_random_data), "/all")
+tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(
+  dirname(path_random_data), "/all"
+)
 PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
   dplyr::mutate_all(as.character) |>
   tidyr::pivot_longer(

@@ -39,10 +39,10 @@ test_that("columns of RR_OASI are correctly renamed", {
       "age", "sex", "nat", "resid", "splitting", "capping", "year",
       "aadr", "monthly_pension", "age_ret", "eprc", "contrib_m_ind",
       "contrib_y_ageclass", "bonus_m_edu", "bonus_m_assist", "benef_type",
-      "marital_stat", "scale", "marital_stat1", "marital_stat2", "marital_stat3",
-      "marital_stat4", "benef_type1", "benef_type2", "benef_type3",
-      "benef_type4", "benef_type5", "benef_type6", "benef_type7", "benef_type8",
-      "age_retire"
+      "marital_stat", "scale", "marital_stat1", "marital_stat2",
+      "marital_stat3", "marital_stat4", "benef_type1", "benef_type2",
+      "benef_type3", "benef_type4", "benef_type5", "benef_type6",
+      "benef_type7", "benef_type8", "age_retire"
     )
   )
 })

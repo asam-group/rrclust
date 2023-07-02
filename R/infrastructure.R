@@ -10,13 +10,15 @@
 mod_init <- function(mod.function = NULL) {
   fenv <- sys.frame(-1) # environment of the function from which it is called
 
-  # optional character string; if NULL it is guessed from the surrounding function call (beta)
+  # optional character string; if NULL it is guessed from the surrounding
+  # function call (beta)
   if (is.null(mod.function)) {
     mod.function <- as.character(sys.call(-1)[[1]])
   }
 
   # progress indication
-  if ("shiny" %in% rownames(installed.packages()) && !is.null(shiny::getDefaultReactiveDomain())) {
+  if ("shiny" %in% rownames(installed.packages()) &&
+    !is.null(shiny::getDefaultReactiveDomain())) {
     # if in shiny session
     incProgress(amount = 0.02, detail = mod.function)
   } else {
@@ -28,7 +30,11 @@ mod_init <- function(mod.function = NULL) {
   argnames <- names(formals(get(mod.function, envir = sys.frame(-2))))
 
   if (!"list" %in% argnames) {
-    stop("function definition of ", mod.function, "does not have 'list' argument")
+    stop(
+      "function definition of ",
+      mod.function,
+      "does not have 'list' argument"
+    )
   }
 
   argnames <- setdiff(argnames, "list")
@@ -91,7 +97,11 @@ mod_return <- function(...) {
   if (mod.function != "_f") {
     argnames <- names(formals(get(mod.function, envir = sys.frame(-2))))
     if (!"list" %in% argnames) {
-      stop("function definition of ", mod.function, "does not have 'list' argument")
+      stop(
+        "function definition of ",
+        mod.function,
+        "does not have 'list' argument"
+      )
     }
     argnames <- setdiff(argnames, "list")
   }
@@ -116,7 +126,15 @@ trace_this <- function(x, at = "", mod = "") {
   trace.env <- getOption("trace.env", NULL)
   if (!is.null(trace.env)) {
     x <- tidylist_ensure(x)
-    tr <- lapply(x, function(e) data.frame(var = names(e), stringsAsFactors = FALSE))
+    tr <- lapply(
+      x,
+      function(e) {
+        data.frame(
+          var = names(e),
+          stringsAsFactors = FALSE
+        )
+      }
+    )
 
     if (length(tr) == 0) {
       stop("do not use `mod_init()` in functions without arguments.")

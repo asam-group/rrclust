@@ -15,10 +15,6 @@
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'
 #' @export
-
-# Last change: 2021-02-23 / Llc
-
-
 mod_out_kamila <- function(path,
                            path_out,
                            tl_inp_kamila,

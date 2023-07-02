@@ -1,12 +1,13 @@
 #' @title Splitting the data into a Training and a Validation sets
 #'
 #' @description Splits the data into a training and a validation sets, given
-#' the too large number of observations, in order to determine the best number of
-#' clusters for the KAMILA algorithm.
+#' the too large number of observations, in order to determine the best number
+#' of clusters for the KAMILA algorithm.
 #'
 #' @param RR_OASI a data frame containing the all the data.
 #'
-#' @param PARAM_GLOBAL a data frame containing the parameters. We use the following:
+#' @param PARAM_GLOBAL a data frame containing the parameters. We use the
+#' following:
 #'  - `pct_sample_ts`: percentage of observations which build the training set.
 #'
 #' @param list List of input data frames.

@@ -27,7 +27,8 @@ trace_flow <- function(expr) {
 # "calc_beitrag", "calc_power", "calc_power", "calc_power", "calc_all"
 # ), nframe = c(5L, 5L, 5L, 5L, 9L, 9L, 9L, 9L, 9L, 14L, 14L, 14L,
 # 5L)), .Names = c("df", "at", "mod", "nframe"), row.names = c(1L,
-# 6L, 10L, 13L, 15L, 20L, 24L, 27L, 29L, 36L, 38L, 40L, 42L), class = "data.frame")
+# 6L, 10L, 13L, 15L, 20L, 24L, 27L, 29L, 36L, 38L, 40L, 42L),
+# class = "data.frame")
 
 #' @title Draw workflow
 #'
@@ -57,8 +58,16 @@ draw_flow <- function(DF) {
   }
 
   ndf0 <- rbind(
-    data.frame(nodes = unique(DF0$mod), class = "mod", stringsAsFactors = FALSE),
-    data.frame(nodes = unique(DF0$df), class = "df", stringsAsFactors = FALSE)
+    data.frame(
+      nodes = unique(DF0$mod),
+      class = "mod",
+      stringsAsFactors = FALSE
+    ),
+    data.frame(
+      nodes = unique(DF0$df),
+      class = "df",
+      stringsAsFactors = FALSE
+    )
   )
 
   ndf0$shape <- "box"

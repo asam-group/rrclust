@@ -2,11 +2,11 @@
 #'
 #' @description Generates descriptive statistics as the mean, the median, ...
 #'
-#' @param descrstat_dpath directory to store the tex files containing the descriptive
-#' statistics.
+#' @param descrstat_dpath directory to store the tex files containing the
+#' descriptive statistics.
 #'
-#' @param lvalues List of variables and values to be analysed. The list must have
-#' variable names.
+#' @param lvalues List of variables and values to be analysed. The list must
+#' have variable names.
 #'
 #' @return a some latex outputs.
 #'

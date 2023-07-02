@@ -1,5 +1,5 @@
-test_that("RR_OASI is split in 6 different tibbles CATEG_DF, CONT_DF, CATEG_DF_TS, CONT_DF_TS, CATEG_DF_VS,
-CONT_DF_VS", {
+test_that("RR_OASI is split in 6 different tibbles", {
+  # CATEG_DF, CONT_DF, CATEG_DF_TS, CONT_DF_TS, CATEG_DF_VS, CONT_DF_VS
   IND_YEARLY_RR <- structure(
     list(
       alt = c(
@@ -74,11 +74,12 @@ CONT_DF_VS", {
         "",
         "Kamila method",
         "80",
-        "sex, nat, resid, benef_type1, benef_type2, benef_type3, benef_type4, benef_type5,
-     benef_type6, benef_type7, benef_type8, benef_type, marital_stat1, marital_stat2,
-     marital_stat3, marital_stat4, marital_stat, splitting, capping",
+        "sex, nat, resid, benef_type1, benef_type2, benef_type3, benef_type4,
+        benef_type5, benef_type6, benef_type7, benef_type8, benef_type,
+        marital_stat1, marital_stat2, marital_stat3, marital_stat4,
+        marital_stat, splitting, capping",
         "year, aadr, monthly_pension, age, age_retire, scale, contrib_m_ind,
-     contrib_y_ageclass, bonus_m_edu, bonus_m_assist"
+        contrib_y_ageclass, bonus_m_edu, bonus_m_assist"
       )
     ),
     class = c("tbl_df", "tbl", "data.frame"),

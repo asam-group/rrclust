@@ -112,7 +112,11 @@ check_container_dir <- function(from) {
   root <- list.files(from)
 
   # output containers contain an input container
-  if ("inp_container" %in% root) root <- list.files(file.path(from, "inp_container"))
+  if ("inp_container" %in% root) {
+    root <- list.files(
+      file.path(from, "inp_container")
+    )
+  }
 
   required <- c("param", "inp")
 

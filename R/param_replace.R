@@ -1,11 +1,15 @@
 #' @title Build the tibble PARAM_ALL
-#' @param tl tidylist
-#' @param ... any other arguments
-#' @param param_replace parameter which can be used to test some other parameters.
-#' @param update_param_all if TRUE, update all parameters
+#' @param tl Tidylist.
+#' @param ... Any other arguments.
+#' @param param_replace Parameter which can be used to test some other
+#' parameters.
+#' @param update_param_all If TRUE, update all parameters.
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)
 #' @export
-param_replace <- function(tl, ..., param_replace = NULL, update_param_all = TRUE) {
+param_replace <- function(tl,
+                          ...,
+                          param_replace = NULL,
+                          update_param_all = TRUE) {
   # non-list input via ...
   ll <- list(...)
   if (is.null(param_replace)) {
@@ -27,7 +31,11 @@ param_replace <- function(tl, ..., param_replace = NULL, update_param_all = TRUE
   ans <- tl
   if (!is.null(param_replace)) {
     for (i in seq_along(param_replace)) {
-      ans <- replace_one_value_in_tl(name = names(param_replace[i]), value = unname(param_replace[[i]]), ans)
+      ans <- replace_one_value_in_tl(
+        name = names(param_replace[i]),
+        value = unname(param_replace[[i]]),
+        ans
+      )
     }
   }
 

@@ -8,12 +8,10 @@
 #'
 #' @param path path of the set of parameters set to a particular output.
 #' @param path_out path where the outputs are saved.
-#' @param param_replace parameter which can be used to test some other parameters.
+#' @param param_replace parameter which can be used to test some other
+#' parameters.
 #'
 #' @export
-
-# - Last change: 2021-02-28 / Llc
-
 run_kamila <- function(path,
                        path_out = file.path(tempdir(), "out"),
                        param_replace = NULL) {

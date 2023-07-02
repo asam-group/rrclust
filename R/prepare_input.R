@@ -13,10 +13,6 @@
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'
 #' @export
-
-# Last change: 2021-06-02 / Llc
-
-
 prepare_input <- function(path,
                           path_out = file.path(dirname(path)),
                           overwrite = FALSE) {
@@ -43,7 +39,7 @@ prepare_input <- function(path,
 
   # Input Data -----------------------------------------------------------------
 
-  # Input register of rents
+  # Input pension register
 
   IND_YEARLY_RR <- mod_input_ind_yearly_rr(
     PARAM_INPUTS = PARAM_INPUTS

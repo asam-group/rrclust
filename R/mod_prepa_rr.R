@@ -1,8 +1,8 @@
-#' @title Preparation of the register of rents data.
+#' @title Preparation of the pension register data.
 #'
-#' @description Prepares the variables of the register of rents.
+#' @description Prepares the variables of the pension register.
 #'
-#' @param IND_YEARLY_RR a data frame containing the data of the register of rents
+#' @param IND_YEARLY_RR a data frame containing the data of the pension register
 #' subsetted for one year only.
 #'
 #' @param list List of input data frames.

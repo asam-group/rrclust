@@ -6,31 +6,30 @@
 #' @param tl_inp List of input data frames.
 #'
 #' @return a `tidylist` containing the following tidylists:
-#' - `tl_prepa_rr`
+#' - `tl_mod_catcontvar`: A `tidylist` containing the following tidy data frames:
+#'   * `CATEG_DF`: Contains only categorical variables (factors).
+#'   * `CONT_DF` : Contains only continuous variables (numeric).
+#'   * `CATEG_DF_TS`: Contains only categorical variables (factors),
+#'   training set.
+#'   * `CONT_DF_TS` : Contains only continuous variables (numeric),
+#'   training set.
+#'   * `CATEG_DF_VS`: Contains only categorical variables (factors),
+#'    validation set.
+#'   * `CONT_DF_VS` : Contains only continuous variables (numeric),
+#'   validation set.
 #'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'
 #' @export
-
-# Last change: 2021-02-25 / Llc
-
-
 wrap_prepadata_ <- function(tl_inp) {
-  # Register of rents
-
   tl_prepa_rr <- mod_prepa_rr(
     IND_YEARLY_RR = tl_inp$IND_YEARLY_RR
   )
-
-  # Training and validation sets
 
   tl_mod_tsvs <- mod_tsvs(
     RR_OASI = tl_prepa_rr$RR_OASI,
     PARAM_GLOBAL = tl_inp$PARAM_GLOBAL
   )
-
-  # Full datasets, training and validation sets of categorical and continuous
-  # variables
 
   tl_mod_catcontvar <- mod_catcontvar(
     RR_OASI = tl_prepa_rr$RR_OASI,
@@ -39,7 +38,6 @@ wrap_prepadata_ <- function(tl_inp) {
     PARAM_GLOBAL = tl_inp$PARAM_GLOBAL
   )
 
-  # Output
   c(tl_mod_catcontvar)
 }
 

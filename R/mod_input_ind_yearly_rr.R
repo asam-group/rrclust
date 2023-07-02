@@ -1,6 +1,6 @@
-#' @title Preparation of the register of rents.
+#' @title Preparation of the pension register.
 #'
-#' @description Prepares and saves the register of rents.
+#' @description Prepares and saves the pension register.
 #'
 #' @param PARAM_INPUTS a data frame containing the data paths.
 #'

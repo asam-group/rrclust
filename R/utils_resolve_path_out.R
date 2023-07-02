@@ -1,12 +1,11 @@
 #' @title Function resolving the path_out
-#' @description Writes the path_out and the unique identifier_number of the output.
-#' @param path_out directory to store the output folder.
-#' @param identifier_number unique identifier number to name the output folder.
+#' @description
+#' Writes the path_out and the unique identifier_number of the output.
+#' @param path_out Directory to store the output folder.
+#' @param identifier_number Unique identifier number to name the output folder.
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
-#' @return path_out directory to store the output
+#' @return Path_out directory to store the output.
 #' @export
-
-# Last change: 2021-03-01 / Llc
 path_out_resolve <- function(path_out,
                              identifier_number) {
   path_out <- file.path(path_out, identifier_number)

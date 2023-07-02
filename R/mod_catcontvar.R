@@ -36,19 +36,24 @@
 #'
 #' @param RR_OASI_VS a validation dataset containing (100 - x)% of the data.
 #'
-#' @param PARAM_GLOBAL a data frame containing the parameters. We use the following:
+#' @param PARAM_GLOBAL a data frame containing the parameters. We use the
+#' following:
 #'  - `categ_var`: Chosen categorical variables
 #'  - `cont_var`: Chosen continuous variables
 #'
 #' @param list List of input data frames.
 #'
 #' @return a `tidylist` containing the following tidy data frames:
-#'   - `CATEG_DF`: contains only categorical variables (factors)
-#'   - `CONT_DF` : contains only continuous variables (numeric)
-#'   - `CATEG_DF_TS`: contains only categorical variables (factors), training set
-#'   - `CONT_DF_TS` : contains only continuous variables (numeric), training set
-#'   - `CATEG_DF_VS`: contains only categorical variables (factors), validation set
-#'   - `CONT_DF_VS` : contains only continuous variables (numeric), validation set
+#'   - `CATEG_DF`: Contains only categorical variables (factors).
+#'   - `CONT_DF` : Contains only continuous variables (numeric).
+#'   - `CATEG_DF_TS`: Contains only categorical variables (factors),
+#'   training set.
+#'   - `CONT_DF_TS` : Contains only continuous variables (numeric),
+#'   training set.
+#'   - `CATEG_DF_VS`: Contains only categorical variables (factors),
+#'    validation set.
+#'   - `CONT_DF_VS` : Contains only continuous variables (numeric),
+#'   validation set.
 #'
 #' @references [www.geeksforgeeks.org](https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/)
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
@@ -61,60 +66,39 @@ mod_catcontvar <- function(RR_OASI,
                            list = NULL) {
   mod_init()
 
-  # Chosen categorical variables
   categ_var <- separate_at_comma(PARAM_GLOBAL$categ_var)
-
-  # Chosen continuous variables
   cont_var <- separate_at_comma(PARAM_GLOBAL$cont_var)
 
-  # Full dataset ---------------------------------------------------------------
-  # Dataframe of categorical variables
   CATEG_DF <- RR_OASI |>
     select(any_of(categ_var)) |>
-    # Transform all variables as factors
     mutate_all(as.factor)
 
-  # Dataframe of continuous variables
   CONT_DF <- RR_OASI |>
     select(any_of(cont_var)) |>
-    # Transform all variables as numeric
     mutate_all(as.numeric)
 
-  # checking number of rows and column training datasets
   print(dim(CATEG_DF))
   print(dim(CONT_DF))
 
-  # Training set ---------------------------------------------------------------
-  # Dataframe of categorical variables
   CATEG_DF_TS <- RR_OASI_TS |>
     select(any_of(categ_var)) |>
-    # Transform all variables as factors
     mutate_all(as.factor)
 
-  # Dataframe of continuous variables
   CONT_DF_TS <- RR_OASI_TS |>
     select(any_of(cont_var)) |>
-    # Transform all variables as numeric
     mutate_all(as.numeric)
 
-  # checking number of rows and column training datasets
   print(dim(CATEG_DF_TS))
   print(dim(CONT_DF_TS))
 
-  # Validation set -------------------------------------------------------------
-  # Dataframe of categorical variables
   CATEG_DF_VS <- RR_OASI_VS |>
     select(any_of(categ_var)) |>
-    # Transform all variables as factors
     mutate_all(as.factor)
 
-  # Dataframe of continuous variables
   CONT_DF_VS <- RR_OASI_VS |>
     select(any_of(cont_var)) |>
-    # Transform all variables as numeric
     mutate_all(as.numeric)
 
-  # checking number of rows and column validation datasets
   print(dim(CATEG_DF_VS))
   print(dim(CONT_DF_VS))
 

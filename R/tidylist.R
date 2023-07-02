@@ -72,7 +72,9 @@ tidylist_read <- function(path = ".", fst = FALSE, verbose = TRUE) {
     files <- list.files(path, full.names = TRUE)
     is.file <- grepl(ptrn, files)
     if (length(files[!is.file]) > 0) {
-      message("ignoring non data files: \n", paste(files[!is.file], collapse = "\n"))
+      message("ignoring non data files: \n", paste(files[!is.file],
+        collapse = "\n"
+      ))
       files <- files[is.file]
     }
   } else {
@@ -85,7 +87,11 @@ tidylist_read <- function(path = ".", fst = FALSE, verbose = TRUE) {
     if (fst) {
       z[[file.i]] <- read_fst(path = file.i)
     } else {
-      z[[file.i]] <- data.table::fread(file = file.i, sep = ";", na.strings = c("NA", ""), encoding = "UTF-8")
+      z[[file.i]] <- data.table::fread(
+        file = file.i, sep = ";",
+        na.strings = c("NA", ""),
+        encoding = "UTF-8"
+      )
     }
   }
   names(z) <- gsub(ptrn, "", basename(files))

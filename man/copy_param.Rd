@@ -8,9 +8,9 @@ PARAM_GLOBAL}
 copy_param(path, path_out)
 }
 \arguments{
-\item{path}{path of the parameter folder.}
+\item{path}{Path of the parameter folder.}
 
-\item{path_out}{directory to store the output folder.}
+\item{path_out}{Directory to store the output folder.}
 }
 \description{
 Writes the description and the input path from text files to the

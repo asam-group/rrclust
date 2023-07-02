@@ -9,7 +9,8 @@ mod_tsvs(RR_OASI, PARAM_GLOBAL, list = NULL)
 \arguments{
 \item{RR_OASI}{a data frame containing the all the data.}
 
-\item{PARAM_GLOBAL}{a data frame containing the parameters. We use the following:
+\item{PARAM_GLOBAL}{a data frame containing the parameters. We use the
+following:
 \itemize{
 \item \code{pct_sample_ts}: percentage of observations which build the training set.
 }}
@@ -25,8 +26,8 @@ a \code{tidylist} containing the following tidy data frames:
 }
 \description{
 Splits the data into a training and a validation sets, given
-the too large number of observations, in order to determine the best number of
-clusters for the KAMILA algorithm.
+the too large number of observations, in order to determine the best number
+of clusters for the KAMILA algorithm.
 }
 \examples{
 #' @examples

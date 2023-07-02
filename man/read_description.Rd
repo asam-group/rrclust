@@ -2,15 +2,15 @@
 % Please edit documentation in R/read_description.R
 \name{read_description}
 \alias{read_description}
-\title{read the path fo the data}
+\title{Read the path fo the data.}
 \usage{
 read_description(path_container)
 }
 \arguments{
-\item{path_container}{path to container}
+\item{path_container}{Path to container.}
 }
 \description{
-read the path fo the data
+Read the path fo the data.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

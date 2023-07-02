@@ -13,8 +13,8 @@ mod_log(list = NULL)
 \code{LOG} tibble with information about time and packages version.
 }
 \description{
-Writes the version of the rrclust and dplyr packages and the time
-of the output production.
+Writes the version of the rrclust and dplyr packages and the
+time of the output production.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

@@ -2,12 +2,12 @@
 % Please edit documentation in R/mod_prepa_rr.R
 \name{mod_prepa_rr}
 \alias{mod_prepa_rr}
-\title{Preparation of the register of rents data.}
+\title{Preparation of the pension register data.}
 \usage{
 mod_prepa_rr(IND_YEARLY_RR, list = NULL)
 }
 \arguments{
-\item{IND_YEARLY_RR}{a data frame containing the data of the register of rents
+\item{IND_YEARLY_RR}{A data frame containing the data of the pension register
 subsetted for one year only.}
 
 \item{list}{List of input data frames.}
@@ -15,11 +15,11 @@ subsetted for one year only.}
 \value{
 a \code{tidylist} containing the following tidy data frames:
 \itemize{
-\item \code{RR_OASI} : contains all the beneficiaries of the OASI.
+\item \code{RR_OASI} : Contains all the beneficiaries of the OASI.
 }
 }
 \description{
-Prepares the variables of the register of rents.
+Prepares the variables of the pension register.
 }
 \examples{
 #' @examples

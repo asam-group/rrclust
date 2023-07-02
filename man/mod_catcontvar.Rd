@@ -42,7 +42,8 @@ tasks.
 
 \item{RR_OASI_VS}{a validation dataset containing (100 - x)\% of the data.}
 
-\item{PARAM_GLOBAL}{a data frame containing the parameters. We use the following:
+\item{PARAM_GLOBAL}{a data frame containing the parameters. We use the
+following:
 \itemize{
 \item \code{categ_var}: Chosen categorical variables
 \item \code{cont_var}: Chosen continuous variables
@@ -53,12 +54,16 @@ tasks.
 \value{
 a \code{tidylist} containing the following tidy data frames:
 \itemize{
-\item \code{CATEG_DF}: contains only categorical variables (factors)
-\item \code{CONT_DF} : contains only continuous variables (numeric)
-\item \code{CATEG_DF_TS}: contains only categorical variables (factors), training set
-\item \code{CONT_DF_TS} : contains only continuous variables (numeric), training set
-\item \code{CATEG_DF_VS}: contains only categorical variables (factors), validation set
-\item \code{CONT_DF_VS} : contains only continuous variables (numeric), validation set
+\item \code{CATEG_DF}: Contains only categorical variables (factors).
+\item \code{CONT_DF} : Contains only continuous variables (numeric).
+\item \code{CATEG_DF_TS}: Contains only categorical variables (factors),
+training set.
+\item \code{CONT_DF_TS} : Contains only continuous variables (numeric),
+training set.
+\item \code{CATEG_DF_VS}: Contains only categorical variables (factors),
+validation set.
+\item \code{CONT_DF_VS} : Contains only continuous variables (numeric),
+validation set.
 }
 }
 \description{

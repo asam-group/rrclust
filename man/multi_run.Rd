@@ -16,8 +16,9 @@ than 1 path can be set.}
 \item{...}{any other arguments}
 }
 \description{
-This function executes the computations according to the parameters
-which are read in a first step. In a third step, the outputs are delivered.
+This function executes the computations according to the
+parameters which are read in a first step. In a third step, the outputs are
+delivered.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

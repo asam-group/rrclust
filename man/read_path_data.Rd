@@ -2,13 +2,13 @@
 % Please edit documentation in R/read_description.R
 \name{read_path_data}
 \alias{read_path_data}
-\title{read the path fo the data}
+\title{Read the path fo the data}
 \usage{
 read_path_data(path_container)
 }
 \arguments{
-\item{path_container}{path to container}
+\item{path_container}{Path to container.}
 }
 \description{
-read the path fo the data
+Read the path fo the data
 }

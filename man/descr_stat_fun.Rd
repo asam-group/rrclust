@@ -7,17 +7,18 @@
 descr_stat_fun(descrstat_dpath, lvalues)
 }
 \arguments{
-\item{descrstat_dpath}{directory to store the tex files containing the descriptive
-statistics.}
+\item{descrstat_dpath}{Directory to store the tex files containing the
+descriptive statistics.}
 
-\item{lvalues}{List of variables and values to be analysed. The list must have
-variable names.}
+\item{lvalues}{List of variables and values to be analysed. The list must
+have variable names.}
 }
 \value{
-a some latex outputs.
+Latex tables.
 }
 \description{
-Generates descriptive statistics as the mean, the median, ...
+Generates descriptive statistics as the mean, the median, among
+others.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

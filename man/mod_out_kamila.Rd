@@ -7,16 +7,16 @@
 mod_out_kamila(path, path_out, tl_inp_kamila, tl_out_kamila)
 }
 \arguments{
-\item{path}{vector containing container path.}
+\item{path}{Vector containing container path.}
 
-\item{path_out}{vector containing output path.}
+\item{path_out}{Vector containing output path.}
 
-\item{tl_inp_kamila}{list containing input data Kamila.}
+\item{tl_inp_kamila}{List containing input data Kamila.}
 
-\item{tl_out_kamila}{list containing output data Kamila.}
+\item{tl_out_kamila}{List containing output data Kamila.}
 }
 \value{
-path_out_identifier path to output container
+\code{path_out_identifier}: Path to output container.
 }
 \description{
 Saves the Kamila output

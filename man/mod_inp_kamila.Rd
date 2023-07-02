@@ -7,14 +7,14 @@
 mod_inp_kamila(path, list = NULL, method_name = "kamila")
 }
 \arguments{
-\item{path}{path of the set of parameters set to a particular output.}
+\item{path}{Path of the set of parameters set to a particular output.}
 
-\item{list}{path where the outputs are saved.}
+\item{list}{Path where the outputs are saved.}
 
-\item{method_name}{name of the clustering method.}
+\item{method_name}{Name of the clustering method.}
 }
 \value{
-tl_inp tidylist of inputs
+tl_inp Tidylist of inputs.
 }
 \description{
 Function to read the data.

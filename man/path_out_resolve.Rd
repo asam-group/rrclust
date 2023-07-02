@@ -7,12 +7,12 @@
 path_out_resolve(path_out, identifier_number)
 }
 \arguments{
-\item{path_out}{directory to store the output folder.}
+\item{path_out}{Directory to store the output folder.}
 
-\item{identifier_number}{unique identifier number to name the output folder.}
+\item{identifier_number}{Unique identifier number to name the output folder.}
 }
 \value{
-path_out directory to store the output
+Path_out directory to store the output.
 }
 \description{
 Writes the path_out and the unique identifier_number of the output.

@@ -13,7 +13,8 @@ run_kamila(path, path_out = file.path(tempdir(), "out"), param_replace = NULL)
 
 \item{path_out}{path where the outputs are saved.}
 
-\item{param_replace}{parameter which can be used to test some other parameters.}
+\item{param_replace}{parameter which can be used to test some other
+parameters.}
 }
 \description{
 This function executes the computations of the Kamila clustering

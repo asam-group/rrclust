@@ -7,13 +7,14 @@
 param_replace(tl, ..., param_replace = NULL, update_param_all = TRUE)
 }
 \arguments{
-\item{tl}{tidylist}
+\item{tl}{Tidylist.}
 
-\item{...}{any other arguments}
+\item{...}{Any other arguments.}
 
-\item{param_replace}{parameter which can be used to test some other parameters.}
+\item{param_replace}{Parameter which can be used to test some other
+parameters.}
 
-\item{update_param_all}{if TRUE, update all parameters}
+\item{update_param_all}{If TRUE, update all parameters.}
 }
 \description{
 Build the tibble PARAM_ALL

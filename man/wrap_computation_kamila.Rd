@@ -11,10 +11,10 @@ wrap_computation_kamila(tl_inp, tl_prepadata)
 \itemize{
 \item \code{PARAM_KAMILA$calc_kstar}: If TRUE, estimates the clusters. Else, takes the
 parameter PARAM_KAMILA$param_kstar.
-\item \code{PARAM_KAMILA$cont_var_expl}: List of continuous variables chosen as explicative
-variables.
-\item \code{PARAM_KAMILA$categ_var_expl}: List of categorical variables chosen as explicative
-variables.
+\item \code{PARAM_KAMILA$cont_var_expl}: List of continuous variables chosen as
+explicative variables.
+\item \code{PARAM_KAMILA$categ_var_expl}: List of categorical variables chosen as
+explicative variables.
 }}
 
 \item{tl_prepadata}{List of data frames prepared in a first step.}

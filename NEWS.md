@@ -1,5 +1,50 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rrclust 1.0.5.9006
+
+## Bug fixes
+
+- Style file.
+
+- Remove unnecessary comments.
+
+- Remove unnecessary comments.
+
+- Lintr styling.
+
+- Remove or fix section titles.
+
+- Use withr::options() correctly.
+
+- Paste the previous state using options().
+
+- Style package.
+
+- Use withr::with_options() instead of options().
+
+- Use seq_len or seq_along instead of 1:length(...).
+
+- Replace the symbols T and F by TRUE and FALSE.
+
+- Remove unused assigned variables by checking that closures have the proper usage using checkUsage.
+
+## Documentation
+
+- Update NEWS.
+
+- Update all rd files.
+
+- Update docs.
+
+- Add new dependency to withr.
+
+- Add checks for required packages.
+
+## Uncategorized
+
+- Merge branch 'rrclust_lyl' of https://github.com/asam-group/rrclust into rrclust_lyl.
+
+
 # rrclust 1.0.5.9005
 
 ## Bug fixes

@@ -25,8 +25,8 @@
 #' @param list List of input data frames.
 #'
 #' @return a tidylist containing the following tidy data frames:
-#'  - `KM_RES` data frame containing the results of the clustering.
-#'  - `PARAM_KAMILA` data frame with the updated kstar parameter.
+#'  - `KM_RES` Data frame containing the results of the clustering.
+#'  - `PARAM_KAMILA` Data frame with the updated kstar parameter.
 #'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'
@@ -38,19 +38,11 @@ mod_kstar <- function(PARAM_KAMILA,
                       list = NULL) {
   mod_init()
 
-
-  # 1.1) Standardize the continuous variables -------------------------------
-
   CONTVARS <- as.data.frame(lapply(CONT_DF_TS, rangeStandardize))
   names(CONTVARS) <- paste0(names(CONTVARS), "_std")
 
   CATFACTOR <- as.data.frame(CATEG_DF_TS)
 
-  # 1.2) Estimate the best number of clusters g* ----------------------------
-
-  # Computes the clusters and reruns the inputs with the newest results.
-
-  # Setting seed to generate a reproducible random sampling
   set.seed(6)
 
   # Number of clusters to be returned by the algorithm
@@ -59,7 +51,6 @@ mod_kstar <- function(PARAM_KAMILA,
       PARAM_KAMILA$numberofclusters
   )))
 
-  # Running the algorithm on the Training Set
   kmresps <- kamila(
     conVar = CONTVARS,
     catFactor = CATFACTOR,
@@ -70,17 +61,17 @@ mod_kstar <- function(PARAM_KAMILA,
     predStrThresh = PARAM_KAMILA$pred_threshold
   )
 
-
-  # Optimal number of clusters
   KSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) |>
     mutate(kstar = kmresps$nClust$bestNClust)
 
-  # Other information of the run (Note: PS = 1 - Variance)
   NCLUST <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) |>
     mutate(
-      ps_values = kmresps$nClust$psValues, # Prediction Strength value
-      avg_pred_str = kmresps$nClust$avgPredStr, # Average prediction strength
-      std_err_pred_str = kmresps$nClust$stdErrPredStr # SE pred. strength
+      # Prediction Strength value, PS = 1 - Variance
+      ps_values = kmresps$nClust$psValues,
+      # Average prediction strength
+      avg_pred_str = kmresps$nClust$avgPredStr,
+      # SE pred. strength
+      std_err_pred_str = kmresps$nClust$stdErrPredStr
     )
 
 
@@ -95,7 +86,6 @@ mod_kstar <- function(PARAM_KAMILA,
     sep = "_"
   )
 
-  # Join all datasets of results
   KM_RES <- KSTAR |>
     left_join(NCLUST,
       by = "cluster_id"

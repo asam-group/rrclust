@@ -1,21 +1,21 @@
 #' @title Function to generate descriptive statistics
 #'
-#' @description Generates descriptive statistics as the mean, the median, ...
+#' @description Generates descriptive statistics as the mean, the median, among
+#' others.
 #'
-#' @param descrstat_dpath directory to store the tex files containing the
+#' @param descrstat_dpath Directory to store the tex files containing the
 #' descriptive statistics.
 #'
 #' @param lvalues List of variables and values to be analysed. The list must
 #' have variable names.
 #'
-#' @return a some latex outputs.
+#' @return Latex tables.
 #'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'
 #' @export
 
 descr_stat_fun <- function(descrstat_dpath, lvalues) {
-  # Loop -----------------------------------------------------------------------
   for (i in seq_along(lvalues$values)) {
     x <- c(lvalues$values[[i]])
     name_x <- names(lvalues$values)[i]
@@ -30,29 +30,19 @@ descr_stat_fun <- function(descrstat_dpath, lvalues) {
       paste0("descr_hist_", name_x, ".tex")
     )
 
-    # Function describe for the histogram --------------------------------------
-
     des.x <- describe(x, descript = name_x)
     tab1l <- latex(des.x, file = file_hist_tex)
     tab1l
 
-    # Definition of ad hoc functions -------------------------------------------
-    # Number of non NA observations
     nmiss <- function(x) {
       sum(!is.na(x))
     }
 
-    # Standard error
     se <- function(x) {
-      # Standard error of x
       apply(x, 2, sd, na.rm = TRUE) / sqrt(nmiss(x))
     }
 
-
-    # Function "My descriptive" ------------------------------------------------
-
     mydescriptive <- function(x) {
-      # Ad hoc table of descriptive statistics
       des <- c(
         "Mean" = mean(x, na.rm = TRUE),
         "S.D." = apply(x, 2, sd, na.rm = TRUE),

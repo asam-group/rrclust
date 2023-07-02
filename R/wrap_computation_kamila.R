@@ -32,7 +32,6 @@
 
 wrap_computation_kamila_ <- function(tl_inp,
                                      tl_prepadata) {
-  # Select the desired continuous explicative variables
   cont_var_expl <- separate_at_comma(tl_inp$PARAM_KAMILA$cont_var_expl)
 
   CONT_DF_TS <- tl_prepadata$CONT_DF_TS |>
@@ -41,8 +40,6 @@ wrap_computation_kamila_ <- function(tl_inp,
   CONT_DF <- tl_prepadata$CONT_DF |>
     select(any_of(cont_var_expl))
 
-
-  # Select the desired categorical explicative variables
   categ_var_expl <- separate_at_comma(tl_inp$PARAM_KAMILA$categ_var_expl)
 
   CATEG_DF_TS <- tl_prepadata$CATEG_DF_TS |>
@@ -90,7 +87,6 @@ wrap_computation_kamila_ <- function(tl_inp,
     KM_RES = KM_RES
   )
 
-  # Output
   if (tl_inp$PARAM_KAMILA$calc_kstar) {
     c(
       tl_mod_calc_kamila,

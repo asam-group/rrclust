@@ -23,11 +23,9 @@ mod_input_kmres <- function(PARAM_INPUTS,
     PARAM_INPUTS$file_kmres
   ))
 
-  # Optimal number of clusters
   KSTAR <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) |>
     mutate(kstar = kmresps$nClust$bestNClust)
 
-  # Other information of the run
   NCLUST <- tibble(cluster_id = as.integer(names(kmresps$nClust$psValues))) |>
     mutate(
       psvalues = kmresps$nClust$psValues,

@@ -5,22 +5,16 @@ test_that("path_param works", {
 
 
 test_that("all necessary inputs are read", {
-  # generate random demo data
   path_random_data <- gen_demo_data()
-
-  # read the demo data
   demo_data <- tidylist_read(path_random_data)
-
   path <- "params_kamila_large"
-
-
-  # read PARAM_GLOBAL
   tl_PARAM_GLOBAL <- param_tidylist_read(path)
 
   # replace empty variable with the temporary path
   tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- str_remove(
     dirname(path_random_data), "/all"
   )
+
   PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
     mutate_all(as.character) |>
     pivot_longer(
@@ -29,12 +23,8 @@ test_that("all necessary inputs are read", {
       values_to = "value"
     )
 
-  # rewrite PARAM_GLOBAL with the demo data path
   tidylist_write(tidylist(PARAM_GLOBAL), path = path)
-
-  # input
   tl_inp_kamila <- mod_inp_kamila(path = path, method_name = "kamila")
-
   expect_equal(
     names(tl_inp_kamila),
     c("IND_YEARLY_RR", "PARAM_GLOBAL", "path_param_folder", "PARAM_KAMILA")
@@ -43,22 +33,16 @@ test_that("all necessary inputs are read", {
 
 
 test_that("all necessary variables of IND_YEARLY_RR are read", {
-  # generate random demo data
   path_random_data <- gen_demo_data()
-
-  # read the demo data
   demo_data <- tidylist_read(path_random_data)
-
   path <- "params_kamila_large"
-
-
-  # read PARAM_GLOBAL
   tl_PARAM_GLOBAL <- param_tidylist_read(path)
 
   # replace empty variable with the temporary path
   tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- str_remove(
     dirname(path_random_data), "/all"
   )
+
   PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
     mutate_all(as.character) |>
     pivot_longer(
@@ -67,10 +51,7 @@ test_that("all necessary variables of IND_YEARLY_RR are read", {
       values_to = "value"
     )
 
-  # rewrite PARAM_GLOBAL with the demo data path
   tidylist_write(tidylist(PARAM_GLOBAL), path = path)
-
-  # input
   tl_inp_kamila <- mod_inp_kamila(path = path, method_name = "kamila")
 
   expect_equal(
@@ -85,22 +66,16 @@ test_that("all necessary variables of IND_YEARLY_RR are read", {
 
 
 test_that("all necessary variables of PARAM_GLOBAL are read", {
-  # generate random demo data
   path_random_data <- gen_demo_data()
-
-  # read the demo data
   demo_data <- tidylist_read(path_random_data)
-
   path <- "params_kamila_large"
-
-
-  # read PARAM_GLOBAL
   tl_PARAM_GLOBAL <- param_tidylist_read(path)
 
   # replace empty variable with the temporary path
   tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- str_remove(
     dirname(path_random_data), "/all"
   )
+
   PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
     mutate_all(as.character) |>
     pivot_longer(
@@ -109,10 +84,7 @@ test_that("all necessary variables of PARAM_GLOBAL are read", {
       values_to = "value"
     )
 
-  # rewrite PARAM_GLOBAL with the demo data path
   tidylist_write(tidylist(PARAM_GLOBAL), path = path)
-
-  # input
   tl_inp_kamila <- mod_inp_kamila(path = path, method_name = "kamila")
 
   expect_equal(
@@ -126,22 +98,14 @@ test_that("all necessary variables of PARAM_GLOBAL are read", {
 
 
 test_that("all necessary variables of PARAM_KAMILA are read", {
-  # generate random demo data
   path_random_data <- gen_demo_data()
-
-  # read the demo data
   demo_data <- tidylist_read(path_random_data)
-
   path <- "params_kamila_large"
-
-
-  # read PARAM_GLOBAL
   tl_PARAM_GLOBAL <- param_tidylist_read(path)
-
-  # replace empty variable with the temporary path
   tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- str_remove(
     dirname(path_random_data), "/all"
   )
+
   PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
     mutate_all(as.character) |>
     pivot_longer(
@@ -152,8 +116,6 @@ test_that("all necessary variables of PARAM_KAMILA are read", {
 
   # rewrite PARAM_GLOBAL with the demo data path
   tidylist_write(tidylist(PARAM_GLOBAL), path = path)
-
-  # input
   tl_inp_kamila <- mod_inp_kamila(path = path, method_name = "kamila")
 
   expect_equal(

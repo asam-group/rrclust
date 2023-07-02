@@ -1,5 +1,4 @@
 test_that("RR_OASI is split in 6 different tibbles", {
-  # CATEG_DF, CONT_DF, CATEG_DF_TS, CONT_DF_TS, CATEG_DF_VS, CONT_DF_VS
   IND_YEARLY_RR <- structure(
     list(
       alt = c(
@@ -55,10 +54,8 @@ test_that("RR_OASI is split in 6 different tibbles", {
     class = c("tbl_df", "tbl", "data.frame"),
     row.names = c(NA, -5L)
   )
-  # create RR_OASI
   tl_mod_prepa_rr <- mod_prepa_rr(IND_YEARLY_RR = IND_YEARLY_RR)
 
-  # create PARAM_GLOBAL
   PARAM_GLOBAL_TIDY <- structure(
     list(
       key = c(
@@ -88,7 +85,7 @@ test_that("RR_OASI is split in 6 different tibbles", {
       -6L
     )
   )
-  # spread PARAM_GLOBAL_TIB
+
   read_param_tib <- function(tib) {
     z1 <- tidyr::pivot_wider(tib, names_from = key, values_from = value)
 
@@ -98,16 +95,14 @@ test_that("RR_OASI is split in 6 different tibbles", {
 
     select(z1, one_of(tib[["key"]]))
   }
+
   PARAM_GLOBAL <- read_param_tib(PARAM_GLOBAL_TIDY) |>
     mutate(pct_sample_ts = as.numeric(pct_sample_ts))
 
-  # Splitting the data into a Training and a Validation sets
   tl_mod_tsvs <- mod_tsvs(
     RR_OASI = tl_mod_prepa_rr$RR_OASI,
     PARAM_GLOBAL = PARAM_GLOBAL
   )
-  # Full datasets, training and validation sets of categorical and continuous
-  # variables
 
   tl_mod_catcontvar <- mod_catcontvar(
     RR_OASI = tl_mod_prepa_rr$RR_OASI,

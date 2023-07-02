@@ -2,13 +2,13 @@
 #'
 #' @description Prepares the variables of the pension register.
 #'
-#' @param IND_YEARLY_RR a data frame containing the data of the pension register
+#' @param IND_YEARLY_RR A data frame containing the data of the pension register
 #' subsetted for one year only.
 #'
 #' @param list List of input data frames.
 #'
 #' @return a `tidylist` containing the following tidy data frames:
-#'   - `RR_OASI` : contains all the beneficiaries of the OASI.
+#'   - `RR_OASI` : Contains all the beneficiaries of the OASI.
 #'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @autoglobal
@@ -19,7 +19,6 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
                          list = NULL) {
   mod_init()
 
-  # --- Recoding and renaming the variables ------------------------------------
   RR_OASI1 <- if ("lbedu" %in% names(IND_YEARLY_RR)) {
     IND_YEARLY_RR |>
       dplyr::rename(
@@ -36,28 +35,22 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
         "capping" = cplaf
       ) |>
       mutate(
-        # Recode contrib_m_ind for NA values
         contrib_m_ind = case_when(
           is.na(contrib_m_ind) ~ as.double(-0),
           TRUE ~ as.double(contrib_m_ind)
         ),
-        # Recode contrib_y_ageclass for NA values
         contrib_y_ageclass = case_when(
           is.na(contrib_y_ageclass) ~ as.double(-0),
           TRUE ~ as.double(contrib_y_ageclass)
         ),
-        # Recode splitting for NA values
         splitting = case_when(
           is.na(splitting) ~ as.double(-0),
           TRUE ~ as.double(splitting)
         ),
-        # Recode bonus_m_edu for NA values
         bonus_m_edu = case_when(
           is.na(bonus_m_edu) ~ as.double(-0),
           TRUE ~ as.double(bonus_m_edu)
         ),
-
-        # Recode bonus_m_assist for NA values
         bonus_m_assist = case_when(
           is.na(bonus_m_assist) ~ as.double(-0),
           TRUE ~ as.double(bonus_m_assist)
@@ -74,7 +67,6 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
       )
   }
 
-  # Rename the realizations of the variables
   RR_OASI2 <- RR_OASI1 |>
     mutate(
       benef_type = dplyr::recode(gpr,
@@ -108,16 +100,12 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
       # Mutate the total years of contribution
       scale = round(eprc * 44, 0),
     ) |>
-    # Transform character variables to factors
     mutate_if(is.character, as.factor) |>
     mutate(
-      # Dummy variables for each marital status
       marital_stat1 = case_when(marital_stat == 1 ~ 1, TRUE ~ 0),
       marital_stat2 = case_when(marital_stat == 2 ~ 1, TRUE ~ 0),
       marital_stat3 = case_when(marital_stat == 3 ~ 1, TRUE ~ 0),
       marital_stat4 = case_when(marital_stat == 4 ~ 1, TRUE ~ 0),
-
-      # Dummy variables for each benefit type
       benef_type1 = case_when(benef_type == 1 ~ 1, TRUE ~ 0),
       benef_type2 = case_when(benef_type == 2 ~ 1, TRUE ~ 0),
       benef_type3 = case_when(benef_type == 3 ~ 1, TRUE ~ 0),
@@ -126,8 +114,6 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
       benef_type6 = case_when(benef_type == 6 ~ 1, TRUE ~ 0),
       benef_type7 = case_when(benef_type == 7 ~ 1, TRUE ~ 0),
       benef_type8 = case_when(benef_type == 8 ~ 1, TRUE ~ 0),
-
-      # Recode age_ret for NA values
       age_retire = case_when(
         is.na(age_ret) ~ as.double(-99999),
         TRUE ~ as.double(age_ret)
@@ -138,7 +124,6 @@ mod_prepa_rr <- function(IND_YEARLY_RR,
       -gpr
     )
 
-  # Verify all variables are numeric
   RR_OASI <- if ("napref" %in% names(RR_OASI2)) {
     RR_OASI2 |>
       select(

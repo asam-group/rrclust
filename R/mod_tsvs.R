@@ -26,10 +26,9 @@ mod_tsvs <- function(RR_OASI,
                      list = NULL) {
   mod_init()
 
-  # Setting seed to generate a reproducible random sampling
   set.seed(100)
 
-  # Choose a categorical balanced variable to do the splitting: sex and check
+  # Choose a categorical balanced variable to do the splitting (sex) and check
   # if it is balanced
   freqtable <- table(RR_OASI$sex)
   proptable <- prop.table(freqtable) # approximately balanced
@@ -52,10 +51,9 @@ mod_tsvs <- function(RR_OASI,
   # divided in previous step
   RR_OASI_VS <- subset(RR_OASI, oasi_spl == FALSE)
 
-  # checking number of rows and column in training and validation datasets
-  print(dim(RR_OASI_TS))
-  print(dim(RR_OASI_VS))
-  print(proptable)
+  message("The number of rows and columns of RR_OASI_TS:", dim(RR_OASI_TS))
+  message("The number of rows and columns of RR_OASI_VS:", dim(RR_OASI_VS))
+  message("The number of men (0) and women (1):", proptable)
 
   mod_return(
     RR_OASI_TS,

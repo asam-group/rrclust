@@ -1,9 +1,9 @@
 #' @title Generate random demo data
 #' @description Generate random demo data and write into a csv file
-#' @param path path where to store the demo data. Default: `tempdir()`.
-#' @param method_name name of the clustering method.
-#' @param data_size size of the simulated data frame. Default: 1000 rows.
-#' @return the path of the csv file
+#' @param path Path where to store the demo data. Default: `tempdir()`.
+#' @param method_name Name of the clustering method.
+#' @param data_size Size of the simulated data frame. Default: 1000 rows.
+#' @return The path of the csv file.
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @autoglobal
 #' @export
@@ -12,10 +12,8 @@
 gen_demo_data <- function(path = tempdir(),
                           method_name = "kamila",
                           data_size = 1000) {
-  # set the data size
   data_size <- data_size
 
-  # generate random demo data
   IND_YEARLY_RR <- tibble(
     alt = sample(0:99, size = data_size, replace = TRUE),
     sex = sample(c("f", "m"), replace = TRUE, size = data_size),
@@ -68,21 +66,17 @@ gen_demo_data <- function(path = tempdir(),
     )
   )
 
-  # create an "all" folder
   new_path_all <- file.path(path, "all")
   if (!file.exists(new_path_all)) {
     dir.create(new_path_all, recursive = TRUE)
   }
 
-  # create an method_name folder
   new_path_method <- file.path(path, method_name)
   if (!file.exists(new_path_method)) {
     dir.create(new_path_method, recursive = TRUE)
   }
 
-  # create a csv with the demo data
   tidylist_write(tidylist(IND_YEARLY_RR), path = new_path_all)
 
-  # return
   file.path(new_path_all, "IND_YEARLY_RR.csv")
 }

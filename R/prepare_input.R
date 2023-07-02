@@ -16,12 +16,7 @@
 prepare_input <- function(path,
                           path_out = file.path(dirname(path)),
                           overwrite = FALSE) {
-  # Parameters -----------------------------------------------------------------
-
   PARAM_INPUTS <- read_param(path)
-
-  # Paths ----------------------------------------------------------------------
-
   inp_path_all <- file.path(path_out, "all")
   inp_path_kamila <- file.path(path_out, "kamila")
 
@@ -37,24 +32,15 @@ prepare_input <- function(path,
   ensure_path(inp_path_all)
   ensure_path(inp_path_kamila)
 
-  # Input Data -----------------------------------------------------------------
-
-  # Input pension register
-
   IND_YEARLY_RR <- mod_input_ind_yearly_rr(
     PARAM_INPUTS = PARAM_INPUTS
   )$IND_YEARLY_RR
 
-
-  ## Collect and store inputs --------------------------------------------------
-
-  # Kamila
   all_inputs <- tidylist(
     IND_YEARLY_RR
   )
   tidylist_write(all_inputs, inp_path_all)
 
-  # Kamila
   kamila_inputs <- tidylist()
 
   tidylist_write(kamila_inputs, inp_path_kamila)

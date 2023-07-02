@@ -16,7 +16,7 @@ mod_init <- function(mod.function = NULL) {
     mod.function <- as.character(sys.call(-1)[[1]])
   }
 
-  # progress indication
+  # progress indicator
   if ("shiny" %in% rownames(installed.packages()) &&
     !is.null(shiny::getDefaultReactiveDomain())) {
     # if in shiny session
@@ -82,7 +82,6 @@ mod_init <- function(mod.function = NULL) {
 #' @export
 mod_return <- function(...) {
   z <- list(...)
-  # if input is already a tidy list
   if (inherits(z[[1]], "list")) {
     z <- z[[1]]
   } else {
@@ -93,7 +92,6 @@ mod_return <- function(...) {
 
   mod.function <- as.character(sys.call(-1)[[1]])
 
-  # do not perform arg test in memoised functions
   if (mod.function != "_f") {
     argnames <- names(formals(get(mod.function, envir = sys.frame(-2))))
     if (!"list" %in% argnames) {

@@ -6,9 +6,12 @@ library(tidyverse)
 
 
 # load the image from the package
-royalty_free_image <- image_read(system.file("logo", "grapes-g0cbd3743f_1280.png",
-  package = "rrclust"
-))
+royalty_free_image <- image_read(
+  system.file("logo",
+    "grapes-g0cbd3743f_1280.png",
+    package = "rrclust"
+  )
+)
 
 # set the package name
 package_name <- "rrclust"

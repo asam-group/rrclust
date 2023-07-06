@@ -1,6 +1,6 @@
 #' Preparation of the pension register.
 #'
-#' @description Prepares and saves the pension register.
+#' Prepares and saves the pension register.
 #'
 #' @param PARAM_INPUTS a data frame containing the data paths.
 #'

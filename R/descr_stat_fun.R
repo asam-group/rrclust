@@ -1,6 +1,6 @@
 #' Function to generate descriptive statistics
 #'
-#' @description Generates descriptive statistics as the mean, the median, among
+#' Generates descriptive statistics as the mean, the median, among
 #' others.
 #'
 #' @param descrstat_dpath Directory to store the tex files containing the

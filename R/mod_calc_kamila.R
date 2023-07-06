@@ -1,6 +1,6 @@
 #' Splitting the initial dataset into kstar clusters.
 #'
-#' @description Splitting the initial dataset into kstar clusters by using the
+#' Splitting the initial dataset into kstar clusters by using the
 #' parameter kstar determined in the module \code{\link{mod_kstar}}.
 #'
 #' @param PARAM_KAMILA data frame with all needed parameters for the Kamila

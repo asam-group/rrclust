@@ -1,6 +1,6 @@
 #' Function to read the data
 #'
-#' @description Function to read the data.
+#' Function to read the data.
 #'
 #' @param path Path of the set of parameters set to a particular output.
 #' @param list Path where the outputs are saved.

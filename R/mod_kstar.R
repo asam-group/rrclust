@@ -1,6 +1,6 @@
 #' Estimation of the best number of clusters using the Kamila algorithm.
 #'
-#' @description Estimation of best number of clusters using the Kamila algorithm
+#' Estimation of best number of clusters using the Kamila algorithm
 #' on the training set.
 #'
 #' @param PARAM_KAMILA data frame with all needed parameters for the Kamila

@@ -1,6 +1,6 @@
 #' Output Kamila
 #'
-#' @description Saves the Kamila output
+#' Saves the Kamila output
 #'
 #' @param path Vector containing container path.
 #'

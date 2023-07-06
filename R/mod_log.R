@@ -1,5 +1,5 @@
 #' Function writing the packages version used to run this output
-#' @description Writes the version of the rrclust and dplyr packages and the
+#' Writes the version of the rrclust and dplyr packages and the
 #' time of the output production.
 #' @param list tidylist
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)

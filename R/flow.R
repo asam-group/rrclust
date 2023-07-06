@@ -1,6 +1,6 @@
 #' Trace and visualize workflow
 #'
-#' @description 
+#' 
 #' Trace and visualize workflow.
 #' @param expr expression for which the flow should be traced, e.g.
 #' `{run_kamila(path = paths, path_out = path_out)}`.
@@ -20,7 +20,7 @@ trace_flow <- function(expr) {
 
 #' Draw data flow.
 #'
-#' @description Draw data flow.
+#' Draw data flow.
 #'
 #' @param DF Data frame to describe in the data flow.
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)

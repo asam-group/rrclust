@@ -1,6 +1,6 @@
 #' Preparation of the inputs for the calculation
 #'
-#' @description Reading, preparing and saving the inputs.
+#' Reading, preparing and saving the inputs.
 #'
 #' @param path path to container
 #'

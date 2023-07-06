@@ -1,6 +1,6 @@
 #' Splitting the continuous from the categorical data
 #'
-#' @description Splits the continuous from the categorical data, in order to use
+#' Splits the continuous from the categorical data, in order to use
 #' a clustering method.
 #'
 #' @param RR_OASI a data frame containing the all the data, whose variables are:

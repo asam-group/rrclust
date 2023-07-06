@@ -2,7 +2,7 @@
 #' clustering method and write the data and the parameters (of the inputs and
 #' the outputs).
 #'
-#' @description This function executes the computations of the Kamila clustering
+#' This function executes the computations of the Kamila clustering
 #'  method according to the parameters which are read in a first step. In a
 #'  third step, the outputs are delivered.
 #'

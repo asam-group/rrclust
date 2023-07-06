@@ -1,6 +1,6 @@
 #' Function copying the description and the input path from files to the
 #' PARAM_GLOBAL
-#' @description Writes the description and the input path from text files to the
+#' Writes the description and the input path from text files to the
 #' PARAM_GLOBAL.
 #' @param path_out Directory to store the output folder.
 #' @param path Path of the parameter folder.

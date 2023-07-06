@@ -1,5 +1,5 @@
 #' Read the data from the path in PARAM_GLOBAL
-#' @description Read the data from the path in PARAM_GLOBAL
+#' Read the data from the path in PARAM_GLOBAL
 #'
 #' @param path directory path
 #' @return path_data

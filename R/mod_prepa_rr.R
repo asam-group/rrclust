@@ -1,6 +1,6 @@
 #' Preparation of the pension register data.
 #'
-#' @description Prepares the variables of the pension register.
+#' Prepares the variables of the pension register.
 #'
 #' @param IND_YEARLY_RR A data frame containing the data of the pension register
 #' subsetted for one year only.

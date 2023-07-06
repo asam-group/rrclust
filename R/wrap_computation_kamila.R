@@ -1,6 +1,6 @@
 #' Wrapper for the clusters construction.
 #'
-#' @description This wrapper contains all the necessary modules which allow to
+#' This wrapper contains all the necessary modules which allow to
 #' construct the clusters.
 #'
 #' @param tl_inp List of input data frames of which we use:
@@ -99,7 +99,7 @@ wrap_computation_kamila_ <- function(tl_inp,
 
 
 #' Memoised copy of \code{\link{wrap_computation_kamila}}
-#' @description Create a memoised copy of \code{\link{wrap_computation_kamila}}
+#' Create a memoised copy of \code{\link{wrap_computation_kamila}}
 #' @param tl_inp List of input data frames of which we use:
 #' - `PARAM_KAMILA$calc_kstar`: If TRUE, estimates the clusters. Else, takes the
 #' parameter PARAM_KAMILA$param_kstar.

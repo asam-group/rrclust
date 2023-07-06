@@ -1,5 +1,5 @@
 #' Generate random demo data
-#' @description 
+#' 
 #' Generate random demo data and write into a csv file.
 #' @param path Path where to store the demo data. Default: `tempdir()`.
 #' @param method_name Name of the clustering method.

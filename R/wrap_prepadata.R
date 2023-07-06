@@ -6,7 +6,7 @@
 #' @param tl_inp List of input data frames.
 #'
 #' @return a `tidylist` containing the following tidylists:
-#' - `tl_mod_catcontvar`: A `tidylist` containing the following tidy data frames:
+#' - `tl_mod_catcontvar`: A `tidylist` containing the following data frames:
 #'   * `CATEG_DF`: Contains only categorical variables (factors).
 #'   * `CONT_DF` : Contains only continuous variables (numeric).
 #'   * `CATEG_DF_TS`: Contains only categorical variables (factors),

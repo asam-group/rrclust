@@ -143,7 +143,7 @@ of clusters for the KAMILA algorithm.
 #' }
 }
 \references{
-\href{https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/}{www.geeksforgeeks.org}
+\url{https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/}
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

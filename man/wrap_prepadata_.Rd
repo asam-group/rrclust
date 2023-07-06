@@ -12,7 +12,7 @@ wrap_prepadata_(tl_inp)
 \value{
 a \code{tidylist} containing the following tidylists:
 \itemize{
-\item \code{tl_mod_catcontvar}: A \code{tidylist} containing the following tidy data frames:
+\item \code{tl_mod_catcontvar}: A \code{tidylist} containing the following data frames:
 \itemize{
 \item \code{CATEG_DF}: Contains only categorical variables (factors).
 \item \code{CONT_DF} : Contains only continuous variables (numeric).

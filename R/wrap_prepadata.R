@@ -5,21 +5,19 @@
 #'
 #' @param tl_inp List of input data frames.
 #'
-#' @return a `tidylist` containing the following tidylists:
-#' - `tl_mod_catcontvar`: A `tidylist` containing the following data frames:
-#'   * `CATEG_DF`: Contains only categorical variables (factors).
-#'   * `CONT_DF` : Contains only continuous variables (numeric).
-#'   * `CATEG_DF_TS`: Contains only categorical variables (factors),
+#' @return `tl_mod_catcontvar`: A `tidylist` containing the following data frames:
+#'   - `CATEG_DF`: Contains only categorical variables (factors).
+#'   - `CONT_DF` : Contains only continuous variables (numeric).
+#'   - `CATEG_DF_TS`: Contains only categorical variables (factors),
 #'   training set.
-#'   * `CONT_DF_TS` : Contains only continuous variables (numeric),
+#'   - `CONT_DF_TS` : Contains only continuous variables (numeric),
 #'   training set.
-#'   * `CATEG_DF_VS`: Contains only categorical variables (factors),
+#'   - `CATEG_DF_VS`: Contains only categorical variables (factors),
 #'    validation set.
-#'   * `CONT_DF_VS` : Contains only continuous variables (numeric),
+#'   - `CONT_DF_VS` : Contains only continuous variables (numeric),
 #'   validation set.
 #'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
-#'
 #' @export
 wrap_prepadata_ <- function(tl_inp) {
   tl_prepa_rr <- mod_prepa_rr(

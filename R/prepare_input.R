@@ -1,17 +1,13 @@
-#' Preparation of the inputs for the calculation
+#' Read and write the inputs for the calculation in a tidylist
 #'
-#' Reading, preparing and saving the inputs.
+#' Read and write the inputs for the calculation in a tidylist.
 #'
-#' @param path path to container
+#' @param path Path to container.
+#' @param path_out Path to output container.
+#' @param overwrite if TRUE, the output should be overwritten.
 #'
-#' @param path_out path to output container
-#'
-#' @param overwrite if TRUE, the ouptut should be overwritten
-#'
-#' @return nothing. Output (the input data) is stored in the assigned location
-#'
+#' @return Side-effect. Write csv files into the intput directory.
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
-#'
 #' @export
 prepare_input <- function(path,
                           path_out = file.path(dirname(path)),

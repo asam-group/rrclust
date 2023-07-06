@@ -1,9 +1,8 @@
-#' Preparation of the pension register.
+#' Read of the pension register
 #'
-#' Prepares and saves the pension register.
+#' Read the pension register and save it into an tidy data frame.
 #'
 #' @param PARAM_INPUTS a data frame containing the data paths.
-#'
 #' @param list List of input data frames.
 #'
 #' @return a `tidylist` containing the following tidy data frames:

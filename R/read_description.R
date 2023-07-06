@@ -1,12 +1,15 @@
 #' Search for invalid lines in UTF-8
-#' @param x object
+#'
+#' Search for invalid lines in UTF-8.
+#'
+#' @param x Object to convert into UTF-8.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 invalid_utf8 <- function(x) {
   which(!is.na(x) & is.na(iconv(x, "UTF-8", "UTF-8")))
 }
 
-#' Read / write files encoded in UTF-8
+#' Read files encoded in UTF-8
 #'
 #' @description
 #' Read or write files, assuming they are encoded in UTF-8. \code{read_utf8()}
@@ -34,10 +37,11 @@ read_utf8 <- function(con, error = FALSE) {
   x
 }
 
-# Add description to PARAM_GLOBAL
-#' Read the path fo the data.
-#' @author [Christoph Sax](mailto:christoph@cynkra.com)
+#' Read the DESCRIPTION file
+#'
+#' Read the DESCRIPTION file of the container.
 #' @param path_container Path to container.
+#' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 read_description <- function(path_container) {
   path.to.description <- normalizePath(
@@ -73,7 +77,11 @@ read_description <- function(path_container) {
   )) |>
     mutate(description = descr)
 }
-#' Read the path fo the data
+
+#' Read the directory given in the inp file
+#'
+#' Read the directory given in the inp file.
+#'
 #' @param path_container Path to container.
 #' @export
 read_path_data <- function(path_container) {

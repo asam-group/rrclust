@@ -7,10 +7,10 @@
 read_param(file)
 }
 \arguments{
-\item{file}{file}
+\item{file}{File to read.}
 }
 \description{
-Read a single parameters csv file
+Read a single parameters csv file.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

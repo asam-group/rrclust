@@ -1,35 +1,32 @@
-#' Wrapper for the clusters construction.
+#' Wrapper for the clusters construction
 #'
 #' This wrapper contains all the necessary modules which allow to
 #' construct the clusters.
 #'
 #' @param tl_inp List of input data frames of which we use:
-#' - `PARAM_KAMILA$calc_kstar`: If TRUE, estimates the clusters. Else, takes the
-#' parameter PARAM_KAMILA$param_kstar.
-#' - `PARAM_KAMILA$cont_var_expl`: List of continuous variables chosen as
-#' explicative variables.
-#' - `PARAM_KAMILA$categ_var_expl`: List of categorical variables chosen as
-#' explicative variables.
-#'
+#'   - `PARAM_KAMILA$calc_kstar`: If TRUE, estimates the clusters. Else, takes the
+#'   parameter PARAM_KAMILA$param_kstar.
+#'   - `PARAM_KAMILA$cont_var_expl`: List of continuous variables chosen as
+#'   explicative variables.
+#'   - `PARAM_KAMILA$categ_var_expl`: List of categorical variables chosen as
+#'   explicative variables.
 #' @param tl_prepadata List of data frames prepared in a first step.
 #'
 #' @return a `tidylist` containing the following tidylists:
-#' - `tl_mod_calc_kamila`: Tidylist containing
-#'      * `PLOTDATKAM` data frame containing the clusters factor and the other
-#'      variables.
-#'      * `KM_RES_FINAL` data frame containing the resulting parameters of the
-#'      clustering.
-#'      * `CONTVARS` data frame containing the continuous standardised
-#'      variables.
-#'      * `FULL_CONT_DF` data frame containing the continuous variables used
-#'      for the estimation.
-#'      * `FULL_CATEG_DF` data frame containing the categorical variables used
-#'      for the estimation.
+#'   - `tl_mod_calc_kamila`: Tidylist containing
+#'     * `PLOTDATKAM` data frame containing the clusters factor and the other
+#'     variables.
+#'     * `KM_RES_FINAL` data frame containing the resulting parameters of the
+#'     clustering.
+#'     * `CONTVARS` data frame containing the continuous standardised
+#'     variables.
+#'     * `FULL_CONT_DF` data frame containing the continuous variables used
+#'     for the estimation.
+#'     * `FULL_CATEG_DF` data frame containing the categorical variables used
+#'     for the estimation.
 #'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
-#'
 #' @export
-
 wrap_computation_kamila_ <- function(tl_inp,
                                      tl_prepadata) {
   cont_var_expl <- separate_at_comma(tl_inp$PARAM_KAMILA$cont_var_expl)
@@ -98,19 +95,28 @@ wrap_computation_kamila_ <- function(tl_inp,
 }
 
 
-#' Memoised copy of \code{\link{wrap_computation_kamila}}
-#' Create a memoised copy of \code{\link{wrap_computation_kamila}}
-#' @param tl_inp List of input data frames of which we use:
-#' - `PARAM_KAMILA$calc_kstar`: If TRUE, estimates the clusters. Else, takes the
-#' parameter PARAM_KAMILA$param_kstar.
-#' - `PARAM_KAMILA$cont_var_expl`: List of continuous variables chosen as
-#' explicative variables.
-#' - `PARAM_KAMILA$categ_var_expl`: List of categorical variables chosen as
-#' explicative variables.
+#' Memoise a copy of \code{\link{wrap_computation_kamila}}
 #'
+#' Create a memoised copy of \code{\link{wrap_computation_kamila}}.
+#'
+#' @param tl_inp List of input data frames of which we use:
+#'   - `PARAM_KAMILA$calc_kstar`: If TRUE, estimates the clusters. Else, takes the
+#'   parameter PARAM_KAMILA$param_kstar.
+#'   - `PARAM_KAMILA$cont_var_expl`: List of continuous variables chosen as
+#'   explicative variables.
+#'   - `PARAM_KAMILA$categ_var_expl`: List of categorical variables chosen as
+#'   explicative variables.
 #' @param tl_prepadata List of data frames prepared in a first step.
-#' @return a `tidylist` containing the following tidylists:
-#' - `tl_mod_calc_kamila`
+#' @return `tl_mod_calc_kamila` with the following data frames:
+#'   - `PLOTDATKAM` Data frame containing the clusters factor and the other
+#'   variables.
+#'   - `KM_RES_FINAL` Data frame containing the resulting parameters of the
+#'   clustering.
+#'   - `CONTVARS` Data frame containing the continuous standardised variables.
+#'   - `FULL_CONT_DF` Data frame containing the continuous variables used for
+#'   the estimation.
+#'   - `FULL_CATEG_DF` Data frame containing the categorical variables used for
+#'   the estimation.
 #'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export

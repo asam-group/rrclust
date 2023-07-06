@@ -2,19 +2,19 @@
 % Please edit documentation in R/mod_log.R
 \name{mod_log}
 \alias{mod_log}
-\title{Function writing the packages version used to run this output}
+\title{Write the version of the packages}
 \usage{
 mod_log(list = NULL)
 }
 \arguments{
-\item{list}{tidylist}
+\item{list}{List of input data frames.}
 }
 \value{
-\code{LOG} tibble with information about time and packages version.
+\code{LOG} Tibble with information about time and packages version.
 }
 \description{
-Writes the version of the rrclust and dplyr packages and the
-time of the output production.
+Write the version of the rrclust and dplyr packages and the time of the
+output production.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

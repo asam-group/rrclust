@@ -7,13 +7,13 @@
 path_data(path)
 }
 \arguments{
-\item{path}{directory path}
+\item{path}{Directory path.}
 }
 \value{
-path_data
+\code{path_data}: directory.
 }
 \description{
-Read the data from the path in PARAM_GLOBAL
+Read the data from the path in PARAM_GLOBAL.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_description.R
 \name{read_utf8}
 \alias{read_utf8}
-\title{Read / write files encoded in UTF-8}
+\title{Read files encoded in UTF-8}
 \usage{
 read_utf8(con, error = FALSE)
 }

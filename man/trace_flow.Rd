@@ -11,7 +11,7 @@ trace_flow(expr)
 \code{{run_kamila(path = paths, path_out = path_out)}}.}
 }
 \description{
-Trace and visualize workflow
+Trace and visualize workflow.
 }
 \author{
 \href{mailto:christoph@christophsax.com}{Christoph Sax}

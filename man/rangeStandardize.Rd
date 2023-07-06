@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils_calc.R
 \name{rangeStandardize}
 \alias{rangeStandardize}
-\title{Function to standardize continuous variables}
+\title{Standardize continuous variables}
 \usage{
 rangeStandardize(x)
 }
@@ -10,5 +10,5 @@ rangeStandardize(x)
 \item{x}{Variable to standardize}
 }
 \description{
-Function to standardize continuous variables
+Function to standardize continuous variables.
 }

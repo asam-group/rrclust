@@ -17,8 +17,7 @@ have variable names.}
 Latex tables.
 }
 \description{
-Generates descriptive statistics as the mean, the median, among
-others.
+Generate descriptive statistics as the mean, the median, among others.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

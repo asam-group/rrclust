@@ -2,18 +2,18 @@
 % Please edit documentation in R/utils_clust.R
 \name{clustmeth_identifier_number}
 \alias{clustmeth_identifier_number}
-\title{Function to create a single identifier number}
+\title{Create a single identifier number}
 \usage{
 clustmeth_identifier_number(method_name, path)
 }
 \arguments{
-\item{method_name}{name of the clustering method}
+\item{method_name}{Name of the clustering method.}
 
-\item{path}{directory path}
+\item{path}{Directory path.}
 }
 \value{
-identifier_number container identifier
+\code{identifier_number}: Container identifier.
 }
 \description{
-Function to create a single identifier number
+Function to create a single identifier number.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/param_replace.R
 \name{param_replace}
 \alias{param_replace}
-\title{Build the tibble PARAM_ALL}
+\title{Write and replace parameters}
 \usage{
 param_replace(tl, ..., param_replace = NULL, update_param_all = TRUE)
 }
@@ -17,7 +17,7 @@ parameters.}
 \item{update_param_all}{If TRUE, update all parameters.}
 }
 \description{
-Build the tibble PARAM_ALL
+Write and replace parameters in the tibble \code{PARAM_ALL}.
 }
 \author{
 \href{mailto:christoph@christophsax.com}{Christoph Sax}

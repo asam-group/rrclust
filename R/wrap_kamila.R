@@ -5,8 +5,16 @@
 #'
 #' @param tl_inp_kamila tidylist of inputs
 #'
-#' @return a `tidylist` containing the following tidylists:
-#' - `tl_computation_kamila`
+#' @return `tl_computation_kamila` with the following data frames:
+#'   - `PLOTDATKAM` Data frame containing the clusters factor and the other
+#'   variables.
+#'   - `KM_RES_FINAL` Data frame containing the resulting parameters of the
+#'   clustering.
+#'   - `CONTVARS` Data frame containing the continuous standardised variables.
+#'   - `FULL_CONT_DF` Data frame containing the continuous variables used for
+#'   the estimation.
+#'   - `FULL_CATEG_DF` Data frame containing the categorical variables used for
+#'   the estimation.
 #'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #'

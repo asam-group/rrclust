@@ -1,5 +1,8 @@
-#' Function to make scatterplot using clusters distribution
-#' @param dta Filtered data frame for each desired population sample
+#' Draw scatterplot using clusters distribution
+#'
+#' Draw scatterplot using clusters distribution.
+#'
+#' @param dta Filtered data frame for each desired population sample.
 #' @autoglobal
 #' @export
 function_kamplot <- function(dta) {

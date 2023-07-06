@@ -2,7 +2,8 @@
 % Please edit documentation in R/wrap_prepadata.R
 \name{wrap_prepadata}
 \alias{wrap_prepadata}
-\title{Memoised copy of \code{\link{wrap_prepadata}}}
+\title{Memoised copy of \code{\link{wrap_prepadata}}
+Create a memoised copy of \code{\link{wrap_prepadata}}}
 \usage{
 wrap_prepadata(tl_inp)
 }
@@ -10,6 +11,7 @@ wrap_prepadata(tl_inp)
 \item{tl_inp}{List of input data frames.}
 }
 \description{
+Memoised copy of \code{\link{wrap_prepadata}}
 Create a memoised copy of \code{\link{wrap_prepadata}}
 }
 \author{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_description.R
 \name{read_path_data}
 \alias{read_path_data}
-\title{Read the path fo the data}
+\title{Read the directory given in the inp file}
 \usage{
 read_path_data(path_container)
 }
@@ -10,5 +10,5 @@ read_path_data(path_container)
 \item{path_container}{Path to container.}
 }
 \description{
-Read the path fo the data
+Read the directory given in the inp file.
 }

@@ -10,9 +10,17 @@ wrap_kamila_(tl_inp_kamila)
 \item{tl_inp_kamila}{tidylist of inputs}
 }
 \value{
-a \code{tidylist} containing the following tidylists:
+\code{tl_computation_kamila} with the following data frames:
 \itemize{
-\item \code{tl_computation_kamila}
+\item \code{PLOTDATKAM} Data frame containing the clusters factor and the other
+variables.
+\item \code{KM_RES_FINAL} Data frame containing the resulting parameters of the
+clustering.
+\item \code{CONTVARS} Data frame containing the continuous standardised variables.
+\item \code{FULL_CONT_DF} Data frame containing the continuous variables used for
+the estimation.
+\item \code{FULL_CATEG_DF} Data frame containing the categorical variables used for
+the estimation.
 }
 }
 \description{

@@ -2,18 +2,18 @@
 % Please edit documentation in R/utils_clust.R
 \name{param_tidylist_read}
 \alias{param_tidylist_read}
-\title{Read all files from a folder and return a tidylist}
+\title{Read all parameters files from a folder and return a tidylist}
 \usage{
 param_tidylist_read(path)
 }
 \arguments{
-\item{path}{path}
+\item{path}{Path to the parameters files folder.}
 }
 \value{
 tidylist ll
 }
 \description{
-Read all files from a folder and return a tidylist
+Read all parameters files from a folder and return a tidylist.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

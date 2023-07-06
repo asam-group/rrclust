@@ -2,7 +2,7 @@
 % Please edit documentation in R/wrap_computation_kamila.R
 \name{wrap_computation_kamila_}
 \alias{wrap_computation_kamila_}
-\title{Wrapper for the clusters construction.}
+\title{Wrapper for the clusters construction}
 \usage{
 wrap_computation_kamila_(tl_inp, tl_prepadata)
 }

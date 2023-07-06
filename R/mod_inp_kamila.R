@@ -5,7 +5,7 @@
 #' @param path Path of the set of parameters set to a particular output.
 #' @param list Path where the outputs are saved.
 #' @param method_name Name of the clustering method.
-#' @return tl_inp Tidylist of inputs.
+#' @return `tl_inp` Tidylist of inputs.
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 mod_inp_kamila <- function(path,

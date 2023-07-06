@@ -7,12 +7,12 @@
 write_param(x, file)
 }
 \arguments{
-\item{x}{parameters tibble to write}
+\item{x}{Parameters tibble to write.}
 
-\item{file}{file to write to}
+\item{file}{File path to write to.}
 }
 \description{
-Write parameters
+Write parameters into a file.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

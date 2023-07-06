@@ -1,8 +1,9 @@
-# A tidylist is a list collecting one or several tidy data frames
-
-#' Creator function for tidylists
-#' @author [Christoph Sax](mailto:christoph@cynkra.com)
+#' Build a tidylist
+#'
+#' A tidylist is a list collecting one or several tidy data frames.
+#'
 #' @param ... any other arguments
+#' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 tidylist <- function(...) {
   z <- list(...)
@@ -13,8 +14,11 @@ tidylist <- function(...) {
 }
 
 
-#' Ensure a tidylist contains only 'tidy' dfs
-#' @param x tidylist
+#' Ensure a tidylist contains only 'tidy' data frames
+#'
+#' Ensure a tidylist contains only 'tidy' data frames.
+#'
+#' @param x Tidylist name.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 tidylist_ensure <- function(x) {
@@ -33,12 +37,15 @@ tidylist_ensure <- function(x) {
 }
 
 
-#' Function to write a list of CSV files
+#' Write a list of CSV files
+#'
+#' Write a list of CSV files.
+#'
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
-#' @param x object to write
-#' @param path path
-#' @param fst if TRUE, write fst, otherwise csv
-#' @param verbose print a message if TRUE
+#' @param x Object to write.
+#' @param path Path to file.
+#' @param fst If TRUE, write fst, otherwise csv.
+#' @param verbose Print a message if TRUE.
 #' @autoglobal
 #' @export
 tidylist_write <- function(x, path = ".", fst = FALSE, verbose = TRUE) {
@@ -57,10 +64,13 @@ tidylist_write <- function(x, path = ".", fst = FALSE, verbose = TRUE) {
   }
 }
 
-#' Import a Tidylist from a Collection of tidy CSV files
-#' @param path path
-#' @param fst if TRUE, write fst, otherwise csv
-#' @param verbose print a message if TRUE
+#' Import a tidylist from a collection of tidy csv files
+#'
+#' Import and read a tidylist from a collection of tidy csv files.
+#'
+#' @param path Path to the file.
+#' @param fst If TRUE, read fst, otherwise csv.
+#' @param verbose Print a message if TRUE.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 tidylist_read <- function(path = ".", fst = FALSE, verbose = TRUE) {

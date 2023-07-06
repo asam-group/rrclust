@@ -10,16 +10,16 @@ mod_kstar(PARAM_KAMILA, CATEG_DF_TS, CONT_DF_TS, list = NULL)
 \item{PARAM_KAMILA}{data frame with all needed parameters for the Kamila
 method, from which the following parameters are used:
 \itemize{
-\item \code{numberofclusters}: The number of clusters returned by the algorithm, i.e.
-sequence indicating the number of clusters which should be investigated to
-extract the optimal number of clusters.
+\item \code{numberofclusters}: The number of clusters returned by the algorithm,
+i.e. sequence indicating the number of clusters which should be
+investigated to extract the optimal number of clusters.
 \item \code{numinit}: The number of initializations used.
 \item \code{maxiter}: The maximum number of iterations in each run.
 \item \code{calcnumclust}: Character: Method for selecting the number of clusters.
 Setting calcNumClust to ’ps’ uses the prediction strength method of
 Tibshirani &Walther (J. of Comp. and Graphical Stats. 14(3), 2005).
-\item \code{pred_threshold}: Threshold fixed to 0.8 for well separated clusters (i.e.
-not overlapping).
+\item \code{pred_threshold}: Threshold fixed to 0.8 for well separated clusters,
+i.e. not overlapping.
 }}
 
 \item{CATEG_DF_TS}{Training set of the pension register containing all

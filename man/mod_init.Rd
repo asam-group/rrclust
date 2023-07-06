@@ -2,15 +2,18 @@
 % Please edit documentation in R/infrastructure.R
 \name{mod_init}
 \alias{mod_init}
-\title{mod_init() pour les fonctions mod_}
+\title{Check whether all inputs are tidy tibbles}
 \usage{
 mod_init(mod.function = NULL)
 }
 \arguments{
-\item{mod.function}{module}
+\item{mod.function}{Name of the module.}
+}
+\value{
+Invisible.
 }
 \description{
-Vérifie si tous les inputs sont des tibbles.
+Check whether all inputs are tidy tibbles.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

@@ -10,9 +10,7 @@ wrap_prepadata_(tl_inp)
 \item{tl_inp}{List of input data frames.}
 }
 \value{
-a \code{tidylist} containing the following tidylists:
-\itemize{
-\item \code{tl_mod_catcontvar}: A \code{tidylist} containing the following data frames:
+\code{tl_mod_catcontvar}: A \code{tidylist} containing the following data frames:
 \itemize{
 \item \code{CATEG_DF}: Contains only categorical variables (factors).
 \item \code{CONT_DF} : Contains only continuous variables (numeric).
@@ -24,7 +22,6 @@ training set.
 validation set.
 \item \code{CONT_DF_VS} : Contains only continuous variables (numeric),
 validation set.
-}
 }
 }
 \description{

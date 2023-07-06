@@ -2,21 +2,21 @@
 % Please edit documentation in R/tidylist.R
 \name{tidylist_write}
 \alias{tidylist_write}
-\title{Function to write a list of CSV files}
+\title{Write a list of CSV files}
 \usage{
 tidylist_write(x, path = ".", fst = FALSE, verbose = TRUE)
 }
 \arguments{
-\item{x}{object to write}
+\item{x}{Object to write.}
 
-\item{path}{path}
+\item{path}{Path to file.}
 
-\item{fst}{if TRUE, write fst, otherwise csv}
+\item{fst}{If TRUE, write fst, otherwise csv.}
 
-\item{verbose}{print a message if TRUE}
+\item{verbose}{Print a message if TRUE.}
 }
 \description{
-Function to write a list of CSV files
+Write a list of CSV files.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

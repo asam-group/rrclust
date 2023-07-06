@@ -2,19 +2,19 @@
 % Please edit documentation in R/tidylist.R
 \name{tidylist_read}
 \alias{tidylist_read}
-\title{Import a Tidylist from a Collection of tidy CSV files}
+\title{Import a tidylist from a collection of tidy csv files}
 \usage{
 tidylist_read(path = ".", fst = FALSE, verbose = TRUE)
 }
 \arguments{
-\item{path}{path}
+\item{path}{Path to the file.}
 
-\item{fst}{if TRUE, write fst, otherwise csv}
+\item{fst}{If TRUE, read fst, otherwise csv.}
 
-\item{verbose}{print a message if TRUE}
+\item{verbose}{Print a message if TRUE.}
 }
 \description{
-Import a Tidylist from a Collection of tidy CSV files
+Import and read a tidylist from a collection of tidy csv files.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

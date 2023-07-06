@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_out.R
 \name{mod_out_kamila}
 \alias{mod_out_kamila}
-\title{Output Kamila}
+\title{Write the directory of the output container}
 \usage{
 mod_out_kamila(path, path_out, tl_inp_kamila, tl_out_kamila)
 }
@@ -19,7 +19,7 @@ mod_out_kamila(path, path_out, tl_inp_kamila, tl_out_kamila)
 \code{path_out_identifier}: Path to output container.
 }
 \description{
-Saves the Kamila output
+SWrite the directory of the output container.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

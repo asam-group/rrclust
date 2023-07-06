@@ -1,10 +1,9 @@
-#' Preparation of the pension register data.
+#' Prepare the pension register data
 #'
-#' Prepares the variables of the pension register.
+#' Rename the variables of the pension register.
 #'
 #' @param IND_YEARLY_RR A data frame containing the data of the pension register
-#' subsetted for one year only.
-#'
+#'   subsetted for one year only.
 #' @param list List of input data frames.
 #'
 #' @return a `tidylist` containing the following tidy data frames:
@@ -14,7 +13,6 @@
 #' @autoglobal
 #' @export
 #' @example inst/examples/ex-mod_prepa_rr.R
-
 mod_prepa_rr <- function(IND_YEARLY_RR,
                          list = NULL) {
   mod_init()

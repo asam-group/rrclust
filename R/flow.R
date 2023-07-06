@@ -1,7 +1,7 @@
 #' Trace and visualize workflow
 #'
-#' 
 #' Trace and visualize workflow.
+#'
 #' @param expr expression for which the flow should be traced, e.g.
 #' `{run_kamila(path = paths, path_out = path_out)}`.
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)
@@ -25,6 +25,7 @@ trace_flow <- function(expr) {
 #' @param DF Data frame to describe in the data flow.
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)
 #' @autoglobal
+#' @return Graph in the RStudio Viewer.
 #' @export
 draw_flow <- function(DF) {
   if (!rlang::is_installed("DiagrammeR")) {

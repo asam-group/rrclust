@@ -13,8 +13,7 @@ copy_param(path, path_out)
 \item{path_out}{Directory to store the output folder.}
 }
 \description{
-Writes the description and the input path from text files to the
-PARAM_GLOBAL.
+Write the description and the input path from text files to the PARAM_GLOBAL.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/wrap_computation_kamila.R
 \name{wrap_computation_kamila}
 \alias{wrap_computation_kamila}
-\title{Memoised copy of \code{\link{wrap_computation_kamila}}}
+\title{Memoise a copy of \code{\link{wrap_computation_kamila}}}
 \usage{
 wrap_computation_kamila(tl_inp, tl_prepadata)
 }
@@ -20,13 +20,21 @@ explicative variables.
 \item{tl_prepadata}{List of data frames prepared in a first step.}
 }
 \value{
-a \code{tidylist} containing the following tidylists:
+\code{tl_mod_calc_kamila} with the following data frames:
 \itemize{
-\item \code{tl_mod_calc_kamila}
+\item \code{PLOTDATKAM} Data frame containing the clusters factor and the other
+variables.
+\item \code{KM_RES_FINAL} Data frame containing the resulting parameters of the
+clustering.
+\item \code{CONTVARS} Data frame containing the continuous standardised variables.
+\item \code{FULL_CONT_DF} Data frame containing the continuous variables used for
+the estimation.
+\item \code{FULL_CATEG_DF} Data frame containing the categorical variables used for
+the estimation.
 }
 }
 \description{
-Create a memoised copy of \code{\link{wrap_computation_kamila}}
+Create a memoised copy of \code{\link{wrap_computation_kamila}}.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

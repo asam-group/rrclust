@@ -1,16 +1,10 @@
-#' Function to read the data, to execute the computations and write the
-#' data and the parameters (of the inputs and the outputs).
+#' Write a message and execute the function applied on one or more containers
 #'
-#' This function executes the computations according to the
-#' parameters which are read in a first step. In a third step, the outputs are
-#' delivered.
+#' Write a message and execute the function applied on one or more containers.
 #'
-#' @param path paths of the set of parameters set to a particular output. More
-#' than 1 path can be set.
-#'
-#' @param ... any other arguments
-#'
-#' @param fun function to apply to those sets of parameters.
+#' @param path Path of the parameters container.
+#' @param fun Function to run for each of the given paths.
+#' @param ... Any other arguments.
 #'
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export

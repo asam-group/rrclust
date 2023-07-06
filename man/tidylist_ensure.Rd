@@ -2,15 +2,15 @@
 % Please edit documentation in R/tidylist.R
 \name{tidylist_ensure}
 \alias{tidylist_ensure}
-\title{Ensure a tidylist contains only 'tidy' dfs}
+\title{Ensure a tidylist contains only 'tidy' data frames}
 \usage{
 tidylist_ensure(x)
 }
 \arguments{
-\item{x}{tidylist}
+\item{x}{Tidylist name.}
 }
 \description{
-Ensure a tidylist contains only 'tidy' dfs
+Ensure a tidylist contains only 'tidy' data frames.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

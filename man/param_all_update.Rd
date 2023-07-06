@@ -7,10 +7,10 @@
 param_all_update(tl)
 }
 \arguments{
-\item{tl}{tidylist}
+\item{tl}{Tidylist of parameter sets.}
 }
 \description{
-Update the PARAM_ALL
+Update the PARAM_ALL.
 }
 \author{
 \href{mailto:christoph@christophsax.com}{Christoph Sax}

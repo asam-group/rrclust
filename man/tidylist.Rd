@@ -2,7 +2,7 @@
 % Please edit documentation in R/tidylist.R
 \name{tidylist}
 \alias{tidylist}
-\title{Creator function for tidylists}
+\title{Build a tidylist}
 \usage{
 tidylist(...)
 }
@@ -10,7 +10,7 @@ tidylist(...)
 \item{...}{any other arguments}
 }
 \description{
-Creator function for tidylists
+A tidylist is a list collecting one or several tidy data frames.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

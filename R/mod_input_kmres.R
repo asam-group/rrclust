@@ -1,19 +1,16 @@
-#' Preparation of the kamila results of the training set.
+#' Read of the kamila results of the training set
 #'
-#' Prepares the kamila results of the training set and saves the
-#' optimal number of clusters kstar.
+#' Read the kamila results of the training set and save the optimal number of
+#' clusters kstar.
 #'
 #' @param PARAM_INPUTS a data frame containing the data paths.
-#'
 #' @param list List of input data frames.
-#'
 #' @return a `tidylist` containing the following tidy data frames:
 #'   - `KM_RES` : contains the kamila results of the training set.
 #'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @autoglobal
 #' @export
-
 mod_input_kmres <- function(PARAM_INPUTS,
                             list = NULL) {
   mod_init()

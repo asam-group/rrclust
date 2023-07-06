@@ -2,20 +2,20 @@
 % Please edit documentation in R/infrastructure.R
 \name{trace_this}
 \alias{trace_this}
-\title{trace_this()}
+\title{Trace the inputs (\code{\link{mod_init}}) and the outputs}
 \usage{
 trace_this(x, at = "", mod = "")
 }
 \arguments{
-\item{x}{tidylist}
+\item{x}{Tidylist.}
 
-\item{at}{level of the module ("input" or "output")}
+\item{at}{öevel of the module ("input" or "output").}
 
-\item{mod}{"mod.function"}
+\item{mod}{Name of the module function.}
 }
 \description{
-Trace the inputs (\code{\link{mod_init}}) and the outputs
-(\code{\link{mod_return}}).
+Trace the inputs (\code{\link{mod_init}}) and the
+outputs (\code{\link{mod_return}}).
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

@@ -1,19 +1,14 @@
-#' Output Kamila
+#' Write the directory of the output container
 #'
-#' Saves the Kamila output
+#' SWrite the directory of the output container.
 #'
 #' @param path Vector containing container path.
-#'
 #' @param path_out Vector containing output path.
-#'
 #' @param tl_inp_kamila List containing input data Kamila.
-#'
 #' @param tl_out_kamila List containing output data Kamila.
 #'
 #' @return `path_out_identifier`: Path to output container.
-#'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
-#'
 #' @export
 mod_out_kamila <- function(path,
                            path_out,

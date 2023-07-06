@@ -2,23 +2,19 @@
 % Please edit documentation in R/multi_run.R
 \name{multi_run}
 \alias{multi_run}
-\title{Function to read the data, to execute the computations and write the
-data and the parameters (of the inputs and the outputs).}
+\title{Write a message and execute the function applied on one or more containers}
 \usage{
 multi_run(path, fun, ...)
 }
 \arguments{
-\item{path}{paths of the set of parameters set to a particular output. More
-than 1 path can be set.}
+\item{path}{Path of the parameters container.}
 
-\item{fun}{function to apply to those sets of parameters.}
+\item{fun}{Function to run for each of the given paths.}
 
-\item{...}{any other arguments}
+\item{...}{Any other arguments.}
 }
 \description{
-This function executes the computations according to the
-parameters which are read in a first step. In a third step, the outputs are
-delivered.
+Write a message and execute the function applied on one or more containers.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

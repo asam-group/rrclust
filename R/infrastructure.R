@@ -1,9 +1,11 @@
-#' mod_init() pour les fonctions mod_
+#' Check whether all inputs are tidy tibbles
 #'
-#' Vérifie si tous les inputs sont des tibbles.
-#' @param mod.function module
+#' Check whether all inputs are tidy tibbles.
+#'
+#' @param mod.function Name of the module.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @autoglobal
+#' @return Invisible.
 #' @export
 
 # init and return functions for mod_ functions
@@ -110,13 +112,14 @@ mod_return <- function(...) {
   z
 }
 
-#' trace_this()
-#'
 #' Trace the inputs (\code{\link{mod_init}}) and the outputs
-#' (\code{\link{mod_return}}).
-#' @param x tidylist
-#' @param at level of the module ("input" or "output")
-#' @param mod "mod.function"
+#'
+#' Trace the inputs (\code{\link{mod_init}}) and the
+#' outputs (\code{\link{mod_return}}).
+#'
+#' @param x Tidylist.
+#' @param at öevel of the module ("input" or "output").
+#' @param mod Name of the module function.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @autoglobal
 #' @export

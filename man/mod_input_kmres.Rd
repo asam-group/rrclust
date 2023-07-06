@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_input_kmres.R
 \name{mod_input_kmres}
 \alias{mod_input_kmres}
-\title{Preparation of the kamila results of the training set.}
+\title{Read of the kamila results of the training set}
 \usage{
 mod_input_kmres(PARAM_INPUTS, list = NULL)
 }
@@ -18,8 +18,8 @@ a \code{tidylist} containing the following tidy data frames:
 }
 }
 \description{
-Prepares the kamila results of the training set and saves the
-optimal number of clusters kstar.
+Read the kamila results of the training set and save the optimal number of
+clusters kstar.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

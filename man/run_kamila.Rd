@@ -2,22 +2,20 @@
 % Please edit documentation in R/run_kamila.R
 \name{run_kamila}
 \alias{run_kamila}
-\title{Function to read the data, to execute the computations of the Kamila
-clustering method and write the data and the parameters (of the inputs and
-the outputs).}
+\title{Run the Kamila estimation}
 \usage{
 run_kamila(path, path_out = file.path(tempdir(), "out"), param_replace = NULL)
 }
 \arguments{
-\item{path}{path of the set of parameters set to a particular output.}
+\item{path}{Path of the set of parameters set to a particular output.}
 
-\item{path_out}{path where the outputs are saved.}
+\item{path_out}{Path where the outputs are saved.}
 
-\item{param_replace}{parameter which can be used to test some other
+\item{param_replace}{Parameter which can be used to test some other
 parameters.}
 }
 \description{
-This function executes the computations of the Kamila clustering
-method according to the parameters which are read in a first step. In a
-third step, the outputs are delivered.
+This function executes the computations of the Kamila clustering method
+according to the parameters which are read in a first step. Eventually, the
+outputs are written into csv or excel files.
 }

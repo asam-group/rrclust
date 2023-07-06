@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_calc_kamila.R
 \name{mod_calc_kamila}
 \alias{mod_calc_kamila}
-\title{Splitting the initial dataset into kstar clusters.}
+\title{Splitting the initial dataset into kstar clusters}
 \usage{
 mod_calc_kamila(
   PARAM_KAMILA,
@@ -17,12 +17,10 @@ mod_calc_kamila(
 \arguments{
 \item{PARAM_KAMILA}{data frame with all needed parameters for the Kamila
 method, from which the following parameters are used:
-\itemize{
-\item \code{numinit}: The number of initializations used.
-\item \code{maxiter}: The maximum number of iterations in each run.
-\item \code{param_kstar}: Best number of clusters estimated in the module
-\code{\link{mod_kstar}}.
-}}
+- \code{numinit}: The number of initializations used.
+- \code{maxiter}: The maximum number of iterations in each run.
+- \code{param_kstar}: Best number of clusters estimated in the module
+\code{\link{mod_kstar}}.}
 
 \item{CONT_DF}{Subset of the pension register containing all the continuous
 variables except for the outcome variables aadr and monthly_pension.}
@@ -49,8 +47,8 @@ variables.
 \item \code{KM_RES_FINAL} Data frame containing the resulting parameters of the
 clustering.
 \item \code{CONTVARS} Data frame containing the continuous standardised variables.
-\item \code{FULL_CONT_DF} Data frame containing the continuous variables used for the
-estimation.
+\item \code{FULL_CONT_DF} Data frame containing the continuous variables used for
+the estimation.
 \item \code{FULL_CATEG_DF} Data frame containing the categorical variables used for
 the estimation.
 }

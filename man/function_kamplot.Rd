@@ -2,13 +2,13 @@
 % Please edit documentation in R/utils_plot.R
 \name{function_kamplot}
 \alias{function_kamplot}
-\title{Function to make scatterplot using clusters distribution}
+\title{Draw scatterplot using clusters distribution}
 \usage{
 function_kamplot(dta)
 }
 \arguments{
-\item{dta}{Filtered data frame for each desired population sample}
+\item{dta}{Filtered data frame for each desired population sample.}
 }
 \description{
-Function to make scatterplot using clusters distribution
+Draw scatterplot using clusters distribution.
 }

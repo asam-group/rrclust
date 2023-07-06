@@ -2,15 +2,18 @@
 % Please edit documentation in R/flow.R
 \name{draw_flow}
 \alias{draw_flow}
-\title{Draw workflow}
+\title{Draw data flow.}
 \usage{
 draw_flow(DF)
 }
 \arguments{
-\item{DF}{data frame}
+\item{DF}{Data frame to describe in the data flow.}
+}
+\value{
+Graph in the RStudio Viewer.
 }
 \description{
-Draw workflow
+Draw data flow.
 }
 \author{
 \href{mailto:christoph@christophsax.com}{Christoph Sax}

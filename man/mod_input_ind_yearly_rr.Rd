@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_input_ind_yearly_rr.R
 \name{mod_input_ind_yearly_rr}
 \alias{mod_input_ind_yearly_rr}
-\title{Preparation of the pension register.}
+\title{Read of the pension register}
 \usage{
 mod_input_ind_yearly_rr(PARAM_INPUTS, list = NULL)
 }
@@ -18,7 +18,7 @@ a \code{tidylist} containing the following tidy data frames:
 }
 }
 \description{
-Prepares and saves the pension register.
+Read the pension register and save it into an tidy data frame.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

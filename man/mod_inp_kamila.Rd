@@ -14,7 +14,7 @@ mod_inp_kamila(path, list = NULL, method_name = "kamila")
 \item{method_name}{Name of the clustering method.}
 }
 \value{
-tl_inp Tidylist of inputs.
+\code{tl_inp} Tidylist of inputs.
 }
 \description{
 Function to read the data.

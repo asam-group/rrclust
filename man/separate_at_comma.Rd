@@ -7,10 +7,10 @@
 separate_at_comma(x)
 }
 \arguments{
-\item{x}{string of words to separate}
+\item{x}{String of words to split.}
 }
 \description{
-Separate a string of several words at commas to a vector
+Split a character string of several words at commas to a vector.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

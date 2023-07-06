@@ -17,7 +17,7 @@ gen_demo_data(path = tempdir(), method_name = "kamila", data_size = 1000)
 The path of the csv file.
 }
 \description{
-Generate random demo data and write into a csv file
+Generate random demo data and write into a csv file.
 }
 \examples{
 gen_demo_data()

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_prepa_rr.R
 \name{mod_prepa_rr}
 \alias{mod_prepa_rr}
-\title{Preparation of the pension register data.}
+\title{Prepare the pension register data}
 \usage{
 mod_prepa_rr(IND_YEARLY_RR, list = NULL)
 }
@@ -19,7 +19,7 @@ a \code{tidylist} containing the following tidy data frames:
 }
 }
 \description{
-Prepares the variables of the pension register.
+Rename the variables of the pension register.
 }
 \examples{
 #' @examples

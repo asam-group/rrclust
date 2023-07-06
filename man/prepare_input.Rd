@@ -2,22 +2,22 @@
 % Please edit documentation in R/prepare_input.R
 \name{prepare_input}
 \alias{prepare_input}
-\title{Preparation of the inputs for the calculation}
+\title{Read and write the inputs for the calculation in a tidylist}
 \usage{
 prepare_input(path, path_out = file.path(dirname(path)), overwrite = FALSE)
 }
 \arguments{
-\item{path}{path to container}
+\item{path}{Path to container.}
 
-\item{path_out}{path to output container}
+\item{path_out}{Path to output container.}
 
-\item{overwrite}{if TRUE, the ouptut should be overwritten}
+\item{overwrite}{if TRUE, the output should be overwritten.}
 }
 \value{
-nothing. Output (the input data) is stored in the assigned location
+Side-effect. Write csv files into the intput directory.
 }
 \description{
-Reading, preparing and saving the inputs.
+Read and write the inputs for the calculation in a tidylist.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

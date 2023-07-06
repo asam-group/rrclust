@@ -1,6 +1,7 @@
-#' Function resolving the path_out
-#' @description
+#' Resolve the path_out
+#'
 #' Writes the path_out and the unique identifier_number of the output.
+#'
 #' @param path_out Directory to store the output folder.
 #' @param identifier_number Unique identifier number to name the output folder.
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)

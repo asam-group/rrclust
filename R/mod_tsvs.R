@@ -1,15 +1,13 @@
-#' Splitting the data into a Training and a Validation sets
+#' Split the data into a Training set and a Validation set
 #'
-#' Splits the data into a training and a validation sets, given
-#' the too large number of observations, in order to determine the best number
-#' of clusters for the KAMILA algorithm.
+#' Split the data into a training and a validation sets, givenvthe too large
+#' number of observations, in order to determine the best number of clusters for
+#' the KAMILA algorithm.
 #'
-#' @param RR_OASI a data frame containing the all the data.
-#'
-#' @param PARAM_GLOBAL a data frame containing the parameters. We use the
-#' following:
-#'  - `pct_sample_ts`: percentage of observations which build the training set.
-#'
+#' @param RR_OASI A data frame containing the all the data.
+#' @param PARAM_GLOBAL A data frame containing the parameters. We use the
+#'   following parameter:
+#'   - `pct_sample_ts`: percentage of observations which build the training set.
 #' @param list List of input data frames.
 #'
 #' @return a `tidylist` containing the following tidy data frames:
@@ -20,7 +18,6 @@
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 #' @example inst/examples/ex-mod_tsvs.R
-
 mod_tsvs <- function(RR_OASI,
                      PARAM_GLOBAL,
                      list = NULL) {

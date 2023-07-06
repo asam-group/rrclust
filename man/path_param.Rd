@@ -2,13 +2,13 @@
 % Please edit documentation in R/utils_clust.R
 \name{path_param}
 \alias{path_param}
-\title{Function to create a the path of the parameters}
+\title{Create a the path of the parameters}
 \usage{
 path_param(path)
 }
 \arguments{
-\item{path}{directory path}
+\item{path}{Directory path to the container.}
 }
 \description{
-Function to create a the path of the parameters
+Function to create a the path of the parameters.
 }

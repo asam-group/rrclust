@@ -7,10 +7,10 @@
 invalid_utf8(x)
 }
 \arguments{
-\item{x}{object}
+\item{x}{Object to convert into UTF-8.}
 }
 \description{
-Search for invalid lines in UTF-8
+Search for invalid lines in UTF-8.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

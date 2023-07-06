@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils_resolve_path_out.R
 \name{path_out_resolve}
 \alias{path_out_resolve}
-\title{Function resolving the path_out}
+\title{Resolve the path_out}
 \usage{
 path_out_resolve(path_out, identifier_number)
 }

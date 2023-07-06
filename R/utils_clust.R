@@ -1,11 +1,11 @@
 #' Read the data from the path in PARAM_GLOBAL
-#' Read the data from the path in PARAM_GLOBAL
 #'
-#' @param path directory path
-#' @return path_data
+#' Read the data from the path in PARAM_GLOBAL.
+#'
+#' @param path Directory path.
+#' @return `path_data`: directory.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
-#'
 path_data <- function(path) {
   # read from PARAM_GLOBAL
   tl_PARAM_GLOBAL <- param_tidylist_read(path)
@@ -14,7 +14,10 @@ path_data <- function(path) {
 }
 
 #' Separate a string of several words at commas to a vector
-#' @param x string of words to separate
+#'
+#' Split a character string of several words at commas to a vector.
+#'
+#' @param x String of words to split.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
 separate_at_comma <- function(x) {
@@ -25,8 +28,11 @@ separate_at_comma <- function(x) {
 
 
 #' Write parameters
-#' @param x parameters tibble to write
-#' @param file file to write to
+#'
+#' Write parameters into a file.
+#'
+#' @param x Parameters tibble to write.
+#' @param file File path to write to.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @autoglobal
 #' @export
@@ -38,10 +44,12 @@ write_param <- function(x, file) {
 
 
 #' Read a single parameters csv file
-#' @param file file
+#'
+#' Read a single parameters csv file.
+#'
+#' @param file File to read.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
-
 read_param <- function(file) {
   z0 <- data.table::fread(file = file, sep = ";") |>
     as_tibble()
@@ -56,8 +64,11 @@ read_param <- function(file) {
 }
 
 
-#' Read all files from a folder and return a tidylist
-#' @param path path
+#' Read all parameters files from a folder and return a tidylist
+#'
+#' Read all parameters files from a folder and return a tidylist.
+#'
+#' @param path Path to the parameters files folder.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @return tidylist ll
 #' @export
@@ -69,10 +80,13 @@ param_tidylist_read <- function(path) {
 }
 
 
-#' Function to create a single identifier number
-#' @param method_name name of the clustering method
-#' @param path directory path
-#' @return identifier_number container identifier
+#' Create a single identifier number
+#'
+#' Function to create a single identifier number.
+#'
+#' @param method_name Name of the clustering method.
+#' @param path Directory path.
+#' @return `identifier_number`: Container identifier.
 #' @export
 clustmeth_identifier_number <- function(method_name,
                                         path) {
@@ -91,8 +105,11 @@ clustmeth_identifier_number <- function(method_name,
   identifier_number
 }
 
-#' Function to create a the path of the parameters
-#' @param path directory path
+#' Create a the path of the parameters
+#'
+#' Function to create a the path of the parameters.
+#'
+#' @param path Directory path to the container.
 #' @export
 path_param <- function(path) {
   # legacy mode
@@ -103,8 +120,11 @@ path_param <- function(path) {
   }
 }
 
-#' @ title Check if a directory looks like a container
-#' @param from directory to container
+#' Check whether a directory looks like a container
+#'
+#' Check whether a directory looks like a container.
+
+#' @param from Directory to container
 #' @export
 check_container_dir <- function(from) {
   from <- normalizePath(from, mustWork = TRUE)

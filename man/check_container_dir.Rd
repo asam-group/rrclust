@@ -2,13 +2,13 @@
 % Please edit documentation in R/utils_clust.R
 \name{check_container_dir}
 \alias{check_container_dir}
-\title{title Check if a directory looks like a container}
+\title{Check whether a directory looks like a container}
 \usage{
 check_container_dir(from)
 }
 \arguments{
-\item{from}{directory to container}
+\item{from}{Directory to container}
 }
 \description{
-title Check if a directory looks like a container
+Check whether a directory looks like a container.
 }

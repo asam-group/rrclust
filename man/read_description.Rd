@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_description.R
 \name{read_description}
 \alias{read_description}
-\title{Read the path fo the data.}
+\title{Read the DESCRIPTION file}
 \usage{
 read_description(path_container)
 }
@@ -10,7 +10,7 @@ read_description(path_container)
 \item{path_container}{Path to container.}
 }
 \description{
-Read the path fo the data.
+Read the DESCRIPTION file of the container.
 }
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}

@@ -18,7 +18,7 @@ trace_flow <- function(expr) {
   })
 }
 
-#' Draw data flow.
+#' Draw data flow
 #'
 #' Draw data flow.
 #'

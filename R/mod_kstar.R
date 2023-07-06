@@ -1,4 +1,4 @@
-#' Estimation of the best number of clusters using the Kamila algorithm.
+#' Estimation of the best number of clusters using the Kamila algorithm
 #'
 #' Estimation of best number of clusters using the Kamila algorithm
 #' on the training set.

@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rrclust 1.0.5.9007
+
+## Documentation
+
+- Review the whole roxygen documentation.
+
+- Remove tag '@description'.
+
+- Remove '@title'.
+
+- Fix documentation.
+
+
 # rrclust 1.0.5.9006
 
 ## Bug fixes

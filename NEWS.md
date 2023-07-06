@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rrclust 1.0.5.9009
+
+## Documentation
+
+- Update man folder.
+
+
 # rrclust 1.0.5.9008
 
 ## Documentation

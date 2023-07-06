@@ -2,7 +2,7 @@
 % Please edit documentation in R/wrap_prepadata.R
 \name{wrap_prepadata_}
 \alias{wrap_prepadata_}
-\title{Wrapper for the preparation of the data}
+\title{Prepare the data}
 \usage{
 wrap_prepadata_(tl_inp)
 }

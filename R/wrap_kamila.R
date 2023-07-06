@@ -28,11 +28,11 @@ wrap_kamila_ <- function(tl_inp_kamila) {
 
 
 #' Memoise the function \code{\link{wrap_kamila}}
-#' 
+#'
 #' Create a memoised copy of \code{\link{wrap_kamila}}.
-#' 
+#'
 #' @param tl_inp_kamila Tidylist of inputs.
-#' 
+#'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 wrap_kamila <- memoise::memoise(wrap_kamila_)

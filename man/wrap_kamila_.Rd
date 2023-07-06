@@ -2,12 +2,12 @@
 % Please edit documentation in R/wrap_kamila.R
 \name{wrap_kamila_}
 \alias{wrap_kamila_}
-\title{Wrapper to execute the Kamila algorithm.}
+\title{Run Kamila algorithm}
 \usage{
 wrap_kamila_(tl_inp_kamila)
 }
 \arguments{
-\item{tl_inp_kamila}{tidylist of inputs}
+\item{tl_inp_kamila}{Tidylist of inputs.}
 }
 \value{
 \code{tl_computation_kamila} with the following data frames:
@@ -24,8 +24,7 @@ the estimation.
 }
 }
 \description{
-Simple function which executes the computations needed for the
-Kamila algorithm.
+Run Kamila algorithm.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

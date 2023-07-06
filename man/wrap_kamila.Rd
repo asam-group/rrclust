@@ -2,17 +2,15 @@
 % Please edit documentation in R/wrap_kamila.R
 \name{wrap_kamila}
 \alias{wrap_kamila}
-\title{Memoised copy of \code{\link{wrap_kamila}}
-Create a memoised copy of \code{\link{wrap_kamila}}}
+\title{Memoise the function \code{\link{wrap_kamila}}}
 \usage{
 wrap_kamila(tl_inp_kamila)
 }
 \arguments{
-\item{tl_inp_kamila}{tidylist of inputs}
+\item{tl_inp_kamila}{Tidylist of inputs.}
 }
 \description{
-Memoised copy of \code{\link{wrap_kamila}}
-Create a memoised copy of \code{\link{wrap_kamila}}
+Create a memoised copy of \code{\link{wrap_kamila}}.
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

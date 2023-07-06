@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_kstar.R
 \name{mod_kstar}
 \alias{mod_kstar}
-\title{Estimation of the best number of clusters using the Kamila algorithm.}
+\title{Estimation of the best number of clusters using the Kamila algorithm}
 \usage{
 mod_kstar(PARAM_KAMILA, CATEG_DF_TS, CONT_DF_TS, list = NULL)
 }

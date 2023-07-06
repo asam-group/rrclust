@@ -2,7 +2,7 @@
 % Please edit documentation in R/flow.R
 \name{draw_flow}
 \alias{draw_flow}
-\title{Draw data flow.}
+\title{Draw data flow}
 \usage{
 draw_flow(DF)
 }

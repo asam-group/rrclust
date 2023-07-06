@@ -1,4 +1,4 @@
-#' Wrapper for the preparation of the data
+#' Prepare the data
 #'
 #' This wrapper contains all the necessary modules which allow to
 #' prepare the data.
@@ -40,9 +40,12 @@ wrap_prepadata_ <- function(tl_inp) {
 }
 
 
-#' Memoised copy of \code{\link{wrap_prepadata}}
-#' Create a memoised copy of \code{\link{wrap_prepadata}}
+#' Memoise a copy of \code{\link{wrap_prepadata}}
+#' 
+#' Create a memoised copy of \code{\link{wrap_prepadata}}.
+#' 
 #' @param tl_inp List of input data frames.
+#' 
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 wrap_prepadata <- memoise::memoise(wrap_prepadata_)

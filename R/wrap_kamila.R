@@ -1,9 +1,8 @@
-#' Wrapper to execute the Kamila algorithm.
+#' Run Kamila algorithm
 #'
-#' Simple function which executes the computations needed for the
-#' Kamila algorithm.
+#' Run Kamila algorithm.
 #'
-#' @param tl_inp_kamila tidylist of inputs
+#' @param tl_inp_kamila Tidylist of inputs.
 #'
 #' @return `tl_computation_kamila` with the following data frames:
 #'   - `PLOTDATKAM` Data frame containing the clusters factor and the other
@@ -17,7 +16,6 @@
 #'   the estimation.
 #'
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
-#'
 #' @export
 wrap_kamila_ <- function(tl_inp_kamila) {
   tl_prepadata <- wrap_prepadata(tl_inp = tl_inp_kamila)
@@ -29,9 +27,12 @@ wrap_kamila_ <- function(tl_inp_kamila) {
 }
 
 
-#' Memoised copy of \code{\link{wrap_kamila}}
-#' Create a memoised copy of \code{\link{wrap_kamila}}
-#' @param tl_inp_kamila tidylist of inputs
+#' Memoise the function \code{\link{wrap_kamila}}
+#' 
+#' Create a memoised copy of \code{\link{wrap_kamila}}.
+#' 
+#' @param tl_inp_kamila Tidylist of inputs.
+#' 
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)
 #' @export
 wrap_kamila <- memoise::memoise(wrap_kamila_)

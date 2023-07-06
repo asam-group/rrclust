@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rrclust 1.0.5.9008
+
+## Documentation
+
+- Fix docu titles.
+
+- Fix docu.
+
+
 # rrclust 1.0.5.9007
 
 ## Documentation

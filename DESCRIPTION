@@ -1,7 +1,7 @@
 Package: rrclust
 Type: Package
 Title: Clustering the Swiss Pension Register
-Version: 1.0.5.9007
+Version: 1.0.5.9008
 Date: 2023-07-06
 Author@R: 
     person(given = c("Layal", "Christine"), 

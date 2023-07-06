@@ -1,4 +1,4 @@
-#' @title Function to read the data
+#' Function to read the data
 #'
 #' @description Function to read the data.
 #'

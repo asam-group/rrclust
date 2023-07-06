@@ -1,4 +1,4 @@
-#' @title Function resolving the path_out
+#' Function resolving the path_out
 #' @description
 #' Writes the path_out and the unique identifier_number of the output.
 #' @param path_out Directory to store the output folder.

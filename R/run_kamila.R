@@ -1,4 +1,4 @@
-#' @title Function to read the data, to execute the computations of the Kamila
+#' Function to read the data, to execute the computations of the Kamila
 #' clustering method and write the data and the parameters (of the inputs and
 #' the outputs).
 #'

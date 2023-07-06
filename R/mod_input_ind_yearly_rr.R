@@ -1,4 +1,4 @@
-#' @title Preparation of the pension register.
+#' Preparation of the pension register.
 #'
 #' @description Prepares and saves the pension register.
 #'

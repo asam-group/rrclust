@@ -1,4 +1,4 @@
-#' @title Splitting the initial dataset into kstar clusters.
+#' Splitting the initial dataset into kstar clusters.
 #'
 #' @description Splitting the initial dataset into kstar clusters by using the
 #' parameter kstar determined in the module \code{\link{mod_kstar}}.

@@ -1,4 +1,4 @@
-#' @title Preparation of the pension register data.
+#' Preparation of the pension register data.
 #'
 #' @description Prepares the variables of the pension register.
 #'

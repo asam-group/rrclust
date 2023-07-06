@@ -1,4 +1,4 @@
-#' @title Search for invalid lines in UTF-8
+#' Search for invalid lines in UTF-8
 #' @param x object
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
@@ -6,7 +6,7 @@ invalid_utf8 <- function(x) {
   which(!is.na(x) & is.na(iconv(x, "UTF-8", "UTF-8")))
 }
 
-#' @title Read / write files encoded in UTF-8
+#' Read / write files encoded in UTF-8
 #'
 #' @description
 #' Read or write files, assuming they are encoded in UTF-8. \code{read_utf8()}
@@ -35,7 +35,7 @@ read_utf8 <- function(con, error = FALSE) {
 }
 
 # Add description to PARAM_GLOBAL
-#' @title Read the path fo the data.
+#' Read the path fo the data.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @param path_container Path to container.
 #' @export
@@ -73,7 +73,7 @@ read_description <- function(path_container) {
   )) |>
     mutate(description = descr)
 }
-#' @title Read the path fo the data
+#' Read the path fo the data
 #' @param path_container Path to container.
 #' @export
 read_path_data <- function(path_container) {

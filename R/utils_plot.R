@@ -1,4 +1,4 @@
-#' @title Function to make scatterplot using clusters distribution
+#' Function to make scatterplot using clusters distribution
 #' @param dta Filtered data frame for each desired population sample
 #' @autoglobal
 #' @export
@@ -397,7 +397,7 @@ function_kamplot <- function(dta) {
 }
 
 
-#' @title Function to make histograms using clusters distribution
+#' Function to make histograms using clusters distribution
 #' @param dta Filtered data frame for each desired population sample
 #' @autoglobal
 #' @export

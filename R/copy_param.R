@@ -1,4 +1,4 @@
-#' @title Function copying the description and the input path from files to the
+#' Function copying the description and the input path from files to the
 #' PARAM_GLOBAL
 #' @description Writes the description and the input path from text files to the
 #' PARAM_GLOBAL.

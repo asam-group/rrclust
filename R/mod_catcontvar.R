@@ -1,4 +1,4 @@
-#' @title Splitting the continuous from the categorical data
+#' Splitting the continuous from the categorical data
 #'
 #' @description Splits the continuous from the categorical data, in order to use
 #' a clustering method.

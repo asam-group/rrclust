@@ -1,4 +1,4 @@
-#' @title Preparation of the inputs for the calculation
+#' Preparation of the inputs for the calculation
 #'
 #' @description Reading, preparing and saving the inputs.
 #'

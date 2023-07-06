@@ -1,4 +1,4 @@
-#' @title Build the tibble PARAM_ALL
+#' Build the tibble PARAM_ALL
 #' @param tl Tidylist.
 #' @param ... Any other arguments.
 #' @param param_replace Parameter which can be used to test some other
@@ -45,7 +45,7 @@ param_replace <- function(tl,
 }
 
 
-#' @title Update the PARAM_ALL
+#' Update the PARAM_ALL
 #' @param tl tidylist
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)
 #' @export

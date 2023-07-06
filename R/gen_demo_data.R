@@ -1,5 +1,6 @@
-#' @title Generate random demo data
-#' @description Generate random demo data and write into a csv file
+#' Generate random demo data
+#' @description 
+#' Generate random demo data and write into a csv file.
 #' @param path Path where to store the demo data. Default: `tempdir()`.
 #' @param method_name Name of the clustering method.
 #' @param data_size Size of the simulated data frame. Default: 1000 rows.

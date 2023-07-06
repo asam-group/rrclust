@@ -1,6 +1,6 @@
 # A tidylist is a list collecting one or several tidy data frames
 
-#' @title Creator function for tidylists
+#' Creator function for tidylists
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @param ... any other arguments
 #' @export
@@ -13,7 +13,7 @@ tidylist <- function(...) {
 }
 
 
-#' @title Ensure a tidylist contains only 'tidy' dfs
+#' Ensure a tidylist contains only 'tidy' dfs
 #' @param x tidylist
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
@@ -33,7 +33,7 @@ tidylist_ensure <- function(x) {
 }
 
 
-#' @title Function to write a list of CSV files
+#' Function to write a list of CSV files
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @param x object to write
 #' @param path path
@@ -57,7 +57,7 @@ tidylist_write <- function(x, path = ".", fst = FALSE, verbose = TRUE) {
   }
 }
 
-#' @title Import a Tidylist from a Collection of tidy CSV files
+#' Import a Tidylist from a Collection of tidy CSV files
 #' @param path path
 #' @param fst if TRUE, write fst, otherwise csv
 #' @param verbose print a message if TRUE

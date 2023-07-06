@@ -1,4 +1,4 @@
-#' @title Function to read the data, to execute the computations and write the
+#' Function to read the data, to execute the computations and write the
 #' data and the parameters (of the inputs and the outputs).
 #'
 #' @description This function executes the computations according to the

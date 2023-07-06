@@ -1,6 +1,7 @@
-#' @title Trace and visualize workflow
+#' Trace and visualize workflow
 #'
-#' @description Trace and visualize workflow
+#' @description 
+#' Trace and visualize workflow.
 #' @param expr expression for which the flow should be traced, e.g.
 #' `{run_kamila(path = paths, path_out = path_out)}`.
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)
@@ -17,24 +18,11 @@ trace_flow <- function(expr) {
   })
 }
 
-# DF <- structure(list(df = c("bevoelkerung", "zivilstand", "rentenbetrag",
-# "param", "bevoelkerung", "zivilstand", "rentenbetrag", "rentensumme_total",
-# "rentensumme_nach_typ", "rentensumme_total", "param", "rentensumme_power",
-# "rentensumme_power"), at = c("input", "input", "input", "input",
-# "input", "input", "input", "output", "output", "input", "input",
-# "output", "output"), mod = c("calc_all", "calc_all", "calc_all",
-# "calc_all", "calc_beitrag", "calc_beitrag", "calc_beitrag", "calc_beitrag",
-# "calc_beitrag", "calc_power", "calc_power", "calc_power", "calc_all"
-# ), nframe = c(5L, 5L, 5L, 5L, 9L, 9L, 9L, 9L, 9L, 14L, 14L, 14L,
-# 5L)), .Names = c("df", "at", "mod", "nframe"), row.names = c(1L,
-# 6L, 10L, 13L, 15L, 20L, 24L, 27L, 29L, 36L, 38L, 40L, 42L),
-# class = "data.frame")
-
-#' @title Draw workflow
+#' Draw data flow.
 #'
-#' @description Draw workflow
+#' @description Draw data flow.
 #'
-#' @param DF data frame
+#' @param DF Data frame to describe in the data flow.
 #' @author [Christoph Sax](mailto:christoph@christophsax.com)
 #' @autoglobal
 #' @export

@@ -1,4 +1,4 @@
-#' @title Function to generate descriptive statistics
+#' Function to generate descriptive statistics
 #'
 #' @description Generates descriptive statistics as the mean, the median, among
 #' others.

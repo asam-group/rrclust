@@ -1,4 +1,4 @@
-#' @title Output Kamila
+#' Output Kamila
 #'
 #' @description Saves the Kamila output
 #'

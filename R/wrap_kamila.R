@@ -1,4 +1,4 @@
-#' @title Wrapper to execute the Kamila algorithm.
+#' Wrapper to execute the Kamila algorithm.
 #'
 #' @description Simple function which executes the computations needed for the
 #' Kamila algorithm.
@@ -21,7 +21,7 @@ wrap_kamila_ <- function(tl_inp_kamila) {
 }
 
 
-#' @title Memoised copy of \code{\link{wrap_kamila}}
+#' Memoised copy of \code{\link{wrap_kamila}}
 #' @description Create a memoised copy of \code{\link{wrap_kamila}}
 #' @param tl_inp_kamila tidylist of inputs
 #' @author [Layal Christine Lettry](mailto:layal.lettry@gmail.com)

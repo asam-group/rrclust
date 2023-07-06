@@ -1,4 +1,4 @@
-#' @title Read the data from the path in PARAM_GLOBAL
+#' Read the data from the path in PARAM_GLOBAL
 #' @description Read the data from the path in PARAM_GLOBAL
 #'
 #' @param path directory path
@@ -13,7 +13,7 @@ path_data <- function(path) {
   path_data
 }
 
-#' @title Separate a string of several words at commas to a vector
+#' Separate a string of several words at commas to a vector
 #' @param x string of words to separate
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
@@ -24,7 +24,7 @@ separate_at_comma <- function(x) {
 }
 
 
-#' @title Write parameters
+#' Write parameters
 #' @param x parameters tibble to write
 #' @param file file to write to
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
@@ -37,7 +37,7 @@ write_param <- function(x, file) {
 }
 
 
-#' @title Read a single parameters csv file
+#' Read a single parameters csv file
 #' @param file file
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @export
@@ -56,7 +56,7 @@ read_param <- function(file) {
 }
 
 
-#' @title Read all files from a folder and return a tidylist
+#' Read all files from a folder and return a tidylist
 #' @param path path
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
 #' @return tidylist ll
@@ -69,7 +69,7 @@ param_tidylist_read <- function(path) {
 }
 
 
-#' @title Function to create a single identifier number
+#' Function to create a single identifier number
 #' @param method_name name of the clustering method
 #' @param path directory path
 #' @return identifier_number container identifier
@@ -91,7 +91,7 @@ clustmeth_identifier_number <- function(method_name,
   identifier_number
 }
 
-#' @title Function to create a the path of the parameters
+#' Function to create a the path of the parameters
 #' @param path directory path
 #' @export
 path_param <- function(path) {

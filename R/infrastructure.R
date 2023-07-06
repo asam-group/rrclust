@@ -1,4 +1,4 @@
-#' @title mod_init() pour les fonctions mod_
+#' mod_init() pour les fonctions mod_
 #'
 #' @description Vérifie si tous les inputs sont des tibbles.
 #' @param mod.function module
@@ -71,7 +71,7 @@ mod_init <- function(mod.function = NULL) {
   invisible(z)
 }
 
-#' @title mod_return() for the modules
+#' mod_return() for the modules
 #'
 #' @description Checks whether all the ouptus are tibbles.
 #'
@@ -110,7 +110,7 @@ mod_return <- function(...) {
   z
 }
 
-#' @title trace_this()
+#' trace_this()
 #'
 #' @description Trace the inputs (\code{\link{mod_init}}) and the outputs
 #' (\code{\link{mod_return}}).

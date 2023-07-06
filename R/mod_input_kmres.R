@@ -1,4 +1,4 @@
-#' @title Preparation of the kamila results of the training set.
+#' Preparation of the kamila results of the training set.
 #'
 #' @description Prepares the kamila results of the training set and saves the
 #' optimal number of clusters kstar.

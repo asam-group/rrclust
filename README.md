@@ -6,9 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of `rrclust` is to cluster the Swiss Pension Register
-(CCO/FSIO) using the [`kamila`](https://github.com/ahfoss/kamila) R
-package.
+The goal of rrclust is to cluster the Swiss Pension Register (CCO/FSIO)
+using the [`kamila`](https://github.com/ahfoss/kamila) R package.
 
 The anonymous data of the Swiss Pension Register (CCO/FSIO) are
 typically used to estimate and project (in the short, middle and long
@@ -53,7 +52,7 @@ crucial to predicting revenues and expenditures of the OASI.
 
 ## Installation
 
-You can install the development version of `rrclust` from
+You can install the development version of rrclust from
 [GitHub](https://github.com/) with:
 
 ``` r
@@ -78,13 +77,13 @@ Paper](https://folia.unifr.ch/unifr/documents/324081).
 ## Future work
 
 The next step is to implement some classification methods in the package
-[`rrml`](https://github.com/asam-group/rrml) which will be applied to
-the kamila-clustered Swiss Pension Register (CCO/FSIO) thanks to the
-package [`rrclust`](https://github.com/asam-group/rrclust).
+[rrml](https://github.com/asam-group/rrml) which will be applied to the
+kamila-clustered Swiss Pension Register (CCO/FSIO) thanks to the package
+[rrclust](https://github.com/asam-group/rrclust).
 
 ## Flow
 
-The global workflow of the `rrclust` package is depicted in the figure
+The global workflow of the rrclust package is depicted in the figure
 shown below.
 
 The green ellipses correspond to modules defined as functions accepting
@@ -99,7 +98,7 @@ inputs or outputs of the modules. Therefore, they are the outputs of a
 transformation of the initial `tibbles`.
 
 The blue rectangles depict the top level outputs, such as `LOG`
-indicating the run `log` including the `rrclust` package version, the
+indicating the run `log` including the rrclust package version, the
 `dplyr` library version, the date and the time of the code execution.
 
 The arrows indicate the direction of the process. If there are two
@@ -149,7 +148,9 @@ path <- file.path(getwd(), "inst", "extdata", "params_kamila_large")
 tl_PARAM_GLOBAL <- param_tidylist_read(path)
 
 # replace empty variable with the temporary path
-tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(dirname(path_random_data), "/all")
+tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(
+  dirname(path_random_data), "/all"
+)
 PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
   dplyr::mutate_all(as.character) |>
   tidyr::pivot_longer(
@@ -219,7 +220,9 @@ path <- file.path(getwd(), "inst", "extdata", "params_kamila_large")
 tl_PARAM_GLOBAL <- param_tidylist_read(path)
 
 # replace empty variable with the temporary path
-tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(dirname(path_random_data), "/all")
+tl_PARAM_GLOBAL$PARAM_GLOBAL[["path_data"]] <- stringr::str_remove(
+  dirname(path_random_data), "/all"
+)
 PARAM_GLOBAL <- tl_PARAM_GLOBAL$PARAM_GLOBAL |>
   dplyr::mutate_all(as.character) |>
   tidyr::pivot_longer(

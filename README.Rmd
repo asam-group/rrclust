@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of `rrclust` is to cluster the Swiss Pension Register (CCO/FSIO) using the [`kamila`](https://github.com/ahfoss/kamila) R package.
+The goal of rrclust is to cluster the Swiss Pension Register (CCO/FSIO) using the [`kamila`](https://github.com/ahfoss/kamila) R package.
 
 The anonymous data of the Swiss Pension Register (CCO/FSIO) are typically used to estimate and project (in the short, middle and long term) the revenues and the expenditures of the Old-Age and Survivors’ Insurance (OASI). In this perspective, it is essential to have a clear look at the register's main statistical features. To better understand it and benefit more from its richness, we propose analysing the raw data by an appropriate clustering method.
 
@@ -42,7 +42,7 @@ These pieces of information are crucial to predicting revenues and expenditures 
 
 ## Installation
 
-You can install the development version of `rrclust` from [GitHub](https://github.com/) with:
+You can install the development version of rrclust from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -59,11 +59,11 @@ this register is not public, you can find how it is used and learn more about th
 results in this [Working Paper](https://folia.unifr.ch/unifr/documents/324081). 
 
 ## Future work
-The next step is to implement some classification methods in the package [`rrml`](https://github.com/asam-group/rrml) which will be applied 
-to the kamila-clustered Swiss Pension Register (CCO/FSIO) thanks to the package [`rrclust`](https://github.com/asam-group/rrclust). 
+The next step is to implement some classification methods in the package [rrml](https://github.com/asam-group/rrml) which will be applied 
+to the kamila-clustered Swiss Pension Register (CCO/FSIO) thanks to the package [rrclust](https://github.com/asam-group/rrclust). 
 
 ## Flow
-The global workflow of the `rrclust` package is depicted in the figure shown below.  
+The global workflow of the rrclust package is depicted in the figure shown below.  
 
 The green ellipses correspond to modules defined as functions accepting only a 
 certain class of inputs, namely `tibbles`.
@@ -75,7 +75,7 @@ The red rectangles give the name of the `tibbles` which either are inputs or
 outputs of the modules. Therefore, they are the outputs of a transformation of the initial `tibbles`.
 
 The blue rectangles depict the top level outputs, such as `LOG` indicating the run 
-`log` including the `rrclust` package version, the `dplyr` library version, 
+`log` including the rrclust package version, the `dplyr` library version, 
 the date and the time of the code execution.
 
 The arrows indicate the direction of the process. If there are two arrows between an ellipse and a rectangle in both directions, this means that an input has been renamed especially for this module and is given back as an output. This is the case of `FULL_CONT_DF` and `FULL_CATEG_DF` which are renamed `tibbles` of resp. `CONT_DF` and `CATEG_DF` and which contains the outcome variables `aadr` and `monthly_pension` opposite to their siblings.

@@ -61,6 +61,13 @@ You can install the development version of `rrclust` from
 devtools::install_github("asam-group/rrclust")
 ```
 
+## Code of Conduct
+
+Please note that the rrclust project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
 ## Related Paper
 
 One needs to have the proper Swiss Pension Register (CCO/FSIO) data in

@@ -15,7 +15,40 @@ subsetted for one year only.}
 \value{
 a \code{tidylist} containing the following tidy data frames:
 \itemize{
-\item \code{RR_OASI} : Contains all the beneficiaries of the OASI.
+\item \code{RR_OASI} : A data frame containing all OASI data, whose variables are:
+variables:
+\itemize{
+\item \code{year}: Year of the pension register extract.
+\item \code{age}: Age of the individual.
+\item \code{age_retire}: Effective retirement age.
+\item \code{sex}: Sex, female if female, 0 if male.
+\item \code{nat}: Nationality, foreign if 1, 0 if Swiss.
+\item \code{resid}: Residence, foreign if 1, 0 if Swiss.
+\item \code{benef_type1}: Old-age type of benefit if 1, 0 otherwise (dummy).
+\item \code{benef_type2}: Widow type of benefit if 1, 0 otherwise (dummy).
+\item \code{benef_type3}: Father's orphan type of benefit if 1, 0 otherwise (dummy).
+\item \code{benef_type4}: Mother's orphan type of benefit if 1, 0 otherwise (dummy).
+\item \code{benef_type5}: Twice orphan type of benefit if 1, 0 otherwise (dummy).
+\item \code{benef_type6}: Spouse's compl. type of benefit if 1, 0 otherwise (dummy).
+\item \code{benef_type7}: Father's child rent type of benefit if 1, 0 otherwise
+(dummy).
+\item \code{benef_type8}: Mother's child rent type of benefit if 1, 0 otherwise
+(dummy).
+\item \code{benef_type} : Types of benefits type of benefit (categorical).
+\item \code{marital_stat1}: Divorced marital status if 1, 0 otherwise (dummy).
+\item \code{marital_stat2}: Single as reference category marital status if 1, 0
+otherwise (dummy).
+\item \code{marital_stat3}: Married marital status if 1, 0 otherwise (dummy).
+\item \code{marital_stat4}: Widowed marital status if 1, 0 otherwise (dummy).
+\item \code{marital_stat}: Marital status.
+\item \code{splitting}: If 1, splitting of the revenues, 0 otherwise.
+\item \code{capping}:  If 1, the pension is capped, 0 otherwise.
+\item \code{contrib_m_ind}: Total number of OASI contribution months per individual.
+\item \code{contrib_y_ageclass}: Total number of contribution years per age group.
+\item \code{bonus_m_edu}: Number of months paid with a bonus for educative tasks.
+\item \code{bonus_m_assist}: Number of months paid with a bonus for assistance/care
+tasks.
+}
 }
 }
 \description{

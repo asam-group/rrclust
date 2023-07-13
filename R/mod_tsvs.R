@@ -48,9 +48,18 @@ mod_tsvs <- function(RR_OASI,
   # divided in previous step
   RR_OASI_VS <- subset(RR_OASI, oasi_spl == FALSE)
 
-  message("The number of rows and columns of RR_OASI_TS:", dim(RR_OASI_TS))
-  message("The number of rows and columns of RR_OASI_VS:", dim(RR_OASI_VS))
-  message("The number of men (0) and women (1):", proptable)
+  message(
+    "The number of rows and columns of RR_OASI_TS: ",
+    dim(RR_OASI_TS)[[1]], " rows and ", dim(RR_OASI_TS)[[2]], " columns."
+  )
+  message(
+    "The number of rows and columns of RR_OASI_VS: ",
+    dim(RR_OASI_VS)[[1]], " rows and ", dim(RR_OASI_VS)[[2]], " columns."
+  )
+  message(
+    "The proportion of men (0) and women (1): ", proptable[["0"]],
+    " and ", proptable[["1"]]
+  )
 
   mod_return(
     RR_OASI_TS,

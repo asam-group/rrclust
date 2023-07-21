@@ -95,9 +95,14 @@ test_that("RR_OASI is split in 2 different tibbles RR_OASI_TS and RR_OASI_VS", {
   }
   PARAM_GLOBAL <- read_param_tib(PARAM_GLOBAL_TIDY) |>
     mutate(pct_sample_ts = as.numeric(pct_sample_ts))
-  tl_mod_tsvs <- mod_tsvs(
+
+  logs <- capture_log1(mod_tsvs(
     RR_OASI = tl_mod_prepa_rr$RR_OASI,
     PARAM_GLOBAL = PARAM_GLOBAL
+  ))(1)
+
+  expect_equal(
+    logs$logs[[2]]$message,
+    "The number of rows and columns of RR_OASI_TS: 4 rows and 31 columns.\n"
   )
-  expect_equal(names(tl_mod_tsvs), c("RR_OASI_TS", "RR_OASI_VS"))
 })

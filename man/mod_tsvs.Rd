@@ -31,7 +31,6 @@ the KAMILA algorithm.
 }
 \examples{
 #' @examples
-#' \dontrun{
 #' # create random data
 #' IND_YEARLY_RR <- structure(
 #'   list(
@@ -140,7 +139,7 @@ the KAMILA algorithm.
 #'   RR_OASI = tl_mod_prepa_rr$RR_OASI,
 #'   PARAM_GLOBAL = PARAM_GLOBAL
 #' )
-#' }
+
 }
 \references{
 \url{https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/}

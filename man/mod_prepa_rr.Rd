@@ -56,7 +56,6 @@ Rename the variables of the pension register.
 }
 \examples{
 #' @examples
-#' \dontrun{
 #' IND_YEARLY_RR <- structure(
 #'   list(
 #'     alt = c(
@@ -114,7 +113,7 @@ Rename the variables of the pension register.
 #' )
 #'
 #' mod_prepa_rr(IND_YEARLY_RR = IND_YEARLY_RR)
-#' }
+
 }
 \author{
 \href{mailto:layal.lettry@gmail.com}{Layal Christine Lettry}

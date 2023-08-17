@@ -75,7 +75,6 @@ a clustering method.
 }
 \examples{
 #' @examples
-#' \dontrun{
 #' # create random data
 #' IND_YEARLY_RR <- structure(
 #'   list(
@@ -191,7 +190,7 @@ a clustering method.
 #'   RR_OASI_VS = tl_mod_tsvs$RR_OASI_VS,
 #'   PARAM_GLOBAL = PARAM_GLOBAL
 #' )
-#' }
+
 }
 \references{
 \url{https://www.geeksforgeeks.org/the-validation-set-approach-in-r-programming/}

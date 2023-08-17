@@ -17,7 +17,6 @@ Capture message, warnings and errors from a R function
 }
 \examples{
 #' @examples
-#' \dontrun{
 #' test_message <- function(a) {
 #'   message("this is test from function message.")
 #'   return(a)
@@ -38,7 +37,7 @@ Capture message, warnings and errors from a R function
 #' capture_log1(test_warning)(1)
 #'
 #' capture_log1(test_error)(1)
-#' }
+
 }
 \references{
 \url{https://www.r-bloggers.com/2020/10/capture-message-warnings-and-errors-from-a-r-function/#google_vignette}

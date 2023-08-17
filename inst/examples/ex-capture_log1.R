@@ -1,5 +1,4 @@
 #' @examples
-#' \dontrun{
 #' test_message <- function(a) {
 #'   message("this is test from function message.")
 #'   return(a)
@@ -20,4 +19,4 @@
 #' capture_log1(test_warning)(1)
 #'
 #' capture_log1(test_error)(1)
-#' }
+

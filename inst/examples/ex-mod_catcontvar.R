@@ -1,5 +1,4 @@
 #' @examples
-#' \dontrun{
 #' # create random data
 #' IND_YEARLY_RR <- structure(
 #'   list(
@@ -115,4 +114,4 @@
 #'   RR_OASI_VS = tl_mod_tsvs$RR_OASI_VS,
 #'   PARAM_GLOBAL = PARAM_GLOBAL
 #' )
-#' }
+

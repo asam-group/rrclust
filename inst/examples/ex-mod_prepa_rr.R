@@ -1,5 +1,4 @@
 #' @examples
-#' \dontrun{
 #' IND_YEARLY_RR <- structure(
 #'   list(
 #'     alt = c(
@@ -57,4 +56,4 @@
 #' )
 #'
 #' mod_prepa_rr(IND_YEARLY_RR = IND_YEARLY_RR)
-#' }
+

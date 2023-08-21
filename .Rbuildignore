@@ -4,3 +4,7 @@
 ^README\.Rmd$
 ^\.github$
 ^\.covrignore$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^vignettes/articles$

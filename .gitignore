@@ -56,3 +56,5 @@ inst/scripts/*
 
 # .Rprofile
 .Rprofile
+docs
+inst/doc

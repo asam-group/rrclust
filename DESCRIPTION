@@ -12,7 +12,7 @@ Author@R:
 Maintainer: Layal Christine Lettry <layal.lettry@gmail.com>
 Description: This package allows to cluster the Swiss Pension Register by using the Kamila clustering method.
 BugReports: https://github.com/asam-group/rrclust/issues
-URL: https://github.com/asam-group/rrclust
+URL: https://github.com/asam-group/rrclust, https://asam-group.github.io/rrclust/
 Imports: 
     data.table,
     kamila,
@@ -44,8 +44,11 @@ Packaged: 2022-09-26 13:00:01 UTC; U80844426
 License: MIT + file LICENSE
 Suggests: 
     influenceR,
+    knitr,
+    rmarkdown,
     roxyglobals (>= 0.2.2),
     testthat (>= 3.0.0)
 Remotes: 
     anthonynorth/roxyglobals
 Config/testthat/edition: 3
+VignetteBuilder: knitr

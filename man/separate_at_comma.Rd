@@ -12,6 +12,10 @@ separate_at_comma(x)
 \description{
 Split a character string of several words at commas to a vector.
 }
+\examples{
+x <- "sex, nat, resid, benef_type1, benef_type2"
+separate_at_comma(x)
+}
 \author{
 \href{mailto:christoph@cynkra.com}{Christoph Sax}
 }

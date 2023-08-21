@@ -19,6 +19,9 @@ path_data <- function(path) {
 #'
 #' @param x String of words to split.
 #' @author [Christoph Sax](mailto:christoph@cynkra.com)
+#' @examples
+#' x <- "sex, nat, resid, benef_type1, benef_type2"
+#' separate_at_comma(x)
 #' @export
 separate_at_comma <- function(x) {
   if (!is.na(x)) {

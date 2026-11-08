@@ -1,11 +1,10 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: 3.8.3
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
-  howto: howto.html
+  articles/howto: howto.html
   setup: setup.html
-last_built: 2023-09-01T07:27Z
+last_built: 2026-11-08T09:02Z
 urls:
   reference: https://asam-group.github.io/rrclust/reference
   article: https://asam-group.github.io/rrclust/articles
-

@@ -1,0 +1,157 @@
+# Prepare the pension register data
+
+Rename the variables of the pension register.
+
+## Usage
+
+``` r
+mod_prepa_rr(IND_YEARLY_RR, list = NULL)
+```
+
+## Arguments
+
+- IND_YEARLY_RR:
+
+  A data frame containing the data of the pension register subsetted for
+  one year only.
+
+- list:
+
+  List of input data frames.
+
+## Value
+
+a `tidylist` containing the following tidy data frames:
+
+- `RR_OASI` : A data frame containing all OASI data, whose variables
+  are: variables:
+
+  - `year`: Year of the pension register extract.
+
+  - `age`: Age of the individual.
+
+  - `age_retire`: Effective retirement age.
+
+  - `sex`: Sex, female if female, 0 if male.
+
+  - `nat`: Nationality, foreign if 1, 0 if Swiss.
+
+  - `resid`: Residence, foreign if 1, 0 if Swiss.
+
+  - `benef_type1`: Old-age type of benefit if 1, 0 otherwise (dummy).
+
+  - `benef_type2`: Widow type of benefit if 1, 0 otherwise (dummy).
+
+  - `benef_type3`: Father's orphan type of benefit if 1, 0 otherwise
+    (dummy).
+
+  - `benef_type4`: Mother's orphan type of benefit if 1, 0 otherwise
+    (dummy).
+
+  - `benef_type5`: Twice orphan type of benefit if 1, 0 otherwise
+    (dummy).
+
+  - `benef_type6`: Spouse's compl. type of benefit if 1, 0 otherwise
+    (dummy).
+
+  - `benef_type7`: Father's child rent type of benefit if 1, 0 otherwise
+    (dummy).
+
+  - `benef_type8`: Mother's child rent type of benefit if 1, 0 otherwise
+    (dummy).
+
+  - `benef_type` : Types of benefits type of benefit (categorical).
+
+  - `marital_stat1`: Divorced marital status if 1, 0 otherwise (dummy).
+
+  - `marital_stat2`: Single as reference category marital status if 1, 0
+    otherwise (dummy).
+
+  - `marital_stat3`: Married marital status if 1, 0 otherwise (dummy).
+
+  - `marital_stat4`: Widowed marital status if 1, 0 otherwise (dummy).
+
+  - `marital_stat`: Marital status.
+
+  - `splitting`: If 1, splitting of the revenues, 0 otherwise.
+
+  - `capping`: If 1, the pension is capped, 0 otherwise.
+
+  - `contrib_m_ind`: Total number of OASI contribution months per
+    individual.
+
+  - `contrib_y_ageclass`: Total number of contribution years per age
+    group.
+
+  - `bonus_m_edu`: Number of months paid with a bonus for educative
+    tasks.
+
+  - `bonus_m_assist`: Number of months paid with a bonus for
+    assistance/care tasks.
+
+## Author
+
+[Layal Christine Lettry](mailto:layal.lettry@gmail.com)
+
+## Examples
+
+``` r
+#' @examples
+#' IND_YEARLY_RR <- structure(
+#'   list(
+#'     alt = c(
+#'       46L, 38L, 14L, 75L, 30L
+#'     ),
+#'     sex = c(
+#'       "f", "f", "f", "f", "m"
+#'     ),
+#'     nat = c(
+#'       "ch", "ch", "ch", "au", "ch"
+#'     ),
+#'     dom = c(
+#'       "ch", "au", "ch", "ch", "ch"
+#'     ),
+#'     gpr = c(
+#'       "rveuve", "renfant_pere_simple",
+#'       "rorphelin_pere_simple", "rvieillesse_simple", "renfant_pere_simple"
+#'     ),
+#'     zv = c(
+#'       "geschieden", "geschieden", "ledig", "ledig", "geschieden"
+#'     ),
+#'     csplit = c(NA, NA, NA, 0L, NA),
+#'     cplaf = c(
+#'       NA, NA, NA, 0L,
+#'       NA
+#'     ), jahr = c(2023L, 2023L, 2023L, 2023L, 2023L),
+#'     ram = c(
+#'       879274L, 2988594L, 5111279L, 8900743L, 1322875L
+#'     ),
+#'     monatliche_rente = c(
+#'       3399L, 2298L, 541L, 2496L, 3894L
+#'     ),
+#'     age_ret = c(
+#'       NA, NA, NA, 68L, NA
+#'     ),
+#'     eprc = c(
+#'       0.0526315789473684, 0.0294117647058824, 0.024390243902439, 0.1, 0.125
+#'     ),
+#'     lcot = c(
+#'       7L, 494L, 209L, 128L, 323L
+#'     ),
+#'     lcotg = c(
+#'       38L,
+#'       22L, 13L, 20L, 44L
+#'     ),
+#'     lbedu = c(
+#'       NA, NA, NA, 394L, NA
+#'     ),
+#'     lbass = c(
+#'       NA, NA, NA, 333L, NA
+#'     )
+#'   ),
+#'   class = c("tbl_df", "tbl", "data.frame"),
+#'   row.names = c(NA, -5L)
+#' )
+#'
+#' mod_prepa_rr(IND_YEARLY_RR = IND_YEARLY_RR)
+```
